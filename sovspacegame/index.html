@@ -1,0 +1,3757 @@
+<html>
+<head>
+<link rel="icon" href="img/icon.png" />
+<link rel="stylesheet" href="css/style.css?ttd=44543334" />
+
+ <!-- BEGINN WALLET-INCLUDE-->
+    
+    <!-- Anchor js -->
+    <script src="https://unpkg.com/anchor-link@next"></script>
+    <script src="https://unpkg.com/anchor-link-browser-transport@next"></script>
+        
+    <!-- Scatter js -->
+    <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js"></script>
+    <script src="js/bundles/scatterjs-core.min.js"></script>
+    <script src="js/bundles/scatterjs-plugin-eosjs.min.js"></script>
+    <script src="js/bundles/scatterjs-plugin-lynx.min.js"></script>    
+    
+    <script src="js/eosiowallet/wallet.js?dsd=79524"></script>   
+    
+    <script src="js/admin.js?dsd=422553"></script>   
+    <script src="js/sovspacegame.js?dsd=423"></script>   
+                    
+ <!-- END WALLET-INCLUDE-->
+
+
+
+</head>
+<body class='bodyclass myimage' onload='loadaudio();'>
+
+<div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
+<img src='img/logo2.svg?t=d5443s' style='margin-top:10px;height:160px;'>
+
+<div style='position:absolute;right:20px;top:55px;border:none;'>
+ <audio id="audiotag" controls loop autoplay>
+ <source src= "audio/greysoundloop1.1.mp3" type="audio/mp3">
+ </audio>
+</div>  
+
+
+<div style='position:absolute;right:30px;top:120px;color:#007bff;border:none;'>
+<div id='balance_eos'>....</div>
+</div>
+
+<div style='position:absolute;right:30px;top:150px;color:#007bff;border:none;'>
+<div id='balance_sov'>....</div>
+</div>
+
+ 
+
+</div> <!-- logo1 -->
+
+
+
+
+
+
+<!-- walletmenu -->
+
+<div id='walletmenu' style='border:2px solid #000022;width:100%;height:90px;background:url(img/space2.jpg);background-size:cover;'>
+
+<div id='walletmenu_left' style='float:left;position:relative;width:49%;text-align:center;margin-top:20px;background:#55ff55;'>
+
+ <div id='walletmenu_accountname' style='position:absolute;width:100%;top:-5px;'>
+ 
+ <div id='myaccountname' class='myaccountname' style='font-size:2em;color:#ddddff;font-weight:bold;'>...abc</div>
+ <div id='userrace' style='font-size:1em;color:#ddddff;'>...</div>
+ </div>
+ 
+ <div id='walletmenu_anchor' style='position:absolute;width:100%;'>
+ <div id='anchorbutton' onclick="login_anchor()" class='loginbutton_anchor noselect' style='margin-left:auto;margin-right:auto;' >ANCHOR</div> 
+ 
+ </div>
+
+ 
+</div>
+
+
+
+
+
+<div id='walletmenu_right' style='float:left;position:relative;width:49%;text-align:center;margin-top:20px;background:#5555ff;'>
+  <div id='walletmenu_aa' style='position:absolute;width:100%;'>
+  <div id='logoutbutton' onclick="logout_all()"  class='defaultbutton noselect' style='visibility:hidden;margin-left:auto;margin-right:auto;' >Logout</div>
+  </div>
+
+  <div id='walletmenu_scatter' style='position:absolute;width:100%;visibility:hiddenx;'>
+  <div onclick="login_scatter()" class='defaultbutton noselect' style='margin-left:auto;margin-right:auto;'  >SCATTER/TP/WOMBAT</div>
+  </div>
+
+</div>
+
+
+<div style='clear:both;'></div>
+
+
+
+
+</div> <!-- end walletmenu -->
+
+
+
+
+
+
+
+
+<div class='menuarea'>
+<div id='menu1' class='menubutton_selected' onclick='setmenu(1)' style='margin-left:20px;'>Surface</div> 
+<div id='menu2' class='menubutton' onclick='setmenu(2)'>Mint</div> 
+<div id='menu3' class='menubutton' onclick='setmenu(3)'>Rules</div> 
+<div id='menu4' class='menubutton' onclick='setmenu(4)'>History</div> 
+<div id='menu5' class='menubutton' onclick='setmenu(5)' style='visibility:hidden'>Admin</div> 
+<div style='clear:both;'></div>
+ 
+</div> <!-- menuarea -->
+
+
+
+ 
+
+<div id='page1' style='overflow:hidden;'>
+
+
+<div style='height:5px;'></div>
+
+
+<!-- choose race area -->
+<div id='chooserace' class='chooserace'  style='text-align:center;height:130px;visibility:visible;overflow:hidden;'>
+
+<div class='chooseraceinner'  style=''> 
+<br> 
+ 
+<strong>
+Please choose your species. Note: you cannot undo your decision!<br>Think carefully about which species suits you.<br>
+</strong>
+<br>
+<span id='' class='choosebutton race_humans' onclick='inituser(1)'>Play Humans</span>&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(2)'>Play Greys</span> <br>
+<br> 
+
+</div>
+
+</div> <!-- choose race area -->
+
+<div style='height:5px;'></div>
+
+
+<div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:20px;width:70%; height:20px;   border:2px solid #666666;float:left;'>
+
+<div id='gameboard' style='position:absolute; ;width:100%;height:300px;background:#404040;overflow:hidden;'>
+
+
+ 
+
+</div> <!-- end gameboard -->
+
+
+<div style='position:absolute;margin-left:0px;left:0px;top:0px;width:100%;height:100%; border:none;padding:0px;;color:#ffffff;'>
+
+<svg id="mysvg" width="100%" height="100%" preserveAspectRatio="none" viewbox=" 0 0 1000 1000" style="position:absolute;border:none;z-Index:330;left:0px;top:0px;margin-top:0px;margin-left:0px;">\n 
+
+
+  <polygon id="tileb0"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,-50 100,0 0,50  -100,0   " />
+      <polygon id="tileb1"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,50 100,100 0,150  -100,100   " />
+      <polygon id="tileb2"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,0 200,50 100,100  0,50   " />
+      <polygon id="tileb3"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,-50 300,0 200,50  100,0   " />
+      <polygon id="tileb4"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,150 100,200 0,250  -100,200   " />
+      <polygon id="tileb5"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,100 200,150 100,200  0,150   " />
+      <polygon id="tileb6"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,50 300,100 200,150  100,100   " />
+      <polygon id="tileb7"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,0 400,50 300,100  200,50   " />
+      <polygon id="tileb8"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,-50 500,0 400,50  300,0   " />
+      <polygon id="tileb9"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,250 100,300 0,350  -100,300   " />
+      <polygon id="tileb10"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,200 200,250 100,300  0,250   " />
+      <polygon id="tileb11"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,150 300,200 200,250  100,200   " />
+      <polygon id="tileb12"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,100 400,150 300,200  200,150   " />
+      <polygon id="tileb13"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,50 500,100 400,150  300,100   " />
+      <polygon id="tileb14"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,0 600,50 500,100  400,50   " />
+      <polygon id="tileb15"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,-50 700,0 600,50  500,0   " />
+      <polygon id="tileb16"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,350 100,400 0,450  -100,400   " />
+      <polygon id="tileb17"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,300 200,350 100,400  0,350   " />
+      <polygon id="tileb18"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,250 300,300 200,350  100,300   " />
+      <polygon id="tileb19"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,200 400,250 300,300  200,250   " />
+      <polygon id="tileb20"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,150 500,200 400,250  300,200   " />
+      <polygon id="tileb21"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,100 600,150 500,200  400,150   " />
+      <polygon id="tileb22"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,50 700,100 600,150  500,100   " />
+      <polygon id="tileb23"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,0 800,50 700,100  600,50   " />
+      <polygon id="tileb24"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,-50 900,0 800,50  700,0   " />
+      <polygon id="tileb25"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,450 100,500 0,550  -100,500   " />
+      <polygon id="tileb26"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,400 200,450 100,500  0,450   " />
+      <polygon id="tileb27"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,350 300,400 200,450  100,400   " />
+      <polygon id="tileb28"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,300 400,350 300,400  200,350   " />
+      <polygon id="tileb29"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,250 500,300 400,350  300,300   " />
+      <polygon id="tileb30"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,200 600,250 500,300  400,250   " />
+      <polygon id="tileb31"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,150 700,200 600,250  500,200   " />
+      <polygon id="tileb32"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,100 800,150 700,200  600,150   " />
+      <polygon id="tileb33"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,50 900,100 800,150  700,100   " />
+      <polygon id="tileb34"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,0 1000,50 900,100  800,50   " />
+      <polygon id="tileb35"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,-50 1100,0 1000,50  900,0   " />
+      <polygon id="tileb36"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,550 100,600 0,650  -100,600   " />
+      <polygon id="tileb37"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,500 200,550 100,600  0,550   " />
+      <polygon id="tileb38"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,450 300,500 200,550  100,500   " />
+      <polygon id="tileb39"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,400 400,450 300,500  200,450   " />
+      <polygon id="tileb40"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,350 500,400 400,450  300,400   " />
+      <polygon id="tileb41"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,300 600,350 500,400  400,350   " />
+      <polygon id="tileb42"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,250 700,300 600,350  500,300   " />
+      <polygon id="tileb43"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,200 800,250 700,300  600,250   " />
+      <polygon id="tileb44"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,150 900,200 800,250  700,200   " />
+      <polygon id="tileb45"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,100 1000,150 900,200  800,150   " />
+      <polygon id="tileb46"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,50 1100,100 1000,150  900,100   " />
+      <polygon id="tileb47"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,650 100,700 0,750  -100,700   " />
+      <polygon id="tileb48"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,600 200,650 100,700  0,650   " />
+      <polygon id="tileb49"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,550 300,600 200,650  100,600   " />
+      <polygon id="tileb50"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,500 400,550 300,600  200,550   " />
+      <polygon id="tileb51"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,450 500,500 400,550  300,500   " />
+      <polygon id="tileb52"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,400 600,450 500,500  400,450   " />
+      <polygon id="tileb53"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,350 700,400 600,450  500,400   " />
+      <polygon id="tileb54"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,300 800,350 700,400  600,350   " />
+      <polygon id="tileb55"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,250 900,300 800,350  700,300   " />
+      <polygon id="tileb56"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,200 1000,250 900,300  800,250   " />
+      <polygon id="tileb57"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,150 1100,200 1000,250  900,200   " />
+      <polygon id="tileb58"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,750 100,800 0,850  -100,800   " />
+      <polygon id="tileb59"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,700 200,750 100,800  0,750   " />
+      <polygon id="tileb60"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,650 300,700 200,750  100,700   " />
+      <polygon id="tileb61"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,600 400,650 300,700  200,650   " />
+      <polygon id="tileb62"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,550 500,600 400,650  300,600   " />
+      <polygon id="tileb63"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,500 600,550 500,600  400,550   " />
+      <polygon id="tileb64"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,450 700,500 600,550  500,500   " />
+      <polygon id="tileb65"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,400 800,450 700,500  600,450   " />
+      <polygon id="tileb66"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,350 900,400 800,450  700,400   " />
+      <polygon id="tileb67"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,300 1000,350 900,400  800,350   " />
+      <polygon id="tileb68"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,250 1100,300 1000,350  900,300   " />
+      <polygon id="tileb69"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,850 100,900 0,950  -100,900   " />
+      <polygon id="tileb70"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,800 200,850 100,900  0,850   " />
+      <polygon id="tileb71"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,750 300,800 200,850  100,800   " />
+      <polygon id="tileb72"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,700 400,750 300,800  200,750   " />
+      <polygon id="tileb73"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,650 500,700 400,750  300,700   " />
+      <polygon id="tileb74"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,600 600,650 500,700  400,650   " />
+      <polygon id="tileb75"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,550 700,600 600,650  500,600   " />
+      <polygon id="tileb76"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,500 800,550 700,600  600,550   " />
+      <polygon id="tileb77"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,450 900,500 800,550  700,500   " />
+      <polygon id="tileb78"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,400 1000,450 900,500  800,450   " />
+      <polygon id="tileb79"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,350 1100,400 1000,450  900,400   " />
+      <polygon id="tileb80"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,950 100,1000 0,1050  -100,1000   " />
+      <polygon id="tileb81"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 100,900 200,950 100,1000  0,950   " />
+      <polygon id="tileb82"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,850 300,900 200,950  100,900   " />
+      <polygon id="tileb83"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,800 400,850 300,900  200,850   " />
+      <polygon id="tileb84"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,750 500,800 400,850  300,800   " />
+      <polygon id="tileb85"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,700 600,750 500,800  400,750   " />
+      <polygon id="tileb86"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,650 700,700 600,750  500,700   " />
+      <polygon id="tileb87"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,600 800,650 700,700  600,650   " />
+      <polygon id="tileb88"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,550 900,600 800,650  700,600   " />
+      <polygon id="tileb89"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,500 1000,550 900,600  800,550   " />
+      <polygon id="tileb90"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,450 1100,500 1000,550  900,500   " />
+      <polygon id="tileb91"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 200,950 300,1000 200,1050  100,1000   " />
+      <polygon id="tileb92"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 300,900 400,950 300,1000  200,950   " />
+      <polygon id="tileb93"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,850 500,900 400,950  300,900   " />
+      <polygon id="tileb94"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,800 600,850 500,900  400,850   " />
+      <polygon id="tileb95"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,750 700,800 600,850  500,800   " />
+      <polygon id="tileb96"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,700 800,750 700,800  600,750   " />
+      <polygon id="tileb97"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,650 900,700 800,750  700,700   " />
+      <polygon id="tileb98"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,600 1000,650 900,700  800,650   " />
+      <polygon id="tileb99"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,550 1100,600 1000,650  900,600   " />
+      <polygon id="tileb100"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 400,950 500,1000 400,1050  300,1000   " />
+      <polygon id="tileb101"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 500,900 600,950 500,1000  400,950   " />
+      <polygon id="tileb102"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,850 700,900 600,950  500,900   " />
+      <polygon id="tileb103"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,800 800,850 700,900  600,850   " />
+      <polygon id="tileb104"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,750 900,800 800,850  700,800   " />
+      <polygon id="tileb105"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,700 1000,750 900,800  800,750   " />
+      <polygon id="tileb106"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,650 1100,700 1000,750  900,700   " />
+      <polygon id="tileb107"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 600,950 700,1000 600,1050  500,1000   " />
+      <polygon id="tileb108"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 700,900 800,950 700,1000  600,950   " />
+      <polygon id="tileb109"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,850 900,900 800,950  700,900   " />
+      <polygon id="tileb110"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,800 1000,850 900,900  800,850   " />
+      <polygon id="tileb111"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,750 1100,800 1000,850  900,800   " />
+      <polygon id="tileb112"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 800,950 900,1000 800,1050  700,1000   " />
+      <polygon id="tileb113"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 900,900 1000,950 900,1000  800,950   " />
+      <polygon id="tileb114"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,850 1100,900 1000,950  900,900   " />
+      <polygon id="tileb115"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 1000,950 1100,1000 1000,1050  900,1000   " />
+      
+   
+
+</svg>
+
+
+
+
+
+
+</div>
+
+
+</div> <!-- end gameboardmain -->
+
+
+<div id='board_navigation' style='color:#ffffff;width:27%;float:left;'>
+
+<div id='navigation_svg' style='border:none;width:80%;margin-left:auto;margin-right:auto;'> 
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   
+   viewBox="0 0 105.56875 105.83334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
+   sodipodi:docname="navigation.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="164"
+     inkscape:cy="476"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1248"
+     inkscape:window-height="943"
+     inkscape:window-x="112"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#333333;fill-opacity:0.848404;stroke:#ffffff;stroke-width:0.550038"
+       id="rect851"
+       width="18.310972"
+       height="73.193123"
+       x="-28.12989"
+       y="-17.546558"
+       ry="6.648787" />
+    <path
+       id="path853"
+       style="fill:#ffffff;fill-opacity:0.30851063;stroke:none;stroke-width:11.8098"
+       d="M 199.71094 5.9042969 A 194.09508 194.09508 0 0 0 5.9042969 200 A 194.09508 194.09508 0 0 0 200 394.0957 A 194.09508 194.09508 0 0 0 394.0957 200 A 194.09508 194.09508 0 0 0 200 5.9042969 A 194.09508 194.09508 0 0 0 199.71094 5.9042969 z M 200 80 A 120 120 0 0 1 320 200 A 120 120 0 0 1 200 320 A 120 120 0 0 1 80 200 A 120 120 0 0 1 200 80 z "
+       transform="scale(0.26458333)" />
+  
+  
+       
+ <path
+       id="circ1"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 53.181641 2.1171875 C 48.05137 2.1171875 43.919922 6.2466823 43.919922 11.376953 C 43.919922 16.507224 48.05137 20.636719 53.181641 20.636719 C 58.311912 20.636719 62.441406 16.507224 62.441406 11.376953 C 62.441406 6.2466823 58.311912 2.1171875 53.181641 2.1171875 z " />
+  
+  <path
+       id="circ2"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 82.554688 14.275391 C 80.18755 14.275391 77.819683 15.182269 76.005859 16.996094 C 72.378209 20.623743 72.378209 26.464148 76.005859 30.091797 C 79.633508 33.719447 85.473913 33.719447 89.101562 30.091797 C 92.729212 26.464148 92.729212 20.623743 89.101562 16.996094 C 87.287737 15.182269 84.921828 14.275391 82.554688 14.275391 z " />
+
+ <path
+       id="circ3"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 94.720703 43.65625 C 89.590432 43.65625 85.460937 47.785745 85.460938 52.916016 C 85.460938 58.046287 89.590432 62.177734 94.720703 62.177734 C 99.850974 62.177734 103.98047 58.046287 103.98047 52.916016 C 103.98047 47.785745 99.850974 43.65625 94.720703 43.65625 z " />
+ 
+    <path
+       id="circ4"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 82.554688 73.021484 C 80.18755 73.021484 77.819683 73.928362 76.005859 75.742188 C 72.378207 79.369837 72.378207 85.210242 76.005859 88.837891 C 79.63351 92.465545 85.473913 92.465543 89.101562 88.837891 C 92.729215 85.210242 92.729217 79.369839 89.101562 75.742188 C 87.287737 73.928362 84.921828 73.021484 82.554688 73.021484 z " />
+ 
+     <path
+       id="circ5"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 53.181641 85.195312 C 48.05137 85.195312 43.919922 89.32676 43.919922 94.457031 C 43.919922 99.587302 48.05137 103.7168 53.181641 103.7168 C 58.311912 103.7168 62.441406 99.587302 62.441406 94.457031 C 62.441406 89.32676 58.311912 85.195312 53.181641 85.195312 z " />
+  
+    <path
+       id="circ6"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 23.808594 73.021484 C 21.441455 73.021484 19.073591 73.928362 17.259766 75.742188 C 13.632117 79.369837 13.632117 85.210242 17.259766 88.837891 C 20.887414 92.46554 26.72782 92.46554 30.355469 88.837891 C 33.983119 85.210242 33.983119 79.369837 30.355469 75.742188 C 28.541645 73.928362 26.175733 73.021484 23.808594 73.021484 z " />
+
+    <path
+       id="circ7"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 11.642578 43.65625 C 6.5123078 43.65625 2.3808594 47.785745 2.3808594 52.916016 C 2.3808594 58.046287 6.5123078 62.177734 11.642578 62.177734 C 16.772849 62.177734 20.902344 58.046287 20.902344 52.916016 C 20.902344 47.785745 16.772849 43.65625 11.642578 43.65625 z " />
+ 
+     <path
+       id="circ8"
+       style="fill:#ffffff;fill-opacity:0.49734;stroke:none;stroke-width:1.24518"
+       d="M 23.808594 14.275391 C 21.441455 14.275391 19.07359 15.182269 17.259766 16.996094 C 13.632117 20.623742 13.632117 26.464148 17.259766 30.091797 C 20.887414 33.719449 26.72782 33.719449 30.355469 30.091797 C 33.983119 26.464148 33.983119 20.623742 30.355469 16.996094 C 28.541645 15.182269 26.175733 14.275391 23.808594 14.275391 z " />
+        
+       
+    <path
+       id="path924"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3.24101"
+       inkscape:transform-center-x="-0.043619609"
+       inkscape:transform-center-y="-2.4305267"
+       d="M 201.04883 10.142578 L 178.45703 66.869141 L 224.62891 66.064453 L 201.04883 10.142578 z M 224.62891 331 L 178.45703 331.80469 L 202.03711 387.72656 L 224.62891 331 z "
+       transform="scale(0.26458333)" />
+    <path
+       id="path929"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.857517"
+       inkscape:transform-center-x="-2.4305263"
+       inkscape:transform-center-y="0.043619738"
+       d="m 103.54635,52.861508 -15.00889,-5.977414 0.212907,12.21631 z M 18.652838,59.100404 18.43993,46.884094 3.6439366,53.12299 Z" />
+    <path
+       id="path931"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.857517"
+       inkscape:transform-center-x="-1.6861865"
+       inkscape:transform-center-y="1.7510388"
+       d="M 88.760806,88.373146 82.388253,73.527715 73.892477,82.30868 Z M 24.371696,32.696627 32.867471,23.915661 17.999135,17.851188 Z" />
+    <path
+       id="path933"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.857517"
+       inkscape:transform-center-x="1.6861867"
+       inkscape:transform-center-y="1.7510388"
+       d="m 17.801764,88.373146 6.372553,-14.845431 8.495776,8.780965 z m 64.38911,-55.676519 -8.495775,-8.780966 14.868336,-6.064473 z" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_n"
+       width="29.633333"
+       height="31.75"
+       x="38.629166"
+       y="-4.7624998"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_ne"
+       width="29.633333"
+       height="31.75"
+       x="68.262497"
+       y="7.9375"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_e"
+       width="29.633333"
+       height="31.75"
+       x="81.491661"
+       y="38.099998"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0.00265957;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_se"
+       width="29.633333"
+       height="31.75"
+       x="69.320831"
+       y="68.791664"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_s"
+       width="29.633333"
+       height="31.75"
+       x="39.158333"
+       y="80.433334"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_sw"
+       width="29.633333"
+       height="31.75"
+       x="7.9374995"
+       y="69.320831"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_w"
+       width="29.633333"
+       height="31.75"
+       x="-4.2333336"
+       y="37.041664"
+       ry="13.373751" />
+    <rect
+       style="fill:#008080;fill-opacity:0;stroke:none;cursor:pointer;stroke-width:2.30083"
+       id="scroll_nw"
+       width="29.633333"
+       height="31.75"
+       x="8.4666662"
+       y="6.8791642"
+       ry="13.373751" />
+     
+    <text id='navsvg_text' x="53" y="53" w="30" fill="#ffffff" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">scroll</text>
+
+   
+       
+  </g>
+</svg>
+
+
+ 
+</div> <!-- navigation_svg -->
+
+
+<div style='height:10px;'></div>
+
+
+<div id='navbuttonarea' style='margin-left:10px;'>
+
+<div id='navbutton_scroll' onclick='nav_selection(1);' class='navbutton_on'>
+scroll
+</div>
+
+<div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off'>
+move
+</div>
+
+<div style='clear:both;'></div>
+
+<div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off'>
+attack
+</div>
+
+<div id='navbutton_demolish' onclick='nav_selection(4);' class='navbutton_off'>
+demolish
+</div>
+
+</div> <!-- navbuttonarea -->
+
+
+<br>
+<br>
+
+
+
+
+
+<div id='coordiv' style='border:none;color:#eeeeee;position:relative;width:95%;margin-left:10px;margin-right:auto;'>
+<small>Center Coordinate</small><br>
+<div style='float:left;'>x:<input id='xcoor' type='text' value='500000' style='width:100px;'></div>
+<div style='float:left;'>&nbsp;y:<input id='ycoor' type='text' value='500000' style='width:100px;'></div>
+ 
+<div style='clear:both;'></div>
+
+
+  
+<div id='' onclick='refreshboard()' class='refreshboard'>Refresh Board &#8634;</div>
+
+<div style='height:10px;'></div>
+
+
+
+<div style='border:none;float:left;width:95%;font-size:0.8em;'>
+
+
+<div id='thename'>...</div>
+<div id='curassetid'>...</div>
+<div id='owner'>...</div>
+<div id='asset_ts'>...</div>
+<div id='shield'>...</div>
+<div id='attack'>...</div>
+
+ <br>
+ Set Nickname:<br>
+ <input type='text' id='newnickname'></input>
+ <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
+
+
+</div>
+
+
+
+
+</div> <!--  coordiv -->
+
+
+</div> <!-- board_navigation -->
+
+
+
+
+
+
+
+
+
+
+
+<div style='clear:both;'></div>
+
+<script>
+
+var frontendversion = "0.1";
+
+document.getElementById("scroll_n").addEventListener('click', function(e) 
+{  
+updatecoor(2,-2);
+   
+refreshboard();
+} );
+
+ 
+document.getElementById("scroll_ne").addEventListener('click', function(e) 
+{ 
+
+if (nav_mode == 1)
+   {
+   updatecoor(2,0);
+   } else
+if (nav_mode == 2)  
+   {
+   moveobject(3);
+   } else
+if (nav_mode == 3)  
+   {
+   attackobject(2);  
+   } else
+if (nav_mode == 4)  
+   {
+   demolishobject(2);  
+   }  
+       
+refreshboard();
+} );
+
+document.getElementById("scroll_e").addEventListener('click', function(e) 
+{ 
+updatecoor(2,2);
+refreshboard();
+} );
+
+
+document.getElementById("scroll_se").addEventListener('click', function(e) 
+{ 
+
+
+
+if (nav_mode == 1)
+   {
+   updatecoor(0,2);
+   } else
+if (nav_mode == 2)  
+   {   
+   moveobject(3);
+   }  else
+if (nav_mode == 3)  
+   {
+   attackobject(3);  
+   }  else
+if (nav_mode == 4)  
+   {
+   demolishobject(3);  
+   }  
+   
+refreshboard();
+} );
+ 
+document.getElementById("scroll_s").addEventListener('click', function(e) 
+{ 
+updatecoor(-2,2);
+refreshboard();
+} );
+
+document.getElementById("scroll_sw").addEventListener('click', function(e) 
+{ 
+
+  
+if (nav_mode == 1)
+   {
+   updatecoor(-2,0);
+   } else
+if (nav_mode == 2) 
+   {
+   moveobject(4);
+   }  else
+if (nav_mode == 3)  
+   {
+   attackobject(4);  
+   }  else
+if (nav_mode == 4)  
+   {
+   demolishobject(4);  
+   }    
+   
+refreshboard();
+} );
+
+
+document.getElementById("scroll_w").addEventListener('click', function(e) 
+{ 
+updatecoor(-2,-2);
+refreshboard();
+} );
+
+document.getElementById("scroll_nw").addEventListener('click', function(e) 
+{ 
+
+
+if (nav_mode == 1)
+   {
+   updatecoor(0,-2);
+   } else
+if (nav_mode == 2)  
+   {
+   moveobject(1);
+   }  else
+if (nav_mode == 3)  
+   {
+   attackobject(1);  
+   }  else
+if (nav_mode == 4)  
+   {
+   demolishobject(1);  
+   }   
+   
+refreshboard();
+} );
+
+
+function updatecoor( offx, offy )
+{
+
+xcoor = document.getElementById("xcoor").value*1;
+ycoor = document.getElementById("ycoor").value*1;
+
+xcoor = xcoor + offx;
+ycoor = ycoor + offy;
+
+document.getElementById("xcoor").value = xcoor;
+document.getElementById("ycoor").value = ycoor;
+
+} // updatecoor
+
+
+
+</script>
+
+ 
+
+
+<div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
+ <label style='cursor:pointer;'>Show Shield & SOV<input id='checkbox_shield' type='checkbox'   onchange='toggle_info()'> </label> &nbsp;&nbsp;&nbsp;
+ <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> 
+
+ <div style='cursor:pointer;float:right;'> <div id='coordinate'></div>  </div> 
+
+</div>
+
+<br>
+ 
+ 
+
+
+<div id='inventorycontent' style=''>
+
+ 
+
+<span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'>Your NFT's (wallet):</span>
+
+<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update NFT Inventory &#8634;</span>
+<div style='clear:both;'></div>
+
+
+ 
+
+
+<div style='text-align:center;'>
+
+ 
+ <div id='div_inventory' class='div_inventory' style=''>
+
+  <div id='div_inventory_inner' class='div_inventory_inner' style=''>  
+  </div> <!-- div_inventory_inner -->
+ </div> <!-- div_inventory -->
+</div> <!-- center -->
+
+</div> <!-- inventorycontent -->
+
+ 
+<br>
+<div style='clear:both;'></div>
+<br>
+<br>
+ 
+
+
+
+</div> <!-- page1 -->
+ 
+ 
+ 
+ 
+<div id='page2' style='height:0px;overflow:hidden;'>
+<br>
+
+<div style='margin-left:30px;style=''>
+
+ <strong>Buy quick SOV from a Dex</strong><br>
+ <input id='eos_for_sov' type='text' value='0.01' style='margin-bottom:5px;width:100px;'> EOS<br>
+ <div onclick='buysov_sovdex()' class='buybutton'>buy SOV from sovdex</div>
+ <div onclick='buysov_newdex()' class='buybutton' style='margin-left:10px;'>buy SOV from newdex</div><br>
+
+
+
+<br>
+
+</div>
+
+ 
+
+
+ 
+<div>
+ <span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'>Your NFT's (wallet):</span>
+ <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update NFT Inventory &#8634;</span>
+ <div style='clear:both;'></div>
+</div>
+
+
+<div id='page2content' style=''>
+
+
+<div style='text-align:center;'>
+ 
+ <div id='div_inventory2' class='div_inventory' style='height:190px;'>
+  <div id='div_inventory_inner2' class='div_inventory_inner' style=''>  
+  </div> <!-- div_inventory_inner -->
+ </div> <!-- div_inventory -->
+</div> <!-- center -->
+
+</div> <!-- page2content -->
+
+
+
+<div id='mintarea' style='margin-left:20px;'>
+...
+</div> <!-- mintarea -->
+
+ 
+ 
+<br>
+<br>
+
+
+</div> <!-- page2 -->
+
+
+
+<div id='page3' style='height:0px;overflow:hidden;'>
+
+<div style='margin:20px'>
+<h1>Rules and game features</h1>
+<br>
+<strong>Disclaimer: playing is on your own risk! Please keep in mind, a game-smartcontract is a complex system and can contain several attack-vectors
+and bugs. Please do only play with token you are willing to lose.</strong>
+<br>
+<br>
+This game based on team-work, common tactics and pure destruction - no land-sale, no new tokens or NFT-drops. 
+<br>
+<br>
+<br>
+The basic game rules (please read carefully):
+<ul>
+<li>The aim of the game is to <strong>destroys</strong> as many as possible structures of the opposing species.</li>
+<li>At first the player must choose a species (currently humans or greys). This decision cannot be revoked.</li>
+<li>Structures are minted as NFT with an amount of SOV. This Structures can be permanently placed (build) on an area.</li>
+<li>10% of the SOV will become burned during the minting. The remaining 90% will back the structure.</li>
+<li>If a structure becomes destroyed by the opposing species, the backed SOV will be send to the winner, the NFT will become burned.</li>
+<li>The lander can be placed on every undeveloped area of the surface. </li>
+<li>All structures (execpt the lander) must be build next on existing structure or street of your own species.</li>
+<li>If you build next to an existing building, please ask the owner for permission. He has the right to <strong>demolish</strong> younger adjoining structures.    </li>
+<li>A <strong>demolish</strong>-action will result in a 100% burning of the backed SOV.</li>
+<li>The only mobile element is the bulldozer. Please switch from <em>scroll</em> to <em>move</em> - mode in order to move the mobile element.</li>
+<li>Bulldozers can freely move and attack opponent structures - except other bulldozers and walls</li>
+<li>The player who builds/placed a structure can set a <strong>personal nickname</strong>, storend in the mutual NFT-attributes.  </li>
+</ul>
+<br>
+Other general comments:
+<ul>
+<li>This game runs on EOS mainnet and is using the SOV-token.</li>
+<li>The gameplay will become extended in time - more features, weapons and defense-elements. This development depends from the general user-feedback.</li>
+<li>The game-frontend is only using public API-nodes. All data are loaded in realtime from blockchain (EOS mainnet).</li>
+<li>Because of the limitations of the API, you should only use the reload-action, if needed.</li>
+<li>You can download the game-frontend from Github and play on your own local device. </li>
+<li>Play fair, well-considered but without any mercy</li>
+</ul>
+
+<br>
+
+<br>
+<h2>The Lander</h2>
+<img src='img/nft_1_1.png' style='width:100px'> 
+This is the only structure you can be placed on every free area of the surface. All other structures must be build next to 
+an existing structure from your species. 
+<br>
+<br>
+
+<h2>The Residence</h2>
+<img src='img/nft_1_2.png' style='width:100px'>
+Your people should live somewhere. Requires an existing building or street.
+<br>
+<br>
+
+<h2>Agriculture</h2>
+<img src='img/nft_1_3.png' style='width:100px'>
+Your people need food from time totime. Requires a residence next to.
+<br>
+<br>
+
+<h2>Factory</h2>
+<img src='img/nft_1_4.png' style='width:100px'>
+At some point, you like to produce something, like a bulldozer. Requires an Agriculture next to.
+<br>
+<br>
+
+<h2>Bulldozer</h2>
+<img src='img/nft_1_5.png' style='width:100px'>
+The first mobile unit in the game. A bulldozer can move and attack opponent structures. Requires an Factory next to.
+A bulldozer can destroy oppenent structures and the owner will get the backed SOV-token after successful destruction.
+A bulldozer cannot attack other bulldozers or walls.
+<br>
+<br>
+
+
+<h2>Street</h2>
+<img src='img/nft_1_6.png' style='width:100px'>
+A street is an inexpensive structure where you can build other structures next to. You cannot destroy a street with a
+bulldozer, but you can build a street from your own species over it. The SOV costs will become burned during the minting process
+and cannot be refunded.
+<br>
+<br>
+
+<h2>Wall</h2>
+<img src='img/nft_1_7.png' style='width:100px'>
+A wall is a strong element and cannot become destroyed by a bulldozer (type I). Please use walls in order to protect
+your important buildings.
+<br>
+<br>
+
+
+
+
+
+</div>
+
+</div> <!-- page3 -->
+
+
+<div id='page4' style='height:0px;overflow:hidden;'>
+
+<div style='margin:20px'>
+<h1>Prehistory</h1>
+Once upon a time...<br>
+<br>
+Here you will find the Prehistory of the SOVSpaceGame.<br>
+<br>
+<ul>
+<li>First Contact 2030</li>
+<li>Time is about 2075</li>
+<li>Surface is not the earth-moon, but a moon near the alpha-centauri-system.</li>
+<li>There is an no-war agreement between humans and greys, but this moon is included in this agreement</li>
+<li>Heavy weapons are forbidden (Intergalactic convention)</li>
+<li>There are other species, but the grey's do not share this information with humans and humans still have not contact with them.</li>
+<li>Most grey tribes do not contact humans, but in alpha-centauri system, the grey-Queen has an anti-human policy (alien sect).</li>
+<li>Humans want to colonize this moon, because the related Planet is grey-territory, but moons are not included in intergalactic contract</li>
+<li>...</li>
+</ul>
+
+
+</div>
+
+</div> <!-- page4 -->
+
+
+<div id='page5' style='margin-left:20px;height:0px;padding:10px;overflow:hidden;'>
+<h1>Admin-Page</h1>
+
+
+
+
+<script>
+
+function sound_stop()
+{
+ 
+var myaudio = document.getElementById("audiotag");
+myaudio.pause();
+
+}
+
+var oldrace = 0;
+
+function setsound( race )
+{
+
+if (oldrace == race) return;
+oldrace = race;
+
+var myaudio = document.getElementById("audiotag");
+
+var src = "";
+
+if (race == 1) src = "audio/humanloop1.0.mp3"; 
+if (race == 2) src = "audio/greysoundloop1.1.mp3"; 
+
+myaudio.volume = 20/100;
+myaudio.currentTime = 0;
+myaudio.src = src;
+myaudio.autoplay = true;
+myaudio.load(src); 
+ 
+} // setsound()
+
+
+function sound_start()
+{
+
+var myaudio = document.getElementById("audiotag");
+
+var src = "audio/humanloop1.0.mp3"; 
+ myaudio.volume = 20/100;
+//myaudio.pause();
+myaudio.currentTime = 0;
+//myaudio.remove();
+myaudio.src = src;
+
+ myaudio.load(src); 
+
+
+myaudio.play();
+
+}
+
+
+</script>
+<br>
+<div onclick='sound_stop()'>stop</div>
+<br>
+<div onclick='sound_start();'>play</div>
+<br>
+<br>
+
+ 
+Admin:<br>
+<input type='text' id='areatile'></input>
+ <div onclick="initarea()">INIT AREA</div>
+ 
+<hr>
+ 
+<br>
+create area<br>
+<br>
+x: <input type='text' id='newarea_x' value='499996'><br>
+y: <input type='text' id='newarea_y' value='500006'><br>
+w: <input type='text' id='newarea_w' value='3'><br>
+h: <input type='text' id='newarea_h' value='2'><br>
+<div onclick="admin_createarea();">[Create Area x]</div>
+
+<br>
+
+<hr>
+
+<div id='admin_edit_move_attac_prices' style='margin-left:20px;'>
+...
+</div> <!-- mintarea -->
+
+
+<hr>
+<br>
+
+<div onclick="loadadminnftinfos()">Load Price Panel</div>
+<br>
+
+<div id='admin_mintarea' style='margin-left:20px;'>
+...abc
+</div> <!-- mintarea -->
+
+
+
+</div> <!-- page5 -->
+
+
+<br> 
+<div style='font-size:0.8em;float:right;'>Frontend Version <span id='frontendversion'>...</span> | Contract Version <span id='contractversion'>...</span>&nbsp;&nbsp;&nbsp;</div>
+<br>  
+
+
+<div style='border-top:1px solid #666666;margin-left:20px;margin-bottom:10px;'>
+
+
+<strong>API-Settings</strong><br>
+<div style='height:10px;'></div>
+
+<div> <!-- main -->
+
+<div style='float:left;width:30%;border:none;'>
+node for wallet:
+</div>
+
+<div style='float:left;width:50%;border:none;'>
+<select id="select_api_node"   >
+  <option value="eos.greymass.com">eos.greymass.com (default)</option>
+  <option value="eos.api.eosnation.io">eos.api.eosnation.io</option>
+  <option value="mainnet.eosamsterdam.net">mainnet.eosamsterdam.net</option>
+  <option value="api.eosrio.io">api.eosrio.io</option>
+  <option value="mainnet.genereos.io">mainnet.genereos.io</option>
+</select> 
+</div>
+
+ 
+
+
+</div> <!-- main -->
+<div style='clear:both'></div>
+
+
+<br>
+
+
+<div> <!-- main -->
+
+<div style='float:left;width:30%;border:none;'>
+NFT-API (atomicassets):
+</div>
+
+<div style='float:left;width:50%;border:none;'>
+<select id="select_nft_node"   >
+  <option value="http://eos.api.atomicassets.io/atomicassets/v1/assets/">http://eos.api.atomicassets.io/atomicassets/v1/assets/ (default)</option>
+  <option value="other">other</option>
+
+</select>
+</div>
+
+ 
+
+
+</div> <!-- main -->
+<div style='clear:both'></div>
+
+
+
+
+ 
+
+<br>
+
+
+ 
+ 
+
+<script>
+
+ 
+var nft_node = "http://eos.api.atomicassets.io/atomicassets/v1/assets/";
+
+var elm = document.getElementById('select_api_node');
+elm.onchange = function() 
+   {
+   thenode = this.value;
+    _setCookie("mylastnode",thenode,30);
+   } // select_api_node
+    
+var elm = document.getElementById('select_nft_node');
+elm.onchange = function() 
+   {
+   nft_node = this.value;
+   alert( "select_nft_node " + this.value ); 
+   } // select_data_node
+   
+
+</script>
+
+
+
+
+
+<script>
+ 
+
+
+function resettiles()
+{
+var a = document.getElementById("mysvg");
+
+
+ size = a.childNodes.length;
+
+for (var i=0; i<size; i++)
+    {
+    if (a.childNodes[i].tagName == "polygon")
+       {
+       
+       document.getElementById(a.childNodes[i].id).setAttribute('fill', '#9999ff');
+       document.getElementById(a.childNodes[i].id).setAttribute('opacity', 0.0);
+             
+       } // if
+    }
+    
+globalselection['x'] = "";
+globalselection['y'] = "";    
+} // resettiles
+ 
+
+
+
+var a = document.getElementById("mysvg");
+ 
+
+
+ size = a.childNodes.length;
+
+for (var i=0; i<size; i++)
+    {
+    if (a.childNodes[i].tagName == "polygon")
+       {
+       console.log("+++ i- ",  a.childNodes[i].id );
+       
+        
+        
+document.getElementById(a.childNodes[i].id).addEventListener('click', function(e) {
+//console.log(e);
+
+
+
+resettiles();
+
+var theid = e.srcElement.id;
+theid = theid.replace('tileb', '')*1;
+
+thex = mappingarray[theid][0]  ;
+they = mappingarray[theid][1] ;
+
+coordinatei                = tilearray[thex][they].tileid;
+owner                      = tilearray[thex][they].owner;
+thename                    = tilearray[thex][they].name;
+nickname                   = tilearray[thex][they].nick;
+globalselection['assetid'] = tilearray[thex][they].asset_id;
+globalselection['atype']   = tilearray[thex][they].atype;
+globalselection['ori']     = tilearray[thex][they].ori;
+globalselection['ts']      = tilearray[thex][they].ts;
+globalselection['race']    = tilearray[thex][they].race;
+globalselection['shield']  = tilearray[thex][they].shield;
+globalselection['attack']  = tilearray[thex][they].attack;
+ 
+//globalcoordinatei = coordinatei;
+globalselection['coordinate'] = coordinatei;
+globalselection['owner']      = owner;
+
+
+console.log(  "---- id: "+ theid +    " x:"+ thex +  " y "+ they + " c:"+coordinatei+ " last A:"+globalselection['assetid'] );
+   e.currentTarget.setAttribute('fill', '#ffffff');
+   e.currentTarget.setAttribute('opacity', 0.3);
+
+
+
+ 
+width = 1000000;
+they2 = parseInt ( globalselection['coordinate'] / width );
+thex2 = globalselection['coordinate'] - (they2*width);
+
+globalselection['x'] = thex2;
+globalselection['y'] = they2;
+
+
+render_ts = globalselection['ts'];
+if (render_ts < 1) render_ts = '-';
+
+render_shield = globalselection['shield'];
+if (render_shield < 1) render_shield = '-';
+
+render_attack = globalselection['attack'];
+if (render_attack < 1) render_attack = '';
+if (globalselection['atype'] != 5) render_attack = '-';
+
+render_nickname = nickname;
+if (render_nickname == -1) render_nickname = '';
+
+render_owner = owner;
+if (render_owner == "") render_owner = '-';
+
+// ---
+
+document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;'>" + thename + "&nbsp;<strong>";
+ 
+document.getElementById("coordinate").innerHTML = "<small>"+ (thex2) + " | "+(they2) + "</small>"; 
+
+if ( globalselection['assetid'] <= 0)
+   {
+   thelink = "-";
+   } else
+     {
+     thelink = "<a href='https://eos.atomichub.io/explorer/asset/"+globalselection['assetid'] + "' target='_blank' style='color:#9999ff;'>"+globalselection['assetid'] + "</a>" ;
+     }
+document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>NFT</div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>"; 
+
+document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>User</div> <div style='width:60%;float:left'>"+ render_owner + "</div> </div>     <div style='clear:both'></div>"; 
+
+document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Timestamp</div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>"; 
+
+document.getElementById("shield").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Shield</div> <div style='width:60%;float:left'>"+ render_shield+ "</div> </div>     <div style='clear:both'></div>"; 
+
+attack = globalselection['attack'];
+document.getElementById("attack").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Attack</div> <div style='width:60%;float:left'>"+render_attack + "</div> </div>     <div style='clear:both'></div>"; 
+
+
+ 
+document.getElementById("newnickname").value = ""+ render_nickname; 
+
+// Get 4 other directions
+globalselection['n']['coordinate'] = tilearray[thex][they-1].tileid;
+globalselection['n']['assetid']    = tilearray[thex][they-1].asset_id;
+globalselection['n']['owner']      = tilearray[thex][they-1].owner;
+they2 = parseInt ( globalselection['n']['coordinate'] / width );
+thex2 = globalselection['n']['coordinate'] - (they2*width);
+globalselection['n']['x']          = thex2;
+globalselection['n']['y']          = they2;
+globalselection['n']['atype']      = tilearray[thex][they-1].atype;;
+globalselection['n']['race']       = tilearray[thex][they-1].race;
+globalselection['n']['ts']         = tilearray[thex][they-1].ts;
+
+globalselection['e']['coordinate'] = tilearray[thex+1][they].tileid;
+globalselection['e']['assetid']    = tilearray[thex+1][they].asset_id;
+globalselection['e']['owner']      = tilearray[thex+1][they].owner;
+they2 = parseInt ( globalselection['e']['coordinate'] / width );
+thex2 = globalselection['e']['coordinate'] - (they2*width);
+globalselection['e']['x']          = thex2;
+globalselection['e']['y']          = they2;
+globalselection['e']['atype']      = tilearray[thex+1][they].atype;;
+globalselection['e']['race']       = tilearray[thex+1][they].race;
+globalselection['e']['ts']         = tilearray[thex+1][they].ts;
+
+globalselection['s']['coordinate'] = tilearray[thex][they+1].tileid;
+globalselection['s']['assetid']    = tilearray[thex][they+1].asset_id;
+globalselection['s']['owner']      = tilearray[thex][they+1].owner;
+they2 = parseInt ( globalselection['s']['coordinate'] / width );
+thex2 = globalselection['s']['coordinate'] - (they2*width);
+globalselection['s']['x']          = thex2;
+globalselection['s']['y']          = they2;
+globalselection['s']['atype']      = tilearray[thex][they+1].atype;
+globalselection['s']['race']       = tilearray[thex][they+1].race;
+globalselection['s']['ts']         = tilearray[thex][they+1].ts;
+
+globalselection['w']['coordinate'] = tilearray[thex-1][they].tileid;
+globalselection['w']['assetid']    = tilearray[thex-1][they].asset_id;
+globalselection['w']['owner']      = tilearray[thex-1][they].owner;
+they2 = parseInt ( globalselection['w']['coordinate'] / width );
+thex2 = globalselection['w']['coordinate'] - (they2*width);
+globalselection['w']['x']          = thex2;
+globalselection['w']['y']          = they2;
+globalselection['w']['atype']      = tilearray[thex-1][they].atype;;
+globalselection['w']['race']       = tilearray[thex-1][they].race;
+globalselection['w']['ts']         = tilearray[thex-1][they].ts;
+
+
+ 
+   
+updatepanel();   
+
+console.log("Global Selection:");
+console.log(globalselection);
+});
+
+       
+       
+       } // if
+    }
+ 
+ 
+ 
+ 
+ 
+  document.addEventListener("click", (evt) => {
+        const flyoutEl = document.getElementById("mysvg");
+        const flyoutEl2 = document.getElementById("inventorycontent");
+        const flyoutEl3 = document.getElementById("movepanel");     
+        const flyoutEl4 = document.getElementById("board_navigation");     
+         
+        
+        let targetEl = evt.target; // clicked element      
+        do {
+          if(
+             targetEl == flyoutEl  ||
+             targetEl == flyoutEl2 ||           
+             targetEl == flyoutEl3 ||           
+             targetEl == flyoutEl4            
+             ) {
+
+            console.log("inside")
+            return;
+          }
+          // Go up the DOM
+          targetEl = targetEl.parentNode;
+        } while (targetEl);
+    
+                console.log("outside");
+                resettiles();
+      });
+      
+// End - cursor 
+
+
+
+function updatepanel()
+{
+
+
+console.log("UP: "+globalselection['coordinate']+" "+globalselection['assetid'] + " " + globalselection['owner']);
+
+// Nickname
+if ( globalselection['owner'] == global_account)
+   {
+   document.getElementById("newnickname").style.background = "#ffffff";
+   console.log("OWNER OK");
+   } else
+   {
+   document.getElementById("newnickname").style.background = "#cccccc";
+      console.log("OWNER NOT OK");
+   }  
+
+
+
+// Move-Panel 
+if ( globalselection['atype'] == 5)
+   {
+//   document.getElementById("movepanel").style.background = "#ffffff";
+   console.log("bulldozer OK");
+   } else
+   {
+  // document.getElementById("movepanel").style.background = "#cccccc";
+      console.log("bulldozer NOT OK");
+   }  
+   
+   
+ 
+
+ 
+} // updatepanel()
+
+
+
+</script>
+
+
+<script>
+ 
+
+
+
+var globalselection = new Object();
+globalselection['coordinate']   = "";
+globalselection['assetid']      = "";
+globalselection['owner']        = "";
+globalselection['x']            = -1;
+globalselection['y']            = -1;
+globalselection['atype']        = -1;
+globalselection['ts']           = -1;
+globalselection['race']         = -1;
+globalselection['shield']       = -1;
+globalselection['attack']       = -1;
+
+globalselection['n'] = new Object();
+globalselection['n']['coordinate'] = "";
+globalselection['n']['assetid']    = "";
+globalselection['n']['owner']      = "";
+globalselection['n']['x']          = "";
+globalselection['n']['y']          = "";
+globalselection['n']['atype']      = "";
+globalselection['n']['race']       = "";
+globalselection['n']['ts']         = "";
+globalselection['n']['shield']     = "";
+
+globalselection['e'] = new Object();
+globalselection['e']['coordinate'] = "";
+globalselection['e']['assetid']    = "";
+globalselection['e']['owner']      = "";
+globalselection['e']['x']          = "";
+globalselection['e']['y']          = "";
+globalselection['e']['atype']      = "";
+globalselection['e']['race']       = "";
+globalselection['e']['ts']         = "";
+globalselection['e']['shield']     = "";
+
+globalselection['s'] = new Object();
+globalselection['s']['coordinate'] = "";
+globalselection['s']['assetid']    = "";
+globalselection['s']['owner']      = "";
+globalselection['s']['x']          = "";
+globalselection['s']['y']          = "";
+globalselection['s']['atype']      = "";
+globalselection['s']['race']       = "";
+globalselection['s']['ts']         = "";
+globalselection['s']['shield']     = "";
+
+globalselection['w'] = new Object();
+globalselection['w']['coordinate'] = "";
+globalselection['w']['assetid']    = "";
+globalselection['w']['owner']      = "";
+globalselection['w']['x']          = "";
+globalselection['w']['y']          = "";
+globalselection['w']['atype']      = "";
+globalselection['w']['race']       = "";
+globalselection['w']['ts']         = "";
+globalselection['w']['shield']     = "";
+
+var graborder = new Array();
+
+graborder[0] = new Object();
+graborder[ 0]['x']   = 10;
+graborder[ 0]['y']   = 0;
+graborder[ 0]['cnt'] = 1;
+graborder[ 1] = new Object();
+graborder[ 1]['x']   = 9;
+graborder[ 1]['y']   = 1;
+graborder[ 1]['cnt'] = 3;
+graborder[ 2] = new Object();
+graborder[ 2]['x']   = 8;
+graborder[ 2]['y']   = 2;
+graborder[ 2]['cnt'] = 5;
+graborder[ 3] = new Object();
+graborder[ 3]['x']   = 7;
+graborder[ 3]['y']   = 3;
+graborder[ 3]['cnt'] = 7;
+graborder[ 4] = new Object();
+graborder[ 4]['x']   = 6; 
+graborder[ 4]['y']   = 4;
+graborder[ 4]['cnt'] = 9;
+graborder[ 5] = new Object();
+graborder[ 5]['x']   = 5; 
+graborder[ 5]['y']   = 5;
+graborder[ 5]['cnt'] = 11;
+graborder[ 6] = new Object();
+graborder[ 6]['x']   = 4; 
+graborder[ 6]['y']   = 6;
+graborder[ 6]['cnt'] = 11;
+graborder[ 7] = new Object();
+graborder[ 7]['x']   = 3; 
+graborder[ 7]['y']   = 7;
+graborder[ 7]['cnt'] = 11;
+graborder[ 8] = new Object();
+graborder[ 8]['x']   = 2; 
+graborder[ 8]['y']   = 8;
+graborder[ 8]['cnt'] = 11;
+graborder[ 9] = new Object();
+graborder[ 9]['x']   = 1; 
+graborder[ 9]['y']   = 9;
+graborder[ 9]['cnt'] = 11;
+graborder[10] = new Object();
+graborder[10]['x']   = 0;
+graborder[10]['y']   = 10;
+graborder[10]['cnt'] = 11;
+graborder[11] = new Object();
+graborder[11]['x']   = 1;
+graborder[11]['y']   = 11;
+graborder[11]['cnt'] = 9;
+graborder[12] = new Object();
+graborder[12]['x']   = 2;
+graborder[12]['y']   = 12;
+graborder[12]['cnt'] = 7;
+graborder[13] = new Object();
+graborder[13]['x']   = 3;
+graborder[13]['y']   = 13;
+graborder[13]['cnt'] = 5;
+graborder[14] = new Object();
+graborder[14]['x']   = 4;
+graborder[14]['y']   = 14;
+graborder[14]['cnt'] = 3;
+graborder[15] = new Object();
+graborder[15]['x']   = 5;
+graborder[15]['y']   = 15;
+graborder[15]['cnt'] = 1;
+
+       console.log("graborder:");
+       console.log(graborder);
+
+
+// Mapping-array
+
+let mappingarray = 
+[
+                                                                                [10, 0],
+                                                                        [ 9, 1],[10, 1],[11, 1],
+                                                                [ 8, 2],[ 9, 2],[10, 2],[11, 2],[12, 2],
+                                                        [ 7, 3],[ 8, 3],[ 9, 3],[10, 3],[11, 3],[12, 3],[13, 3],
+                                                [ 6, 4],[ 7, 4],[ 8, 4],[ 9, 4],[10, 4],[11, 4],[12, 4],[13, 4],[14, 4],
+                                        [ 5, 5],[ 6, 5],[ 7, 5],[ 8, 5],[ 9, 5],[10, 5],[11, 5],[12, 5],[13, 5],[14, 5],[15, 5],
+                                [ 4, 6],[ 5, 6],[ 6, 6],[ 7, 6],[ 8, 6],[ 9, 6],[10, 6],[11, 6],[12, 6],[13, 6],[14, 6],
+                        [ 3, 7],[ 4, 7],[ 5, 7],[ 6, 7],[ 7, 7],[ 8, 7],[ 9, 7],[10, 7],[11, 7],[12, 7],[13, 7],
+                [ 2, 8],[ 3, 8],[ 4, 8],[ 5, 8],[ 6, 8],[ 7, 8],[ 8, 8],[ 9, 8],[10, 8],[11, 8],[12, 8],
+        [ 1, 9],[ 2, 9],[ 3, 9],[ 4, 9],[ 5, 9],[ 6, 9],[ 7, 9],[ 8, 9],[ 9, 9],[10, 9],[11, 9],
+[ 0,10],[ 1,10],[ 2,10],[ 3,10],[ 4,10],[ 5,10],[ 6,10],[ 7,10],[ 8,10],[ 9,10],[10,10],
+        [ 1,11],[ 2,11],[ 3,11],[ 4,11],[ 5,11],[ 6,11],[ 7,11],[ 8,11],[ 9,11],
+                [ 2,12],[ 3,12],[ 4,12],[ 5,12],[ 6,12],[ 7,12],[ 8,12],
+                        [ 3,13],[ 4,13],[ 5,13],[ 6,13],[ 7,13],
+                                [ 4,14],[ 5,14],[ 6,14],
+                                        [ 5,15]
+];
+
+   console.log("mappingarray:");
+   console.log(mappingarray);
+
+
+// Tile-array
+
+var tilearray = new Array();
+
+
+for (var i=0; i<16; i++)
+{
+tilearray[i] = new Array();
+for (var i2=0; i2<16; i2++)
+    {
+    tilearray[i][i2] = new Object();
+    tilearray[i][i2]['tile']     = "tilexx";
+    tilearray[i][i2]['tileid']   = "123";
+    tilearray[i][i2]['asset_id'] = "";
+    tilearray[i][i2]['owner']    = "";
+    tilearray[i][i2]['ts']       = 0;
+    tilearray[i][i2]['loaded']   = 0;
+
+    tilearray[i][i2]['attack']   = 0;
+    tilearray[i][i2]['atype']    = -1;
+    tilearray[i][i2]['config']    = -1;
+    tilearray[i][i2]['eos']    = -1;
+    tilearray[i][i2]['name']    = "";
+    tilearray[i][i2]['nick']    = -1;
+    tilearray[i][i2]['ori']    = -1;
+    tilearray[i][i2]['race']    = -1;
+    tilearray[i][i2]['shield']    = -1;
+    tilearray[i][i2]['shield_max']    = -1;
+    tilearray[i][i2]['sov']    = -1;
+    
+     
+    
+    } // for i2 ...
+} // for ... i
+
+ 
+       console.log("tilearray:");
+       console.log(tilearray);
+       
+       
+       
+       
+   
+     
+     
+function callback_getglobals( rows )
+{
+
+console.log("ROWS callback_pricedata ...(callback)");
+//    console.log(rows);
+    
+globaldata['version'] =  rows.rows[0].version;    
+globaldata['m_sov']   =  rows.rows[0].m_sov;    
+globaldata['a_sov']   =  rows.rows[0].a_sov;    
+
+
+
+
+
+document.getElementById("frontendversion").innerHTML = frontendversion;
+document.getElementById("contractversion").innerHTML = globaldata['version'];
+
+if (frontendversion != globaldata['version'])
+   {
+   alert("Warning - Frontend-Version " + frontendversion + " and Contract-Version " + globaldata['version'] + " is different! Please download the newest version of this frontend from github.io !" );
+   }
+
+} // callback_getglobals()         
+
+
+var globaldata = new Array();
+         
+function loadglobals()
+{
+
+getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "", 1000 );
+
+
+} // loadglobals
+       
+       
+function initgameboard()
+{
+ 
+
+
+
+
+
+// Append the tile-div
+
+var index = 0;
+
+for (var y=0; y<=15; y++)
+{
+var startx = 0;
+var starty = y;
+
+
+for (var i=0; i<=12;i++)
+{
+
+
+
+var thex = startx*10 - 10;
+var they = starty *10 - 25     ;
+
+
+if (
+   they >= -25  &&
+   they <= 75  &&
+   thex <= 90   
+   )
+{
+//console.log("- index: " + index + "  x:"+thex  + " y:"+they  );
+
+
+var div = document.createElement("div");
+var divid = "tile"+index;
+div.id = divid;
+div.style.position = "absolute";
+div.style.left = thex+"%";
+div.style.top  = they+"%";
+
+div.style.width = "20%";
+div.style.height = "30%";
+
+
+div.style.background = "";
+ 
+div.style.color = "#ffffff";
+ 
+div.innerHTML = "<img src='img/tile00.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+document.getElementById("gameboard").appendChild(div);
+
+
+ 
+
+index++;
+} // if (starty >= -25)
+
+startx += 1;
+starty -= 0.5;
+} // for ...
+
+
+} // for starty...
+
+
+
+
+ 
+
+
+// Append the object-div
+
+var index = 0;
+
+for (var y=0; y<=15; y++)
+{
+var startx = 0;
+var starty = y;
+
+
+for (var i=0; i<=12;i++)
+{
+
+
+
+var thex = startx*10 - 10;
+var they = starty *10 - 25     ;
+
+
+if (
+   they >= -25  &&
+   they <= 75  &&
+   thex <= 90   
+   )
+{
+//console.log("- index: " + index + "  x:"+thex  + " y:"+they  );
+
+
+var div = document.createElement("div");
+var divid = "obj"+index;
+div.id = divid;
+div.style.position = "absolute";
+div.style.left = thex+"%";
+div.style.top  = they+"%";
+
+div.style.width = "20%";
+div.style.height = "30%";
+div.style.zIndex = they+200;
+
+div.style.background = "";
+//div.style.border = "1px solid #00ff00";
+div.style.color = "#ffffff";
+ 
+div.innerHTML = "<img src='img/one.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+document.getElementById("gameboard").appendChild(div);
+
+
+ 
+
+index++;
+} // if (starty >= -25)
+
+startx += 1;
+starty -= 0.5;
+} // for ...
+
+
+} // for starty...
+
+
+
+ 
+
+ 
+
+} // initgameboard()     
+
+
+ 
+function setaccountname( name )
+{
+document.getElementById('myaccountname').innerHTML = ""+name+"";
+ 
+document.getElementById('walletmenu_anchor').style.visibility = "hidden";
+document.getElementById('walletmenu_anchor').style.height = "0px";
+
+document.getElementById('walletmenu_scatter').style.visibility = "hidden";
+document.getElementById('walletmenu_scatter').style.height = "0px"; 
+
+document.getElementById('logoutbutton').style.visibility = "visible";
+document.getElementById('logoutbutton').style.height = ""; 
+
+if (name == 'sovspacegame')
+   document.getElementById('menu5').style.visibility = "visible"; else    
+   document.getElementById('menu5').style.visibility = "hidden";     
+
+}
+
+
+
+
+function logoutall( name )
+{
+document.getElementById('myaccountname').innerHTML = "xxx";
+
+
+document.getElementById('walletmenu_anchor').style.visibility = "visible";
+document.getElementById('walletmenu_anchor').style.height = "";
+
+document.getElementById('walletmenu_scatter').style.visibility = "visible";
+document.getElementById('walletmenu_scatter').style.height = "";
+
+ 
+document.getElementById('logoutbutton').style.visibility = "hidden";
+document.getElementById('logoutbutton').style.height = "0px";
+
+document.getElementById('userrace').innerHTML = "";
+document.getElementById('chooserace').style.height = "130px;";   
+document.getElementById('chooserace').style.visibility = "visible";     
+
+document.getElementById('menu5').style.visibility = "hidden";    
+
+} // logoutall()
+
+
+
+
+function external_login_action()
+{
+update_counter = 0;
+//alert("GA: "+global_account);
+}
+
+
+var refreshcounter = 0;
+function func_success( message )
+{
+console.log(message);
+refreshcounter = 4;
+}
+
+function func_error( message )
+{
+alert(message);
+}
+
+ 
+
+
+var   userdata = new Object();
+userdata['race'] = -1;
+
+
+function callback_userdata( value )
+{
+console.log(value);
+
+if ( value.rows[0].user == global_account) 
+   {
+   userdata['race'] = value.rows[0].race;
+   } else 
+     {
+     userdata['race'] = "";
+     }
+
+console.log("race:" + userdata['race']);
+
+if (userdata['race'] == 1)
+   {
+   document.getElementById('userrace').innerHTML = "[Human]"   
+
+   document.getElementById('chooserace').style.height = "0px";   
+   document.getElementById('chooserace').style.visibility = "hidden";     
+
+   setsound(1);
+   } else
+
+if (userdata['race'] == 2)
+   {
+   document.getElementById('userrace').innerHTML = "[Grey]"   
+ 
+   document.getElementById('chooserace').style.height = "0px";   
+   document.getElementById('chooserace').style.visibility = "hidden";     
+
+   setsound(2);   
+   } else
+     {
+     console.log("no RACE!!!!!");
+     document.getElementById('chooserace').style.height = "130px";   
+     document.getElementById('chooserace').style.visibility = "visible";     
+     
+     }
+
+} // callback_userdata()
+
+
+
+
+function getuserinfo()
+{
+
+getdata(callback_userdata, "sovspacegame",  "sovspacegame", "user", global_account, "", "", 1 );
+
+} // getuserinfo()
+
+
+
+
+function callback_render_areas( value )
+{
+
+ loadboard_cnt++;
+       if (loadboard_cnt == loadboard_size)
+          {
+          console.log("loadboard_size reached!");
+          
+          
+          // count objects to load
+          loadobjects_cnt  = 0;
+          loadobjects_size = 0;
+
+           
+          
+          for (x=0; x<16; x++)
+          for (y=0; y<16; y++)
+              {    
+    
+              if ( tilearray[x][y]['asset_id'] != "" )
+                 {
+                 loadobjects_size++;
+
+                     
+                 }
+                 
+              } // for y...
+          
+          console.log("loadobjects_size: ",loadobjects_size);
+          
+          loadobjects();
+          } else
+            {
+            //console.log("loadboard: ",loadboard_cnt, " of " , loadboard_size );
+            }   
+            
+            
+if (value.rows.length == 0)
+  {
+  console.log("RETURN");
+  //  return;                   
+  }
+  
+ 
+
+var size = value.rows.length;
+ 
+
+for (var j=0; j<size; j++)
+    {
+    id       = value.rows[j].id;
+    tile     = value.rows[j].tile;
+    asset_id = value.rows[j].asset_id;
+    owner    = value.rows[j].owner;
+    ts       = value.rows[j].ts;
+
+    // console.log("- j:" , j," " , id);
+    
+    
+    
+    var found = 0;
+    var lastx = -1;
+    var lasty = -1;    
+for (var i=0; i<16; i++)
+for (var i2=0; i2<16; i2++)
+    {
+
+    tileid = tilearray[i][i2]['tileid'];
+   
+    
+    if (tileid == id) 
+       {
+       found = 1;
+       lastx = i;
+       lasty = i2;
+       i = 16;
+       i2 = 16;
+       }
+    }
+
+
+//  console.log(" - found: " , found);  
+    if (found)
+       {
+       tile2 = tile;
+       if (tile2 < 10) tile2 = '0'+tile;
+       tilearray[lastx][lasty]['tile']     = "tile"+tile2;
+       tilearray[lastx][lasty]['asset_id'] =  asset_id;       
+       tilearray[lastx][lasty]['owner']    = owner;
+       tilearray[lastx][lasty]['ts']       = ts;
+
+       
+       //console.log(" - x: " , lastx, " y:",lasty, " tile:" , tile, " " ,asset_id);  
+       
+
+       } // if (found)
+  
+    } // for j...
+
+   
+      
+                       
+} // callback_render_areas
+
+
+
+var loadboard_cnt    = 0;
+var loadboard_size   = 0;
+var loadobjects_cnt  = 0;
+var loadobjects_size = 0;
+
+
+function refreshboard()
+{
+loadboard_cnt=0;
+
+
+loadboard_size = graborder.length;
+console.log("loadboard_size: ",loadboard_size);
+ 
+loadboard();
+}
+
+function loadboard()
+{
+ 
+ 
+// --- 
+// Rendering
+
+xcoor = document.getElementById('xcoor').value*1;
+ycoor = document.getElementById('ycoor').value*1;
+  
+width = 1000000;
+
+ 
+// tilearray init + reset
+for (x=0; x<16; x++)
+for (y=0; y<16; y++)
+    {    
+    x2 = x + xcoor - 8;
+    y2 = y + ycoor - 7;
+    coordinatei = (y2*width) + x2; 
+    tilearray[x][y]['tileid'] = coordinatei;
+    tilearray[x][y]['tile'] = "tile00";
+    tilearray[x][y]['asset_id'] = "";
+
+    tilearray[x][y]['atype'] = "";
+
+    tilearray[x][y]['race'] = "";              
+    }
+
+
+
+  
+
+size = graborder.length;
+ console.log("size: ",size);
+ 
+
+for (var i=0; i<size; i++)
+    {
+    x   = graborder[i]['x'];
+    y   = graborder[i]['y'];
+    cnt = graborder[i]['cnt'];
+
+    tileid = tilearray[x][y]['tileid'];
+    
+    console.log("i:(",i,") x: ",x," y:", y," cnt:",cnt, " " , tileid );
+
+    getdata(callback_render_areas, "sovspacegame",  "sovspacegame", "area", tileid, "", "", cnt );
+    } // for i...
+    
+  
+
+ 
+ 
+} //  loadboard()
+
+
+
+
+function loadobjects()
+{
+ 
+var cnt = 0; 
+for (x=0; x<16; x++)
+for (y=0; y<16; y++)
+    {    
+    
+    if (     tilearray[x][y]['asset_id'] != "" )
+       {
+       url = nft_node + tilearray[x][y]['asset_id'];
+       readasset(url, assethandler,x,y ) ;
+       cnt++;
+       }
+    } // for y...
+    
+
+// Render if not asset is in the boardwindow   
+console.log("readasset cnt:"+cnt)    ;
+if (cnt == 0) renderboard();
+
+} // loadobjects()
+
+
+  
+
+function renderboard()
+{
+console.log("...RENDERBOARD");
+var size = mappingarray.length;
+
+for (var i=0; i<size; i++)
+    {
+    var thetile = "tile" + i;
+    
+    x = mappingarray[i][0];
+    y = mappingarray[i][1];    
+  
+    
+    
+ 
+    tile       =  tilearray[x][y]['tile']; 
+    tileid     =  tilearray[x][y]['tileid']; 
+    atype      =  tilearray[x][y]['atype']; 
+    race       =  tilearray[x][y]['race']; 
+    ori        =  tilearray[x][y]['ori']; 
+    nick       =  tilearray[x][y]['nick']; 
+    sov        =  tilearray[x][y]['sov']; 
+    sov  = sov  / 10000;
+    owner      =  tilearray[x][y]['owner']; 
+    shield     =  tilearray[x][y]['shield']; 
+    shield_max =  tilearray[x][y]['shield_max']; 
+    
+   
+    if ( tile != "tile10" &&  tile != "tile11")
+       {
+       var buffer = "<img src='img/"+tile+".png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       document.getElementById(thetile).innerHTML = buffer;
+       }
+
+
+
+    // Object
+    var theobject = "obj" + i;
+    
+    buffer = "";   
+    if ( atype == 1 && race == 1)
+       {
+       buffer = "<img src='img/lander1.png?s=4442' style='position:absolute;border:none;width:100%;'>";       
+       }
+       
+    if ( atype == 2 && race == 1)
+       buffer = "<img src='img/resident_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 3 && race == 1)
+       buffer = "<img src='img/agri_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 4 && race == 1)
+       buffer = "<img src='img/factory_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+     
+    if ( tile == "tile10" )
+       buffer = "<img src='img/s1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( tile == "tile11" )
+       buffer = "<img src='img/s2.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+   
+   
+    if ( atype == 5 && race == 1)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/rover_a_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/rover_a_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/rover_a_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/rover_a_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } // 
+       
+       
+  
+
+    if ( atype == 7 && race == 1)
+       buffer = "<img src='img/wall_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+
+
+
+    // Greys
+    if ( atype == 1 && race == 2)
+       buffer = "<img src='img/lander2.png?s=4442' style='position:absolute;border:none;width:100%;'>";
+ 
+    if ( atype == 2 && race == 2)
+       buffer = "<img src='img/resident_b.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 3 && race == 2)
+       buffer = "<img src='img/agri_b.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 4 && race == 2)
+       buffer = "<img src='img/factory_b.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+ 
+   
+    if ( atype == 5 && race == 2)
+       {
+       if ( ori == 1)
+          buffer += "<img src='img/rover_b_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2)
+          buffer += "<img src='img/rover_b_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3)
+          buffer += "<img src='img/rover_b_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4)
+          buffer += "<img src='img/rover_b_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } // 
+       
+       
+       
+   
+
+    if ( atype == 7 && race == 2)
+       {
+       buffer = "<img src='img/wall_b.png?s=4442' style='position:absolute;border:none;width:100%;'>";  
+       }
+
+ 
+    
+    
+    
+    
+    // Text
+    if ( 
+       atype == 1 || 
+       atype == 2 ||     
+       atype == 3 || 
+       atype == 4 || 
+       atype == 5 || 
+       atype == 6 || 
+       atype == 7 
+       )
+       {
+       if (race == 1) color = "#ffffff";
+       if (race == 2) color = "#aaffaa";
+
+       if (owner == global_account)
+          {
+          color = "#ffee99";
+          }        
+       
+       var divid_shieldinfo = "shieldinfo_" + i;
+       var divid_owner      = "ownerinfo_" + i;
+       
+       buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
+       shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)";
+       buffer += "<div id='"+divid_shieldinfo+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:80%;z-index:300;visibility:hidden;'>" +shieldinfo+  " </div>" ;
+
+       buffer += "<div id='"+divid_owner+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:86%;z-index:300;visibility:hidden;'>" +owner+  " </div>" ;
+       
+       } // if object
+
+    
+   
+    document.getElementById(theobject).innerHTML = buffer;
+
+      
+ 
+    } // for i...
+    
+ 
+  
+ 
+  
+    
+    
+} // renderboard()
+
+
+
+function assethandler( value , x, y)
+{
+
+tilearray[x][y]['attack']   = value['data']['data']['attack'];
+tilearray[x][y]['atype']    = value['data']['data']['atype'];
+    tilearray[x][y]['config']    = value['data']['data']['config'];
+    tilearray[x][y]['eos']    = value['data']['data']['eos'];
+    tilearray[x][y]['name']    = value['data']['data']['name'];
+  
+    tilearray[x][y]['nick']    = value['data']['data']['nick'];
+    tilearray[x][y]['ori']    = value['data']['data']['ori'];
+    tilearray[x][y]['race']    = value['data']['data']['race'];
+    tilearray[x][y]['shield']    = value['data']['data']['shield'];
+    tilearray[x][y]['shield_max']    = value['data']['data']['shield_max'];
+    tilearray[x][y]['sov']    = value['data']['data']['sov'];
+    
+
+    
+    loadobjects_cnt++;
+       if (loadobjects_cnt == loadobjects_size)
+          {
+          console.log("loadobjects_size reached! - ");
+          renderboard();
+          } else
+            {
+            console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
+            }
+              
+ 
+
+} // assethandler
+
+ 
+
+
+function readurl_simple(url, jsonparam) 
+{
+try {
+var xhr = new XMLHttpRequest(); 
+var fd = new FormData(); 
+xhr.open('POST', url, false); 
+
+var data2 = jsonparam ;
+  
+xhr.send(data2); 
+
+var response = xhr.responseText; 
+
+return(response);
+      } catch (e)
+         {
+         console.log("Connection failed, grabbing local");
+         return '[]';
+         }
+} // readurl()
+ 
+
+function readurl(url, callback ) 
+{
+
+console.log(" readurl ",url," ");
+asset_id = 2199025113747;
+asset_id = 2199025113579;
+   var jsonparam = JSON.stringify( [ ]  ); 
+
+var xhr = new XMLHttpRequest();
+
+ 
+xhr.open("POST", url);
+
+ 
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+ 
+      json = xhr.responseText;
+      
+      const rows = JSON.parse(json);
+
+      callback(rows);
+       
+ 
+   }};
+
+ 
+xhr.send();
+
+console.log(" readurl2 ");
+ 
+} // readurl()
+ 
+ 
+
+function readasset(url, callback, thex, they ) 
+{
+
+console.log(" readurl ",url," ");
+asset_id = 2199025113747;
+asset_id = 2199025113579;
+   var jsonparam = JSON.stringify( [ ]  ); 
+
+var xhr = new XMLHttpRequest();
+ 
+xhr.open("POST", url);
+
+ 
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+ 
+      json = xhr.responseText;
+      
+      const rows = JSON.parse(json);
+
+      callback(rows,thex, they);
+       
+ 
+   }};
+
+ 
+xhr.send();
+
+console.log(" readurl2 ");
+
+ 
+} // readasset()
+
+
+function inituser( race )
+{
+ 
+var theactions = [];
+
+       memo = "This is it";
+
+
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'inituser',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account,
+                       "race": race
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+
+  
+} //  inituser()
+
+
+
+
+
+function setnickname()
+{
+
+
+newnickname = document.getElementById('newnickname').value;
+
+ 
+console.log("last_assetid:::::: ",globalselection['assetid']);
+ 
+ 
+var theactions = [];
+
+ 
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'setnickname',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": globalselection['assetid'],
+                       "user" : global_account,
+                       "nickname" : newnickname                          
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+} // setnickname()
+
+
+function placeobject( asset_id )
+{
+
+
+
+if (asset_id == '')
+   {
+   asset_id = selectednft['asset_id'];
+   }
+
+ 
+var theactions = []; 
+ 
+ 
+
+var memo = "place;"+global_account+";"+globalselection['x']+";"+globalselection['y']+"";
+ 
+   
+    var action = {
+                 account: "atomicassets",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "asset_ids": [asset_id],
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+    
+} // placeobject()
+
+
+function callback_getinventory_mainpage( rows )
+{
+console.log("ROWS...(callback)");
+ 
+    
+content = "";  
+content += "<table><tr>";
+      
+      var size = rows.rows.length;
+      console.log("size:::"+ size);
+      
+for (var i=0; i<size; i++)
+          {
+          var asset_id = rows.rows[i].asset_id;
+    
+      
+          console.log("--- url: " + url);
+          var url = nft_node + asset_id;
+          var jsonparam = JSON.stringify( {assetid: asset_id } ); 
+          var mediajson = readurl_simple(url, jsonparam); 
+       
+
+             
+          var json_array = JSON.parse(mediajson);                                 
+     
+
+// console.log(json_array);
+        
+          var collection_name = json_array['data']['collection']['collection_name'] ;
+      
+               
+         if (  collection_name == "sovspacegame" )       
+            {   
+            var the_id          = json_array['data']['data']['id'];
+            var hash_img        = json_array['data']['data']['img'];
+
+
+            var the_race        = json_array['data']['data']['race'];
+            var the_atype       = json_array['data']['data']['atype'];
+
+            var title      = json_array['data']['data']['name'] ;
+            if (title == undefined) title = "Alien Girl";
+            // console.log("hash_img: " + hash_img); 
+            content += "<td>";
+            content += "<div id='nft_"+asset_id+"' onclick='selectnft("+asset_id+")' name='mynft' class='nft_cell' style=''>"; 
+
+          
+            var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+          
+          
+           
+                
+            content +=   imgbuffer + "<br>";
+               
+      
+    
+            asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
+           
+            content += "<strong>"+ title + "</strong><br>";
+            content += "<small>"+ asset_link + "</small><br>";
+            content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place NFT</div><br>";
+          
+            content += "</div>";   
+            content += "</td>";       
+            } // if (  collection_name == "xusogamedemo" )          
+ 
+          } // for i...
+   
+   
+          content += "</tr></table>";
+         document.getElementById('div_inventory_inner').innerHTML =  content;
+
+ 
+ 
+} // callback_getinventory_mainpage()
+
+
+
+function callback_getinventory( rows )
+{
+console.log("ROWS...(callback)");
+//    console.log(rows);
+    
+content = "";  
+content += "<table><tr>";
+      
+      var size = rows.rows.length;
+      console.log("size:::"+ size);
+      
+for (var i=0; i<size; i++)
+          {
+          var asset_id = rows.rows[i].asset_id;
+    
+      
+ 
+          var url = nft_node + asset_id;
+          console.log("--- url: " + url);
+          var jsonparam = JSON.stringify( {assetid: asset_id } ); 
+          var mediajson = readurl_simple(url, jsonparam); 
+       
+
+             
+          var json_array = JSON.parse(mediajson);                                 
+     
+          // console.log(json_array);
+        
+          var collection_name = json_array['data']['collection']['collection_name'] ;
+      
+               
+         if (  collection_name == "sovspacegame" )       
+            {   
+            var the_id          = json_array['data']['data']['id'];
+            var hash_img        = json_array['data']['data']['img'];
+            var hash_video      = json_array['data']['data']['video'];
+
+            var title      = json_array['data']['data']['name'] ;
+            if (title == undefined) title = "Alien Girl";
+            console.log("hash_img: " + hash_img); 
+            content += "<td>";
+            content += "<div class='nft_cell' style=''>"; 
+
+          
+            var the_race        = json_array['data']['data']['race'];
+            var the_atype       = json_array['data']['data']['atype'];
+          
+            var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+          
+           
+            content +=   imgbuffer + "<br>";
+               
+      
+    
+            asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
+           
+            content += "<strong>"+ title + "</strong><br>";
+            content += "<small>"+ asset_link + "</small><br>";
+          
+         
+        
+            content += "</div>";   
+            content += "</td>";       
+            } // if (  collection_name == "xusogamedemo" )          
+ 
+          } // for i...
+   
+   
+         content += "</tr></table>";
+       
+
+         document.getElementById('div_inventory_inner2').innerHTML =  content;
+
+} // callback_getinventory()
+
+
+
+
+var pricedata = new Array();
+
+function callback_pricedata( rows )
+{
+
+console.log("ROWS callback_pricedata ...(callback)");
+    console.log(rows);
+    
+var size = rows.rows.length;
+console.log("size: " + size);
+    
+for (var i=0; i<size; i++)
+    {
+    id = rows.rows[i].id;
+    console.log("id: "+id + " "+rows.rows[i].psov);
+    
+    pricedata[id] = new Object();
+    pricedata[id]['peos'] = rows.rows[i].peos;
+    pricedata[id]['psov'] = rows.rows[i].psov;
+    } // for...   
+   
+getdata(callback_getinventory, "atomicassets", global_account, "assets", "", "", "", 112 );
+getdata(callback_getinventory_mainpage, "atomicassets", global_account, "assets", "", "", "", 112 );
+      
+} // callback_pricedata()
+
+
+var selectednft = new Object();
+selectednft['asset_id'] = "";
+
+function selectnft( asset_id )
+{ 
+
+selectednft['asset_id'] = asset_id;
+
+var divname = "nft_"+asset_id;
+
+console.log(divname + " " + asset_id);
+
+ 
+otherdivs = document.getElementsByName("mynft");
+
+size = otherdivs.length;
+console.log("size " + size);
+
+for (var i=0; i<size; i++)
+    if (otherdivs[i].id != divname )
+       {    
+       console.log("- "+ otherdivs[i].id );
+       document.getElementById( otherdivs[i].id ).style.border = "1px solid #ffffff";
+       }
+
+ 
+} // selectnft()
+
+function loadinventory()
+{
+
+console.log("Load inventory...");
+getdata(callback_pricedata, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 1000 );
+ 
+} // loadinventory()
+
+ 
+
+function mintasset( id )
+{
+ 
+var theactions = [];
+
+memo = "mint;"+global_account+";"+id;
+ 
+    
+psov = pricedata[id]['psov'] / 10000;    
+peos = pricedata[id]['peos'] / 10000;    
+   
+
+eostoburn = Number(psov).toFixed(4) + " SOV";   
+   
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": eostoburn,
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // mintasset()
+
+
+function setmenu( menu )
+{
+
+if (menu == 1)
+   {
+   document.getElementById('page1').style.height = "";
+   document.getElementById('page2').style.height = "0px";
+   document.getElementById('page3').style.height = "0px";
+   document.getElementById('page4').style.height = "0px";
+   document.getElementById('page5').style.height = "0px";
+
+   document.getElementById('menu1').className = "menubutton_selected";
+   document.getElementById('menu2').className = "menubutton";
+   document.getElementById('menu3').className = "menubutton";
+   document.getElementById('menu4').className = "menubutton";      
+   document.getElementById('menu5').className = "menubutton";      
+   } else
+
+if (menu == 2)
+   {
+   document.getElementById('page1').style.height = "0px";
+   document.getElementById('page2').style.height = "";
+   document.getElementById('page3').style.height = "0px";
+   document.getElementById('page4').style.height = "0px";   
+   document.getElementById('page5').style.height = "0px";   
+
+   document.getElementById('menu1').className = "menubutton";
+   document.getElementById('menu2').className = "menubutton_selected";
+   document.getElementById('menu3').className = "menubutton";
+   document.getElementById('menu4').className = "menubutton";      
+   document.getElementById('menu5').className = "menubutton";      
+
+   loadinventory();
+   loadnftinfos();
+   } 
+
+if (menu == 3)
+   {
+   document.getElementById('page1').style.height = "0px";
+   document.getElementById('page2').style.height = "0px";
+   document.getElementById('page3').style.height = "";
+   document.getElementById('page4').style.height = "0px";   
+   document.getElementById('page5').style.height = "0px";   
+   
+   document.getElementById('menu1').className = "menubutton";
+   document.getElementById('menu2').className = "menubutton";
+   document.getElementById('menu3').className = "menubutton_selected";
+   document.getElementById('menu4').className = "menubutton";      
+   document.getElementById('menu5').className = "menubutton";      
+   
+   }    
+
+if (menu == 4)
+   {
+   document.getElementById('page1').style.height = "0px";
+   document.getElementById('page2').style.height = "0px";
+   document.getElementById('page3').style.height = "0px";
+   document.getElementById('page4').style.height = "";
+   document.getElementById('page5').style.height = "0px";
+   
+   document.getElementById('menu1').className = "menubutton";
+   document.getElementById('menu2').className = "menubutton";
+   document.getElementById('menu3').className = "menubutton";
+   document.getElementById('menu4').className = "menubutton_selected";      
+   document.getElementById('menu5').className = "menubutton";      
+
+   }   
+   
+
+if (menu == 5)
+   {
+   document.getElementById('page1').style.height = "0px";
+   document.getElementById('page2').style.height = "0px";
+   document.getElementById('page3').style.height = "0px";
+   document.getElementById('page4').style.height = "0px";
+   document.getElementById('page5').style.height = "";
+   
+   document.getElementById('menu1').className = "menubutton";
+   document.getElementById('menu2').className = "menubutton";
+   document.getElementById('menu3').className = "menubutton";
+   document.getElementById('menu4').className = "menubutton";      
+   document.getElementById('menu5').className = "menubutton_selected";      
+
+   loadadminnftinfos();
+   }      
+
+ 
+} // setmenu
+
+
+function moveobject( direction )
+{
+
+
+
+var theactions = [];
+
+var dir = "";
+if (direction == 1) dir = "n";
+if (direction == 2) dir = "e";
+if (direction == 3) dir = "s";
+if (direction == 4) dir = "w";
+
+memo = "move;"+global_account+";"+globalselection['assetid']+";"+dir;
+  
+ 
+var quantitysov = globaldata['m_sov'] / 10000;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+   
+  
+   
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysov,
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+
+
+} // moveobject()
+
+
+
+
+function demolishobject( direction )
+{
+
+if (direction == 1) direction = "n";
+if (direction == 2) direction = "e";
+if (direction == 3) direction = "s";
+if (direction == 4) direction = "w";
+
+ 
+
+
+
+var theactions = [];
+
+ 
+ 
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'demolish',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account,
+                       "assetid": globalselection['assetid'], 
+                       "direction": direction,  
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+
+
+} // demolishobject()
+
+
+function attackobject( direction )
+{
+
+
+
+var theactions = [];
+
+var dir = "";
+if (direction == 1) dir = "n";
+if (direction == 2) dir = "e";
+if (direction == 3) dir = "s";
+if (direction == 4) dir = "w";
+
+ 
+memo = "attack;"+global_account+";"+globalselection['assetid']+";"+dir;
+    
+var quantitysov = globaldata['a_sov'] / 10000;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+   
+
+ 
+   
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysov,
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+ 
+} // attackobject()
+
+
+
+nav_mode = 1;
+
+function nav_selection( mode )
+{
+nav_mode = mode;
+
+if (mode == 1)
+   {
+   
+   document.getElementById('navsvg_text').innerHTML = "scroll";
+   
+   document.getElementById('navbutton_scroll').className = "navbutton_on";
+   document.getElementById('navbutton_move').className = "navbutton_off";
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   
+   document.getElementById('path924').style.visibility = "visible";
+   document.getElementById('path929').style.visibility = "visible";
+
+   document.getElementById('circ1').style.visibility = "visible";
+   document.getElementById('circ3').style.visibility = "visible";
+   document.getElementById('circ5').style.visibility = "visible";
+   document.getElementById('circ7').style.visibility = "visible";      
+   }
+   
+if (mode == 2)
+   {
+   document.getElementById('navsvg_text').innerHTML = "move";
+   
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_move').className = "navbutton_on";
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   
+   
+   document.getElementById('path924').style.visibility = "hidden";
+   document.getElementById('path929').style.visibility = "hidden";
+   
+   document.getElementById('circ1').style.visibility = "hidden";
+   document.getElementById('circ3').style.visibility = "hidden";
+   document.getElementById('circ5').style.visibility = "hidden";
+   document.getElementById('circ7').style.visibility = "hidden";         
+   }
+   
+if (mode == 3)
+   {
+   document.getElementById('navsvg_text').innerHTML = "attack";
+
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_move').className = "navbutton_off";
+   document.getElementById('navbutton_attack').className = "navbutton_on";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   
+   document.getElementById('path924').style.visibility = "hidden";
+   document.getElementById('path929').style.visibility = "hidden";
+   
+   document.getElementById('circ1').style.visibility = "hidden";
+   document.getElementById('circ3').style.visibility = "hidden";
+   document.getElementById('circ5').style.visibility = "hidden";
+   document.getElementById('circ7').style.visibility = "hidden";   
+   }
+   
+if (mode == 4)
+   {
+   document.getElementById('navsvg_text').innerHTML = "demolish";
+   
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_move').className = "navbutton_off";
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_on";
+   
+   document.getElementById('path924').style.visibility = "hidden";
+   document.getElementById('path929').style.visibility = "hidden";
+   
+   document.getElementById('circ1').style.visibility = "hidden";
+   document.getElementById('circ3').style.visibility = "hidden";
+   document.getElementById('circ5').style.visibility = "hidden";
+   document.getElementById('circ7').style.visibility = "hidden";   
+   }    
+
+} // nav_selection
+
+
+
+function toggle_info()
+{
+checkbox_shield = document.getElementById('checkbox_shield').checked;
+checkbox_owner  = document.getElementById('checkbox_owner').checked;
+
+var size = mappingarray.length;
+    
+ 
+ 
+value_shield = 'hidden';
+if (checkbox_shield) value_shield = 'visible';
+
+value_owner = 'hidden';
+if (checkbox_owner) value_owner = 'visible';
+  
+for (var i=0; i<size; i++)  
+    {
+    var divid_shieldinfo = "shieldinfo_" + i;
+    if ( document.getElementById(divid_shieldinfo) != undefined )
+       {
+       document.getElementById(divid_shieldinfo).style.visibility = value_shield;
+       }
+
+    var divid_ownderinfo = "ownerinfo_" + i;
+    if ( document.getElementById(divid_ownderinfo) != undefined )
+       {
+       document.getElementById(divid_ownderinfo).style.visibility = value_owner;
+       }
+
+    } // for i... 
+
+ 
+} // toggle_info
+
+
+
+function callback_loadnftinfos( value )
+{
+
+console.log("NFT-INFOS");
+console.log( value.rows );
+
+
+if (value.rows.length == 0) return;    
+
+var size = value.rows.length;
+
+var buffer_humans = "";
+var buffer_greys  = "";
+
+for (var i=0; i<size; i++)
+    {
+    the_id     = value.rows[i].id;
+    the_name   = value.rows[i].name;
+    the_race   =  value.rows[i].race;
+    the_sov    =  value.rows[i].psov;
+    the_ipfs   = value.rows[i].ipfs;
+    the_atype  =  value.rows[i].atype;
+    the_sov    = the_sov / 10000;
+    
+    
+    var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+
+    
+    if (the_race == 1)
+       {
+       mintlink = "mintasset("+the_id+")";
+       
+       buffer_humans += "<div class='nft_cell' style='height:220px;'>";
+       buffer_humans += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_humans += imgbuffer + "<br>";
+       buffer_humans += the_sov+ " SOV<br>";
+       buffer_humans += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
+       
+       buffer_humans += "</div>";
+
+       }
+
+    if (the_race == 2)
+       {
+       mintlink = "mintasset("+the_id+")";
+       
+       buffer_greys += "<div class='nft_cell' style='height:220px;'>";
+       buffer_greys += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_greys += imgbuffer + "<br>";
+       buffer_greys += the_sov+ " SOV<br>";
+       buffer_greys += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
+       
+       buffer_greys += "</div>";
+       }
+       
+    } // for i...
+    
+document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + "";    
+                             
+} // callback_render_balance1
+
+ 
+
+
+function loadnftinfos()
+{
+
+getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 112 );
+
+} // loadnftinfos
+ 
+
+
+
+function updatemoveattackprices()
+{
+ 
+
+var new_moveprice   = document.getElementById("new_moveprice").value*1;
+var new_attackprice = document.getElementById("new_attackprice").value*1;
+ 
+ 
+
+
+var theactions = [];
+
+param = "editprices;"+new_moveprice+";0;"+new_attackprice+";0";
+
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": param                       
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // updatemoveattackprices
+
+
+function callback_loadadminnftinfos( value )
+{
+
+console.log("NFT-INFOS");
+console.log( value.rows );
+
+ 
+var buffer = "";
+
+buffer += "<br>";
+buffer += "edit price:<br>";
+buffer += "<br>";
+buffer += "Move Price (msov) <input type='text' id='new_moveprice' value='"+globaldata['m_sov']+"'><br>";
+buffer += "Attack Price (msov) <input type='text' id='new_attackprice' value='"+globaldata['a_sov']+"'><br>";
+buffer += "<div onclick='updatemoveattackprices();'>[update move/attack-prices]</div>";
+
+
+document.getElementById("admin_edit_move_attac_prices").innerHTML = buffer;
+
+
+
+
+if (value.rows.length == 0) return;    
+
+var size = value.rows.length;
+
+var buffer_humans = "";
+var buffer_greys  = "";
+
+for (var i=0; i<size; i++)
+    {
+    the_id     = value.rows[i].id;
+    the_name   = value.rows[i].name;
+    the_race   =  value.rows[i].race;
+    the_sov    =  value.rows[i].psov;
+    the_ipfs   = value.rows[i].ipfs;
+    the_atype  =  value.rows[i].atype;
+    the_sov_raw = the_sov ;
+    the_sov    = the_sov / 10000;
+    
+    
+    var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+
+    
+    if (the_race == 1)
+       {
+       setpricelink = "setassetprice("+the_id+")";
+       
+       buffer_humans += "<div class='nft_cell' style='height:270px;'>";
+       buffer_humans += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_humans += imgbuffer + "<br>";
+       buffer_humans += the_sov_raw+ " SOV<br>";
+       buffer_humans += "("+the_sov+ " SOV)<br>";
+      
+       elm = "admin_setsov_" + the_id;
+       buffer_humans += "<input id='"+elm+"' type='text' > <br>";       
+       buffer_humans += "<span class='mintbutton' onclick='"+setpricelink+"'>Set Price</span>";
+       
+       buffer_humans += "</div>";
+
+       }
+
+    if (the_race == 2)
+       {
+
+       setpricelink = "setassetprice("+the_id+")";
+       
+       buffer_greys += "<div class='nft_cell' style='height:270px;'>";
+       buffer_greys += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_greys += imgbuffer + "<br>";
+       buffer_greys += the_sov_raw+ " SOV<br>";
+       buffer_greys += "("+the_sov+ " SOV)<br>";
+      
+       elm = "admin_setsov_" + the_id;
+       buffer_greys += "<input id='"+elm+"' type='text' > <br>";       
+       buffer_greys += "<span class='mintbutton' onclick='"+setpricelink+"'>Set Price</span>";
+       
+       buffer_greys += "</div>";
+       }
+       
+    } // for i...
+    
+document.getElementById("admin_mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + "";    
+                             
+} // callback_render_balance1
+
+ 
+
+
+function loadadminnftinfos()
+{
+ 
+getdata(callback_loadadminnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 112 );
+
+} // loadnftinfos
+ 
+
+
+
+
+// --
+// Admin
+
+function initarea()
+{
+
+tile = document.getElementById('areatile').value;
+
+
+ 
+width = 1000000;
+they = parseInt ( globalselection['coordinate'] / width );
+
+thex = globalselection['coordinate'] - (they*width);
+
+ 
+ 
+
+
+var theactions = [];
+
+param = "initarea;"+thex+";"+they+";"+tile;
+ 
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": param 
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+
+} // initarea
+// end - admin
+
+
+
+function setassetprice( id )
+{
+ 
+
+elm = "admin_setsov_" + id;
+var psov = document.getElementById(elm).value*1;
+ 
+ 
+
+
+var theactions = [];
+
+param = "editasset;"+id+";0;"+psov;
+
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": param 
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // setassetprice
+
+
+function callback_render_balance_eos( value )
+{
+
+if (value.rows.length == 0) return;                   
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+document.getElementById('balance_eos').innerHTML = buffer;
+                               
+} // callback_render_balance1
+
+
+function getbalance_eos()
+{
+//alert("test getdata");
+getdata(callback_render_balance_eos, "eosio.token", global_account, "accounts", "", "", "", 112 );
+}
+
+
+
+
+function callback_render_balance_sov( value )
+{
+
+if (value.rows.length == 0) return;                   
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+document.getElementById('balance_sov').innerHTML = buffer;
+                               
+} // callback_render_balance_sov
+
+
+
+
+function getbalance_sov()
+{
+//alert("test getdata");
+getdata(callback_render_balance_sov, "sovmintofeos", global_account, "accounts", "", "", "", 112 );
+}
+
+
+function buysov_sovdex()
+{
+value = document.getElementById('eos_for_sov').value;
+
+
+eostobuy = Number(value).toFixed(4) + " EOS";   
+
+
+
+
+var theactions = [];
+
+memo = "SOV";
+   
+    var action = {
+                 account: "eosio.token",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovdexrelays",
+                       "quantity": eostobuy,
+                       "memo": memo
+                       }
+                 };
+
+ 
+theactions.push(action);
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+} // buysov_sovdex
+
+
+
+
+function buysov_newdex()
+{
+value = document.getElementById('eos_for_sov').value;
+
+
+
+eostobuy = Number(value).toFixed(4) + " EOS";   
+
+
+
+
+var theactions = [];
+
+var theaction =  {
+              "type": "buy-market",
+              "symbol":"sovmintofeos-sov-eos",
+              "price":"0.000000",
+              "channel":"web"
+            };
+                      
+var memo = JSON.stringify(theaction);
+ 
+   
+    var action = {
+                 account: "eosio.token",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                  "from": global_account,
+                       "to": "newdexpublic",
+                       "quantity": eostobuy,
+                       "memo": memo                                                                   
+                       }
+                 };
+
+ 
+theactions.push(action);
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+} // buysov_newdex
+
+
+var updatecnt = -3;
+function update_thread()
+{
+var time = setTimeout("update_thread()", 1000);
+
+if ( (updatecnt % 20) == 0 )
+   {
+   getbalance_eos();
+   getbalance_sov();
+   getuserinfo();
+   }
+
+  
+if (refreshcounter == 1) refreshboard(); 
+if (refreshcounter > 0) refreshcounter--;  
+  
+  
+  
+updatecnt++;  
+} //// update_thread
+
+
+
+ 
+
+
+</script>
+
+<script>
+
+
+loadglobals();  
+initgameboard();
+ 
+
+init_wallets( "sovspacegame",setaccountname, logoutall );
+
+update_thread(); 
+board_update();
+
+
+refreshcounter = 3;
+loadinventory();
+
+alert("DEMO-MODE - all NFT's will be removed before public launch!");
+</script>
+
+</body>
+</hmtl>
