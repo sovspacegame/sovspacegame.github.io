@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="icon" href="img/icon.png" />
-<link rel="stylesheet" href="css/style.css?ttd=44543334" />
+<link rel="stylesheet" href="css/style.css?ttd=4443334" />
 
  <!-- BEGINN WALLET-INCLUDE-->
     
@@ -570,6 +570,11 @@ demolish
  <input type='text' id='newnickname'></input>
  <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
 
+<br>
+<!-- selfdestruction_off -->
+ <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'  >Selfdestruction</div>
+
+
 
 </div>
 
@@ -887,6 +892,7 @@ Other general comments:
 <li>The game-frontend is only using public API-nodes. All data are loaded in realtime from blockchain (EOS mainnet).</li>
 <li>Because of the limitations of the API, you should only use the reload-action, if needed.</li>
 <li>You can download the game-frontend from Github and play on your own local device. </li>
+<li>Tested with Anchor-wallet-Desktop.</li>
 <li>Play fair, well-considered but without any mercy</li>
 </ul>
 
@@ -1048,8 +1054,20 @@ myaudio.play();
 
  
 Admin:<br>
+<br>
+
 <input type='text' id='areatile'></input>
  <div onclick="initarea()">INIT AREA</div>
+ 
+<hr>
+
+
+ <div onclick="delarea()">DEL AREA</div>
+ 
+<hr>
+
+Selfdestruct:<br>
+ <div onclick="selfdestruct()">SELFDESTRUCT</div>
  
 <hr>
  
@@ -1366,6 +1384,19 @@ globalselection['w']['atype']      = tilearray[thex-1][they].atype;;
 globalselection['w']['race']       = tilearray[thex-1][they].race;
 globalselection['w']['ts']         = tilearray[thex-1][they].ts;
 
+
+
+
+// Selfdestruct-button
+if ( globalselection['owner'] == global_account )
+   {
+   document.getElementById("selfdestruction").className = "selfdestruction";
+   } else
+     {
+     document.getElementById("selfdestruction").className = "selfdestruction_off";
+
+     }
+// <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction'  >Selfdestruction</div>
 
  
    
@@ -3537,6 +3568,111 @@ if (1)
 
 } // initarea
 // end - admin
+
+
+function delarea()
+{
+
+tile = document.getElementById('areatile').value;
+
+
+ 
+width = 1000000;
+they = parseInt ( globalselection['coordinate'] / width );
+
+thex = globalselection['coordinate'] - (they*width);
+
+ 
+ 
+
+
+var theactions = [];
+
+param = "delarea;"+thex+";"+they;
+ 
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": param 
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+
+} // delarea
+// end - admin
+
+function selfdestruct()
+{
+console.log("SELFDESTRUCT"); 
+
+console.log(global_account); 
+console.log(globalselection['owner'] ); 
+
+if ( global_account != "sovspacegame" )
+   {
+   if ( globalselection['owner'] != global_account ) return;
+   } // if
+ 
+
+ 
+//tile = document.getElementById('areatile').value;
+
+
+var theactions = [];
+
+ 
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'selfdestruct',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": globalselection['assetid'],
+                       "user" : global_account 
+                                             
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+
+//alert("");
+} // selfdestruct()
+
 
 
 
