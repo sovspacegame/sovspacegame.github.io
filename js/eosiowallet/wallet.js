@@ -7,7 +7,7 @@ wallet.js - combines ANCHOR- and SCATTER/TP/WOMBAT-wallets in a single lib
 
 // ---
 const walletversion = "0.0.1b";
-const identifier = "membershipfe";
+const identifier = "sovspacegame";
 var currentwallet = "";
 var func_setaccountname = null;
 var func_logout         = null;
