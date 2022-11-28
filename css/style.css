@@ -255,6 +255,44 @@ background:#44aa44;
 }  
 
 
+
+.selfdestruction
+{
+background:#990000;
+/*border:5px solid #ffffff;*/
+color:#ffffff;
+padding:5px;
+margin-top:10px;
+cursor:pointer;
+text-align:center;
+
+ -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}  
+
+.selfdestruction_off
+{
+background:#999999;
+/*border:5px solid #ffffff;*/
+color:#ffffff;
+padding:5px;
+margin-top:10px;
+text-align:center;
+
+ -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}  
+
+
+.selfdestruction:hover
+{
+/*color:black;*/
+background:#aa4444;
+}  
+
+
 .placenft
 {
 background:#1111ff;
