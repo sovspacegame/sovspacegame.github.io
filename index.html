@@ -9,11 +9,21 @@
     <script src="https://unpkg.com/anchor-link@next"></script>
     <script src="https://unpkg.com/anchor-link-browser-transport@next"></script>
         
+    <!-- Mandel eosjs -->        
+  <!--
+    <script src="js/dist-web/eosjs-api.js"></script>    
+    <script src="js/dist-web/eosjs-jsonrpc.js"></script>    
+    <script src="js/dist-web/eosjs-jssig.js"></script>    
+    <script src="js/dist-web/eosjs-numeric.js"></script>    
+-->
+        
     <!-- Scatter js -->        
-    <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js"></script>   
+ 
+    <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js"></script>  
     <script src="js/bundles/scatterjs-core.min.js"></script>
     <script src="js/bundles/scatterjs-plugin-eosjs.min.js"></script>
     <script src="js/bundles/scatterjs-plugin-lynx.min.js"></script>    
+
  
      
     <script src="js/eosiowallet/wallet.js?dsd=7524"></script>   
@@ -521,8 +531,13 @@ scroll
 <div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off'>
 move
 </div>
-
 <div style='clear:both;'></div>
+
+<div id='movesteps_div' style='height:0px;visiblity:hidden;overflow:hidden;'>
+<span style='margin-left:52%'><small>Distance:</small> </span><input type='text' id='movesteps' value='1' style='width:50px;text-align:center;'><br>
+</div>
+
+
 
 <div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off'>
 attack
@@ -3055,6 +3070,7 @@ if (menu == 5)
 function moveobject( direction )
 {
 
+var movesteps =  document.getElementById('movesteps').value * 1
 
 
 var theactions = [];
@@ -3091,7 +3107,10 @@ quantitysov = Number(quantitysov).toFixed(4) + " SOV";
                  };
 
  
-    theactions.push(action);
+ for (var i=0; i<movesteps; i++)
+     {
+     theactions.push(action);
+     }
    
 
  
@@ -3235,7 +3254,11 @@ if (mode == 1)
    document.getElementById('circ1').style.visibility = "visible";
    document.getElementById('circ3').style.visibility = "visible";
    document.getElementById('circ5').style.visibility = "visible";
-   document.getElementById('circ7').style.visibility = "visible";      
+   document.getElementById('circ7').style.visibility = "visible";    
+   
+   // movesteps_div   
+   document.getElementById('movesteps_div').   style.visibility = "hidden";
+   document.getElementById('movesteps_div').   style.height = "0px";     
    }
    
 if (mode == 2)
@@ -3254,7 +3277,13 @@ if (mode == 2)
    document.getElementById('circ1').style.visibility = "hidden";
    document.getElementById('circ3').style.visibility = "hidden";
    document.getElementById('circ5').style.visibility = "hidden";
-   document.getElementById('circ7').style.visibility = "hidden";         
+   document.getElementById('circ7').style.visibility = "hidden";      
+   
+    
+   // movesteps_div   
+   document.getElementById('movesteps_div').   style.visibility = "visible";
+   document.getElementById('movesteps_div').   style.height = "";
+   
    }
    
 if (mode == 3)
@@ -3273,6 +3302,11 @@ if (mode == 3)
    document.getElementById('circ3').style.visibility = "hidden";
    document.getElementById('circ5').style.visibility = "hidden";
    document.getElementById('circ7').style.visibility = "hidden";   
+   
+   // movesteps_div   
+   document.getElementById('movesteps_div').   style.visibility = "hidden";
+   document.getElementById('movesteps_div').   style.height = "0px";     
+
    }
    
 if (mode == 4)
@@ -3291,6 +3325,11 @@ if (mode == 4)
    document.getElementById('circ3').style.visibility = "hidden";
    document.getElementById('circ5').style.visibility = "hidden";
    document.getElementById('circ7').style.visibility = "hidden";   
+   
+   // movesteps_div   
+   document.getElementById('movesteps_div').   style.visibility = "hidden";
+   document.getElementById('movesteps_div').   style.height = "0px";     
+   
    }    
 
 } // nav_selection
