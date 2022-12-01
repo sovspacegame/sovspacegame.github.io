@@ -916,7 +916,7 @@ Other general comments:
 <li>The game-frontend is only using public API-nodes. All data are loaded in realtime from blockchain (EOS mainnet).</li>
 <li>Because of the limitations of the API, you should only use the reload-action, if needed.</li>
 <li>You can download the game-frontend from Github and play on your own local device. </li>
-<li>Tested with <strong>Anchor-wallet-Desktop</strong>. There is a known issue with TokenPocket and the eosjs (dist-web). We are looking for a solution.</li>
+<li>For bug-reporting please ask in SOV-Telegram channel: <a href='https://t.me/eossov' style='color:9999ff;'>https://t.me/eossov</a></li>
 <li>Play fair, well-considered but without any mercy</li>
 </ul>
 
@@ -3406,7 +3406,13 @@ for (var i=0; i<size; i++)
     
     var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
 
-    if (the_atype != 8)
+    var blockedview = 0;
+    
+  if (the_atype == 8  && global_account != "sovtrader111") blockedview = 1;
+   
+    
+    
+    if (blockedview == 0)
     {
     if (the_race == 1)
        {
