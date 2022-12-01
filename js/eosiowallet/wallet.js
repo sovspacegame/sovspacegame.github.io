@@ -208,7 +208,7 @@ _eraseCookie("myeosaccount");
 } // logout_all()
 
 
- 
+  
  
 
 function transact( func_transfer_success, func_transfer_error, myactions )
@@ -221,36 +221,64 @@ if (currentwallet == "ANCHOR")
    session.transact(   {  actions: myactions }    ).then((result) => 
             {                        
             func_transfer_success(result.processed.id);            
-            })            
-   }
+            })  ;       
+   } // ANCHOR
 
 
 
 if (currentwallet == "SCATTER")
    {   
+   /*
+   const signatureProvider = new eosjs_jssig.JsSignatureProvider([defaultPrivateKey]);
+  const api = new eosjs_api.Api({ rpc, signatureProvider });
 
-   scattereos.transaction(                       
-                         {                           
-                         actions: myactions                    
-                         }).then(result => 
-                            {
-                            
-                            func_transfer_success("Success!");
-                                                        
-                            return;
-                        	}).catch(error => {
-                            				  console.log("jsonerr: " + error);
+   */
+   console.log("scatter aaa " + thenode);
+//                const rpc = new eosjs_jsonrpc.default(network.fullhost());
+                
+//                  const rpc = new eosjs_jsonrpc.JsonRpc('https://eos.greymass.com');
 
-                                              err = JSON.parse(error);
+                  var rpc = new eosjs_jsonrpc.JsonRpc("https://"+thenode);
+                  
+   console.log("scatter bbb " + eosjs_api.default);
+
+//                  api = ScatterJS.eos(network, eosjs_api.default, {rpc});
+//                  api = ScatterJS.eos(network, eosjs_api.default, {rpc});
+                    var api = new eosjs_api.Api({ rpc: rpc, signatureProvider: scatter.eosHook(network), textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
+
+                
+//                api = scatter.eos(network, Eos);
+   console.log("scatter ccc"); 
+            
+              
+  (async () => {
+    try {
+      const result = await api.transact({
+        actions: myactions
+         
+      }, {
+        blocksBehind: 3,
+        expireSeconds: 30,
+      });
+      func_transfer_success(result.processed.id);          
+    } catch (e) {
+    
+     console.log("Scatter tx Error:");
+     console.log(e);
+//       err = JSON.parse(e);
                         
-                                              func_transfer_error( err.error.details[0].message );
-                                              return;
-                         					  });
-
-
-    					    } 
+         //   func_transfer_error( JSON.stringify(e.json, null, 2) );
+//      pre.textContent = '\nCaught exception: ' + e;
+//      if (e instanceof eosjs_jsonrpc.RpcError)
+  //      pre.textContent += '\n\n' + JSON.stringify(e.json, null, 2);
+    }
+  })();
+            
+            
+    
+   } // SCATTER
    
-
+ 
 } // transact
 
 
@@ -442,11 +470,15 @@ window.scatterdologin = async () =>
     
         await ScatterJS.login();
         var eos = null;
+     
+        setStatus();
+        
+        /*
         setStatus();
         setInterval(() => {
                           setStatus();
                           }, 1000);                          
-   
+   */
         } catch (err) {
             	      return Promise.reject(err);
                       }    
