@@ -3406,7 +3406,8 @@ for (var i=0; i<size; i++)
     
     var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
 
-    
+    if (the_atype != 8)
+    {
     if (the_race == 1)
        {
        mintlink = "mintasset("+the_id+")";
@@ -3433,6 +3434,7 @@ for (var i=0; i<size; i++)
        
        buffer_greys += "</div>";
        }
+    } // if (the_atype != 8)
        
     } // for i...
     
