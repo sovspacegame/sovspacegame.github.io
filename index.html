@@ -49,19 +49,23 @@
 <div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
 <img src='img/logo2.svg?t=d5443s' style='margin-top:10px;height:160px;'>
 
-<div style='position:absolute;right:20px;top:55px;border:none;'>
+<div style='position:absolute;right:20px;top:45px;border:none;'>
  <audio id="audiotag" controls loop autoplay>
  <source src= "audio/greysoundloop1.1.mp3" type="audio/mp3">
  </audio>
 </div>  
 
 
-<div style='position:absolute;right:30px;top:120px;color:#007bff;border:none;'>
+<div style='position:absolute;right:30px;top:110px;color:#007bff;border:none;'>
 <div id='balance_eos'>....</div>
 </div>
 
-<div style='position:absolute;right:30px;top:150px;color:#007bff;border:none;'>
+<div style='position:absolute;right:30px;top:130px;color:#007bff;border:none;'>
 <div id='balance_sov'>....</div>
+</div>
+
+<div style='position:absolute;right:30px;top:150px;color:#007bff;border:none;'>
+<div id='balance_svx'>....</div>
 </div>
 
  
@@ -595,11 +599,11 @@ demolish
  <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
 
 <br>
-<!-- selfdestruction_off -->
+<!-- selfdestruction -->
 <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'  >Selfdestruction</div>
 
 <br>
-<!-- selfdestruction_off -->
+<!-- claim_svx -->
 <div id='claim_svx' onclick="claim_svx()"  class='claim_off' style='height:0px;visibility:hidden' >Claim</div>
 
 
@@ -3950,6 +3954,29 @@ getdata(callback_render_balance_sov, "sovmintofeos", global_account, "accounts",
 }
 
 
+
+
+
+function callback_render_balance_svx( value )
+{
+
+if (value.rows.length == 0) return;                   
+balance = value.rows[0].balance;
+ 
+buffer = "" + balance;
+last_balance1 = balance;
+document.getElementById('balance_svx').innerHTML = buffer;
+                               
+} // callback_render_balance_svx
+
+
+
+
+function getbalance_svx()
+{
+getdata(callback_render_balance_svx, "svxmintofeos", global_account, "accounts", "", "", "", 112 );
+}
+
 function buysov_sovdex()
 {
 value = document.getElementById('eos_for_sov').value;
@@ -4050,6 +4077,7 @@ if ( (updatecnt % 20) == 0 )
    {
    getbalance_eos();
    getbalance_sov();
+   getbalance_svx();
    getuserinfo();
    }
 
