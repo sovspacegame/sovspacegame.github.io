@@ -1029,6 +1029,13 @@ your important buildings.
 <br>
 <br>
 
+<h2>Collector</h2>
+<img src='img/nft_1_8.png' style='width:100px'>
+With a Collector facility you can earn SVX-token. On every bulldozer move some SOV will be used for SVX-mining. Every 24 hours
+a collector will be able to claim a share from this pool. The more active the players are, the more SVX are generated.
+<br>
+<br>
+
 
 
 
@@ -2495,8 +2502,9 @@ for (var i=0; i<size; i++)
           color = "#ffee99";
           }        
        
-       var divid_shieldinfo = "shieldinfo_" + i;
-       var divid_owner      = "ownerinfo_" + i;
+       var divid_shieldinfo     = "shieldinfo_" + i;
+       var divid_shieldinfo_bar = "shieldbar_" + i;
+       var divid_owner          = "ownerinfo_" + i;
 
        value_shield = 'hidden';
        if (checkbox_shield) value_shield = 'visible';
@@ -2505,9 +2513,13 @@ for (var i=0; i<size; i++)
        if (checkbox_owner) value_owner = 'visible';
          
        
-       buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
+       buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;text-align:center;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
        shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)";
        buffer += "<div id='"+divid_shieldinfo+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:80%;z-index:300;visibility:"+value_shield+";'>" +shieldinfo+  " </div>" ;
+
+       // bar
+//       buffer += "<div id='"+divid_shieldinfo_bar+"' class='tileinfo_nick noselect' style='color:"+color+";width:50%;position:absolute;margin-left:auto;margin-right:auto;font-weight:bold;font-size:12px;top:70%;z-index:300;border:1px solid #cccccc;height:10px;visibility:"+value_shield+";'></div>" ;
+
 
        buffer += "<div id='"+divid_owner+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:86%;z-index:300;visibility:"+value_owner+";'>" +owner+  " </div>" ;
        
@@ -3460,6 +3472,12 @@ for (var i=0; i<size; i++)
     if ( document.getElementById(divid_shieldinfo) != undefined )
        {
        document.getElementById(divid_shieldinfo).style.visibility = value_shield;
+       }
+
+    var divid_shieldinfobar = "shieldbar_" + i;
+    if ( document.getElementById(divid_shieldinfobar) != undefined )
+       {
+       document.getElementById(divid_shieldinfobar).style.visibility = value_shield;
        }
 
     var divid_ownderinfo = "ownerinfo_" + i;
