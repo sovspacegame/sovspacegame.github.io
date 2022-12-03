@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="icon" href="img/icon.png" />
-<link rel="stylesheet" href="css/style.css?ttd=4443334" />
+<link rel="stylesheet" href="css/style.css?ttd=44343334" />
 
  <!-- BEGINN WALLET-INCLUDE-->
     
@@ -37,7 +37,7 @@
     
     <script src="js/admin.js?dsd=422553"></script>   
     <script src="js/sovspacegame.js?dsd=423"></script>   
-  
+    <script src="js/eosjs-account-name_2.2.1.js"></script>    
                     
  <!-- END WALLET-INCLUDE-->
 
@@ -596,7 +596,11 @@ demolish
 
 <br>
 <!-- selfdestruction_off -->
- <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'  >Selfdestruction</div>
+<div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'  >Selfdestruction</div>
+
+<br>
+<!-- selfdestruction_off -->
+<div id='claim_svx' onclick="claim_svx()"  class='claim_off' style='height:0px;visibility:hidden' >Claim</div>
 
 
 
@@ -765,6 +769,54 @@ document.getElementById("ycoor").value = ycoor;
 
 } // updatecoor
 
+
+
+
+
+
+ 
+
+  
+
+function claim_svx()
+{
+//alert("claim_svx");
+
+
+console.log("last_assetid:::::: ",globalselection['assetid']);
+ 
+ 
+var theactions = [];
+
+ 
+    
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'claim',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": globalselection['assetid'],
+                       "user" : global_account,
+                                           
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+
+} // claim_svx
 
 
 </script>
@@ -1418,8 +1470,25 @@ if ( globalselection['owner'] == global_account )
    } else
      {
      document.getElementById("selfdestruction").className = "selfdestruction_off";
-
      }
+     
+
+
+if ( globalselection['owner'] == global_account &&
+     globalselection['atype'] == 8
+   )
+   {
+   document.getElementById("claim_svx").className = "claim";
+   document.getElementById("claim_svx").style.height = "";   
+   document.getElementById("claim_svx").style.visibility = "visible";      
+   } else
+     {
+     document.getElementById("claim_svx").className = "claim_off";
+     document.getElementById("claim_svx").style.height = "0px";   
+     document.getElementById("claim_svx").style.visibility = "hidden";   
+     }
+
+     
 // <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction'  >Selfdestruction</div>
 
  
@@ -1687,18 +1756,19 @@ for (var i2=0; i2<16; i2++)
     tilearray[i][i2]['ts']       = 0;
     tilearray[i][i2]['loaded']   = 0;
 
-    tilearray[i][i2]['attack']   = 0;
-    tilearray[i][i2]['atype']    = -1;
-    tilearray[i][i2]['config']    = -1;
-    tilearray[i][i2]['eos']    = -1;
-    tilearray[i][i2]['name']    = "";
-    tilearray[i][i2]['nick']    = -1;
-    tilearray[i][i2]['ori']    = -1;
-    tilearray[i][i2]['race']    = -1;
-    tilearray[i][i2]['shield']    = -1;
-    tilearray[i][i2]['shield_max']    = -1;
-    tilearray[i][i2]['sov']    = -1;
-    
+    tilearray[i][i2]['attack']      = 0;
+    tilearray[i][i2]['atype']       = -1;
+    tilearray[i][i2]['config']      = -1;
+    tilearray[i][i2]['eos']         = -1;
+    tilearray[i][i2]['name']        = "";
+    tilearray[i][i2]['nick']        = -1;
+    tilearray[i][i2]['ori']         = -1;
+    tilearray[i][i2]['race']        = -1;
+    tilearray[i][i2]['shield']      = -1;
+    tilearray[i][i2]['shield_max']  = -1;
+    tilearray[i][i2]['sov']         = -1;
+    tilearray[i][i2]['svx_balance'] = -1;
+       
      
     
     } // for i2 ...
@@ -2220,6 +2290,8 @@ for (y=0; y<16; y++)
        {
        url = nft_node + tilearray[x][y]['asset_id'];
        readasset(url, assethandler,x,y ) ;
+       
+       
        cnt++;
        }
     } // for y...
@@ -2249,17 +2321,19 @@ for (var i=0; i<size; i++)
     
     
  
-    tile       =  tilearray[x][y]['tile']; 
-    tileid     =  tilearray[x][y]['tileid']; 
-    atype      =  tilearray[x][y]['atype']; 
-    race       =  tilearray[x][y]['race']; 
-    ori        =  tilearray[x][y]['ori']; 
-    nick       =  tilearray[x][y]['nick']; 
-    sov        =  tilearray[x][y]['sov']; 
+    tile         =  tilearray[x][y]['tile']; 
+    asset_id         =  tilearray[x][y]['asset_id'];  //  
+    tileid       =  tilearray[x][y]['tileid']; 
+    atype        =  tilearray[x][y]['atype']; 
+    race         =  tilearray[x][y]['race']; 
+    ori          =  tilearray[x][y]['ori']; 
+    nick         =  tilearray[x][y]['nick']; 
+    sov          =  tilearray[x][y]['sov']; 
+    svx_balance  =  tilearray[x][y]['svx_balance']+" SVX2"; 
     sov  = sov  / 10000;
-    owner      =  tilearray[x][y]['owner']; 
-    shield     =  tilearray[x][y]['shield']; 
-    shield_max =  tilearray[x][y]['shield_max']; 
+    owner        =  tilearray[x][y]['owner']; 
+    shield       =  tilearray[x][y]['shield']; 
+    shield_max   =  tilearray[x][y]['shield_max']; 
     
    
     if ( tile != "tile10" &&  tile != "tile11")
@@ -2434,6 +2508,8 @@ for (var i=0; i<size; i++)
        buffer += "<div id='"+divid_owner+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:86%;z-index:300;visibility:"+value_owner+";'>" +owner+  " </div>" ;
        
        } // if object
+       
+    
 
     
    
@@ -2474,13 +2550,23 @@ tilearray[x][y]['atype']    = value['data']['data']['atype'];
     loadobjects_cnt++;
        if (loadobjects_cnt == loadobjects_size)
           {
-          console.log("loadobjects_size reached! - ");
+          console.log("loadobjects_size reached! ");
           renderboard();
           } else
             {
-            console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
+            //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
             }
               
+
+/*              
+// collector
+if (tilearray[x][y]['atype'] == 8)
+   {
+        tilearray[x][y]['svx_balance'] = "TX-" ; 
+   }
+*/              
+//  tilearray[i][i2]['svx_balance'] 
+//  
  
 
 } // assethandler
@@ -2552,9 +2638,9 @@ console.log(" readurl2 ");
 function readasset(url, callback, thex, they ) 
 {
 
-console.log(" readurl ",url," ");
-asset_id = 2199025113747;
-asset_id = 2199025113579;
+//console.log(" readurl ",url," ");
+//asset_id = 2199025113747;
+//asset_id = 2199025113579;
    var jsonparam = JSON.stringify( [ ]  ); 
 
 var xhr = new XMLHttpRequest();
@@ -2581,7 +2667,7 @@ xhr.onreadystatechange = function () {
  
 xhr.send();
 
-console.log(" readurl2 ");
+//console.log(" readurl2 ");
 
  
 } // readasset()
