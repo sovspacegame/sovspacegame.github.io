@@ -166,7 +166,9 @@ Please choose your species. Note: you cannot undo your decision!<br>Think carefu
 
 <div style='height:5px;'></div>
 
-
+<!--
+<div id='gameboardtag' ></div>
+-->
 <div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:20px;width:70%; height:20px;   border:2px solid #666666;float:left;'>
 
 <div id='gameboard' style='position:absolute; ;width:100%;height:300px;background:#404040;overflow:hidden;'>
@@ -636,9 +638,12 @@ demolish
 
 
 
+ 
 
 
-<div style='clear:both;'></div>
+
+
+
 
 <script>
 
@@ -794,7 +799,6 @@ setcenter();
 
 function setcenter()
 { 
-// alfalf
 xcoor = globalselection['x'] ;
 ycoor = globalselection['y'] ;
 
@@ -805,7 +809,20 @@ refreshboard();
 //alert("globalselection['x'] " + globalselection['x'] + " " + globalselection['y']);
 } // setcenter()
  
+function setcenter2(_xcoor,_ycoor)
+{ 
+xcoor = _xcoor;
+ycoor = _ycoor;
 
+document.getElementById("xcoor").value = xcoor;
+document.getElementById("ycoor").value = ycoor;
+
+refreshboard();
+
+//window.location.hash='gameboardtag';
+
+//alert("globalselection['x'] " + globalselection['x'] + " " + globalselection['y']);
+} // setcenter()
   
 
 function claim_svx()
@@ -853,11 +870,142 @@ if (1)
 
 
 
+function callback_readasset_forlist( value, params )
+{
+
+var idata = value.rows[0].immutable_serialized_data;
+var mdata = value.rows[0].mutable_serialized_data;
+
+
+decoded_data = mydecoder( idata, mdata );
+
+nick = decoded_data['nick'];
+
+coordinatei = params['id'];
+
+
+
+/*
+width = 1000000;
+they2 = parseInt ( coordinatei / width );
+thex2 = coordinatei - (they2*width);
+centerlink = "<span onclick='setcenter2("+thex2+","+they2+")' >CENTER</span>"; 
+ */
+
+
+// ---
+if ( nick != "" )
+{
+select = document.getElementById('select_fav_objects');
+
+// Add option to selectlist
+var opt = document.createElement('option');
+opt.value = coordinatei;
+opt.innerHTML = nick;
+select.appendChild(opt);
+} // if...
+
+// ---
+
+/*
+
+
+
+-
+
+
+xcoor = globalselection['x'] ;
+ycoor = globalselection['y'] ;
+
+document.getElementById("xcoor").value = xcoor;
+document.getElementById("ycoor").value = ycoor;
+
+refreshboard();
+*
+
+//console.log(value);
+
+/*
+       params = Object();
+       params['id'] = id;
+       params['asset_id'] = asset_id;
+       
+       getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
+
+*/
+return;
+
+//var data = value.rows[0].immutable_serialized_data;
+var data = value.rows[0].mutable_serialized_data;
+var idata = value.rows[0].immutable_serialized_data;
+var mdata = value.rows[0].mutable_serialized_data;
+
+
+decoded_data = mydecoder( idata, mdata );
+
+/*
+console.log("Decoded:");
+console.log(decoded_data);
+console.log("---");
+*/
+// ---
+//document.getElementById('debugout').innerHTML = "[" + decoded_data['name'] + "]" ;
+
+x = params['x'];
+y = params['y'];
+
+/*console.log("x: " + x);
+console.log("y: " + y);
+*/
+
+//a = decoded_data['attack'];
+//console.log("a: " + a);
+
+tilearray[x][y]['attack']   = decoded_data['attack'];
+tilearray[x][y]['atype']    = decoded_data['atype'];
+    tilearray[x][y]['config']    = decoded_data['config'];
+    tilearray[x][y]['eos']    = decoded_data['eos'];
+    tilearray[x][y]['name']    =decoded_data['name'];
+  
+    tilearray[x][y]['nick']    = decoded_data['nick'];
+    tilearray[x][y]['ori']    = decoded_data['ori'];
+    tilearray[x][y]['race']    = decoded_data['race'];
+    tilearray[x][y]['shield']    = decoded_data['shield'];
+    tilearray[x][y]['shield_max']    = decoded_data['shield_max'];
+    tilearray[x][y]['sov']    = decoded_data['sov'];
+    
+
+    
+    loadobjects_cnt++;
+       if (loadobjects_cnt == loadobjects_size)
+          {
+          console.log("loadobjects_size reached! ");
+          renderboard();
+          } else
+            {
+            //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
+            }
+            
+ 
+                               
+} // callback_readasset_forlist
+
+
 function callback_load_my_assets( value )
 {
 console.log("callback_load_my_assets");
 
- console.log( value );
+
+var elm = document.getElementById('select_fav_objects');
+var i, L = elm.options.length - 1;
+for(i = L; i >= 0; i--) 
+   {
+   elm.remove(i);
+   }
+
+
+
+console.log( value );
  
 size = value.rows.length;
 
@@ -872,13 +1020,30 @@ for (var i=0; i<size; i++)
     
     if (owner == global_account)
        {
-       buffer += id + " - " + asset_id + "<br>";
-       }
+/*
+       buffer += "<div id='' >";
+       buffer += id + " - " + asset_id + " <span id='al_centerlink_"+asset_id+"'>..</span> <span id='al_nick"+asset_id+"'>..</span> <br>";
+       buffer += "</div>";
+       
+  */     
+       params = Object();
+       params['id'] = id;
+       params['asset_id'] = asset_id;
+       
+       getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
+
+
+       } // if 
     } // for i...
  
-document.getElementById("myassets").innerHTML = buffer ; 
+//document.getElementById("myassets").innerHTML = buffer ; 
  
 } // callback_load_my_assets
+
+
+
+
+
 
 
 function load_my_assets()
@@ -894,7 +1059,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 </script>
 
  
-
+<div style='clear:both;'></div>
 
 <div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
  <label style='cursor:pointer;'>Show Shield & SOV<input id='checkbox_shield' type='checkbox'   onchange='toggle_info()'> </label> &nbsp;&nbsp;&nbsp;
@@ -904,6 +1069,16 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 </div>
 
+
+<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
+
+
+<select id="select_fav_objects"   >   
+</select> 
+<div onclick='load_my_assets()' class='refreshboard' style='width:40%;' >Update list </div>
+</div>
+
+<div style='clear:both;'></div>
 <br>
  
  
@@ -942,13 +1117,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  
  
  
- <!--
-<hr>
-<div onclick='load_my_assets()'>Load my assets</div>
-<div id='myassets'>...</div>
 
-<hr>
--->
+
 
 
 </div> <!-- page1 -->
@@ -1364,6 +1534,22 @@ elm.onchange = function()
 
 <script>
  
+var elm = document.getElementById('select_fav_objects');
+elm.onchange = function() 
+   {
+   coordinatei = this.value;
+   console.log(coordinatei);
+   
+   they2 = parseInt ( coordinatei / width );
+   thex2 = coordinatei - (they2*width);
+
+   setcenter2(thex2,they2);
+   
+   //  alert( coordinatei + " " + thex2 + " " + they2 );
+   } // select_api_node
+
+
+ 
 
 
 function resettiles()
@@ -1450,7 +1636,6 @@ globalselection['owner']      = owner;
 console.log(  "---- id: "+ theid +    " x:"+ thex +  " y "+ they + " c:"+coordinatei+ " last A:"+globalselection['assetid'] );
    e.currentTarget.setAttribute('fill', '#ffffff');
    e.currentTarget.setAttribute('opacity', 0.3);
-
 
 
  
@@ -2696,9 +2881,9 @@ function assethandler( value , x, y)
 
 tilearray[x][y]['attack']   = value['data']['data']['attack'];
 tilearray[x][y]['atype']    = value['data']['data']['atype'];
-    tilearray[x][y]['config']    = value['data']['data']['config'];
-    tilearray[x][y]['eos']    = value['data']['data']['eos'];
-    tilearray[x][y]['name']    = value['data']['data']['name'];
+tilearray[x][y]['config']    = value['data']['data']['config'];
+tilearray[x][y]['eos']    = value['data']['data']['eos'];
+tilearray[x][y]['name']    = value['data']['data']['name'];
   
     tilearray[x][y]['nick']    = value['data']['data']['nick'];
     tilearray[x][y]['ori']    = value['data']['data']['ori'];
@@ -2713,7 +2898,9 @@ tilearray[x][y]['atype']    = value['data']['data']['atype'];
        if (loadobjects_cnt == loadobjects_size)
           {
           console.log("loadobjects_size reached! ");
+//          load_my_assets();
           renderboard();
+          
           } else
             {
             //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
@@ -2873,7 +3060,7 @@ function callback_readasset( value, params )
 //console.log(value);
 
 //var data = value.rows[0].immutable_serialized_data;
-var data = value.rows[0].mutable_serialized_data;
+//var data = value.rows[0].mutable_serialized_data;
 var idata = value.rows[0].immutable_serialized_data;
 var mdata = value.rows[0].mutable_serialized_data;
 
@@ -2923,56 +3110,6 @@ tilearray[x][y]['atype']    = decoded_data['atype'];
             //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
             }
             
-
-/*
-//console.log("--i2_b "+i2+"----");
-ret["name"] = thename;
-ret["ipfs"] = ipfs;
-
-ret['nick'] = nick;
-ret['shield'] = shield;
-ret['shield_max'] = shield_max;
-ret['attack'] = attack;
-ret['race'] = race;
-ret['atype'] = atype;
-ret['sov'] = sov;
-ret['eos'] = eos;
-ret['ori'] = ori;
-*/
-
-/*
-
-tilearray[x][y]['attack']   = value['data']['data']['attack'];
-tilearray[x][y]['atype']    = value['data']['data']['atype'];
-    tilearray[x][y]['config']    = value['data']['data']['config'];
-    tilearray[x][y]['eos']    = value['data']['data']['eos'];
-    tilearray[x][y]['name']    = value['data']['data']['name'];
-  
-    tilearray[x][y]['nick']    = value['data']['data']['nick'];
-    tilearray[x][y]['ori']    = value['data']['data']['ori'];
-    tilearray[x][y]['race']    = value['data']['data']['race'];
-    tilearray[x][y]['shield']    = value['data']['data']['shield'];
-    tilearray[x][y]['shield_max']    = value['data']['data']['shield_max'];
-    tilearray[x][y]['sov']    = value['data']['data']['sov'];
-    
-
-    
-    loadobjects_cnt++;
-       if (loadobjects_cnt == loadobjects_size)
-          {
-          console.log("loadobjects_size reached! ");
-          renderboard();
-          } else
-            {
-            //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
-            }
-              
-
-*/ 
-
-//console.log("FIN");
-
-
  
                                
 } // callback_readasset
