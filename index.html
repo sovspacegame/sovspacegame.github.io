@@ -804,8 +804,7 @@ var theactions = [];
                                 }],
                  data: {
                        "assetid": globalselection['assetid'],
-                       "user" : global_account,
-                                           
+                       "user" : global_account,                                           
                        }
                  };
 
@@ -1493,11 +1492,22 @@ if ( globalselection['owner'] == global_account &&
    document.getElementById("claim_svx").className = "claim";
    document.getElementById("claim_svx").style.height = "";   
    document.getElementById("claim_svx").style.visibility = "visible";      
+     // document.getElementById("claim_svx").innerHTML = "ABC " + globalselection['assetid'];      
+      
+      
+      getdata(callback_getclaimdata, "sovspacegame", "sovspacegame", "collectors", globalselection['assetid'], 2, "i64", 1 );
+      /*
+      //var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":2 , "key_type": "i64",  "json":true } );
+var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":_index , "key_type": _key_type, "limit": _limit,  "json":true } );
+
+      */
+      
    } else
      {
      document.getElementById("claim_svx").className = "claim_off";
      document.getElementById("claim_svx").style.height = "0px";   
      document.getElementById("claim_svx").style.visibility = "hidden";   
+      document.getElementById("claim_svx").innerHTML = "Claim";           
      }
 
      
@@ -1518,6 +1528,41 @@ console.log(globalselection);
  
  
  
+function callback_getclaimdata( value )
+{
+console.log("callback_getclaimdata");
+console.log( value );
+tslastclaim = value.rows[0].lastclaim;    
+
+ var now = new Date().getTime() / 1000;
+ 
+ var seconds = now - tslastclaim;
+  var interval = (24*60*60);
+      // interval = 2*60; hack
+      
+      var towait_sec = interval - seconds;
+/*
+*/
+
+  // Find the distance between now and the count down date
+    var hours = towait_sec / 3600;
+    hours = Math.floor(hours);
+      var minute =   (towait_sec % 3600) / 60;
+    minute = Math.floor(minute);
+      var second = towait_sec % 60;
+    second = Math.floor(second);
+
+ 
+ if (towait_sec > 0)
+    {
+    document.getElementById("claim_svx").innerHTML =  " h:"+hours+ " m:" + minute + " s:" + second; 
+    } else
+      {
+      document.getElementById("claim_svx").innerHTML =  "Claim"; 
+      }
+//alfalf
+} // callback_getclaimdata
+
  
  
   document.addEventListener("click", (evt) => {
@@ -1826,7 +1871,7 @@ var globaldata = new Array();
 function loadglobals()
 {
 
-getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "", 1000 );
+getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "", 1 );
 
 
 } // loadglobals
@@ -2124,15 +2169,14 @@ function callback_render_areas( value )
     
               if ( tilearray[x][y]['asset_id'] != "" )
                  {
-                 loadobjects_size++;
-
-                     
+                 loadobjects_size++;                     
                  }
                  
               } // for y...
           
           console.log("loadobjects_size: ",loadobjects_size);
           
+          //renderboard(); // pre render
           loadobjects();
           } else
             {
@@ -2276,7 +2320,7 @@ for (var i=0; i<size; i++)
 
     tileid = tilearray[x][y]['tileid'];
     
-    console.log("i:(",i,") x: ",x," y:", y," cnt:",cnt, " " , tileid );
+    //console.log("i:(",i,") x: ",x," y:", y," cnt:",cnt, " " , tileid );
 
     getdata(callback_render_areas, "sovspacegame",  "sovspacegame", "area", tileid, "", "", cnt );
     } // for i...
@@ -2307,7 +2351,7 @@ for (y=0; y<16; y++)
        params['x'] = x;
        params['y'] = y;
        
-       getdata2(callback_readasset, params, "atomicassets", "sovspacegame", "assets",  tilearray[x][y]['asset_id'], "", "", 3 );
+       getdata2(callback_readasset, params, "atomicassets", "sovspacegame", "assets",  tilearray[x][y]['asset_id'], "", "", 1 );
 
        
        cnt++;
@@ -2772,7 +2816,7 @@ tilearray[x][y]['atype']    = decoded_data['atype'];
     tilearray[x][y]['shield_max']    = decoded_data['shield_max'];
     tilearray[x][y]['sov']    = decoded_data['sov'];
     
-// Alfalf
+
     
     loadobjects_cnt++;
        if (loadobjects_cnt == loadobjects_size)
@@ -2837,20 +2881,7 @@ tilearray[x][y]['atype']    = value['data']['data']['atype'];
  
                                
 } // callback_readasset
-
-/*
-function dotest()
-{
-
-assetid = 2199025125183;
-//assetid = 2199025125184;
-assetid = 2199025124870;
-getdata(callback_readasset, "atomicassets", "sovspacegame", "assets", assetid, "", "", 3 );
-
-//alert("TEST");
-} // dotest
-*/
-
+ 
 function mydecoder( idata, mdata )
 {
 var ret = Object();
@@ -3391,7 +3422,7 @@ function loadinventory()
 {
 
 console.log("Load inventory...");
-getdata(callback_pricedata, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 1000 );
+getdata(callback_pricedata, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 100 );
  
 } // loadinventory()
 
@@ -4297,7 +4328,7 @@ document.getElementById('balance_eos').innerHTML = buffer;
 function getbalance_eos()
 {
 //alert("test getdata");
-getdata(callback_render_balance_eos, "eosio.token", global_account, "accounts", "", "", "", 112 );
+getdata(callback_render_balance_eos, "eosio.token", global_account, "accounts", "", "", "", 1 );
 }
 
 
@@ -4321,7 +4352,7 @@ document.getElementById('balance_sov').innerHTML = buffer;
 function getbalance_sov()
 {
 //alert("test getdata");
-getdata(callback_render_balance_sov, "sovmintofeos", global_account, "accounts", "", "", "", 112 );
+getdata(callback_render_balance_sov, "sovmintofeos", global_account, "accounts", "", "", "", 1 );
 }
 
 
@@ -4345,7 +4376,7 @@ document.getElementById('balance_svx').innerHTML = buffer;
 
 function getbalance_svx()
 {
-getdata(callback_render_balance_svx, "svxmintofeos", global_account, "accounts", "", "", "", 112 );
+getdata(callback_render_balance_svx, "svxmintofeos", global_account, "accounts", "", "", "", 1 );
 }
 
 function buysov_sovdex()
