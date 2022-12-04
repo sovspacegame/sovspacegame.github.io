@@ -1526,13 +1526,14 @@ console.log(globalselection);
        } // if
     }
  
- 
+var global_tslastclaim = 0; 
  
 function callback_getclaimdata( value )
 {
 console.log("callback_getclaimdata");
 console.log( value );
 tslastclaim = value.rows[0].lastclaim;    
+global_tslastclaim = tslastclaim;
 
  var now = new Date().getTime() / 1000;
  
@@ -1545,22 +1546,27 @@ tslastclaim = value.rows[0].lastclaim;
 */
 
   // Find the distance between now and the count down date
-    var hours = towait_sec / 3600;
+      var hours = towait_sec / 3600;
     hours = Math.floor(hours);
-      var minute =   (towait_sec % 3600) / 60;
+    if (hours < 10) hours = "0" + hours;
+     var minute =   (towait_sec % 3600) / 60;
     minute = Math.floor(minute);
+    if (minute < 10) minute = "0" + minute;
+    
       var second = towait_sec % 60;
     second = Math.floor(second);
-
+    if (second < 10) second = "0" + second;
  
  if (towait_sec > 0)
     {
-    document.getElementById("claim_svx").innerHTML =  " h:"+hours+ " m:" + minute + " s:" + second; 
+    document.getElementById("claim_svx").innerHTML =  ""+hours+ ":" + minute + ":" + second; 
+    document.getElementById("claim_svx").className =  "claim_off";      
     } else
       {
       document.getElementById("claim_svx").innerHTML =  "Claim"; 
+      document.getElementById("claim_svx").className =  "claim"; 
       }
-//alfalf
+
 } // callback_getclaimdata
 
  
@@ -4470,6 +4476,43 @@ if (1)
 } // buysov_newdex
 
 
+
+function update_claimdata()
+{
+
+var now = new Date().getTime() / 1000;
+ 
+ var seconds = now - global_tslastclaim;
+  var interval = (24*60*60);
+      // interval = 2*60; hack
+      
+      var towait_sec = interval - seconds;
+ // alfalf
+  // Find the distance between now and the count down date
+    var hours = towait_sec / 3600;
+    hours = Math.floor(hours);
+    if (hours < 10) hours = "0" + hours;
+     var minute =   (towait_sec % 3600) / 60;
+    minute = Math.floor(minute);
+    if (minute < 10) minute = "0" + minute;
+    
+      var second = towait_sec % 60;
+    second = Math.floor(second);
+    if (second < 10) second = "0" + second;
+ 
+ if (towait_sec > 0)
+    {
+    document.getElementById("claim_svx").innerHTML =  ""+hours+ ":" + minute + ":" + second; 
+    document.getElementById("claim_svx").className =  "claim_off";      
+    } else
+      {
+      document.getElementById("claim_svx").innerHTML =  "Claim"; 
+      document.getElementById("claim_svx").className =  "claim"; 
+      }
+      
+} // update_claimdata
+
+
 var updatecnt = -3;
 function update_thread()
 {
@@ -4487,7 +4530,7 @@ if ( (updatecnt % 20) == 0 )
 if (refreshcounter == 1) refreshboard(); 
 if (refreshcounter > 0) refreshcounter--;  
   
-  
+update_claimdata();  
   
 updatecnt++;  
 } //// update_thread
