@@ -518,8 +518,18 @@ Please choose your species. Note: you cannot undo your decision!<br>Think carefu
        y="6.8791642"
        ry="13.373751" />
      
-    <text id='navsvg_text' x="53" y="53" w="30" fill="#ffffff" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">scroll</text>
+       <text id='navsvg_text' x="53" y="53" w="30" fill="#ffffff" style="" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">scroll</text>
 
+  
+    <circle
+       style="fill:#ffffff;fill-opacity:0.26329789;stroke-width:15.1135;cursor:pointer;visibility:hidden;"
+       id="scrollcenter"
+       cx="53.5"
+       cy="53.0"
+       r="22.5" />
+       
+     
+  
    
        
   </g>
@@ -764,10 +774,10 @@ function updatecoor( offx, offy )
 
 xcoor = document.getElementById("xcoor").value*1;
 ycoor = document.getElementById("ycoor").value*1;
-
+/*
 xcoor = xcoor + offx;
 ycoor = ycoor + offy;
-
+*/
 document.getElementById("xcoor").value = xcoor;
 document.getElementById("ycoor").value = ycoor;
 
@@ -776,8 +786,25 @@ document.getElementById("ycoor").value = ycoor;
 
 
 
+//document.getElementById("navsvg_text").addEventListener('click', function(e) 
+document.getElementById("scrollcenter").addEventListener('click', function(e) 
+{  
+setcenter();
+} );
 
 
+function setcenter()
+{ 
+// alfalf
+xcoor = globalselection['x'] ;
+ycoor = globalselection['y'] ;
+
+document.getElementById("xcoor").value = xcoor;
+document.getElementById("ycoor").value = ycoor;
+
+refreshboard();
+//alert("globalselection['x'] " + globalselection['x'] + " " + globalselection['y']);
+} // setcenter()
  
 
   
@@ -820,6 +847,49 @@ if (1)
    
 
 } // claim_svx
+
+
+
+
+
+
+
+function callback_load_my_assets( value )
+{
+console.log("callback_load_my_assets");
+
+ console.log( value );
+ 
+size = value.rows.length;
+
+console.log("size: " + size);
+
+var buffer = "";
+for (var i=0; i<size; i++)
+    {
+    id       = value.rows[i]['id'];
+    owner    = value.rows[i]['owner'];
+    asset_id = value.rows[i]['asset_id'];
+    
+    if (owner == global_account)
+       {
+       buffer += id + " - " + asset_id + "<br>";
+       }
+    } // for i...
+ 
+document.getElementById("myassets").innerHTML = buffer ; 
+ 
+} // callback_load_my_assets
+
+
+function load_my_assets()
+{
+
+
+getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_account, 2, "name", 500 );
+
+
+} // load_my_assets()
 
 
 </script>
@@ -871,7 +941,15 @@ if (1)
 <br>
 <br>
  
+ 
+ 
+ <!--
+<hr>
+<div onclick='load_my_assets()'>Load my assets</div>
+<div id='myassets'>...</div>
 
+<hr>
+-->
 
 
 </div> <!-- page1 -->
@@ -1310,6 +1388,9 @@ for (var i=0; i<size; i++)
     
 globalselection['x'] = "";
 globalselection['y'] = "";    
+ 
+document.getElementById('scrollcenter').style.visibility = "hidden";
+
 
 /*
 ...
@@ -1381,6 +1462,7 @@ thex2 = globalselection['coordinate'] - (they2*width);
 globalselection['x'] = thex2;
 globalselection['y'] = they2;
 
+document.getElementById('scrollcenter').style.visibility = "visible";
 
 render_ts = globalselection['ts'];
 if (render_ts < 1) render_ts = '-';
@@ -3797,6 +3879,7 @@ if (mode == 2)
    document.getElementById('movesteps_div').   style.visibility = "visible";
    document.getElementById('movesteps_div').   style.height = "";
    
+   document.getElementById('scrollcenter').style.visibility = "hidden";
    }
    
 if (mode == 3)
@@ -3820,6 +3903,7 @@ if (mode == 3)
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
 
+   document.getElementById('scrollcenter').style.visibility = "hidden";
    }
    
 if (mode == 4)
@@ -3843,6 +3927,7 @@ if (mode == 4)
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
    
+   document.getElementById('scrollcenter').style.visibility = "hidden";   
    }    
 
 } // nav_selection
