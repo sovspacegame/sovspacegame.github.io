@@ -33,7 +33,7 @@
     <script src='js/assets/scatterjs-plugin-eosjs2.min.js'></script>
  
      
-    <script src="js/eosiowallet/wallet.js?dsd=7534424"></script>   
+    <script src="js/eosiowallet/wallet.js?dsd=75324"></script>   
     
     <script src="js/admin.js?dsd=422553"></script>   
     <script src="js/sovspacegame.js?dsd=423"></script>   
@@ -1252,6 +1252,7 @@ NFT-API (atomicassets):
 
 
  
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1</div>
 
 <br>
 
@@ -2299,9 +2300,15 @@ for (y=0; y<16; y++)
     
     if (     tilearray[x][y]['asset_id'] != "" )
        {
-       url = nft_node + tilearray[x][y]['asset_id'];
-       readasset(url, assethandler,x,y ) ;
+       //url = nft_node + tilearray[x][y]['asset_id'];
+       //readasset(url, assethandler,x,y ) ;
        
+       params = Object();
+       params['x'] = x;
+       params['y'] = y;
+       
+       getdata2(callback_readasset, params, "atomicassets", "sovspacegame", "assets",  tilearray[x][y]['asset_id'], "", "", 3 );
+
        
        cnt++;
        }
@@ -2574,20 +2581,11 @@ tilearray[x][y]['atype']    = value['data']['data']['atype'];
             }
               
 
-/*              
-// collector
-if (tilearray[x][y]['atype'] == 8)
-   {
-        tilearray[x][y]['svx_balance'] = "TX-" ; 
-   }
-*/              
-//  tilearray[i][i2]['svx_balance'] 
-//  
  
 
 } // assethandler
 
- 
+  
 
 
 function readurl_simple(url, jsonparam) 
@@ -2687,6 +2685,361 @@ xhr.send();
 
  
 } // readasset()
+
+
+
+function readasset2(url, callback, thex, they ) 
+{
+
+//console.log(" readurl ",url," ");
+//asset_id = 2199025113747;
+//asset_id = 2199025113579;
+   var jsonparam = JSON.stringify( [ ]  ); 
+
+var xhr = new XMLHttpRequest();
+ 
+xhr.open("POST", url);
+
+ 
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+ 
+      json = xhr.responseText;
+      
+      const rows = JSON.parse(json);
+
+      callback(rows,thex, they);
+       
+ 
+   }};
+
+ 
+xhr.send();
+
+//console.log(" readurl2 ");
+
+ 
+} // readasset()
+
+//-----
+
+
+function callback_readasset( value, params )
+{
+
+//console.log(value);
+
+//var data = value.rows[0].immutable_serialized_data;
+var data = value.rows[0].mutable_serialized_data;
+var idata = value.rows[0].immutable_serialized_data;
+var mdata = value.rows[0].mutable_serialized_data;
+
+
+decoded_data = mydecoder( idata, mdata );
+
+/*
+console.log("Decoded:");
+console.log(decoded_data);
+console.log("---");
+*/
+// ---
+//document.getElementById('debugout').innerHTML = "[" + decoded_data['name'] + "]" ;
+
+x = params['x'];
+y = params['y'];
+
+/*console.log("x: " + x);
+console.log("y: " + y);
+*/
+
+//a = decoded_data['attack'];
+//console.log("a: " + a);
+
+tilearray[x][y]['attack']   = decoded_data['attack'];
+tilearray[x][y]['atype']    = decoded_data['atype'];
+    tilearray[x][y]['config']    = decoded_data['config'];
+    tilearray[x][y]['eos']    = decoded_data['eos'];
+    tilearray[x][y]['name']    =decoded_data['name'];
+  
+    tilearray[x][y]['nick']    = decoded_data['nick'];
+    tilearray[x][y]['ori']    = decoded_data['ori'];
+    tilearray[x][y]['race']    = decoded_data['race'];
+    tilearray[x][y]['shield']    = decoded_data['shield'];
+    tilearray[x][y]['shield_max']    = decoded_data['shield_max'];
+    tilearray[x][y]['sov']    = decoded_data['sov'];
+    
+// Alfalf
+    
+    loadobjects_cnt++;
+       if (loadobjects_cnt == loadobjects_size)
+          {
+          console.log("loadobjects_size reached! ");
+          renderboard();
+          } else
+            {
+            //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
+            }
+            
+
+/*
+//console.log("--i2_b "+i2+"----");
+ret["name"] = thename;
+ret["ipfs"] = ipfs;
+
+ret['nick'] = nick;
+ret['shield'] = shield;
+ret['shield_max'] = shield_max;
+ret['attack'] = attack;
+ret['race'] = race;
+ret['atype'] = atype;
+ret['sov'] = sov;
+ret['eos'] = eos;
+ret['ori'] = ori;
+*/
+
+/*
+
+tilearray[x][y]['attack']   = value['data']['data']['attack'];
+tilearray[x][y]['atype']    = value['data']['data']['atype'];
+    tilearray[x][y]['config']    = value['data']['data']['config'];
+    tilearray[x][y]['eos']    = value['data']['data']['eos'];
+    tilearray[x][y]['name']    = value['data']['data']['name'];
+  
+    tilearray[x][y]['nick']    = value['data']['data']['nick'];
+    tilearray[x][y]['ori']    = value['data']['data']['ori'];
+    tilearray[x][y]['race']    = value['data']['data']['race'];
+    tilearray[x][y]['shield']    = value['data']['data']['shield'];
+    tilearray[x][y]['shield_max']    = value['data']['data']['shield_max'];
+    tilearray[x][y]['sov']    = value['data']['data']['sov'];
+    
+
+    
+    loadobjects_cnt++;
+       if (loadobjects_cnt == loadobjects_size)
+          {
+          console.log("loadobjects_size reached! ");
+          renderboard();
+          } else
+            {
+            //console.log("loadobjects_cnt: ", loadobjects_cnt, " of ", loadobjects_size );
+            }
+              
+
+*/ 
+
+//console.log("FIN");
+
+
+ 
+                               
+} // callback_readasset
+
+/*
+function dotest()
+{
+
+assetid = 2199025125183;
+//assetid = 2199025125184;
+assetid = 2199025124870;
+getdata(callback_readasset, "atomicassets", "sovspacegame", "assets", assetid, "", "", 3 );
+
+//alert("TEST");
+} // dotest
+*/
+
+function mydecoder( idata, mdata )
+{
+var ret = Object();
+//console.log("Decoder");
+
+
+
+// ---
+// idata
+//
+
+
+
+var bytearray = Array();
+len = unsignedFromVarintBytes( idata, 1 );
+//console.log( "len_: " + len['number']);
+
+
+for (var i=0; i<len['number']; i++)
+    {
+    bytearray[i] = idata[i+2];    
+    } // for i...
+         
+var thename = utf8BytesToString(bytearray);
+
+i2 = len['number']+3;
+//console.log(" - i2 vor ipfs " + i2);
+
+lenipfs = unsignedFromVarintBytes( idata, i2 );
+//console.log( "lenipfs: " + lenipfs['number']);
+i2++;
+
+
+bytearray = Array();
+
+
+
+for (var i=0; i<lenipfs['number']; i++)
+    {
+    bytearray[i] = idata[i+i2];
+    //console.log(" - " + nick);
+    }
+    
+
+ 
+         
+var ipfs = utf8BytesToString(bytearray);
+
+/*
+l = idata.length;
+console.log("L: " + l);
+
+console.log("------");
+for (var i=0; i<l; i++)
+    {
+    ch =   String.fromCharCode( idata[i]   );
+    
+    ret2 = unsignedFromVarintBytes( idata, i );
+    var value = ret2['number'];
+    var index = ret2['index'];
+     
+    console.log(i+" | "+ch + " - " + "["+value+"] index:"+index+" ");
+    }
+    
+ */    
+    
+    
+// ---    
+// mdata    
+// 
+
+// 1) nick
+var bytearray = Array();
+len = unsignedFromVarintBytes( mdata, 1 );
+//console.log( "len: " + len['number']);
+
+for (var i=0; i<len['number']; i++)
+    {
+    bytearray[i] = mdata[i+2];    
+    }
+         
+var nick = utf8BytesToString(bytearray);
+
+
+// shield
+i2 = len['number']+3;
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var shield = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// shield-max
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var shield_max = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+
+// attack
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var attack = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// race
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var race = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// atype
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var atype = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// sov
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var sov = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// eos
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var eos = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+// ori
+ret2 = unsignedFromVarintBytes( mdata, i2 );
+var ori = ret2['number'];
+i2 = ret2['index'];
+i2++;
+
+
+
+//console.log("--i2_b "+i2+"----");
+ret["name"] = thename;
+ret["ipfs"] = ipfs;
+
+ret['nick'] = nick;
+ret['shield'] = shield;
+ret['shield_max'] = shield_max;
+ret['attack'] = attack;
+ret['race'] = race;
+ret['atype'] = atype;
+ret['sov'] = sov;
+ret['eos'] = eos;
+ret['ori'] = ori;
+ret["config"] = "";
+
+return (ret);
+} // mydecoder
+
+
+
+function unsignedFromVarintBytes( buffer, index )
+{
+var ret = Object();
+ret['number'] = 0;
+ret['index']  = 0;
+
+
+var number     = 0;
+var multiplier = 1;
+var i          = index;
+
+while ( buffer[i] >= 128 )
+      {
+      number += (buffer[i] - 128) * multiplier;
+      i++;
+      multiplier *= 128;
+      } 
+      number += (buffer[i]) * multiplier;
+      i++;
+
+ret['number'] = number;
+ret['index']  = i;
+
+return ret;
+} // unsignedFromVarintBytes
+
+
+function utf8BytesToString(b) {
+    return decodeURIComponent(escape(String.fromCharCode.apply(null, b)));
+}
+
+
+//-----
 
 
 function inituser( race )
