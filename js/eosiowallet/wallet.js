@@ -262,7 +262,7 @@ if (currentwallet == "SCATTER")
       });
       func_transfer_success(result.processed.id);          
     } catch (e) {
-    
+                 refreshcounter = 4; // update-hack from index.html
      console.log("Scatter tx Error:");
      console.log(e);
 //       err = JSON.parse(e);
@@ -434,6 +434,103 @@ const rows = await link.client.v1.chain.get_table_rows({
 */
 // console.log("back");
 } // getdata
+
+
+
+//
+// getdata()
+//
+   function getdata2( callback, externparams, _code, _scope, _table, _lower, _index, _key_type, _limit )
+{
+
+/*
+ $data_string2 = '{"table":"collections","scope":"atomicassets","code":"atomicassets","limit":1, "lower_bound":"'.$acc.'" ,  "json":"true"}';
+ 
+ 
+    const rows = await link.client.v1.chain.get_table_rows({
+          code: 'claimdropbox',
+          scope: 'claimdropbox',
+          table: 'drops',
+          index_position: 3,
+          lower_bound: eosio_account
+        })
+        
+        
+  const rows = await link.client.v1.chain.get_table_rows({
+          code: 'claimdropbox',
+          scope: 'claimdropbox',
+          table: 'drops',
+          index_position: 3,
+          lower_bound: "goldstandard"
+        })
+     "sovorderbook", "sovorderbook", "token", "9"
+
+          json: true,      
+          code : code,
+          scope: scope,
+          table: table,
+          index_position: 1,
+          lower_bound: 9
+
+*/
+
+var rows = null;
+
+//     var url = "https://jungle3.greymass.com/v1/chain/get_table_rows";
+    // var url = "https://eos.greymass.com/v1/chain/get_table_rows";
+//     var url = "https://eos.api.eosnation.io/v1/chain/get_table_rows";
+     
+     var url = "https://"+thenode+"/v1/chain/get_table_rows";
+    
+var xhr = new XMLHttpRequest();
+
+//var params = JSON.stringify(  {"code":"sovorderbook","scope":"sovorderbook","table":"token", "lower_bound":"12" ,  "json":true } );
+//var params = JSON.stringify(  {"code":"sovorderbook","scope":"sovorderbook","table":"asks", "lower_bound":"10", "index_position":2 , "key_type": "i64",  "json":true } );
+//var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":2 , "key_type": "i64",  "json":true } );
+var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":_index , "key_type": _key_type, "limit": _limit,  "json":true } );
+
+xhr.open("POST", url);
+
+//xhr.setRequestHeader("Content-length", params.length);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+//      console.log("hic--2-");
+  //    console.log(xhr.status);
+   //   console.log(xhr.responseText);
+      json = xhr.responseText;
+      
+      const rows = JSON.parse(json);
+//console.log(" CB2 ");
+//console.log(externparams);
+      callback(rows,externparams);
+//      document.getElementById('backdata').innerHTML = "XXX:"+xhr.responseText+"AA";
+   }};
+
+//var mydata = {"code":"sovorderbook","scope":"sovorderbook","table":"token", "lower_bound":"10" ,  "json":true };
+
+xhr.send(params);
+         
+         /*
+
+const rows = await link.client.v1.chain.get_table_rows({
+          json: true,      
+           lower_bound: _lower,
+          code : _code,
+          scope: _scope,
+          table: _table,
+//         index_position: 2,
+          limit: _limit,       
+          
+         
+               
+          });
+*/
+// console.log("back");
+} // getdata2
 
 
 //
