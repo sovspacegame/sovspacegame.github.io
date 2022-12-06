@@ -1433,6 +1433,23 @@ eosforram = Number(eosforram).toFixed(4) + " EOS";
     theactions.push(action);
    
 
+
+    var message = "RAM donation from " + global_account + " - " + eosforram;
+    var action = {
+                 account: "sovspacegame",
+                 name: 'logmsg',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "message": message
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
  
  
  
@@ -1588,7 +1605,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1b</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1c</div>
 
 <br>
 
