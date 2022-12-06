@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="icon" href="img/icon.png" />
-<link rel="stylesheet" href="css/style.css?ttd=44343334" />
+<link rel="stylesheet" href="css/style.css?ttd=44334" />
 
  <!-- BEGINN WALLET-INCLUDE-->
     
@@ -1377,6 +1377,75 @@ myaudio.play();
 }
 
 
+
+
+function donateram()
+{
+//alert("Donate");
+
+eosforram = document.getElementById("eosforram").value;
+ 
+var theactions = [];
+
+      
+
+eosforram = Number(eosforram).toFixed(4) + " EOS";   
+
+    /*
+    peos = pricedata[id]['peos'] / 10000;    
+   
+
+   
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": eostoburn,
+                       
+                       ---
+    eosio buyram
+    payer sovtrader111
+    quant 0.1000 EOS
+    receiver sovtrader111
+    */
+   
+    var action = {
+                 account: "eosio",
+                 name: 'buyram',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "payer": global_account,
+                       "quant": eosforram,
+                       "receiver": "sovspacegame"
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+} // donateram
+
+
+
 </script>
 <br>
 <div onclick='sound_stop()'>stop</div>
@@ -1442,13 +1511,14 @@ h: <input type='text' id='newarea_h' value='2'><br>
 <br>  
 
 
-<div style='border-top:1px solid #666666;margin-left:20px;margin-bottom:10px;'>
+<div id="footer0" style='border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:20px;'>
 
-
+<br>
 <strong>API-Settings</strong><br>
 <div style='height:10px;'></div>
-
-<div> <!-- main -->
+ 
+<!-- footer1 --> 
+<div> 
 
 <div style='float:left;width:30%;border:none;'>
 node for wallet:
@@ -1465,16 +1535,22 @@ node for wallet:
 </div>
 
  
+ 
+ 
 
 
-</div> <!-- main -->
+</div> <!-- footer1 -->
+
 <div style='clear:both'></div>
+
+
+
 
 
 <br>
 
-
-<div> <!-- main -->
+<!-- footer2 -->
+<div> 
 
 <div style='float:left;width:30%;border:none;'>
 NFT-API (atomicassets):
@@ -1491,14 +1567,28 @@ NFT-API (atomicassets):
  
 
 
-</div> <!-- main -->
+</div> <!-- footer2 -->
+
+
+</div> <!-- footer0 -->
+
 <div style='clear:both'></div>
+<br>
+
+<div style='width:100%;border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:10px;'></div>
+<div style='margin-left:20px'>
+
+<br>
+<input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
+<div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
+
+</div>
+<div style='width:100%;border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:10px;'></div>
 
 
-
-
+<br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1b</div>
 
 <br>
 
@@ -3685,9 +3775,7 @@ eostoburn = Number(psov).toFixed(4) + " SOV";
                        "from": global_account,
                        "to": "sovspacegame",
                        "quantity": eostoburn,
-                       "memo": memo,
-                        
-                      
+                       "memo": memo,                                              
                        }
                  };
 
