@@ -255,6 +255,28 @@ background:#44aa44;
 }  
 
 
+.donationbutton
+{
+background:#1111ff;
+/*border:5px solid #ffffff;*/
+color:#ffffff;
+padding:5px;
+margin-top:10px;
+cursor:pointer;
+text-align:center;
+
+ -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}  
+
+.donationbutton:hover
+{
+/*color:black;*/
+background:#5555ff;
+}  
+
+
 
 .selfdestruction
 {
