@@ -618,6 +618,9 @@ demolish
 <!-- claim_svx -->
 <div id='claim_svx' onclick="claim_svx()"  class='claim_off' style='height:0px;visibility:hidden' >Claim</div>
 
+<br>
+<!-- claim_svx -->
+<div id='claim_svx_all' onclick="claim_all_svx()"  class='claim' style='height:0px;visibility:hidden' >Claim all</div>
 
 
 </div>
@@ -869,6 +872,67 @@ if (1)
 
 
 
+ 
+function claim_all_svx()
+{
+//alert("all");
+
+console.log("own_collectors:::: ");
+console.log(own_collectors);
+    
+size = own_collectors.length;
+
+var theactions = [];
+
+ 
+for (var i=0; i<size; i++)
+{
+asset_id = own_collectors[i]['asset_id'];
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'claim',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": asset_id,
+                       "user" : global_account,                                           
+                       }
+                 };
+
+ 
+theactions.push(action);
+   
+ 
+
+
+   
+} // for (var i=0; i<size; i++)
+ 
+
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }       
+    
+    /*
+    asset_object['asset_id'] = asset_id;
+asset_object['atype'] = atype;
+    */
+/*
+var own_assets = Array();
+
+own_assets = [];
+*/
+
+// alfalf
+} // claim_all_svx
+
+
+
 
 function callback_readasset_forlist( value, params )
 {
@@ -880,10 +944,11 @@ var mdata = value.rows[0].mutable_serialized_data;
 decoded_data = mydecoder( idata, mdata );
 
 nick = decoded_data['nick'];
+atype = decoded_data['atype'];
 
 coordinatei = params['id'];
 
-
+var asset_id = params['asset_id'];
 
 /*
 width = 1000000;
@@ -906,6 +971,19 @@ select.appendChild(opt);
 } // if...
 
 // ---
+
+
+// alafalf
+// add own_collectors
+
+// only collectors
+if (atype == 8)
+{
+var asset_object = Object();
+asset_object['asset_id'] = asset_id;
+asset_object['atype'] = atype;
+own_collectors.push( asset_object );
+}   
 
 /*
 
@@ -976,6 +1054,8 @@ tilearray[x][y]['atype']    = decoded_data['atype'];
     
 
     
+    
+    
     loadobjects_cnt++;
        if (loadobjects_cnt == loadobjects_size)
           {
@@ -989,6 +1069,8 @@ tilearray[x][y]['atype']    = decoded_data['atype'];
  
                                
 } // callback_readasset_forlist
+
+
 
 
 function callback_load_my_assets( value )
@@ -1043,12 +1125,13 @@ for (var i=0; i<size; i++)
 
 
 
+var own_collectors = Array();
 
-
+ 
 
 function load_my_assets()
 {
-
+own_collectors = [];
 
 getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_account, 2, "name", 500 );
 
@@ -1866,6 +1949,10 @@ if ( globalselection['owner'] == global_account &&
    document.getElementById("claim_svx").className = "claim";
    document.getElementById("claim_svx").style.height = "";   
    document.getElementById("claim_svx").style.visibility = "visible";      
+
+   document.getElementById("claim_svx_all").style.height = "";   
+   document.getElementById("claim_svx_all").style.visibility = "visible";      
+
      // document.getElementById("claim_svx").innerHTML = "ABC " + globalselection['assetid'];      
       
       
@@ -1882,6 +1969,10 @@ var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lowe
      document.getElementById("claim_svx").style.height = "0px";   
      document.getElementById("claim_svx").style.visibility = "hidden";   
       document.getElementById("claim_svx").innerHTML = "Claim";           
+
+     document.getElementById("claim_svx_all").style.height = "0px";   
+     document.getElementById("claim_svx_all").style.visibility = "hidden";   
+
      }
 
      
