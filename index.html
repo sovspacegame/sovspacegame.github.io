@@ -1847,7 +1847,10 @@ if (render_shield < 1) render_shield = '-';
 
 render_attack = globalselection['attack'];
 if (render_attack < 1) render_attack = '';
-if (globalselection['atype'] != 5) render_attack = '-';
+if (
+   globalselection['atype'] != 5 && 
+   globalselection['atype'] != 9 
+   ) render_attack = '-';
 
 render_nickname = nickname;
 if (render_nickname == -1) render_nickname = '';
