@@ -47,7 +47,10 @@
 <body class='bodyclass myimage' onload='loadaudio();'>
 
 <div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
-<img src='img/logo2.svg?t=d5443s' style='margin-top:10px;height:160px;'>
+
+ 
+<img src='img/logo2.svg?t=d5443s' style='margin-top:10px;height:160px;border:none;'>
+ 
 
 <div style='position:absolute;right:20px;top:45px;border:none;'>
  <audio id="audiotag" controls loop autoplay>
@@ -181,7 +184,7 @@ Please choose your species. Note: you cannot undo your decision!<br>Think carefu
 
 <div style='position:absolute;margin-left:0px;left:0px;top:0px;width:100%;height:100%; border:none;padding:0px;;color:#ffffff;'>
 
-<svg id="mysvg" width="100%" height="100%" preserveAspectRatio="none" viewbox=" 0 0 1000 1000" style="position:absolute;border:none;z-Index:330;left:0px;top:0px;margin-top:0px;margin-left:0px;">\n 
+<svg id="mysvg" width="100%" height="100%" preserveAspectRatio="none" viewbox=" 0 0 1000 1000" style="position:absolute;border:none;z-Index:430;left:0px;top:0px;margin-top:0px;margin-left:0px;">\n 
 
 
   <polygon id="tileb0"  fill="#9999ff" stroke="#ffffff" stroke-width=1 opacity=0.0  style=""  points=" 0,-50 100,0 0,50  -100,0   " />
@@ -1696,7 +1699,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1c</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1d</div>
 
 <br>
 
@@ -2614,6 +2617,67 @@ starty -= 0.5;
 
 
  
+ 
+ 
+
+// Append the text-div
+
+var index = 0;
+
+for (var y=0; y<=15; y++)
+{
+var startx = 0;
+var starty = y;
+
+
+for (var i=0; i<=12;i++)
+{
+
+
+
+var thex = startx*10 - 10;
+var they = starty *10 - 25     ;
+
+
+if (
+   they >= -25  &&
+   they <= 75  &&
+   thex <= 90   
+   )
+{
+//console.log("- index: " + index + "  x:"+thex  + " y:"+they  );
+
+
+var div = document.createElement("div");
+var divid = "thetext"+index;
+div.id = divid;
+div.style.position = "absolute";
+div.style.left = thex+"%";
+div.style.top  = they+"%";
+
+div.style.width = "20%";
+div.style.height = "30%";
+div.style.zIndex = they+301;
+
+div.style.background = "";
+// div.style.border = "1px solid #00ff00";
+div.style.color = "#ffffff";
+ 
+div.innerHTML = "<img src='img/one.png?s=442' style='position:absolute;width:100%;'>" ;
+document.getElementById("gameboard").appendChild(div);
+
+
+ 
+
+index++;
+} // if (starty >= -25)
+
+startx += 1;
+starty -= 0.5;
+} // for ...
+
+
+} // for starty... 
 
  
 
@@ -3142,6 +3206,12 @@ for (var i=0; i<size; i++)
     } // for i... 
 */
     
+    
+    document.getElementById(theobject).innerHTML = buffer;
+
+  var theobject2 = "thetext" + i;
+  
+   buffer = "";      
     // Text
     if ( 
        atype == 1 || 
@@ -3198,7 +3268,7 @@ for (var i=0; i<size; i++)
 
     
    
-    document.getElementById(theobject).innerHTML = buffer;
+    document.getElementById(theobject2).innerHTML = buffer;
 
       
  
