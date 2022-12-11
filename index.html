@@ -2214,7 +2214,11 @@ var config = globalselection['config'];
 var configarray = config.split(";");
 if (configarray[0] == 'infected' &&
     configarray[1] == global_account
-   ) enableinfect = 1;
+   ) 
+   {
+   enableinfect = 1;
+   document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;color:#ff3333;'>[infected] &nbsp;<strong>"; 
+   }
    
    
    
