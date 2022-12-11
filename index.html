@@ -578,6 +578,10 @@ demolish
 repair
 </div>
 
+<div id='navbutton_infect' onclick='nav_selection(6);' class='navbutton_off' style='visibility:hidden;'>
+infect
+</div>
+
 <div style='clear:both;'></div>
 
 </div> <!-- navbuttonarea -->
@@ -693,7 +697,10 @@ if (nav_mode == 5)
    {
    repairobject(2);  
    }  
-
+if (nav_mode == 6)  
+   {
+   infectobject(2);  
+   }  
 
        
 refreshboard();
@@ -731,7 +738,10 @@ if (nav_mode == 5)
    {
    repairobject(3);  
    }  
-
+if (nav_mode == 6)  
+   {
+   infectobject(3);  
+   }  
    
 refreshboard();
 } );
@@ -766,7 +776,10 @@ if (nav_mode == 5)
    {
    repairobject(4);  
    }  
-   
+if (nav_mode == 6)  
+   {
+   infectobject(4);  
+   }     
    
 refreshboard();
 } );
@@ -802,7 +815,10 @@ if (nav_mode == 5)
    {
    repairobject(1);  
    }  
-   
+if (nav_mode == 6)  
+   {
+   infectobject(1);  
+   }     
    
 refreshboard();
 } );
@@ -1004,7 +1020,7 @@ select.appendChild(opt);
 // ---
 
 
-// alafalf
+
 // add own_collectors
 
 // only collectors
@@ -1171,6 +1187,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 </script>
+
+
 
  
 <div style='clear:both;'></div>
@@ -1862,6 +1880,7 @@ globalselection['ts']      = tilearray[thex][they].ts;
 globalselection['race']    = tilearray[thex][they].race;
 globalselection['shield']  = tilearray[thex][they].shield;
 globalselection['attack']  = tilearray[thex][they].attack;
+globalselection['config']  = tilearray[thex][they].config;
  
 //globalcoordinatei = coordinatei;
 globalselection['coordinate'] = coordinatei;
@@ -1882,7 +1901,7 @@ var theid2 = 'tileb'+(theid-1);
 document.getElementById(theid2).setAttribute('fill', '#ff0000');
 document.getElementById(theid2).setAttribute('opacity', 0.3);
 */
-// alfalf
+
 
 
 let coordinates = [ -1,-3, 0,-3, 1,-3, 
@@ -2108,9 +2127,26 @@ if ( globalselection['owner'] == global_account )
      
 
 
+
+/*
+// config
+    let configarray = config.split(";");
+*/
+var canclaim = 0;
+
 if ( globalselection['owner'] == global_account &&
      globalselection['atype'] == 8
-   )
+   ) canclaim = 1;
+   
+var config = globalselection['config'];    
+var configarray = config.split(";");
+if (configarray[0] == 'infected' &&
+    configarray[1] == global_account
+   ) canclaim = 2;
+      
+   
+
+if ( canclaim == 1)
    {
    document.getElementById("claim_svx").className = "claim";
    document.getElementById("claim_svx").style.height = "";   
@@ -2130,6 +2166,19 @@ var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lowe
       */
       
    } else
+
+if ( canclaim == 2)
+   {
+   document.getElementById("claim_svx").className = "claim";
+   document.getElementById("claim_svx").style.height = "";   
+   document.getElementById("claim_svx").style.visibility = "visible";      
+
+      
+      
+      getdata(callback_getclaimdata, "sovspacegame", "sovspacegame", "collectors", globalselection['assetid'], 2, "i64", 1 );
+      
+      
+   } else   
      {
      document.getElementById("claim_svx").className = "claim_off";
      document.getElementById("claim_svx").style.height = "0px";   
@@ -2144,7 +2193,56 @@ var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lowe
      
 // <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction'  >Selfdestruction</div>
 
- 
+
+  // alfalf
+// Enable infect-button 
+var enableinfect = 0;
+
+
+// 1) Enable button for grey-infector
+if ( globalselection['owner'] == global_account &&
+     globalselection['atype'] == 10 &&
+     globalselection['race'] == 2
+   ) enableinfect = 1;
+   
+// 2) Enable button for infected collector
+var config = globalselection['config'];    
+var configarray = config.split(";");
+if (configarray[0] == 'infected' &&
+    configarray[1] == global_account
+   ) enableinfect = 1;
+   
+   
+   
+if (enableinfect)   
+   {
+   document.getElementById("navbutton_infect").style.visibility = "visible"; 
+   } else
+     {
+     document.getElementById("navbutton_infect").style.visibility = "hidden"; 
+     nav_selection(1);
+     }
+
+/*
+
+   
+   
+if ( 
+     //globalselection['owner'] == global_account &&
+     globalselection['atype'] == 8 &&
+     //globalselection['race'] == 2
+   )
+   {
+   document.getElementById("navbutton_infect").style.visibility = "visible"; 
+   } else
+     {
+     document.getElementById("navbutton_infect").style.visibility = "hidden"; 
+     nav_selection(1);
+     }
+
+*/
+   
+   
    
 updatepanel();   
 
@@ -2290,6 +2388,7 @@ globalselection['ts']           = -1;
 globalselection['race']         = -1;
 globalselection['shield']       = -1;
 globalselection['attack']       = -1;
+globalselection['config']       = "";
 
 globalselection['n'] = new Object();
 globalselection['n']['coordinate'] = "";
@@ -3096,7 +3195,11 @@ for (var i=0; i<size; i++)
     owner        =  tilearray[x][y]['owner']; 
     shield       =  tilearray[x][y]['shield']; 
     shield_max   =  tilearray[x][y]['shield_max']; 
+    config       =  tilearray[x][y]['config'] + ""; 
     
+   
+    // config
+    let configarray = config.split(";");
    
     if ( tile != "tile10" &&  tile != "tile11")
        {
@@ -3154,7 +3257,17 @@ for (var i=0; i<size; i++)
        buffer = "<img src='img/wall_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
 
     if ( atype == 8 && race == 1)
-       buffer = "<img src='img/collector_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       {
+       if (configarray[0] == "infected" && configarray[1] != "")
+          {
+          buffer = "<img src='img/collector_a_infected.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+          } else 
+            {
+            buffer = "<img src='img/collector_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+            }
+       
+//       
+       }
 
     if ( atype == 9 && race == 1)
        buffer = "<img src='img/tower_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
@@ -3566,6 +3679,7 @@ tilearray[x][y]['atype']    = decoded_data['atype'];
     tilearray[x][y]['shield']    = decoded_data['shield'];
     tilearray[x][y]['shield_max']    = decoded_data['shield_max'];
     tilearray[x][y]['sov']    = decoded_data['sov'];
+    tilearray[x][y]['config']    = decoded_data['config'];
     
 
     
@@ -3631,23 +3745,25 @@ for (var i=0; i<lenipfs['number']; i++)
          
 var ipfs = utf8BytesToString(bytearray);
 
+
+
 /*
-l = idata.length;
+l = mdata.length;
 console.log("L: " + l);
 
 console.log("------");
 for (var i=0; i<l; i++)
     {
-    ch =   String.fromCharCode( idata[i]   );
+    ch =   String.fromCharCode( mdata[i]   );
     
-    ret2 = unsignedFromVarintBytes( idata, i );
+    ret2 = unsignedFromVarintBytes( mdata, i );
     var value = ret2['number'];
     var index = ret2['index'];
      
     console.log(i+" | "+ch + " - " + "["+value+"] index:"+index+" ");
     }
-    
- */    
+console.log("-fin -----");    
+*/
     
     
 // ---    
@@ -3719,6 +3835,22 @@ i2++;
 
 
 
+// config
+var bytearray = Array();
+len = unsignedFromVarintBytes( mdata, i2 );
+//console.log( "++++ len : " + len['number']);
+i2++;
+for (var i=0; i<len['number']; i++)
+    {
+    //ch =   String.fromCharCode( mdata[i+i2]   );
+    //console.log(" * " + (i+i2)+ " ("+ch+") " , mdata[i]);
+    bytearray[i] = mdata[i+i2];    
+    }
+         
+var config = utf8BytesToString(bytearray);
+
+
+
 //console.log("--i2_b "+i2+"----");
 ret["name"] = thename;
 ret["ipfs"] = ipfs;
@@ -3732,12 +3864,17 @@ ret['atype'] = atype;
 ret['sov'] = sov;
 ret['eos'] = eos;
 ret['ori'] = ori;
-ret["config"] = "";
+ret["config"] = config;
 
 return (ret);
 } // mydecoder
 
 
+
+
+
+ 
+ 
 
 function unsignedFromVarintBytes( buffer, index )
 {
@@ -4485,6 +4622,65 @@ if (1)
 } // repairobject()
 
 
+
+function infectobject( direction )
+{
+
+
+
+var theactions = [];
+
+var dir = "";
+if (direction == 1) dir = "n";
+if (direction == 2) dir = "e";
+if (direction == 3) dir = "s";
+if (direction == 4) dir = "w";
+
+ 
+ 
+memo = "infect;"+global_account+";"+globalselection['assetid']+";"+dir;
+    
+var quantitysov = globaldata['a_sov'] / 10000;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+   
+
+ 
+   
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysov,
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+ 
+} // infectobject()
+
+
+
+
 nav_mode = 1;
 
 function nav_selection( mode )
@@ -4501,6 +4697,8 @@ if (mode == 1)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";      
+   document.getElementById('navbutton_infect').className = "navbutton_off";   
+   
    
    document.getElementById('path924').style.visibility = "visible";
    document.getElementById('path929').style.visibility = "visible";
@@ -4524,6 +4722,8 @@ if (mode == 2)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";      
+   document.getElementById('navbutton_infect').className = "navbutton_off";   
+   
    
    
    document.getElementById('path924').style.visibility = "hidden";
@@ -4550,7 +4750,9 @@ if (mode == 3)
    document.getElementById('navbutton_move').className = "navbutton_off";
    document.getElementById('navbutton_attack').className = "navbutton_on";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
-   document.getElementById('navbutton_repair').className = "navbutton_off";      
+   document.getElementById('navbutton_repair').className = "navbutton_off";    
+   document.getElementById('navbutton_infect').className = "navbutton_off";   
+     
    
    document.getElementById('path924').style.visibility = "hidden";
    document.getElementById('path929').style.visibility = "hidden";
@@ -4576,6 +4778,8 @@ if (mode == 4)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_on";
    document.getElementById('navbutton_repair').className = "navbutton_off";   
+   document.getElementById('navbutton_infect').className = "navbutton_off";   
+   
    
    document.getElementById('path924').style.visibility = "hidden";
    document.getElementById('path929').style.visibility = "hidden";
@@ -4601,6 +4805,7 @@ if (mode == 5)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_on";
+   document.getElementById('navbutton_infect').className = "navbutton_off";   
    
    document.getElementById('path924').style.visibility = "hidden";
    document.getElementById('path929').style.visibility = "hidden";
@@ -4616,6 +4821,34 @@ if (mode == 5)
    
    document.getElementById('scrollcenter').style.visibility = "hidden";   
    }       
+
+
+if (mode == 6)
+   {
+   document.getElementById('navsvg_text').innerHTML = "infect";
+   
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_move').className = "navbutton_off";
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   document.getElementById('navbutton_repair').className = "navbutton_off";
+   document.getElementById('navbutton_infect').className = "navbutton_on";
+   
+   document.getElementById('path924').style.visibility = "hidden";
+   document.getElementById('path929').style.visibility = "hidden";
+   
+   document.getElementById('circ1').style.visibility = "hidden";
+   document.getElementById('circ3').style.visibility = "hidden";
+   document.getElementById('circ5').style.visibility = "hidden";
+   document.getElementById('circ7').style.visibility = "hidden";   
+   
+   // movesteps_div   
+   document.getElementById('movesteps_div').   style.visibility = "hidden";
+   document.getElementById('movesteps_div').   style.height = "0px";     
+   
+   document.getElementById('scrollcenter').style.visibility = "hidden";   
+   }       
+
 
 } // nav_selection
 
