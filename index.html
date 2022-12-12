@@ -2216,7 +2216,7 @@ var configarray = config.split(";") + "";
 if ( configarray.length > 0)
 {
 if (configarray[0] == 'infected' &&
-    configarray[1] == global_account
+    configarray[1] != ""
    ) 
    {
    enableinfect = 1;
