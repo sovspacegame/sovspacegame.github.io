@@ -2143,7 +2143,8 @@ if ( globalselection['owner'] == global_account &&
    ) canclaim = 1;
    
 var config = globalselection['config']+"";    
-var configarray = config.split(";");
+//var configarray = config.split(";");
+var configarray = split(config,";");
 if (configarray[0] == 'infected' &&
     configarray[1] == global_account
    ) canclaim = 2;
@@ -2211,7 +2212,12 @@ if ( globalselection['owner'] == global_account &&
    
 // 2) Enable button for infected collector
 var config = globalselection['config'];    
-var configarray = config.split(";") + "";
+//var configarray = config.split(";") + "";
+var configarray = split(config,";");
+console.log("ALF:");
+console.log(config);
+console.log("len: "+configarray.length);
+console.log( configarray[0] + " - " + configarray[1] );
 
 if ( configarray.length > 0)
 {
@@ -2265,6 +2271,32 @@ console.log(globalselection);
        
        } // if
     }
+    
+    
+    
+    
+function split(sentence,separator){
+  var arrayPosition = 0;
+  var oneWord = "";
+  var newSentence = sentence + ";";
+  var split = new Array();
+  for(var j = 0; j < newSentence.length; j++){
+	if(newSentence[j] === separator){
+		split.push(oneWord);
+		arrayPosition++;
+		oneWord = "";
+	}else{
+		if(!isNaN(newSentence[j])){
+			//don't add to the string
+		}else{
+			oneWord += newSentence[j];
+		}
+	}
+  }
+  return split;
+}    
+    
+    
  
 var global_tslastclaim = 0; 
  
@@ -3210,7 +3242,8 @@ for (var i=0; i<size; i++)
     
    
     // config
-    let configarray = config.split(";");
+//    let configarray = config.split(";");
+    let configarray = split(config,";");
    
     if ( tile != "tile10" &&  tile != "tile11")
        {
