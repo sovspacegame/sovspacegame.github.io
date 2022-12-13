@@ -1757,7 +1757,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1e</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1f</div>
 
 <br>
 
@@ -3335,6 +3335,38 @@ for (var i=0; i<size; i++)
           buffer += "<img src='img/service_a_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
        } //
 
+   if ( atype == 11 && race == 1)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/tank_a_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/tank_a_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/tank_a_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/tank_a_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //
+       
+   if ( atype == 12 && race == 1)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/transporter_a_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/transporter_a_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/transporter_a_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/transporter_a_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //       
+
+
+
 
     // Greys
     if ( atype == 1 && race == 2)
@@ -3396,6 +3428,38 @@ for (var i=0; i<size; i++)
           buffer += "<img src='img/service_b_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
        } //    
     
+
+   if ( atype == 11 && race == 2)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/tank_b_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/tank_b_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/tank_b_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/tank_b_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //
+       
+   if ( atype == 12 && race == 2)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/transporter_b_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/transporter_b_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/transporter_b_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/transporter_b_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //   
+       
+           
     checkbox_shield = document.getElementById('checkbox_shield').checked;
     checkbox_owner  = document.getElementById('checkbox_owner').checked;
     
@@ -4973,8 +5037,8 @@ for (var i=0; i<size; i++)
 
     var blockedview = 0;
     
-    if (the_atype == 11 ) blockedview = 1;
-    if (the_atype == 12 ) blockedview = 1;
+  //  if (the_atype == 11 ) blockedview = 1;
+  //  if (the_atype == 12 ) blockedview = 1;
    
     
     
