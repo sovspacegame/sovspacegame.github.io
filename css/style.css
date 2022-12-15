@@ -277,6 +277,30 @@ background:#5555ff;
 }  
 
 
+.imgicon
+{
+width:80px;
+margin:3px;
+-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.loadmenu
+{
+border:2px solid #666666;
+
+width:70%;
+float:left;
+margin-left:20px;
+margin-bottom:20px;
+height:200px;
+
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+ border-radius: 5px;
+}
+
 
 .selfdestruction
 {
