@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="icon" href="img/icon.png" />
-<link rel="stylesheet" href="css/style.css?ttd=4434334" />
+<link rel="stylesheet" href="css/style.css?ttd=4434" />
 
  <!-- BEGINN WALLET-INCLUDE-->
     
@@ -316,6 +316,7 @@ Please choose your species. Note: you cannot undo your decision!<br>Think carefu
 </div>
 
 
+
 </div> <!-- end gameboardmain -->
 
 
@@ -578,6 +579,9 @@ demolish
 repair
 </div>
 
+
+
+
 <div id='navbutton_infect' onclick='nav_selection(6);' class='navbutton_off' style='visibility:hidden;'>
 infect
 </div>
@@ -653,9 +657,38 @@ infect
 
 
 
-
+<div style='clear:both;'></div>
+<!-- <div name='loadmenu' id='loadmenu' style='border:1px solid #ff0000;width:65%;float-left;margin-left:20px;height:0px;visibility:hidden;overflow:hidden'> 
+ <div name='loadmenu' id='loadmenu' class='loadmenu' style='width:65%;float-left;margin-left:40px;height:200px;'>-->
+ <div   id='loadmenu' class='loadmenu' style='height:0px;visibility:hidden;overflow:hidden;'>
+<div style='height:20px;'></div>
 
  
+<div style='clear:both;'></div>
+
+
+<div id='navbutton_repair' onclick='transporter_loadunloadobjects(1);' class='navbutton_off' style='color:#ffffff;width:20%;'>
+load
+</div>
+
+<div id='navbutton_repair' onclick='transporter_loadunloadobjects(2);' class='navbutton_off' style='color:#ffffff;width:20%;'>
+unload
+</div>
+<div style='clear:both;'></div>
+<div id='loadedinfo' style='color:#ffffff;margin-left:20px;'>
+...
+</div>
+
+
+<div style='height:20px;'></div>
+
+</div> <!-- loadmenu -->
+<div style='clear:both;'></div>
+
+
+
+
+
 
 
 
@@ -663,6 +696,48 @@ infect
 
 
 <script>
+
+function transporter_loadunloadobjects( mode )
+{
+//alert("Load");
+
+
+var theactions = [];
+
+
+ 
+   
+    var action = {
+                 account: "sovspacegame",
+                 name: 'loadunload',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": globalselection['assetid'],
+                       "user": global_account,
+                       "mode": mode,
+                                              
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+ 
+ 
+} // loadobjects()
+
 
 var frontendversion = "0.1";
 
@@ -1896,6 +1971,66 @@ globalselection['owner']      = owner;
 
 
 
+
+
+
+    // ------
+if ( globalselection['atype'] == 12 ) // transporter
+{
+  document.getElementById("loadmenu").style.visibility = "visible"; 
+  document.getElementById("loadmenu").style.height = ""; 
+
+
+  var buffer = "";
+  // alfalf
+  
+  var config = globalselection['config']+"";    
+
+  var configarray = split(config,";");
+  
+  size = configarray.length;
+  //buffer += "+++["+config+" s:"+size+"]+++ ";
+  
+  
+  var i3 = 0;
+  for (var i2=0; i2<size; i2++)
+      {
+      rawvalue = configarray[i3];i3++;
+      //buffer += "("+rawvalue+")";
+      
+      if ( rawvalue == 'load1' || rawvalue == 'load2' || rawvalue == 'load3' || rawvalue == 'load4' )
+         {
+         rawvalue2 = configarray[i3];i3++;
+         
+         localvalue = split(rawvalue2,"-");
+         
+         if (localvalue.length > 0)
+            {
+            nft = "nft_"+localvalue[1]+"_"+localvalue[2];
+            img = "<img src='img/"+nft+".png' class='imgicon' style=''> ";
+            buffer += img;
+            }
+         
+         
+         } // if load...
+      
+   
+      } // for
+      
+ 
+  document.getElementById("loadedinfo").innerHTML = buffer; 
+  
+  
+} // if 12
+else
+{
+  document.getElementById("loadmenu").style.visibility = "hidden"; 
+  document.getElementById("loadmenu").style.height = "0px"; 
+} // if 12
+
+//    
+
+
 // ------
 if ( globalselection['atype'] == 9 ) // tower
 {
@@ -2203,7 +2338,7 @@ if ( canclaim == 2)
 // <div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction'  >Selfdestruction</div>
 
 
-  // alfalf
+  
 // Enable infect-button 
 var enableinfect = 0;
 
@@ -2274,32 +2409,37 @@ console.log(globalselection);
        
        
        } // if
+    
+    
+    
+    
     }
     
     
-    
-    
-function split(sentence,separator){
-  var arrayPosition = 0;
-  var oneWord = "";
-  var newSentence = sentence + ";";
-  var split = new Array();
-  for(var j = 0; j < newSentence.length; j++){
-	if(newSentence[j] === separator){
-		split.push(oneWord);
-		arrayPosition++;
-		oneWord = "";
-	}else{
-		if(!isNaN(newSentence[j])){
-			//don't add to the string
-		}else{
-			oneWord += newSentence[j];
-		}
-	}
-  }
-  return split;
-}    
-    
+     
+function split( sentence, separator )
+{
+var ret = new Array();
+
+l = sentence.length;
+
+var word = "";
+for (i=0; i<l; i++)
+    {
+    if (sentence[i] != separator)
+       {
+       word += sentence[i];
+       } else
+         {
+         ret.push( word );
+         word = "";         
+         }
+    } // for
+
+if (word.length > 0) ret.push( word );
+
+return(ret);
+} // split2    
     
  
 var global_tslastclaim = 0; 
@@ -3508,7 +3648,9 @@ for (var i=0; i<size; i++)
        atype == 7 ||
        atype == 8 ||
        atype == 9 ||
-       atype == 10 
+       atype == 10 || 
+       atype == 11 || 
+       atype == 12 
        )
        {
        if (race == 1) color = "#ffffff";
@@ -3781,7 +3923,7 @@ console.log("y: " + y);
 
 tilearray[x][y]['attack']   = decoded_data['attack'];
 tilearray[x][y]['atype']    = decoded_data['atype'];
-    tilearray[x][y]['config']    = decoded_data['config'];
+   // tilearray[x][y]['config']    = decoded_data['config'];
     tilearray[x][y]['eos']    = decoded_data['eos'];
     tilearray[x][y]['name']    =decoded_data['name'];
   
@@ -5037,7 +5179,7 @@ for (var i=0; i<size; i++)
 
     var blockedview = 0;
     
-  //  if (the_atype == 11 ) blockedview = 1;
+    if (the_atype == 11 ) blockedview = 1;
   //  if (the_atype == 12 ) blockedview = 1;
    
     
