@@ -2085,7 +2085,7 @@ document.getElementById(theid3).setAttribute('opacity', 0.3);
 
 //document.getElementById("mydebug").innerHTML = theid + " x:" + tank_x + " y:" + tank_y;
 
-} )
+} ) // move
 
 
 
@@ -2193,12 +2193,7 @@ console.log("---");
 console.log("-theid -- ",theid);
 console.log("-thex -- ",thex);
 console.log("-they -- ",they);
-/*
-var theid2 = 'tileb'+(theid-1);
-
-document.getElementById(theid2).setAttribute('fill', '#ff0000');
-document.getElementById(theid2).setAttribute('opacity', 0.3);
-*/
+ 
 
 
 
@@ -2254,6 +2249,70 @@ document.getElementById(theid3).setAttribute('opacity', 0.3);
 
 
 } // if ( globalselection['atype'] == 9 ) - tower
+
+
+
+
+
+
+
+// ------
+if ( 
+   globalselection['atype'] == 5 || // bulldozer
+   globalselection['atype'] == 10 ||  // service-unit
+   globalselection['atype'] == 11 ||  // tank
+   globalselection['atype'] == 12   // transporter
+   ) 
+{
+let coordinates = [ 0,-1, 1,0, 0,1, -1,0 ];
+
+
+                        
+size = coordinates.length * 0.5;
+console.log(" SIZE: ",size," ");
+
+i2 = 0;
+for (var i=0; i<size; i++)
+    {
+    thex2 = thex + coordinates[i2]; i2++;
+    they2 = they + coordinates[i2]; i2++;
+    
+    console.log(" thex2:",thex2, "  they2:",they2);
+    
+    // search
+    var size2 = mappingarray.length;
+    var FOUND = 0;
+    var found_index = -1;
+    for (var j=0; j<size2; j++)
+        {
+        //var thetile = "tile" + i;
+    
+        x = mappingarray[j][0];
+        y = mappingarray[j][1];  
+        if (x == thex2 && y == they2) 
+           {
+           FOUND = 1;
+           found_index = j;
+           j = size2;
+           }
+        } // for j...
+    
+    if (FOUND)
+       {
+//       var thetile2 = "tile" + found_index;
+       var theid3 = 'tileb'+(found_index);
+
+document.getElementById(theid3).setAttribute('fill', '#00ff00');
+document.getElementById(theid3).setAttribute('opacity', 0.3);
+       } // if (FOUND)
+    
+    } // for i...
+
+
+} // if ( globalselection['atype'] == 9 ) - bulldozer
+
+
+
 
 
 // Tank attack
