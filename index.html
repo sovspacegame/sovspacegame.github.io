@@ -1858,7 +1858,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1g</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1h</div>
 
 <br>
 
@@ -6167,6 +6167,11 @@ if ( (updatecnt % 20) == 0 )
    getbalance_sov();
    getbalance_svx();
    getuserinfo();
+   }
+
+if ( (updatecnt % 60*5) == 0 )
+   {   
+   load_my_assets();
    }
 
   
