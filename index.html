@@ -555,7 +555,7 @@ Please choose your species. Note: you cannot undo your decision!<br>Think carefu
 scroll
 </div>
 
-<div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off'>
+<div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off_inactive'>
 move
 </div>
 <div style='clear:both;'></div>
@@ -566,16 +566,16 @@ move
 
 
 
-<div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off'>
+<div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off_inactive'>
 attack
 </div>
 
-<div id='navbutton_demolish' onclick='nav_selection(4);' class='navbutton_off'>
+<div id='navbutton_demolish' onclick='nav_selection(4);' class='navbutton_off_inactive'>
 demolish
 </div>
 <div style='clear:both;'></div>
 
-<div id='navbutton_repair' onclick='nav_selection(5);' class='navbutton_off'>
+<div id='navbutton_repair' onclick='nav_selection(5);' class='navbutton_off_inactive'>
 repair
 </div>
 
@@ -2611,25 +2611,7 @@ if (enableinfect)
      nav_selection(1);
      }
 
-/*
 
-   
-   
-if ( 
-     //globalselection['owner'] == global_account &&
-     globalselection['atype'] == 8 &&
-     //globalselection['race'] == 2
-   )
-   {
-   document.getElementById("navbutton_infect").style.visibility = "visible"; 
-   } else
-     {
-     document.getElementById("navbutton_infect").style.visibility = "hidden"; 
-     nav_selection(1);
-     }
-
-*/
-   
    
    
 updatepanel();   
@@ -2645,7 +2627,7 @@ console.log(globalselection);
     
     
     
-    }
+} // click
     
     
     
@@ -5276,10 +5258,67 @@ if (mode == 1)
    document.getElementById('navsvg_text').innerHTML = "scroll";
    
    document.getElementById('navbutton_scroll').className = "navbutton_on";
-   document.getElementById('navbutton_move').className = "navbutton_off";
-   document.getElementById('navbutton_attack').className = "navbutton_off";
-   document.getElementById('navbutton_demolish').className = "navbutton_off";
-   document.getElementById('navbutton_repair').className = "navbutton_off";      
+   
+   // bulldozer=5, service-unit=10, tank=11, transporter=12
+   if (
+      globalselection['atype'] == 5 || // bulldozer
+      globalselection['atype'] == 10 ||
+      globalselection['atype'] == 11 ||
+      globalselection['atype'] == 12 
+      )
+      {
+      document.getElementById('navbutton_move').className = "navbutton_off";
+      } else
+        {
+        document.getElementById('navbutton_move').className = "navbutton_off_inactive";
+        }
+   
+
+ 
+   // bulldozer=5, service-unit=10, tank=11, transporter=12
+   if (       
+      globalselection['atype'] == 5 ||         
+      globalselection['atype'] == 11
+      )
+      {
+        document.getElementById('navbutton_attack').className = "navbutton_off";  
+      } else
+        {
+        document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
+        }
+           
+ 
+   
+   // buildings
+   if (       
+      globalselection['atype'] == 1 || // lander        
+      globalselection['atype'] == 2 || // residence
+      globalselection['atype'] == 3 || // agri
+      globalselection['atype'] == 4 || // factory
+      globalselection['atype'] == 7 || // wall
+      globalselection['atype'] == 8 || // collector
+      globalselection['atype'] == 9    // tower  
+      
+      )
+      {
+        document.getElementById('navbutton_demolish').className = "navbutton_off";  
+      } else
+        {
+        document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
+        }
+         
+   
+   // bulldozer=5, service-unit=10, tank=11, transporter=12
+   if (       
+      globalselection['atype'] == 10         
+      )
+      {
+        document.getElementById('navbutton_repair').className = "navbutton_off";  
+      } else
+        {
+        document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
+        }
+            
    document.getElementById('navbutton_infect').className = "navbutton_off";   
    
    
