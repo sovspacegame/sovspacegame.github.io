@@ -474,6 +474,35 @@ color:#ffffff;
 }
 
 
+/*
+navbutton_off_inactive
+*/
+
+.navbutton_off_inactive
+{
+background:#888888;
+color:#cccccc;
+border-left:2px solid #aaaaaa;
+border-top:2px solid #aaaaaa;
+border-right:2px solid #555555;
+border-bottom:2px solid #555555;
+
+float:left;
+width:40%;
+height:20px;
+padding:5px;
+margin:2%;
+
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+
+text-align:center;
+cursor:pointer;
+}  
+
+
+
 .nft_cell
 {
 border:1px solid #666666;
