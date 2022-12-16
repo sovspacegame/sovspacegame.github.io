@@ -762,7 +762,7 @@ if (nav_mode == 2)
    } else
 if (nav_mode == 3)  
    {
-   attackobject(2);  
+   attackobject(2,"","");  
    } else
 if (nav_mode == 4)  
    {
@@ -803,7 +803,7 @@ if (nav_mode == 2)
    }  else
 if (nav_mode == 3)  
    {
-   attackobject(3);  
+   attackobject(3,"","");  
    }  else
 if (nav_mode == 4)  
    {
@@ -841,7 +841,7 @@ if (nav_mode == 2)
    }  else
 if (nav_mode == 3)  
    {
-   attackobject(4);  
+   attackobject(4,"","");  
    }  else
 if (nav_mode == 4)  
    {
@@ -880,7 +880,7 @@ if (nav_mode == 2)
    }  else
 if (nav_mode == 3)  
    {
-   attackobject(1);  
+   attackobject(1,"","");  
    }  else
 if (nav_mode == 4)  
    {
@@ -1264,7 +1264,9 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 </script>
 
 
-
+<!--
+<div id='mydebug'>...</div>
+-->
  
 <div style='clear:both;'></div>
 
@@ -1832,7 +1834,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1f</div>
+<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1g</div>
 
 <br>
 
@@ -1911,17 +1913,13 @@ globalselection['y'] = "";
 document.getElementById('scrollcenter').style.visibility = "hidden";
 
 
-/*
-...
-*/
-
-
-
-
+tankmode  = 0; 
+lastsvgid = -1;
 } // resettiles
  
 
-
+var tankmode = 0;
+var lastsvgid = -1;
 
 var a = document.getElementById("mysvg");
  
@@ -1936,11 +1934,144 @@ for (var i=0; i<size; i++)
        console.log("+++ i- ",  a.childNodes[i].id );
        
         
-        
+
+var tank_x       = -1;
+var tank_y       = -1;
+var tank_assetid = 0;
+
+//
+// move
+//        
+document.getElementById(a.childNodes[i].id).addEventListener('mouseover', function(e) {
+
+
+if (tankmode == 1)
+{        
+var theid = e.srcElement.id;        
+
+
+
+//var theid = e.srcElement.id;
+theid2 = theid.replace('tileb', '')*1;
+
+thex_mouse = mappingarray[theid2][0]  ;
+they_mouse = mappingarray[theid2][1] ;
+
+//lastsvgid
+thex = mappingarray[lastsvgid][0]  ;
+they = mappingarray[lastsvgid][1] ;
+
+// var theid3 = 'tileb'+(found_index);
+
+/*
+document.getElementById(theid).setAttribute('fill', '#00ffff');
+document.getElementById(theid).setAttribute('opacity', 0.3);
+*/
+
+// ---
+
+let coordinates = [ -1,-3, 0,-3, 1,-3, 
+                          -2,-2, -1,-2, 0,-2, 1,-2, 2,-2, 
+                          -3,-1, -2,-1, -1,-1, 0,-1, 1,-1, 2,-1, 3,-1,
+                          -3,0, -2,0, -1,0,   1,0, 2,0, 3,0,
+                          -3,1, -2,1, -1,1, 0,1, 1,1, 2,1, 3,1,
+                          -2,2, -1,2, 0,2, 1,2, 2,2,
+                          -1,3, 0,3, 1,3 ];
+
+
+ 
+size = coordinates.length * 0.5;
+console.log(" --- SIZE: ",size," ");
+
+tank_x = -1;
+tank_y = -1;
+
+i2 = 0;
+for (var i=0; i<size; i++)
+    {
+    thex2 = thex + coordinates[i2]; i2++;
+    they2 = they + coordinates[i2]; i2++;
+    
+    console.log(" thex2:",thex2, "  they2:",they2);
+    
+    // search
+    var size2 = mappingarray.length;
+    var FOUND         = 0;
+    var FOUND_GENERAL = 0;    
+    var found_index = -1;
+    var found_index2 = -1;
+    console.log("size2 ",size2);
+    for (var j=0; j<size2; j++)
+        {
+        //var thetile = "tile" + i;
+    
+        x = mappingarray[j][0];
+        y = mappingarray[j][1];  
+        if (x == thex2 && y == they2
+            && x == thex_mouse && y == they_mouse
+           ) 
+           {
+           FOUND = 1;
+           found_index = j;
+           j = size2;
+           tank_x = x;
+           tank_y = y;
+           }
+           
+        if (x == thex2 && y == they2           
+           ) 
+           {
+           FOUND_GENERAL = 1;
+           found_index2 = j; 
+           }
+           
+        } // for j...
+    
+    
+    if (FOUND == 1 )
+       {
+//       var thetile2 = "tile" + found_index;
+       var theid3 = 'tileb'+(found_index);
+ console.log(" --- theid3:",theid3 );
+document.getElementById(theid3).setAttribute('fill', '#ff0000');
+document.getElementById(theid3).setAttribute('opacity', 0.5);
+
+       } // if (FOUND)
+    
+     
+    if (!FOUND && FOUND_GENERAL)
+       {
+//       var thetile2 = "tile" + found_index;
+       var theid3 = 'tileb'+(found_index2);
+ console.log(" --- theid3:",theid3 );
+document.getElementById(theid3).setAttribute('fill', '#ff00ff');
+document.getElementById(theid3).setAttribute('opacity', 0.3);
+
+       } // if (FOUND)
+      
+      
+    } // for i...
+    
+
+// ---
+
+} // if (tankmode == 1)
+ 
+
+
+//document.getElementById("mydebug").innerHTML = theid + " x:" + tank_x + " y:" + tank_y;
+
+} )
+
+
+
+//
+// click
+//        
 document.getElementById(a.childNodes[i].id).addEventListener('click', function(e) {
 //console.log(e);
 
-
+ 
 
 resettiles();
 
@@ -1951,7 +2082,7 @@ thex = mappingarray[theid][0]  ;
 they = mappingarray[theid][1] ;
 
 
-
+lastsvgid                  = theid;
 coordinatei                = tilearray[thex][they].tileid;
 owner                      = tilearray[thex][they].owner;
 thename                    = tilearray[thex][they].name;
@@ -1982,7 +2113,7 @@ if ( globalselection['atype'] == 12 ) // transporter
 
 
   var buffer = "";
-  // alfalf
+   
   
   var config = globalselection['config']+"";    
 
@@ -2099,6 +2230,23 @@ document.getElementById(theid3).setAttribute('opacity', 0.3);
 
 
 } // if ( globalselection['atype'] == 9 ) - tower
+
+
+// Tank attack
+if ( tank_x != -1 && tank_y != -1)
+   {
+   //alert(" Shoot  tank_assetid:"+tank_assetid + " "  + globalselection['assetid']);
+   tank_x = -1;
+   tank_y = -1;   
+   // alfalf
+   // attackobject( direction, tank_assetid, target )
+   attackobject( "", tank_assetid, globalselection['assetid'] )
+
+   } // tank-attack
+
+
+
+
 
 /*
 
@@ -2414,6 +2562,92 @@ console.log(globalselection);
     
     
     }
+    
+    
+    
+function settanktarget()
+{
+//alert("Set target");
+
+//theid = globalselection['coordinate'];
+theid = lastsvgid;
+
+thex = mappingarray[theid][0]  ;
+they = mappingarray[theid][1] ;
+ 
+//they = parseInt ( globalselection['coordinate'] / width );
+//thex = globalselection['coordinate'] - (they*width);
+ 
+ 
+// ------
+if ( globalselection['atype'] == 11 ) // tank
+{
+console.log("---");
+console.log("-theid -- ",theid);
+console.log("-thex -- ",thex);
+console.log("-they -- ",they);
+ 
+
+
+let coordinates = [ -1,-3, 0,-3, 1,-3, 
+                          -2,-2, -1,-2, 0,-2, 1,-2, 2,-2, 
+                          -3,-1, -2,-1, -1,-1, 0,-1, 1,-1, 2,-1, 3,-1,
+                          -3,0, -2,0, -1,0,   1,0, 2,0, 3,0,
+                          -3,1, -2,1, -1,1, 0,1, 1,1, 2,1, 3,1,
+                          -2,2, -1,2, 0,2, 1,2, 2,2,
+                          -1,3, 0,3, 1,3 ];
+
+ 
+                        
+size = coordinates.length * 0.5;
+console.log(" --- SIZE: ",size," ");
+
+i2 = 0;
+for (var i=0; i<size; i++)
+    {
+    thex2 = thex + coordinates[i2]; i2++;
+    they2 = they + coordinates[i2]; i2++;
+    
+    console.log(" thex2:",thex2, "  they2:",they2);
+    
+    // search
+    var size2 = mappingarray.length;
+    var FOUND = 0;
+    var found_index = -1;
+    console.log("size2 ",size2);
+    for (var j=0; j<size2; j++)
+        {
+        //var thetile = "tile" + i;
+    
+        x = mappingarray[j][0];
+        y = mappingarray[j][1];  
+        if (x == thex2 && y == they2) 
+           {
+           FOUND = 1;
+           found_index = j;
+           j = size2;
+           }
+        } // for j...
+    
+    if (FOUND)
+       {
+//       var thetile2 = "tile" + found_index;
+       var theid3 = 'tileb'+(found_index);
+ console.log(" --- theid3:",theid3 );
+document.getElementById(theid3).setAttribute('fill', '#ff00ff');
+document.getElementById(theid3).setAttribute('opacity', 0.3);
+       } // if (FOUND)
+    
+    } // for i...
+
+tankmode = 1;
+tank_assetid = globalselection['assetid'];
+
+} // if ( globalselection['atype'] == 11 ) - tank
+
+
+
+} // settanktarget    
     
     
      
@@ -4765,21 +4999,32 @@ if (1)
 } // demolishobject()
 
 
-function attackobject( direction )
+function attackobject( direction, tank_assetid, target )
 {
 
-
+//  attackobject( "", tank_assetid, globalselection['assetid'] )
 
 var theactions = [];
 
 var dir = "";
-if (direction == 1) dir = "n";
-if (direction == 2) dir = "e";
-if (direction == 3) dir = "s";
-if (direction == 4) dir = "w";
+
+var memo = "";
+
+if (tank_assetid != "")
+{
+//  memo = "attack;gametester22;2199023338154;s"
+memo = "attack;"+global_account+";"+tank_assetid+";"+target;
+
+} else
+  {
+  if (direction == 1) dir = "n";
+  if (direction == 2) dir = "e";
+  if (direction == 3) dir = "s";
+  if (direction == 4) dir = "w";
+  memo = "attack;"+global_account+";"+globalselection['assetid']+";"+dir;
+  }
 
  
-memo = "attack;"+global_account+";"+globalselection['assetid']+";"+dir;
     
 var quantitysov = globaldata['a_sov'] / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
@@ -5021,6 +5266,13 @@ if (mode == 3)
    document.getElementById('movesteps_div').   style.height = "0px";     
 
    document.getElementById('scrollcenter').style.visibility = "hidden";
+   
+   if (globalselection['atype'] == 11)
+      {
+      settanktarget();
+      } // if atype == 1
+      
+   
    }
    
 if (mode == 4)
@@ -5179,7 +5431,7 @@ for (var i=0; i<size; i++)
 
     var blockedview = 0;
     
-    if (the_atype == 11 ) blockedview = 1;
+  //  if (the_atype == 11 ) blockedview = 1;
   //  if (the_atype == 12 ) blockedview = 1;
    
     
