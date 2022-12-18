@@ -3905,6 +3905,10 @@ for (var i=0; i<size; i++)
     if ( atype == 13 && race == 2)
        buffer = "<img src='img/wall2_b.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
        
+       
+       
+    if (asset_id == 2199025130637  )
+       buffer = "<img src='img/monument_1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
            
     checkbox_shield = document.getElementById('checkbox_shield').checked;
     checkbox_owner  = document.getElementById('checkbox_owner').checked;
@@ -3956,7 +3960,10 @@ for (var i=0; i<size; i++)
        atype == 9 ||
        atype == 10 || 
        atype == 11 || 
-       atype == 12 
+       atype == 12 ||
+       atype == 13 ||
+       atype == 14 
+       
        )
        {
        if (race == 1) color = "#ffffff";
@@ -4652,8 +4659,17 @@ for (var i=0; i<size; i++)
             content += "<div id='nft_"+asset_id+"' onclick='selectnft("+asset_id+")' name='mynft' class='nft_cell' style=''>"; 
 
           
-            var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
-          
+ 
+
+            var imgbuffer = "";
+            if (the_atype == 14 && asset_id == 2199025130637) 
+               {
+               imgbuffer = "<img src='img/nft_monument_1.png' style='width:100px;margin-top:10px;'>";
+               }
+               else
+                  {            
+                  imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+                  }
           
            
                 
@@ -4729,9 +4745,16 @@ for (var i=0; i<size; i++)
           
             var the_race        = json_array['data']['data']['race'];
             var the_atype       = json_array['data']['data']['atype'];
-          
-            var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
-          
+            var imgbuffer       = "";
+           
+            if (the_atype == 14 && asset_id == 2199025130637) 
+               {
+               imgbuffer = "<img src='img/nft_monument_1.png' style='width:100px;margin-top:10px;'>";
+               }
+               else
+                  {            
+                  imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+                  }
            
             content +=   imgbuffer + "<br>";
                
