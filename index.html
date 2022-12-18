@@ -2410,6 +2410,14 @@ if (
    globalselection['atype'] != 11 
    ) render_attack = '-';
 
+if (
+   globalselection['atype'] == 14 
+   )
+   {
+   render_attack = '-';
+   render_shield = '&infin;';
+   }
+
 render_nickname = nickname;
 if (render_nickname == -1) render_nickname = '';
 
@@ -2438,6 +2446,8 @@ document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div st
 document.getElementById("shield").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Shield</div> <div style='width:60%;float:left'>"+ render_shield+ "</div> </div>     <div style='clear:both'></div>"; 
 
 attack = globalselection['attack'];
+
+
 document.getElementById("attack").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Attack</div> <div style='width:60%;float:left'>"+render_attack + "</div> </div>     <div style='clear:both'></div>"; 
 
 
