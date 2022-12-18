@@ -279,6 +279,27 @@ background:#5555ff;
 }  
 
 
+.powerupbutton
+{
+background:#ff9911;
+/*border:5px solid #ffffff;*/
+color:#ffffff;
+padding:5px;
+margin-top:10px;
+cursor:pointer;
+text-align:center;
+
+ -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}  
+
+.powerupbutton:hover
+{
+/*color:black;*/
+background:#ffbb44;
+}  
+
 .imgicon
 {
 width:80px;
