@@ -1645,30 +1645,7 @@ var theactions = [];
 
 eosforram = Number(eosforram).toFixed(4) + " EOS";   
 
-    /*
-    peos = pricedata[id]['peos'] / 10000;    
-   
-
-   
-    var action = {
-                 account: "sovmintofeos",
-                 name: 'transfer',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "from": global_account,
-                       "to": "sovspacegame",
-                       "quantity": eostoburn,
-                       
-                       ---
-    eosio buyram
-    payer sovtrader111
-    quant 0.1000 EOS
-    receiver sovtrader111
-    */
-   
+    
     var action = {
                  account: "eosio",
                  name: 'buyram',
@@ -1715,6 +1692,83 @@ if (1)
    
 } // donateram
 
+
+ 
+ 
+function powerup()
+{
+//alert("Donate");
+
+eosforpower = document.getElementById("eosforpower").value;
+ 
+var theactions = [];
+
+      
+
+eosforpower = Number(eosforpower).toFixed(4) + " EOS";   
+
+    
+   
+var memo = global_account+"";
+ 
+   
+  
+//var quantityeos = globaldata['a_sov'] / 10000;
+//quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+   
+
+ 
+   
+    var action = {
+                 account: "eosio.token",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "powerupcalc1",
+                       "quantity": eosforpower,
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+
+
+ 
+    theactions.push(action);
+   
+
+
+    var message = "RAM donation from " + global_account + " - " + eosforram;
+    var action = {
+                 account: "sovspacegame",
+                 name: 'logmsg',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "message": message
+                       }
+                 };
+
+ 
+    theactions.push(action);
+   
+ 
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+} // powerup
 
 
 </script>
@@ -1849,9 +1903,18 @@ NFT-API (atomicassets):
 <div style='width:100%;border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:10px;'></div>
 <div style='margin-left:20px'>
 
-<br>
-<input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
-<div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
+ <div style='border:none;width:300px;float:left;'>
+  <input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
+  <div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
+ </div>
+
+ <div style='border:none;width:300px;float:left;'>
+  <input id='eosforpower' type='text' style='width:50px;' value='0.01'> EOS
+  <div id='' onclick='powerup()' class='donationbutton' style='width:200px;' >Powerup</div>
+ </div>
+ 
+ <div style='clear:both'></div>
+
 
 </div>
 <div style='width:100%;border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:10px;'></div>
