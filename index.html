@@ -160,7 +160,12 @@
 Please choose your species. Note: you cannot undo your decision!<br>Think carefully about which species suits you.<br>
 </strong>
 <br>
-<span id='' class='choosebutton race_humans' onclick='inituser(1)'>Play Humans</span>&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(2)'>Play Greys</span> <br>
+<span id='' class='choosebutton race_humans' onclick='inituser(1)'>Play Humans</span>&nbsp;&nbsp;&nbsp;
+or&nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(2)'>Play Greys</span> 
+or&nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(4)'>Play Sirians</span> 
+<br>
+
+<br>
 <br> 
 
 </div>
@@ -1601,6 +1606,7 @@ var src = "";
 
 if (race == 1) src = "audio/humanloop1.0.mp3"; 
 if (race == 2) src = "audio/greysoundloop1.1.mp3"; 
+if (race == 4) src = "audio/greysoundloop1.1.mp3"; 
 
 myaudio.volume = 20/100;
 myaudio.currentTime = 0;
@@ -3485,6 +3491,18 @@ if (userdata['race'] == 2)
 
    setsound(2);   
    } else
+   
+
+if (userdata['race'] == 4)
+   {
+   document.getElementById('userrace').innerHTML = "[Sirian]"   
+ 
+   document.getElementById('chooserace').style.height = "0px";   
+   document.getElementById('chooserace').style.visibility = "hidden";     
+
+   setsound(2);   
+   } else
+   
      {
      console.log("no RACE!!!!!");
      document.getElementById('chooserace').style.height = "130px";   
@@ -3774,7 +3792,9 @@ for (var i=0; i<size; i++)
 
     // Object
     var theobject = "obj" + i;
-    
+  
+  
+    // ---    
     buffer = "";   
     if ( atype == 1 && race == 1)
        {
@@ -3885,6 +3905,7 @@ for (var i=0; i<size; i++)
 
 
 
+    // ---
     // Greys
     if ( atype == 1 && race == 2)
        buffer = "<img src='img/lander2.png?s=4442' style='position:absolute;border:none;width:100%;'>";
@@ -3979,7 +4000,108 @@ for (var i=0; i<size; i++)
     if ( atype == 13 && race == 2)
        buffer = "<img src='img/wall2_b.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
        
+    // --- end greys    
        
+   
+
+    // ---
+    // Sirians
+    if ( atype == 1 && race == 4)
+       buffer = "<img src='img/lander4.png?s=4442' style='position:absolute;border:none;width:100%;'>";
+ 
+    if ( atype == 2 && race == 4)
+       buffer = "<img src='img/resident_d.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 3 && race == 4)
+       buffer = "<img src='img/agri_d.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+    if ( atype == 4 && race == 4)
+       buffer = "<img src='img/factory_d.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+ 
+   
+    if ( atype == 5 && race == 4)
+       {
+       if ( ori == 1)
+          buffer += "<img src='img/rover_d_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2)
+          buffer += "<img src='img/rover_d_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3)
+          buffer += "<img src='img/rover_d_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4)
+          buffer += "<img src='img/rover_d_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } // 
+       
+       
+       
+   
+
+    if ( atype == 7 && race == 4)
+       {
+       buffer = "<img src='img/wall_d.png?s=4442' style='position:absolute;border:none;width:100%;'>";  
+       }
+
+    if ( atype == 8 && race == 4)
+       buffer = "<img src='img/collector_d.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+ 
+    if ( atype == 9 && race == 4)
+       buffer = "<img src='img/tower_d.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+  
+   if ( atype == 10 && race == 4)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/service_d_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/service_d_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/service_d_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/service_d_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //    
+    
+
+   if ( atype == 11 && race == 4)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/tank_d_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/tank_d_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/tank_d_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/tank_d_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //
+       
+   if ( atype == 12 && race == 4)
+       {
+       if ( ori == 1 )
+          buffer += "<img src='img/transporter_d_001.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 2 )
+          buffer += "<img src='img/transporter_d_002.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 3 )
+          buffer += "<img src='img/transporter_d_003.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+
+       if ( ori == 4 )
+          buffer += "<img src='img/transporter_d_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       } //   
+       
+    if ( atype == 13 && race == 4)
+       buffer = "<img src='img/wall2_d.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+              
+    // --- end sirans      
+    
+    
        
     if (asset_id == 2199025130637  )
        buffer = "<img src='img/monument_1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
@@ -5639,8 +5761,9 @@ if (value.rows.length == 0) return;
 
 var size = value.rows.length;
 
-var buffer_humans = "";
-var buffer_greys  = "";
+var buffer_humans   = "";
+var buffer_greys    = "";
+var buffer_sirians  = "";
 
 for (var i=0; i<size; i++)
     {
@@ -5690,11 +5813,25 @@ for (var i=0; i<size; i++)
        
        buffer_greys += "</div>";
        }
+
+    if (the_race == 4)
+       {
+       mintlink = "mintasset("+the_id+")";
+       
+       buffer_sirians += "<div class='nft_cell' style='height:220px;'>";
+       buffer_sirians += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_sirians += imgbuffer + "<br>";
+       buffer_sirians += the_sov+ " SOV<br>";
+       buffer_sirians += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
+       
+       buffer_sirians += "</div>";
+       }
+
     } // if (the_atype != 8)
        
     } // for i...
     
-document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + "";    
+document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  + "<div style='clear:both'></div><br><h2>Siran-NFT's</h2>" + buffer_sirians + "";    
                              
 } // callback_render_balance1
 
