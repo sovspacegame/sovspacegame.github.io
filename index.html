@@ -5919,8 +5919,9 @@ if (value.rows.length == 0) return;
 
 var size = value.rows.length;
 
-var buffer_humans = "";
-var buffer_greys  = "";
+var buffer_humans  = "";
+var buffer_greys   = "";
+var buffer_sirians = "";
 
 for (var i=0; i<size; i++)
     {
@@ -5973,9 +5974,29 @@ for (var i=0; i<size; i++)
        buffer_greys += "</div>";
        }
        
+
+    if (the_race == 4)
+       {
+
+       setpricelink = "setassetprice("+the_id+")";
+       
+       buffer_sirians += "<div class='nft_cell' style='height:270px;'>";
+       buffer_sirians += "<div style='height:40px'>"+the_name + "</div>";
+       buffer_sirians += imgbuffer + "<br>";
+       buffer_sirians += the_sov_raw+ " SOV<br>";
+       buffer_sirians += "("+the_sov+ " SOV)<br>";
+      
+       elm = "admin_setsov_" + the_id;
+       buffer_sirians += "<input id='"+elm+"' type='text' > <br>";       
+       buffer_sirians += "<span class='mintbutton' onclick='"+setpricelink+"'>Set Price</span>";
+       
+       buffer_sirians += "</div>";
+       }
+       
+              
     } // for i...
     
-document.getElementById("admin_mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + "";    
+document.getElementById("admin_mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  +   "<br><div style='clear:both'></div><br><h2>Siran-NFT's</h2>" + buffer_sirians + "";    
                              
 } // callback_render_balance1
 
