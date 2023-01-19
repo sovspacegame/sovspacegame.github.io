@@ -1968,7 +1968,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1l</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1m</div>
 
 <br>
 
@@ -4334,11 +4334,32 @@ for (var i=0; i<size; i++)
          
        
        buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;text-align:center;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
-       shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)";
+
+// alfalf
+
+       marketid = 1;
+       //
+       size2 = pricedata.length;
+       for (var i2=1; i2<=size2; i2++)
+           {           
+           if (pricedata[i2]['race'] !== undefined)
+              {
+              if ( pricedata[i2]['race'] == race && pricedata[i2]['atype'] == atype)
+                 {
+                 marketid = i2; 
+                 i2 = size2;
+                 } // if ...
+              } // != undefined
+           } // for...
+        // pricedata[id]['race'] 
+
+       var sov2 =  marketdata[marketid]; 
+//       shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)x";
+       shieldinfo = shield + "/" + shield_max + " (" +sov2+ " SOV)";
        buffer += "<div id='"+divid_shieldinfo+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:80%;z-index:300;visibility:"+value_shield+";'>" +shieldinfo+  " </div>" ;
 
        // bar
-       buffer += "<div style='width:100%;position:absolute;top:45%;border:none;;text-align:center;'>";       
+       buffer += "<div style='width:100%;position:absolute;top:40%;border:none;;text-align:center;'>";       
         buffer += "<div id='"+divid_shieldinfo_bar+"' class='tileinfo_nick noselect' style='color:"+color+";background:#ee0000;width:50%;margin-left:auto;margin-right:auto;font-weight:bold;font-size:12px;z-index:400;border:;height:10px;visibility:"+value_shield+";'>" ;
 
         percent = (shield / shield_max)*100;
@@ -5149,8 +5170,10 @@ for (var i=0; i<size; i++)
     console.log("id: "+id + " "+rows.rows[i].psov);
     
     pricedata[id] = new Object();
-    pricedata[id]['peos'] = rows.rows[i].peos;
-    pricedata[id]['psov'] = rows.rows[i].psov;
+    pricedata[id]['peos']  = rows.rows[i].peos;
+    pricedata[id]['psov']  = rows.rows[i].psov;
+    pricedata[id]['atype'] = rows.rows[i].atype;
+    pricedata[id]['race']  = rows.rows[i].race;
     } // for...   
    
 getdata(callback_getinventory, "atomicassets", global_account, "assets", "", "", "", 112 );
@@ -6054,7 +6077,7 @@ getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", 
 
 
 
-
+var marketdata = new Array();
 
 async function callback_loadmarkets( value )
 {
@@ -6097,7 +6120,7 @@ for (var i=0; i<size; i++)
       }
     
     
-// alfalf
+
     /*
        float powresult = pow( 2,  (float)( (circulation) / (float)epsilon )  )  ;
          //print(" powresult: ", powresult ," " );     
@@ -6106,12 +6129,20 @@ for (var i=0; i<size; i++)
          
          uint64_t   currentprice  = currentprice_f * 10000;
     */
+
+
+
+    
+    marketdata[the_id*1] = currentprice2;
+
     
     pricespan  = "pricespan_"+the_id;
     
     if ( document.getElementById(pricespan) )
        {
        document.getElementById(pricespan).innerHTML =  currentprice2 ;
+       // alfalf
+       
        }
     } // for i...
 
@@ -6127,6 +6158,7 @@ function toFixed2(num, fixed) {
 
 function loadmarkets()
 {
+marketdata = new Array();
 
 
 
@@ -6739,7 +6771,7 @@ if ( (updatecnt % 20) == 0 )
    }
 
 
-if ( (updatecnt % 25) == 0 )
+if ( (updatecnt % 21) == 0 )
    {
    loadmarkets();
    }
