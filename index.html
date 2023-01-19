@@ -1382,6 +1382,13 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 </div> <!-- page2content -->
 
 
+<br>
+<br>
+
+<!--
+<span onclick='callback_loadmarkets()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</span>
+<div style='clear:both;'></div>
+-->
 
 <div id='mintarea' style='margin-left:20px;'>
 ...
@@ -1961,7 +1968,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1k</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1l</div>
 
 <br>
 
@@ -2424,7 +2431,7 @@ if ( tank_x != -1 && tank_y != -1)
    //alert(" Shoot  tank_assetid:"+tank_assetid + " "  + globalselection['assetid']);
    tank_x = -1;
    tank_y = -1;   
-   // alfalf
+   
    // attackobject( direction, tank_assetid, target )
    attackobject( "", tank_assetid, globalselection['assetid'] )
 
@@ -4969,7 +4976,7 @@ for (var i=0; i<size; i++)
           var asset_id = rows.rows[i].asset_id;
     
       
-          console.log("--- url: " + url);
+          //console.log("--- url: " + url);
           var url = nft_node + asset_id;
           var jsonparam = JSON.stringify( {assetid: asset_id } ); 
           var mediajson = readurl_simple(url, jsonparam); 
@@ -5058,7 +5065,7 @@ for (var i=0; i<size; i++)
       
  
           var url = nft_node + asset_id;
-          console.log("--- url: " + url);
+//          console.log("--- url: " + url);
           var jsonparam = JSON.stringify( {assetid: asset_id } ); 
           var mediajson = readurl_simple(url, jsonparam); 
        
@@ -5198,11 +5205,15 @@ var theactions = [];
 memo = "mint;"+global_account+";"+id;
  
     
-psov = pricedata[id]['psov'] / 10000;    
-peos = pricedata[id]['peos'] / 10000;    
+//psov = pricedata[id]['psov'] / 10000;    
+//peos = pricedata[id]['peos'] / 10000;    
    
 
-eostoburn = Number(psov).toFixed(4) + " SOV";   
+pricespan  = "pricespan_"+id;
+pricevalue = document.getElementById( pricespan ).innerHTML * 1;
+
+ eostoburn = Number(pricevalue).toFixed(4) + " SOV";   
+ 
    
     var action = {
                  account: "sovmintofeos",
@@ -5275,6 +5286,7 @@ if (menu == 2)
 
    loadinventory();
    loadnftinfos();
+   loadmarkets();
    } 
 
 if (menu == 3)
@@ -5929,7 +5941,7 @@ function callback_loadnftinfos( value )
 {
 
 console.log("NFT-INFOS");
-console.log( value.rows );
+//console.log( value.rows );
 
 
 if (value.rows.length == 0) return;    
@@ -5949,8 +5961,9 @@ for (var i=0; i<size; i++)
     the_sov    =  value.rows[i].psov;
     the_ipfs   = value.rows[i].ipfs;
     the_atype  =  value.rows[i].atype;
-    the_sov    = the_sov / 10000;
+    //the_sov    = the_sov / 10000;
     
+    pricespan  = "pricespan_"+the_id;
     
     var imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
 
@@ -5970,7 +5983,7 @@ for (var i=0; i<size; i++)
        buffer_humans += "<div class='nft_cell' style='height:220px;'>";
        buffer_humans += "<div style='height:40px'>"+the_name + "</div>";
        buffer_humans += imgbuffer + "<br>";
-       buffer_humans += the_sov+ " SOV<br>";
+       buffer_humans += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
        buffer_humans += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
        
        buffer_humans += "</div>";
@@ -5984,7 +5997,8 @@ for (var i=0; i<size; i++)
        buffer_greys += "<div class='nft_cell' style='height:220px;'>";
        buffer_greys += "<div style='height:40px'>"+the_name + "</div>";
        buffer_greys += imgbuffer + "<br>";
-       buffer_greys += the_sov+ " SOV<br>";
+       buffer_greys += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
+
        buffer_greys += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
        
        buffer_greys += "</div>";
@@ -5997,7 +6011,8 @@ for (var i=0; i<size; i++)
        buffer_sirians += "<div class='nft_cell' style='height:220px;'>";
        buffer_sirians += "<div style='height:40px'>"+the_name + "</div>";
        buffer_sirians += imgbuffer + "<br>";
-       buffer_sirians += the_sov+ " SOV<br>";
+       buffer_sirians += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
+
        buffer_sirians += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
        
        buffer_sirians += "</div>";
@@ -6010,7 +6025,8 @@ for (var i=0; i<size; i++)
        buffer_reptos += "<div class='nft_cell' style='height:220px;'>";
        buffer_reptos += "<div style='height:40px'>"+the_name + "</div>";
        buffer_reptos += imgbuffer + "<br>";
-       buffer_reptos += the_sov+ " SOV<br>";
+       buffer_reptos += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
+
        buffer_reptos += "<span class='mintbutton' onclick='"+mintlink+"'>Mint new NFT</span>";
        
        buffer_reptos += "</div>";
@@ -6031,11 +6047,93 @@ document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buf
 function loadnftinfos()
 {
 
-getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 112 );
+getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 212 );
 
 } // loadnftinfos
  
 
+
+
+
+
+async function callback_loadmarkets( value )
+{
+
+console.log("MARKET-INFOS");
+console.log( value );
+
+if (value == undefined) return;
+if (value.rows.length == 0) return;    
+
+var size = value.rows.length;
+
+for (var i=0; i<size; i++)
+    {
+   // console.log("i: " + i+  " " + value.rows[i].id + " sp:"  + value.rows[i].startprice );
+     
+    the_id             = value.rows[i].id;
+    the_circulation    = value.rows[i].circulation;
+    the_startprice     = value.rows[i].startprice;
+    the_epsilon        = value.rows[i].epsilon;
+    
+    
+    currentprice2 = 0;
+    
+    if (the_epsilon > 0)
+    {
+    powresult = Math.pow( 2, (the_circulation / the_epsilon ) );
+    
+    var currentprice_f = the_startprice * powresult;
+    console.log("powresult: " + powresult + "  currentprice_f:"+currentprice_f  );
+         
+    currentprice2 = toFixed2(currentprice_f, 4);
+    } else
+      {
+      var currentprice_f = the_startprice * 1;
+      console.log("powresult: " + powresult + "  currentprice_f:"+currentprice_f  );
+         
+      currentprice2 = toFixed2(currentprice_f, 4);
+
+      }
+    
+    
+// alfalf
+    /*
+       float powresult = pow( 2,  (float)( (circulation) / (float)epsilon )  )  ;
+         //print(" powresult: ", powresult ," " );     
+       
+         float currentprice_f = (float)iterator_markets->startprice * (  powresult    );
+         
+         uint64_t   currentprice  = currentprice_f * 10000;
+    */
+    
+    pricespan  = "pricespan_"+the_id;
+    
+    if ( document.getElementById(pricespan) )
+       {
+       document.getElementById(pricespan).innerHTML =  currentprice2 ;
+       }
+    } // for i...
+
+} // callback_loadmarkets
+
+
+function toFixed2(num, fixed) {
+    var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+}
+
+
+
+function loadmarkets()
+{
+
+
+
+getdata(callback_loadmarkets, "sovspacegame", "sovspacegame", "markets", "", "", "", 212 );
+
+
+} // loadmarkets
 
 
 function updatemoveattackprices()
@@ -6639,6 +6737,13 @@ if ( (updatecnt % 20) == 0 )
    getbalance_svx();
    getuserinfo();
    }
+
+
+if ( (updatecnt % 25) == 0 )
+   {
+   loadmarkets();
+   }
+   
 
 if ( (updatecnt % 60*5) == 0 )
    {   
