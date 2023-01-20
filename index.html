@@ -1609,12 +1609,12 @@ if (oldrace == race) return;
 oldrace = race;
 
 var myaudio = document.getElementById("audiotag");
-
+console.log("RACE " + race)
 var src = "";
 
 if (race == 1) src = "audio/humanloop1.0.mp3"; 
 if (race == 2) src = "audio/greysoundloop1.1.mp3"; 
-if (race == 4) src = "audio/greysoundloop1.1.mp3"; 
+if (race == 4) src = "audio/sirians2mp3.mp3"; 
 if (race == 5) src = "audio/greysoundloop1.1.mp3"; 
 
 myaudio.volume = 20/100;
@@ -1638,7 +1638,8 @@ myaudio.currentTime = 0;
 //myaudio.remove();
 myaudio.src = src;
 
- myaudio.load(src); 
+
+myaudio.load(src); 
 
 
 myaudio.play();
@@ -3539,7 +3540,7 @@ if (userdata['race'] == 4)
    document.getElementById('chooserace').style.height = "0px";   
    document.getElementById('chooserace').style.visibility = "hidden";     
 
-   setsound(2);   
+   setsound(4);   
    } else
 
 
@@ -3550,7 +3551,7 @@ if (userdata['race'] == 5)
    document.getElementById('chooserace').style.height = "0px";   
    document.getElementById('chooserace').style.visibility = "hidden";     
 
-   setsound(2);   
+   setsound(5);   
    } else
 
    
