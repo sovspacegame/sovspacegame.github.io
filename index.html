@@ -1362,6 +1362,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
  
 <div>
+ <!-- mint page -->
  <span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'>Your NFT's (wallet):</span>
  <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update NFT Inventory &#8634;</span>
  <div style='clear:both;'></div>
@@ -1373,7 +1374,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <div style='text-align:center;'>
  
- <div id='div_inventory2' class='div_inventory' style='height:190px;'>
+ <div id='div_inventory2' class='div_inventory' style='height:250px;'>
   <div id='div_inventory_inner2' class='div_inventory_inner' style=''>  
   </div> <!-- div_inventory_inner -->
  </div> <!-- div_inventory -->
@@ -1381,6 +1382,9 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 </div> <!-- page2content -->
 
+<div class='hintbox'>
+<small>* Sell to the ingame-marketplace. Prices are depending from circulating supply and always similar to the mint costs (see prices below)</small>
+</div>
 
 <br>
 <br>
@@ -2012,7 +2016,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1m</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1n</div>
 
 <br>
 
@@ -4381,7 +4385,7 @@ for (var i=0; i<size; i++)
        
        buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;text-align:center;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
 
-// alfalf
+
 
        marketid = 1;
        //
@@ -5181,7 +5185,30 @@ for (var i=0; i<size; i++)
             content += "<small>"+ asset_link + "</small><br>";
           
          
+           content += "&nbsp;<br>";   
+           
+         thelink = "sellasset("+asset_id+")";
         
+
+   if (asset_id >= 2199025218704)
+
+           {
+           
+           if (the_atype == 6)
+              {
+              content += "[street]";
+              } else
+                 {
+           
+                 content += "<span class='mintbutton' onclick='"+thelink+"'>Sell NFT</span>"; 
+                 }
+           } else
+              {
+                  content += "[TEST-NFT]";
+               }
+
+           
+// alfalf        
             content += "</div>";   
             content += "</td>";       
             } // if (  collection_name == "xusogamedemo" )          
@@ -5314,6 +5341,52 @@ if (1)
    
    
 } // mintasset()
+
+
+ 
+function sellasset( asset_id )
+{
+ 
+var theactions = [];
+
+var memo = "sell";
+ 
+   
+    var action = {
+                 account: "atomicassets",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "asset_ids": [asset_id],
+                       "memo": memo,
+                        
+                      
+                       }
+                 };
+
+
+ 
+ 
+theactions.push(action);
+   
+
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // sellasset()
+
+
 
 
 function setmenu( menu )
@@ -6187,7 +6260,7 @@ for (var i=0; i<size; i++)
     if ( document.getElementById(pricespan) )
        {
        document.getElementById(pricespan).innerHTML =  currentprice2 ;
-       // alfalf
+       
        
        }
     } // for i...
