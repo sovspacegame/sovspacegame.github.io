@@ -1519,11 +1519,7 @@ As a ranged weapon, if a vehicle is destroyed, the SOV for SVX mining is burned 
 
 <h2>Service Unit</h2>
 <img src='img/nft_1_10.png' style='width:100px'>
-A service unit allows you to repair damaged buildings and vehicles. Human service-units can remove an <em>infection</em> from
-an infected collector. <br><br>
-Grey service units additionally have the ability to <em>infect</em>
-human collectors. The infector can also claim the SVX token from such collector. Infected collectors can also infect adjoining other
-collectors.
+A service unit allows you to repair damaged buildings and vehicles. 
 <br>
 <br>
 
@@ -1551,10 +1547,11 @@ spaces next to the transporter must be clear for both loading and unloading.
 
 
 <br>
+<!--
 <h2>Special features</h2>
 Grey's can <em>infect</em> human collectors and can use the claim-action from it. The SVX will be credited to
 the infector-account. Infected collectors can be repaired by an human service-unit.
-
+-->
 
 
 </div>
@@ -1804,24 +1801,7 @@ var memo = global_account+"";
  
     theactions.push(action);
    
-
-
-    var message = "RAM donation from " + global_account + " - " + eosforram;
-    var action = {
-                 account: "sovspacegame",
-                 name: 'logmsg',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "message": message
-                       }
-                 };
-
  
-    theactions.push(action);
-   
  
  
  
@@ -1949,6 +1929,10 @@ node for wallet:
   <option value="mainnet.eosamsterdam.net">mainnet.eosamsterdam.net</option>
   <option value="api.eosrio.io">api.eosrio.io</option>
   <option value="mainnet.genereos.io">mainnet.genereos.io</option>
+  
+  <option value="api.eosn.io">api.eosn.io</option>
+  
+
 </select> 
 </div>
 
@@ -2016,7 +2000,7 @@ NFT-API (atomicassets):
 
 <br>
  
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1n</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1m</div>
 
 <br>
 
@@ -2769,7 +2753,9 @@ if (configarray[0] == 'infected' &&
    }
 }   
    
-   
+  
+/*
+// infection has been disabled - sa.11.feb.2023   
 if (enableinfect)   
    {
    document.getElementById("navbutton_infect").style.visibility = "visible"; 
@@ -2778,7 +2764,7 @@ if (enableinfect)
      document.getElementById("navbutton_infect").style.visibility = "hidden"; 
      nav_selection(1);
      }
-
+*/
 
    
    
