@@ -5090,21 +5090,14 @@ for (var i=0; i<size; i++)
         
 
    if (asset_id >= 2199025218704)
-
            {
+                           
+           asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
            
-           if (the_atype == 6)
-              {
-              content += "[street]";
-              } else
-                 {
-         asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
-           
-            content += "<strong>"+ title + "</strong><br>";
-            content += "<small>"+ asset_link + "</small><br>";
-            content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place this NFT<br>on selected<br>area</div><br>";
-          
-                 }
+           content += "<strong>"+ title + "</strong><br>";
+           content += "<small>"+ asset_link + "</small><br>";
+           content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place this NFT<br>on selected<br>area</div><br>";
+                         
            } else
               {
                   content += "[TEST-NFT]";
