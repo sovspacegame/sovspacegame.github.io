@@ -5082,11 +5082,42 @@ for (var i=0; i<size; i++)
                
       
     
-            asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
+          
+          
+          
+         // --
+            
+        
+
+   if (asset_id >= 2199025218704)
+
+           {
+           
+           if (the_atype == 6)
+              {
+              content += "[street]";
+              } else
+                 {
+         asset_link = "<a href='https://eos.atomichub.io/explorer/asset/" + asset_id + "' style='color:#eeeeee;' target='_blank'>#"+asset_id+ "</a>";
            
             content += "<strong>"+ title + "</strong><br>";
             content += "<small>"+ asset_link + "</small><br>";
             content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place this NFT<br>on selected<br>area</div><br>";
+          
+                 }
+           } else
+              {
+                  content += "[TEST-NFT]";
+                  
+
+                 thelink = "burnasset("+asset_id+")";   
+                 content += "<br>";
+                 content += "<span class='mintbutton' onclick='"+thelink+"' style='background:#ff3333;'>Burn NFT</span>"; 
+                                    
+               }
+
+        //  --
+          
           
             content += "</div>";   
             content += "</td>";       
@@ -5191,6 +5222,12 @@ for (var i=0; i<size; i++)
            } else
               {
                   content += "[TEST-NFT]";
+               
+               
+                 thelink = "burnasset("+asset_id+")";   
+                 content += "<br>";
+                 content += "<span class='mintbutton' onclick='"+thelink+"' style='background:#ff3333;'>Burn NFT</span>"; 
+                  
                }
 
            
@@ -5371,6 +5408,47 @@ if (1)
    
    
 } // sellasset()
+
+
+
+
+function burnasset( asset_id )
+{
+ 
+var theactions = [];
+
+var memo = "sell";
+ 
+   
+    var action = {
+                 account: "atomicassets",
+                 name: 'burnasset',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "asset_owner": global_account,
+                       "asset_id": asset_id,                                          
+                       }
+                 };
+
+
+ 
+ 
+theactions.push(action);
+   
+
+ 
+ 
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+   
+   
+} // burnasset()
 
 
 
