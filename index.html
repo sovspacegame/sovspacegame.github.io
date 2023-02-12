@@ -1065,6 +1065,14 @@ own_assets = [];
 function callback_readasset_forlist( value, params )
 {
 
+
+
+if ( value.more == false ) 
+   {
+    loadobjects_cnt++;
+   return;
+   }
+
 var idata = value.rows[0].immutable_serialized_data;
 var mdata = value.rows[0].mutable_serialized_data;
 
@@ -1239,7 +1247,8 @@ for (var i=0; i<size; i++)
        params = Object();
        params['id'] = id;
        params['asset_id'] = asset_id;
-       
+       console.log(" --- asset_id_ ", asset_id)
+       if (asset_id > 0)
        getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
 
 
@@ -4612,6 +4621,16 @@ function callback_readasset( value, params )
 {
 
 //console.log(value);
+
+console.log("TTT");
+console.log(params);
+console.log(value);
+
+if ( value.more == false ) 
+   {
+    loadobjects_cnt++;
+   return;
+   }
 
 //var data = value.rows[0].immutable_serialized_data;
 //var data = value.rows[0].mutable_serialized_data;
