@@ -1285,6 +1285,17 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  
 <div style='clear:both;'></div>
 
+
+<div id='canvasmain' class='' style='margin-left:20px;border:1px solid #0000ff;width:90%;height:60%;'>
+ 
+<canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
+ 
+</div>
+
+<canvas id='navmaphidden' width='400' height='200' style='visibility:hidden' ></canvas>
+
+
+
 <div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
  <label style='cursor:pointer;'>Show Shield & SOV<input id='checkbox_shield' type='checkbox'   onchange='toggle_info()'> </label> &nbsp;&nbsp;&nbsp;
  <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> 
@@ -3181,6 +3192,28 @@ let mappingarray =
    console.log(mappingarray);
 
 
+
+let mappingarray_frame = 
+[
+                                                                                [9 , 0],
+                                                                        [ 8, 1],        [11, 1],
+                                                                [ 7, 2],                        [12, 2],
+                                                        [ 6, 3],                                        [13, 3],
+                                                [ 5, 4],                                                        [14, 4],
+                                        [ 4, 5],                                                                        [16, 5],
+                                [ 3, 6],                                                                        [15, 6],
+                        [ 2, 7],                                                                        [14, 7],
+                [ 1, 8],                                                                        [13, 8],
+        [ 0, 9],                                                                        [12, 9],
+[-1,10],[ 1,10],                                                                [11,10],
+        [ 0,11],                                                        [10,11],
+                [ 1,12],                                        [ 9,12],
+                        [ 2,13],                        [ 8,13],
+                                [ 3,14],        [ 7,14],
+                                        [ 5,15]
+];
+
+
 // Tile-array
 
 var tilearray = new Array();
@@ -4433,7 +4466,7 @@ for (var i=0; i<size; i++)
   
  
   
-    
+grabtocanvans();    
     
 } // renderboard()
 
@@ -7019,6 +7052,321 @@ loadinventory();
 
 //alert("DEMO-MODE - NFT-prices will change, Rules will change!");
 </script>
+
+
+
+
+
+ <script>
+ 
+ 
+ 
+// --------- CANVAS
+
+function getXYpos(elm) 
+{
+x = elm.offsetLeft;        
+y = elm.offsetTop;         
+
+elm = elm.offsetParent;   
+
+while(elm != null) 
+{
+    x = parseInt(x) + parseInt(elm.offsetLeft);
+    y = parseInt(y) + parseInt(elm.offsetTop);
+    elm = elm.offsetParent;
+}
+
+return {'xp':x, 'yp':y};
+} // getXYpos
+
+
+var mousex=0;
+var mousey=0;
+var mousex2=0;
+var mousey2=0;
+var mousebutton = 0;
+
+var globalmapoffsetx = 100;
+var globalmapoffsety = 100;
+
+
+// Get X, Y coords, and displays Mouse coordinates
+function getCoords(e) {
+var xy_pos = getXYpos(this);
+
+// if IE
+if(navigator.appVersion.indexOf("MSIE") != -1) 
+{
+var standardBody = (document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+
+x = event.clientX + standardBody.scrollLeft;
+y = event.clientY + standardBody.scrollTop;
+}
+  else {
+       x = e.pageX;
+       y = e.pageY;
+       }
+
+mousex = x - xy_pos['xp'];
+mousey = y - xy_pos['yp'];
+
+
+var elmw = document.getElementById('canvasmain').clientWidth;
+var elmh = document.getElementById('canvasmain').clientHeight;
+   
+var fw = 400 / elmw;
+var fh = 200 / elmh;
+   
+mousex2 = mousex * fw;
+mousey2 = mousey * fw;
+   
+if (mousebutton)
+   {
+   //setpixel(mousex2, mousey2,  0,255,0 );      
+   
+   /*
+   
+   */
+
+
+   } // mouseclick
+   
+   
+grabtocanvans();
+   
+//console.log("mausx " + mousex2 + " elmw:"+elmw + " elmh:"+elmh+ " - "+ fw +" " + fh);
+} //getCoords
+ 
+ 
+function setmousebuttondown()
+{
+mousebutton = 1;
+
+
+document.getElementById('xcoor').value = Math.floor( 500000+ mousex2  - globalmapoffsetx - 10 );
+document.getElementById('ycoor').value = Math.floor( 500000+ mousey2  - globalmapoffsety );
+refreshboard();
+
+} 
+
+function setmousebuttonup()
+{
+mousebutton = 0;
+} 
+
+
+ 
+document.getElementById('canvasmain').onmousemove = getCoords;
+document.getElementById('canvasmain').ontouchmove = getCoords;
+    
+document.getElementById('canvasmain').onmousedown = setmousebuttondown;
+document.getElementById('canvasmain').onmouseup   = setmousebuttonup;  
+   
+document.getElementById('canvasmain').ontouchstart = setmousebuttondown;
+document.getElementById('canvasmain').ontouchend   = setmousebuttonup;  
+
+    
+document.addEventListener('canvasmain', function (e) { e.preventDefault(); }, false); 
+
+
+
+ 
+// --
+ 
+ 
+
+ 
+nvmapelement = document.getElementById("navmaphidden");
+var canvas = nvmapelement.getContext('2d');
+width = nvmapelement.width;
+height = nvmapelement.height;
+canvas.fillStyle = '#111111';
+canvas.fillRect(0, 0, width, height);
+
+var nvmapelementvisible = document.getElementById("navmap").getContext('2d');    
+    
+
+black = {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 255
+};
+
+ 
+ 
+
+function setpixel (x,y, r,g,b) 
+{
+    var p=canvas.createImageData(1,1);
+    p.data[0]=r;
+    p.data[1]=g;
+    p.data[2]=b;
+    p.data[3]=255;
+    canvas.putImageData(p,x,y);
+}
+
+
+function setpixel2 (x,y, r,g,b) 
+{
+    var p=nvmapelementvisible.createImageData(1,1);
+    p.data[0]=r;
+    p.data[1]=g;
+    p.data[2]=b;
+    p.data[3]=255;
+    nvmapelementvisible.putImageData(p,x,y);
+}
+
+
+function grabtocanvans()
+{
+
+/*
+
+// Mapping-array
+
+let mappingarray = 
+[
+                                                                                [10, 0],
+                                                                        [ 9, 1],[10, 1],[11, 1],
+                                                                [ 8, 2],[ 9, 2],[10, 2],[11, 2],[12, 2],
+                                                        [ 7, 3],[ 8, 3],[ 9, 3],[10, 3],[11, 3],[12, 3],[13, 3],
+                                                [ 6, 4],[ 7, 4],[ 8, 4],[ 9, 4],[10, 4],[11, 4],[12, 4],[13, 4],[14, 4],
+                                        [ 5, 5],[ 6, 5],[ 7, 5],[ 8, 5],[ 9, 5],[10, 5],[11, 5],[12, 5],[13, 5],[14, 5],[15, 5],
+                                [ 4, 6],[ 5, 6],[ 6, 6],[ 7, 6],[ 8, 6],[ 9, 6],[10, 6],[11, 6],[12, 6],[13, 6],[14, 6],
+                        [ 3, 7],[ 4, 7],[ 5, 7],[ 6, 7],[ 7, 7],[ 8, 7],[ 9, 7],[10, 7],[11, 7],[12, 7],[13, 7],
+                [ 2, 8],[ 3, 8],[ 4, 8],[ 5, 8],[ 6, 8],[ 7, 8],[ 8, 8],[ 9, 8],[10, 8],[11, 8],[12, 8],
+        [ 1, 9],[ 2, 9],[ 3, 9],[ 4, 9],[ 5, 9],[ 6, 9],[ 7, 9],[ 8, 9],[ 9, 9],[10, 9],[11, 9],
+[ 0,10],[ 1,10],[ 2,10],[ 3,10],[ 4,10],[ 5,10],[ 6,10],[ 7,10],[ 8,10],[ 9,10],[10,10],
+        [ 1,11],[ 2,11],[ 3,11],[ 4,11],[ 5,11],[ 6,11],[ 7,11],[ 8,11],[ 9,11],
+                [ 2,12],[ 3,12],[ 4,12],[ 5,12],[ 6,12],[ 7,12],[ 8,12],
+                        [ 3,13],[ 4,13],[ 5,13],[ 6,13],[ 7,13],
+                                [ 4,14],[ 5,14],[ 6,14],
+                                        [ 5,15]
+];
+*/
+
+var offx = (xcoor-500000)   + globalmapoffsetx;
+var offy = (ycoor-500000)   + globalmapoffsety;
+
+/*
+setpixel(10, 10,  100,100,255 );      
+setpixel(11, 10,  100,100,255 );      
+setpixel(11, 11,  100,100,255 );      
+setpixel(10, 11,  100,100,255 );      
+*/
+
+var size = mappingarray.length;
+
+for (var i=0; i<size; i++)
+    {
+    var thetile = "tile" + i;
+    
+    x = mappingarray[i][0];
+    y = mappingarray[i][1];    
+  
+    
+    
+ 
+    tile         =  tilearray[x][y]['tile']; 
+    asset_id         =  tilearray[x][y]['asset_id'];  //  
+    tileid       =  tilearray[x][y]['tileid']; 
+    atype        =  tilearray[x][y]['atype']; 
+    race         =  tilearray[x][y]['race']; 
+    ori          =  tilearray[x][y]['ori']; 
+    nick         =  tilearray[x][y]['nick']; 
+    sov          =  tilearray[x][y]['sov']; 
+    svx_balance  =  tilearray[x][y]['svx_balance']+" SVX2"; 
+    sov  = sov  / 10000;
+    owner        =  tilearray[x][y]['owner']; 
+    shield       =  tilearray[x][y]['shield']; 
+    shield_max   =  tilearray[x][y]['shield_max']; 
+    config       =  tilearray[x][y]['config'] + ""; 
+    
+   
+   /*
+    // config
+//    let configarray = config.split(";");
+    let configarray = split(config,";");
+   
+    if ( tile != "tile10" &&  tile != "tile11")
+       {
+       var buffer = "<img src='img/"+tile+".png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       document.getElementById(thetile).innerHTML = buffer;
+       }
+
+
+
+    // Object
+    var theobject = "obj" + i;
+*/
+
+    if (tile != "tile00")
+    setpixel(x+offx, y+offy,  100,100,100 );          
+    
+    if (race == 1)
+       {
+       setpixel(x+offx, y+offy,  200,200,255 );      
+       }
+
+    if (race == 5)
+       {
+       setpixel(x+offx, y+offy,  255,50,50 );      
+       }
+
+    if (tile  == "tile00")
+       {
+       setpixel(x+offx, y+offy,  30,30,120 );      
+       }
+       
+    // console.log("t: " + tile + " " + tileid);  
+
+    } // for i...
+    
+  //  console.log("xcoor: " + xcoor + " offx" + offx);
+    /*
+    xcoor = xcoor + offx;
+ycoor = ycoor + offy;
+    */
+    
+    /*
+    //grab the context from your destination canvas
+var destCtx = destinationCanvas.getContext('2d');
+    
+//call its drawImage() function passing it the source canvas directly
+destCtx.drawImage(sourceCanvas, 0, 0);
+    */
+    
+// Copy hidden Canvas to new one
+ 
+
+
+nvmapelementvisible.drawImage(nvmapelement, 0, 0);    
+
+
+
+var size = mappingarray_frame.length;
+
+for (var i=0; i<size; i++)
+    {
+    
+    
+    x = mappingarray_frame[i][0];
+    y = mappingarray_frame[i][1];    
+  
+    setpixel2(x+offx, y+offy,  0,255,0 );    
+    } // for i...
+
+//for (var i=0; i<=10; i++)
+//setpixel2 (30,5+i, 0,255,0) ;
+
+} // grabtocanvas
+
+// --------- CANVAS
+
+ </script> 
+
 
 </body>
 </hmtl>
