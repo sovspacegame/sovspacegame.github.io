@@ -686,11 +686,14 @@ unload
 </div>
 
 
+
+ 
+
+
 <div style='height:20px;'></div>
 
 </div> <!-- loadmenu -->
 <div style='clear:both;'></div>
-
 
 
 
@@ -1286,14 +1289,6 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <div style='clear:both;'></div>
 
 
-<div id='canvasmain' class='' style='margin-left:20px;border:1px solid #0000ff;width:90%;height:60%;'>
- 
-<canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
- 
-</div>
-
-<canvas id='navmaphidden' width='400' height='200' style='visibility:hidden' ></canvas>
-
 
 
 <div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
@@ -1305,18 +1300,53 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 </div>
 
 
-<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
 
+
+
+
+
+
+
+<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
 
 <select id="select_fav_objects" class='select_fav_objects'  >   
 </select> 
-<div onclick='load_my_assets()' class='refreshboard' style='width:40%;' >Update list </div>
+</div>
+<br>
+<br>
+
+
+
+<div style='clear:both;'></div>
+<br>
+
+<div style='margin-left:20px;'>Automap</div> 
+<div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
+
+<canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
+ 
+</div>
+
+<canvas id='navmaphidden' width='400' height='200' style='visibility:hidden;overflow;hidden;position:absolute;' ></canvas>
+
+ 
+ 
+ 
+
+
+
+<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
+ <div onclick='load_my_assets()' class='refreshboard' style='width:40%;' >Update list </div>
 </div>
 
 <div style='clear:both;'></div>
 <br>
  
  
+ 
+ 
+
+
 
 
 <div id='inventorycontent' style=''>
@@ -5278,7 +5308,7 @@ for (var i=0; i<size; i++)
                }
 
            
-// alfalf        
+        
             content += "</div>";   
             content += "</td>";       
             } // if (  collection_name == "xusogamedemo" )          
@@ -7088,7 +7118,7 @@ var mousey2=0;
 var mousebutton = 0;
 
 var globalmapoffsetx = 100;
-var globalmapoffsety = 100;
+var globalmapoffsety = 45;
 
 
 // Get X, Y coords, and displays Mouse coordinates
