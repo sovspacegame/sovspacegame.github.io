@@ -1066,13 +1066,13 @@ function callback_readasset_forlist( value, params )
 {
 
 
-
+/*
 if ( value.more == false ) 
    {
     loadobjects_cnt++;
    return;
    }
-
+*/
 var idata = value.rows[0].immutable_serialized_data;
 var mdata = value.rows[0].mutable_serialized_data;
 
@@ -4626,11 +4626,13 @@ console.log("TTT");
 console.log(params);
 console.log(value);
 
+/*
 if ( value.more == false ) 
    {
     loadobjects_cnt++;
    return;
    }
+*/
 
 //var data = value.rows[0].immutable_serialized_data;
 //var data = value.rows[0].mutable_serialized_data;
@@ -6254,6 +6256,12 @@ for (var i=0; i<size; i++)
     } // if (the_atype != 8)
        
     } // for i...
+    
+    
+buffer_humans += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";    
+buffer_greys += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";    
+buffer_sirians += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";    
+buffer_reptos += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";    
     
 document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  + "<div style='clear:both'></div><br><h2>Sirian-NFT's</h2>" + buffer_sirians + ""     + "<div style='clear:both'></div><br><h2>Repto-NFT's</h2>" + buffer_reptos + "";    
                              
