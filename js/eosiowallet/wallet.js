@@ -18,7 +18,9 @@ var chainID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
 
 // --
 // Node-selection
-var   thenode      = "eos.greymass.com"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
+//var   thenode      = "eos.greymass.com"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
+var   thenode      = "eos.api.eosnation.io"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
+
 //var   thenode      = "eos.api.eosnation.io"; // 
 
 //var   thenode      = "jungle3.greymass.com"; // 
@@ -344,7 +346,7 @@ if (currentwallet == "SCATTER")
 //
 // getdata()
 //
-   function getdata( callback, _code, _scope, _table, _lower, _index, _key_type, _limit )
+ function getdata( callback, _code, _scope, _table, _lower, _index, _key_type, _limit )
 {
 
 /*
