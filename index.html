@@ -7333,11 +7333,21 @@ for (var i=0; i<size; i++)
 */
 
     if (tile != "tile00")
-    setpixel(x+offx, y+offy,  100,100,100 );          
+    setpixel(x+offx, y+offy,  60,60,60 );          
     
     if (race == 1)
        {
-       setpixel(x+offx, y+offy,  200,200,255 );      
+       setpixel(x+offx, y+offy,  200,200,200 );      
+       }
+       
+    if (race == 2)
+       {
+       setpixel(x+offx, y+offy,  0,200,0 );      
+       }       
+
+    if (race == 4)
+       {
+       setpixel(x+offx, y+offy,  100,100,255 );      
        }
 
     if (race == 5)
