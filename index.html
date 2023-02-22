@@ -566,10 +566,11 @@ move
 </div>
 <div style='clear:both;'></div>
 
+<!--
 <div id='movesteps_div' style='height:0px;visiblity:hidden;overflow:hidden;'>
-<span style='margin-left:52%'><small>Distance:</small> </span><input type='text' id='movesteps' value='1' style='width:50px;text-align:center;'><br>
+<span style='margin-left:52%'><small>Distance:</small> </span><input type='hidden' id='movesteps' value='1' style='width:50px;text-align:center;'><br>
 </div>
-
+-->
 
 
 <div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off_inactive'>
@@ -4461,7 +4462,8 @@ for (var i=0; i<size; i++)
            } // for...
         // pricedata[id]['race'] 
 
-       var sov2 =  marketdata[marketid]; 
+       //var sov2 =  marketdata[marketid]; 
+       var sov2 =  marketdata_item[marketid]; 
 //       shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)x";
        shieldinfo = shield + "/" + shield_max + " (" +sov2+ " SOV)";
        buffer += "<div id='"+divid_shieldinfo+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:80%;z-index:300;visibility:"+value_shield+";'>" +shieldinfo+  " </div>" ;
@@ -5654,8 +5656,8 @@ if (menu == 6)
 function moveobject( direction )
 {
 
-var movesteps =  document.getElementById('movesteps').value * 1
-
+//var movesteps =  document.getElementById('movesteps').value * 1
+var movesteps = 1;
 
 var theactions = [];
 
@@ -6026,8 +6028,10 @@ if (mode == 1)
    document.getElementById('circ7').style.visibility = "visible";    
    
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
+   */
    }
    
 if (mode == 2)
@@ -6053,8 +6057,10 @@ if (mode == 2)
    
     
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "visible";
    document.getElementById('movesteps_div').   style.height = "";
+   */
    
    document.getElementById('scrollcenter').style.visibility = "hidden";
    }
@@ -6080,8 +6086,10 @@ if (mode == 3)
    document.getElementById('circ7').style.visibility = "hidden";   
    
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
+   */
 
    document.getElementById('scrollcenter').style.visibility = "hidden";
    
@@ -6114,8 +6122,10 @@ if (mode == 4)
    document.getElementById('circ7').style.visibility = "hidden";   
    
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
+   */
    
    document.getElementById('scrollcenter').style.visibility = "hidden";   
    }    
@@ -6140,8 +6150,10 @@ if (mode == 5)
    document.getElementById('circ7').style.visibility = "hidden";   
    
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
+   */
    
    document.getElementById('scrollcenter').style.visibility = "hidden";   
    }       
@@ -6167,8 +6179,10 @@ if (mode == 6)
    document.getElementById('circ7').style.visibility = "hidden";   
    
    // movesteps_div   
+   /*
    document.getElementById('movesteps_div').   style.visibility = "hidden";
    document.getElementById('movesteps_div').   style.height = "0px";     
+   */
    
    document.getElementById('scrollcenter').style.visibility = "hidden";   
    }       
@@ -6343,7 +6357,8 @@ getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", 
 
 
 
-var marketdata = new Array();
+var marketdata      = new Array();
+var marketdata_item = new Array();
 
 async function callback_loadmarkets( value )
 {
@@ -6367,22 +6382,33 @@ for (var i=0; i<size; i++)
     
     
     currentprice2 = 0;
+    currentprice2_sell = 0;
     
     if (the_epsilon > 0)
     {
-    powresult = Math.pow( 2, (the_circulation / the_epsilon ) );
-    
+    // OLD
+    /*
+    powresult = Math.pow( 2, (the_circulation / the_epsilon ) );    
     var currentprice_f = the_startprice * powresult;
     console.log("powresult: " + powresult + "  currentprice_f:"+currentprice_f  );
+      */
          
+    // NEW
+    // currentprice_f = (float)iterator_markets->startprice + (float)iterator_markets->startprice * (  (float)( (circulation) / (float)epsilon )    );
+    var currentprice_f = the_startprice + ( the_startprice *  (the_circulation / the_epsilon ) );                               
     currentprice2 = toFixed2(currentprice_f, 4);
+
+    currentprice_f = the_startprice + ( the_startprice *  ( (the_circulation-1) / the_epsilon ) );                               
+    currentprice2_sell = toFixed2(currentprice_f, 4);
+    
     } else
       {
       var currentprice_f = the_startprice * 1;
-      console.log("powresult: " + powresult + "  currentprice_f:"+currentprice_f  );
+      //console.log("powresult: " + powresult + "  currentprice_f:"+currentprice_f  );
          
       currentprice2 = toFixed2(currentprice_f, 4);
 
+      currentprice2_sell = 0; // should never displayed
       }
     
     
@@ -6399,7 +6425,8 @@ for (var i=0; i<size; i++)
 
 
     
-    marketdata[the_id*1] = currentprice2;
+    marketdata[the_id*1]      = currentprice2;
+    marketdata_item[the_id*1] = currentprice2_sell;
 
     
     pricespan  = "pricespan_"+the_id;
@@ -6424,7 +6451,8 @@ function toFixed2(num, fixed) {
 
 function loadmarkets()
 {
-marketdata = new Array();
+marketdata      = new Array();
+marketdata_item = new Array();
 
 
 
