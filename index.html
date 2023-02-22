@@ -5845,7 +5845,7 @@ if (direction == 4) dir = "w";
  
 memo = "repair;"+global_account+";"+globalselection['assetid']+";"+dir;
     
-var quantitysov = globaldata['a_sov'] / 10000;
+var quantitysov = (globaldata['a_sov']*3) / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
    
 
