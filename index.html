@@ -5845,11 +5845,140 @@ if (direction == 4) dir = "w";
  
 memo = "repair;"+global_account+";"+globalselection['assetid']+";"+dir;
     
+// OLD    
 var quantitysov = (globaldata['a_sov']*3) / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
    
+   
+// NEW -----   
+   /*
+   globalselection['x']
+   thex = mappingarray[theid][0]  ;
+they = mappingarray[theid][1] ;
 
+   */
+x = globalselection['x'];   
+y = globalselection['y'];   
+//alert("xy: " + thex + " " + they + " " );
+
+
+if (direction == 1)  {   they--;    }
+if (direction == 2)  {   thex++;    }
+if (direction == 3)  {   they++;    }
+if (direction == 4)  {   thex--;    }
+
+target_asset_id         =  tilearray[thex][they]['asset_id'];
+target_race             =  tilearray[thex][they]['race'];
+target_atype            =  tilearray[thex][they]['atype'];
  
+  
+marketid = 1;
+       //
+       size2 = pricedata.length;
+       for (var i2=1; i2<=size2; i2++)
+           {           
+           if (pricedata[i2]['race'] !== undefined)
+              {
+              if ( pricedata[i2]['race'] == target_race && pricedata[i2]['atype'] == target_atype)
+                 {
+                 marketid = i2; 
+                 i2 = size2;
+                 } // if ...
+              } // != undefined
+           } // for...
+         
+
+       var sov2 =  marketdata[marketid] * 0.50; 
+      // var sov2 =  marketdata_plus[marketid] * 0.50; 
+  
+       
+        
+//alert("xy(2): " + thex + " " + they + " sov2_c:"+sov2+ " marketid:" +marketid);
+
+/*
+console.log("tilearray ---: " );
+console.log(tilearray[thex][they]);
+*/
+// marketdata[the_id*1]
+
+/// ---
+
+/*
+
+var size = mappingarray.length;
+
+for (var i=0; i<size; i++)
+    {
+    var thetile = "tile" + i;
+    
+    x = mappingarray[i][0];
+    y = mappingarray[i][1];    
+  
+    
+    
+ 
+    tile         =  tilearray[x][y]['tile']; 
+    asset_id         =  tilearray[x][y]['asset_id'];  //  
+    tileid       =  tilearray[x][y]['tileid']; 
+    atype        =  tilearray[x][y]['atype']; 
+    race         =  tilearray[x][y]['race']; 
+    
+
+lastsvgid                  = theid;
+coordinatei                = tilearray[thex][they].tileid;
+owner                      = tilearray[thex][they].owner;
+thename                    = tilearray[thex][they].name;
+nickname                   = tilearray[thex][they].nick;
+globalselection['assetid'] = tilearray[thex][they].asset_id;
+globalselection['atype']   = tilearray[thex][they].atype;
+globalselection['ori']     = tilearray[thex][they].ori;
+globalselection['ts']      = tilearray[thex][they].ts;
+globalselection['race']    = tilearray[thex][they].race;
+globalselection['shield']  = tilearray[thex][they].shield;
+globalselection['attack']  = tilearray[thex][they].attack;
+globalselection['config']  = tilearray[thex][they].config;
+ 
+*/
+
+
+/*
+marketid = 1;
+       //
+       size2 = pricedata.length;
+       for (var i2=1; i2<=size2; i2++)
+           {           
+           if (pricedata[i2]['race'] !== undefined)
+              {
+              if ( pricedata[i2]['race'] == race && pricedata[i2]['atype'] == atype)
+                 {
+                 marketid = i2; 
+                 i2 = size2;
+                 } // if ...
+              } // != undefined
+           } // for...
+        // pricedata[id]['race'] 
+
+       var sov2 =  marketdata[marketid]; 
+       //var sov2 =  marketdata_item[marketid]; 
+       */
+       
+       
+       
+
+/*
+    marketdata[the_id*1]      = currentprice2;
+    marketdata_item[the_id*1] = currentprice2_sell;
+
+
+var quantitysov = (globaldata['a_sov']*3) / 10000;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+
+*/ 
+var quantitysov = sov2;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";   
+
+
+// ---
    
     var action = {
                  account: "sovmintofeos",
@@ -6357,8 +6486,9 @@ getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", 
 
 
 
-var marketdata      = new Array();
-var marketdata_item = new Array();
+var marketdata           = new Array();
+var marketdata_item      = new Array();
+var marketdata_plus      = new Array();
 
 async function callback_loadmarkets( value )
 {
@@ -6383,6 +6513,7 @@ for (var i=0; i<size; i++)
     
     currentprice2 = 0;
     currentprice2_sell = 0;
+    currentprice2_plus = 0;
     
     if (the_epsilon > 0)
     {
@@ -6400,6 +6531,9 @@ for (var i=0; i<size; i++)
 
     currentprice_f = the_startprice + ( the_startprice *  ( (the_circulation-1) / the_epsilon ) );                               
     currentprice2_sell = toFixed2(currentprice_f, 4);
+
+    currentprice_fb = the_startprice + ( the_startprice *  ( (the_circulation+2) / the_epsilon ) );                               
+    currentprice2_plus = toFixed2(currentprice_fb, 4);
     
     } else
       {
@@ -6409,6 +6543,7 @@ for (var i=0; i<size; i++)
       currentprice2 = toFixed2(currentprice_f, 4);
 
       currentprice2_sell = 0; // should never displayed
+      currentprice2_plus = 0; // should never displayed
       }
     
     
@@ -6425,8 +6560,11 @@ for (var i=0; i<size; i++)
 
 
     
-    marketdata[the_id*1]      = currentprice2;
+    marketdata     [the_id*1] = currentprice2;
     marketdata_item[the_id*1] = currentprice2_sell;
+    marketdata_plus[the_id*1] = currentprice2_plus;
+    
+    
 
     
     pricespan  = "pricespan_"+the_id;
