@@ -1670,6 +1670,14 @@ But now in the year 2371 the scarcity of SOV and greed of the different rulers h
 <div style=' right:20px;top:45px;border:none;'>
 Human Soundtrack:<br>
  <audio id="audiotag2" controls loop>
+ <source src= "audio/ambienthumans.mp3" type="audio/mp3">
+ </audio>
+</div>  
+<br>
+
+<div style=' right:20px;top:45px;border:none;'>
+Human Soundtrack (classic edit):<br>
+ <audio id="audiotag2" controls loop>
  <source src= "audio/humanloop1.0.mp3" type="audio/mp3">
  </audio>
 </div>  
@@ -1697,8 +1705,16 @@ And so, the humans set out to explore the galaxy, seeking answers to the questio
 
 <h2>Grey Origin Story</h2>
 
+<div style=' right:20px;top:45px;border:none;'>
+Grey Soundtrack:<br>
+ <audio id="audiotag2" controls loop>
+ <source src= "audio/ambientgreys.mp3" type="audio/mp3">
+ </audio>
+</div>  
+<br>
+
 <div style='right:20px;top:45px;border:none;'>
-Grey Soundtrack<br>
+Grey Soundtrack (classic edit):<br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/greysoundloop1.1.mp3" type="audio/mp3">
  </audio>
@@ -1728,8 +1744,17 @@ The Greys are also known to be highly secretive, with little known about their t
 
 
 <h2>Sirian Origin Story</h2>
-<div style='right:20px;top:45px;border:none;'>
+
+<div style=' right:20px;top:45px;border:none;'>
 Sirian Soundtrack:<br>
+ <audio id="audiotag2" controls loop>
+ <source src= "audio/ambientsirians.mp3" type="audio/mp3">
+ </audio>
+</div>  
+<br>
+
+<div style='right:20px;top:45px;border:none;'>
+Sirian Soundtrack (classic edit):<br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/sirians2mp3.mp3" type="audio/mp3">
  </audio>
@@ -1758,8 +1783,16 @@ Despite their defeat, however, the Sirians continued to believe in their mission
 <br>
 
 <h2>Reptos Origin Story</h2>
-<div style='right:20px;top:45px;border:none;'>
+<div style=' right:20px;top:45px;border:none;'>
 Repto Soundtrack:<br>
+ <audio id="audiotag2" controls loop>
+ <source src= "audio/ambientreptos.mp3" type="audio/mp3">
+ </audio>
+</div>  
+<br>
+
+<div style='right:20px;top:45px;border:none;'>
+Repto Soundtrack (classic edit):<br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/reptars1mp3.mp3" type="audio/mp3">
  </audio>
@@ -1823,11 +1856,17 @@ var myaudio = document.getElementById("audiotag");
 console.log("RACE " + race)
 var src = "";
 
+if (race == 1) src = "audio/ambienthumans.mp3"; 
+if (race == 2) src = "audio/ambientgreys.mp3"; 
+if (race == 4) src = "audio/ambientsirians.mp3"; 
+if (race == 5) src = "audio/ambientreptos.mp3"; 
+/*
 if (race == 1) src = "audio/humanloop1.0.mp3"; 
 if (race == 2) src = "audio/greysoundloop1.1.mp3"; 
 if (race == 4) src = "audio/sirians2mp3.mp3"; 
 if (race == 5) src = "audio/reptars1mp3.mp3"; 
 
+*/
 myaudio.volume = 20/100;
 myaudio.currentTime = 0;
 myaudio.src = src;
@@ -1842,8 +1881,9 @@ function sound_start()
 
 var myaudio = document.getElementById("audiotag");
 
-var src = "audio/humanloop1.0.mp3"; 
- myaudio.volume = 20/100;
+//var src = "audio/humanloop1.0.mp3"; 
+var src = "audio/ambienthumans.mp3"; 
+myaudio.volume = 20/100;
 //myaudio.pause();
 myaudio.currentTime = 0;
 //myaudio.remove();
