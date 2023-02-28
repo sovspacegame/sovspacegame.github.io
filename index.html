@@ -586,6 +586,10 @@ demolish
 repair
 </div>
 
+<div id='navbutton_repair' onclick='repeataction();' class='navbutton_off_inactive' style='background-color:#77cc77;color:ffffff;'>
+repeat &#8634;
+</div>
+
 
 
 
@@ -2201,6 +2205,10 @@ NFT-API (atomicassets):
  <div style='border:none;width:300px;float:left;'>
   <input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
   <div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
+  <br>
+ 
+  <small>Please send EOS/Token-donations to:</small><br> 
+  <a href='https://bloks.io/account/invadersfund' target='_blank' style='color:#eeeeee;'>invadersfund</a>
  </div>
 
  <div style='border:none;width:300px;float:left;'>
@@ -5850,6 +5858,9 @@ if (menu == 6)
 function moveobject( direction )
 {
 
+last_action				 = "moveobject";
+last_attack_direction    = direction;
+
 //var movesteps =  document.getElementById('movesteps').value * 1
 var movesteps = 1;
 
@@ -5956,8 +5967,36 @@ if (1)
 } // demolishobject()
 
 
+
+
+function repeataction()
+{
+
+if (last_action == "attackobject")
+   {
+   attackobject( last_attack_direction, last_attack_tank_assetid, last_attack_target );
+   }
+
+if (last_action == "moveobject")
+   {
+   moveobject( last_attack_direction );
+   }
+ 
+} // repeataction
+
+
+var last_action 			 = 0;
+var last_attack_direction    = 0;
+var last_attack_tank_assetid = 0;
+var last_attack_target       = 0;
+
 function attackobject( direction, tank_assetid, target )
 {
+last_action				 = "attackobject";
+last_attack_direction    = direction;
+last_attack_tank_assetid = tank_assetid;
+last_attack_target       = target;
+
 
 //  attackobject( "", tank_assetid, globalselection['assetid'] )
 
