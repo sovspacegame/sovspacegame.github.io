@@ -151,20 +151,43 @@
 
 
 <!-- choose race area -->
-<div id='chooserace' class='chooserace'  style='text-align:center;height:130px;visibility:visible;overflow:hidden;'>
+<div id='chooserace' class='chooserace'  style='text-align:center;min-height:240px;visibility:visible;overflow:hidden;'>
 
-<div class='chooseraceinner'  style=''>
+<div class='chooseraceinner'  style='height:250px;'>
 <br>
 
 <strong>
 Please choose your species. Note: you cannot undo your decision!<br>Think carefully about which species suits you.<br>
 </strong>
 <br>
-<span id='' class='choosebutton race_humans' onclick='inituser(1)'>Play Humans</span>&nbsp;&nbsp;&nbsp;
- or &nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(2)'>Play Greys</span>&nbsp;&nbsp;&nbsp;
- or &nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(4)'>Play Sirians</span>&nbsp;&nbsp;&nbsp;
- or &nbsp;&nbsp;&nbsp;<span id='' class='choosebutton race_greys' onclick='inituser(5)'>Play Reptos</span>
+
+<div id='' class='choosebutton race_humans' onclick='inituser(1)' style='width:160px;height:130px;float:left;margin-left:20px;margin-right:20px;'>
+Play Humans
 <br>
+<img src='img/logo_human.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+</div>
+
+
+<div id='' class='choosebutton race_greys' onclick='inituser(2)' style='width:160px;height:130px;float:left;margin-right:20px;'>
+Play Greys
+<br>
+<img src='img/logo_grey.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+</div>
+
+
+<div id='' class='choosebutton race_greys' onclick='inituser(4)' style='width:160px;height:130px;float:left;margin-right:20px;'>
+Play Sirians
+<br>
+<img src='img/logo_sirian.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+</div>
+
+
+<div id='' class='choosebutton race_greys' onclick='inituser(5)' style='width:160px;height:130px;float:left;margin-right:20px;'>
+Play Reptos
+<br>
+<img src='img/logo_reptos.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+</div>
+ 
 
 <br>
 <br>
@@ -3769,7 +3792,7 @@ document.getElementById('logoutbutton').style.visibility = "hidden";
 document.getElementById('logoutbutton').style.height = "0px";
 
 document.getElementById('userrace').innerHTML = "";
-document.getElementById('chooserace').style.height = "130px;";
+document.getElementById('chooserace').style.height = "240px;";
 document.getElementById('chooserace').style.visibility = "visible";
 
 document.getElementById('menu5').style.visibility = "hidden";
@@ -3864,7 +3887,7 @@ if (userdata['race'] == 5)
 
      {
      console.log("no RACE!!!!!");
-     document.getElementById('chooserace').style.height = "130px";
+     document.getElementById('chooserace').style.height = "240px";
      document.getElementById('chooserace').style.visibility = "visible";
 
      }
@@ -5500,7 +5523,7 @@ for (var i=0; i<size; i++)
                  
                  // Get current prices
                  
-                 // alfalf
+                 
                  
                
                   
