@@ -7359,6 +7359,27 @@ eostobuy = Number(value).toFixed(4) + " EOS";
 
 var theactions = [];
 
+
+ 
+
+    var action = {
+                 account: "svxmintofeos",
+                 name: 'open2',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account
+                       }
+                 };
+
+
+theactions.push(action);
+
+
+
+
 memo = "SOV";
 
     var action = {
