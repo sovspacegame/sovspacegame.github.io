@@ -1527,7 +1527,7 @@ Must be built adjacent to a Residence. Your people need to eat.
 <br>
 
 <h2>Factory</h2>
-<img src='img/nft_1_4.png' style='width:100px; padding-right:5px'><img src='img/nft_2_4.png' style='width:100px; padding-right:5px'><img src='img/nft_4_4.png' style='width:100px; padding-right:5px'><img src='img/nft_5_4.png' style='width:100px; padding-right:5px'>>
+<img src='img/nft_1_4.png' style='width:100px; padding-right:5px'><img src='img/nft_2_4.png' style='width:100px; padding-right:5px'><img src='img/nft_4_4.png' style='width:100px; padding-right:5px'><img src='img/nft_5_4.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to an Agriculture. If you would like to produce and heal mobile units, you will need a Factory.
 Can repair mobile units for 50% of their current market price.
@@ -5462,6 +5462,33 @@ for (var i=0; i<size; i++)
               content += "[street]";
               } else
                  {
+                 
+                 
+                 // Get current prices
+                 
+                 // alfalf
+                 
+               
+                  
+                   marketid = 1;
+       //
+       size2 = pricedata.length;
+       for (var i2=1; i2<=size2; i2++)
+           {
+           if (pricedata[i2]['race'] !== undefined)
+              {
+              if ( pricedata[i2]['race'] == the_race && pricedata[i2]['atype'] == the_atype)
+                 {
+                 marketid = i2;
+                 i2 = size2;
+                 } // if ...
+              } // != undefined
+           } // for...
+        // pricedata[id]['race']
+   var sov2 =  marketdata_item[marketid];
+
+                 
+            content += "<span >"+sov2+" SOV</span><br>";
 
                  content += "<span class='mintbutton' onclick='"+thelink+"'>Sell NFT</span>";
                  }
