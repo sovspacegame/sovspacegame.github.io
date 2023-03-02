@@ -616,6 +616,11 @@ repair
 <div id='navbutton_repair' onclick='repeataction();' class='navbutton_off_inactive' style='background-color:#77cc77;color:ffffff;'>
 repeat &#8634;
 </div>
+<div style='clear:both;'></div>
+
+<div id='navbutton_garden' onclick='plantgarden();' class='navbutton_off_inactive'>
+plant
+</div>
 
 
 
@@ -1523,12 +1528,12 @@ The Basic Rules (please read carefully):
   destroying all NFT types will fluctuate. This means sometimes it will be most profitable to attack Human-Tank, or Repto-Collector, etc.. making for interesting
   dynamics in the gameplay and strategy.</li>
 <li>The lander is the only NFT that can be placed on undeveloped areas of the map. </li>
-<li>Aside from the Lander, all structures must be build next to an existing structure or street of your own species.</li>
+<li>Aside from the Lander, all structures must be built next to an existing structure or street of your own species.</li>
 <li>If you want to build something that will be connected to an existing building, it is best to first ask the owner for permission. They have the right to <strong> demolish </strong>younger adjoining structures.</li>
 <li>A <strong>demolish</strong>-action will result in a 100% burning of the backed SOV.</li>
 <li>Bulldozers, Tanks, Service Units, and Transporters can freely move around the map.  Tanks and Bulldozers can also attack other species NFTs.</li>
 <li>Moving, attacking, and healing actions cost fuel paid in SOV. 100% of this is given back to the players.  All is used to automatically mine SVX and is then divided among all Collector buildings equally.</li>
-<li>Once a player places an NFT on the map, they can set a <strong>personal nickname</strong>, stored in the mutuble NFT-attributes.</li>
+<li>Once a player places an NFT on the map, they can set a <strong>personal nickname</strong>, stored in the mutable NFT-attributes.</li>
 </ul>
 <br>
 <br>
@@ -3527,7 +3532,7 @@ console.log("ROWS callback_pricedata ...(callback)");
 
 globaldata['version'] =  rows.rows[0].version;
 globaldata['m_sov']   =  rows.rows[0].m_sov;
-globaldata['a_sov']   =  rows.rows[0].a_sov;
+globaldata['svx_self']   =  rows.rows[0].svx_self;
 
 
 
@@ -6112,6 +6117,55 @@ if (1)
 
 
 } // attackobject()
+
+
+
+function plantgarden()
+{
+var theactions = [];
+
+
+var memo = "homeworld;"+global_account+";"+globalselection['x']+";"+globalselection['y']+"";
+
+ 
+
+
+
+var quantitysvx = globaldata['svx_self'] / 10000;
+quantitysvx = Number(quantitysvx).toFixed(4) + " SVX";
+
+
+
+
+    var action = {
+                 account: "svxmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysvx,
+                       "memo": memo,
+                       }
+                 };
+
+
+theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+ 
+} // plantgarden 
 
 
 function repairobject( direction )
