@@ -3571,8 +3571,9 @@ function callback_getglobals( rows )
 console.log("ROWS callback_pricedata ...(callback)");
 //    console.log(rows);
 
-globaldata['version'] =  rows.rows[0].version;
-globaldata['m_sov']   =  rows.rows[0].m_sov;
+globaldata['version']    =  rows.rows[0].version;
+globaldata['m_sov']      =  rows.rows[0].m_sov;
+globaldata['a_sov']      =  rows.rows[0].a_sov;
 globaldata['svx_self']   =  rows.rows[0].svx_self;
 
 
@@ -6120,12 +6121,16 @@ memo = "attack;"+global_account+";"+tank_assetid+";"+target;
   }
 
 
-
+console.log("a_sov:" + globaldata['a_sov']);
 var quantitysov = globaldata['a_sov'] / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";
 
 
+console.log("MEMO:");
+console.log(memo);
 
+console.log("quantitysov:");
+console.log(quantitysov);
 
     var action = {
                  account: "sovmintofeos",
