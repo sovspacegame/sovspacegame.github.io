@@ -2284,7 +2284,7 @@ NFT-API (atomicassets):
 
 <br>
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1q</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1r</div>
 
 <br>
 <br>
@@ -2549,6 +2549,31 @@ globalselection['config']  = tilearray[thex][they].config;
 //globalcoordinatei = coordinatei;
 globalselection['coordinate'] = coordinatei;
 globalselection['owner']      = owner;
+
+// --- Tile
+var tilerace = 0;
+var tiletype = 0;
+var tile = tilearray[thex][they].tile;
+//alfalf
+tile 
+tile = tile.replace('tile', '')*1;
+ console.log("TILE: " + tile);
+
+  // street
+      if ( tile == 10 ) { race=1; type=1; };
+      if ( tile == 11 ) { tilerace=2; tiletype=1; };
+      if ( tile == 13 ) { tilerace=4; tiletype=1; };
+      if ( tile == 14 ) { tilerace=5; tiletype=1; };
+        
+      // grass/homeland
+      if ( tile == 20 || tile == 21 || tile == 22  ) {tilerace=1; tiletype=2; }
+      if ( tile == 25 || tile == 26 || tile == 27  ) {tilerace=2; tiletype=2; }
+      if ( tile == 30 || tile == 31 || tile == 32  ) {tilerace=4; tiletype=2; }
+      if ( tile == 35 || tile == 36 || tile == 37  ) {tilerace=5; tiletype=2; }
+       
+       
+///
+globalselection['tilerace'] = tilerace;
 
 
 
@@ -2827,6 +2852,8 @@ if (render_ts < 1) render_ts = '-';
 render_shield = globalselection['shield'];
 if (render_shield < 1) render_shield = '-';
 
+if ( globalselection['tilerace'] == globalselection['race'] && globalselection['tilerace'] != 0 ) render_shield += ' (+1)';
+console.log(" tilerace:"+globalselection['tilerace'] + " race:"+globalselection['race'] );
 render_attack = globalselection['attack'];
 if (render_attack < 1) render_attack = '';
 if (
