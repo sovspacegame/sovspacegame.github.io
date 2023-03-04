@@ -622,6 +622,10 @@ repeat &#8634;
 terraform
 </div>
 
+<div id='navbutton_disable' onclick='toggletower();' class='navbutton_off'>
+deactivate
+</div>
+
 
 
 
@@ -2326,7 +2330,7 @@ NFT-API (atomicassets):
 
 <br>
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1r</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1s</div>
 
 <br>
 <br>
@@ -2596,7 +2600,7 @@ globalselection['owner']      = owner;
 var tilerace = 0;
 var tiletype = 0;
 var tile = tilearray[thex][they].tile;
-//alfalf
+
 tile 
 tile = tile.replace('tile', '')*1;
  console.log("TILE: " + tile);
@@ -3105,6 +3109,25 @@ if (configarray[0] == 'infected' &&
    document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;color:#ff3333;'>[infected] &nbsp;<strong>";
    }
 }
+
+
+var buttontext = "deactivate";
+if ( configarray.length > 0)
+{
+if (configarray[0] == 'disabled' &&
+    configarray[1] != ""
+   )
+   {
+   //enableinfect = 1;
+   document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;color:#ff3333;'>[disabled] &nbsp;<strong>";
+   
+   buttontext = "activate";
+   }
+}
+
+ document.getElementById("navbutton_disable").innerHTML = buttontext;
+
+  
 
 
 /*
@@ -6240,6 +6263,62 @@ if (1)
 
  
 } // plantgarden 
+
+
+function toggletower()
+{
+var config = globalselection['config'];
+var configarray = split(config,";");
+
+var disabled = 0;
+
+if ( configarray.length > 0)
+{
+if (configarray[0] == 'disabled' &&
+    configarray[1] != ""
+   )
+   {
+   disabled = 1;
+   }
+}
+
+//alert("Toggle tower - disabled:" + disabled);
+
+newvalue = "";
+if (disabled == 1) newvalue = "";
+if (disabled == 0) newvalue = "1";
+
+var theactions = [];
+
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'setnftoption',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {                 	
+                       "assetid": globalselection['assetid'],
+                       "user": global_account,
+                       "type": "disabled",
+                       "value": newvalue
+                       }
+                 };
+ 
+
+theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+} // toggletower
 
 
 function repairobject( direction )
