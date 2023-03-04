@@ -1350,11 +1350,16 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <div style='clear:both;'></div>
 <br>
 
-<div style='margin-left:20px;'>Automap</div>
-<div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
 
-<canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
 
+
+<div style='margin-left:20px;'>  <span id='canvasfolder_openclose' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Expand Automap &#9660;<span></div>
+
+
+<div id='canvasfolder' style='height:50px;border:none'>
+ <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
+ <canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
+ </div>
 </div>
 
 <canvas id='navmaphidden' width='400' height='200' style='visibility:hidden;overflow;hidden;position:absolute;' ></canvas>
@@ -1364,22 +1369,18 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
-<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
+<div style='float:left;;margin-left:20px;margin-top:20px;border:none;'>
 
 <select id="select_fav_objects" class='select_fav_objects'  >
 </select>
 </div>
-<br>
-<br>
 
-<div style='float:left;width:50%;margin-left:20px;margin-top:20px;border:none;'>
- <div onclick='load_my_assets()' class='refreshboard' style='width:40%;' >Update list </div>
+
+<div style='float:left;width:150px;margin-left:20px;margin-top:20px;border:none;'>
+ <div onclick='load_my_assets()' class='refreshboard' style='width:100%;' >Update list </div>
 </div>
 
 <div style='clear:both;'></div>
-<br>
-
-
 
 
 
@@ -1984,6 +1985,33 @@ myaudio.play();
 
 }
 
+
+
+canvas_toggle = 0;
+
+function canvasfolder_toggle()
+{
+
+canvas_toggle = !canvas_toggle;
+
+if (canvas_toggle) 
+   {
+   // expand
+     document.getElementById("canvasfolder").style.height = "";
+     document.getElementById("canvasfolder_openclose").innerHTML = "Close Automap &#9650;";
+   } else
+     {
+     // shrink
+     document.getElementById("canvasfolder").style.height = "50px";
+     document.getElementById("canvasfolder_openclose").innerHTML = "Expand Automap &#9660;";
+
+     }
+
+
+
+
+
+} // canvas_toggle
 
 
 
