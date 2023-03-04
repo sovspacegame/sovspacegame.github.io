@@ -2692,6 +2692,28 @@ console.log("-thex -- ",thex);
 console.log("-they -- ",they);
 
 
+// get disabled/enabled value of the tower
+var disabled = 0;
+var config = globalselection['config'];
+var configarray = split(config,";");
+ 
+
+
+var buttontext = "deactivate";
+if ( configarray.length > 0)
+{
+if (configarray[0] == 'disabled' &&
+    configarray[1] != ""
+   )
+   {   
+   disabled = 1;
+   }
+}
+  
+  
+  
+  
+
 
 
 let coordinates = [ -1,-3, 0,-3, 1,-3,
@@ -2735,11 +2757,14 @@ for (var i=0; i<size; i++)
 
     if (FOUND)
        {
-//       var thetile2 = "tile" + found_index;
+ 
        var theid3 = 'tileb'+(found_index);
+ 
+       if (disabled) 
+           document.getElementById(theid3).setAttribute('fill', '#555555');  else
+           document.getElementById(theid3).setAttribute('fill', '#ff0000'); 
 
-document.getElementById(theid3).setAttribute('fill', '#ff0000');
-document.getElementById(theid3).setAttribute('opacity', 0.3);
+       document.getElementById(theid3).setAttribute('opacity', 0.3);
        } // if (FOUND)
 
     } // for i...
