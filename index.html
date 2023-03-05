@@ -28,10 +28,8 @@
     <script src="js/bundles/scatterjs-plugin-eosjs.min.js"></script>
     <script src="js/bundles/scatterjs-plugin-lynx.min.js"></script>    -->
 
-
     <script src='js/assets/scatterjs-core.min.js'></script>
     <script src='js/assets/scatterjs-plugin-eosjs2.min.js'></script>
-
 
     <script src="js/eosiowallet/wallet.js?dsd=75324"></script>
 
@@ -41,7 +39,9 @@
 
  <!-- END WALLET-INCLUDE-->
 
+<script src="https://kit.fontawesome.com/22c7420d77.js" crossorigin="anonymous"></script>
 
+<!-- font awesome kit for icons -->
 
 </head>
 <body class='bodyclass myimage' onload='loadaudio();'>
@@ -189,9 +189,9 @@ Play Reptos
 <br>
 <img src='img/logo_reptos.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
 </div>
- 
- 
-</div> <!-- chooseraceinner2 --> 
+
+
+</div> <!-- chooseraceinner2 -->
 
 <br>
 <br>
@@ -1534,8 +1534,8 @@ The Basic Rules (please read carefully):
   dynamics in the gameplay and strategy.</li>
 <li>The lander is the only NFT that can be placed on undeveloped areas of the map. </li>
 <li>Aside from the Lander, all structures must be built next to an existing structure or street of your own species.</li>
-<li>If you want to build something that will be connected to an existing building, it is best to first ask the owner for permission. They have the right to <strong> demolish </strong>younger adjoining structures.</li>
-<li>A <strong>demolish</strong>-action will result in a 100% burning of the backed SOV.</li>
+<li>If you want to build something that will be adjacent to a building of your species that you do not own, it is best to first ask the owner for permission. They have the right to <strong> demolish </strong>younger adjacent structures.</li>
+<li>A <strong>demolish</strong>-action will result in a 100% of the SOV being burned for SVX mining.  The SVX mined will go to Collector owners, divided equally per Collector on the map.</li>
 <li>Bulldozers, Tanks, Service Units, and Transporters can freely move around the map.  Tanks and Bulldozers can also attack other species NFTs.</li>
 <li>Moving, attacking, and healing actions cost fuel paid in SOV. 100% of this is given back to the players.  All is used to automatically mine SVX and is then divided among all Collector buildings equally.</li>
 <li>Once a player places an NFT on the map, they can set a <strong>personal nickname</strong>, stored in the mutable NFT-attributes.</li>
@@ -1545,7 +1545,14 @@ The Basic Rules (please read carefully):
 <strong>Individual Unit Abilities and Functions</strong>
 <br>
 <br>
-<h2>Lander</h2>
+
+
+<h2>Lander
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+</h2>
 <img src='img/nft_1_1.png' style='width:100px; padding-right:5px'><img src='img/nft_2_1.png' style='width:100px; padding-right:5px'><img src='img/nft_4_1.png' style='width:100px; padding-right:5px'><img src='img/nft_5_1.png' style='width:100px; padding-right:5px'>
 <br>
 This is the only structure you can be placed on any free area of the surface. All other structures must be build next to
@@ -1553,21 +1560,36 @@ an existing structure from your species. A lander cannot be placed on an existin
 <br>
 <br>
 
-<h2>Residence</h2>
+<h2>Residence
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+</h2>
 <img src='img/nft_1_2.png' style='width:100px; padding-right:5px'><img src='img/nft_2_2.png' style='width:100px; padding-right:5px'><img src='img/nft_4_2.png' style='width:100px; padding-right:5px'><img src='img/nft_5_2.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to an existing building or street. Your people need somewhere to live.
 <br>
 <br>
 
-<h2>Agriculture</h2>
+<h2>Agriculture
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+</h2>
 <img src='img/nft_1_3.png' style='width:100px; padding-right:5px'><img src='img/nft_2_3.png' style='width:100px; padding-right:5px'><img src='img/nft_4_3.png' style='width:100px; padding-right:5px'><img src='img/nft_5_3.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a Residence. Your people need to eat.
 <br>
 <br>
 
-<h2>Factory</h2>
+<h2>Factory
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+</h2>
 <img src='img/nft_1_4.png' style='width:100px; padding-right:5px'><img src='img/nft_2_4.png' style='width:100px; padding-right:5px'><img src='img/nft_4_4.png' style='width:100px; padding-right:5px'><img src='img/nft_5_4.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to an Agriculture. If you would like to produce and heal mobile units, you will need a Factory.
@@ -1576,34 +1598,12 @@ Can repair mobile units for 50% of their current market price.
 <br>
 <br>
 
-<h2>Bulldozer</h2>
-<img src='img/nft_1_5.png' style='width:100px; padding-right:5px'><img src='img/nft_2_5.png' style='width:100px; padding-right:5px'><img src='img/nft_4_5.png' style='width:100px; padding-right:5px'><img src='img/nft_5_5.png' style='width:100px; padding-right:5px'>
-<br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A bulldozer can move and attack opponent species NFTs.
-If a bulldozer is attacked by another bulldozer, it will attack back as long as it is still alive. So keep in mind, if you attack with another bulldozer, it will likely result in mutual destruction.
-<br>
-<br>
-
-
-<h2>Street</h2>
-<img src='img/nft_1_6.png' style='width:100px; padding-right:5px'><img src='img/nft_2_6.png' style='width:100px; padding-right:5px'><img src='img/nft_4_6.png' style='width:100px; padding-right:5px'><img src='img/nft_5_6.png' style='width:100px; padding-right:5px'>
-<br>
-Must be built adjacent to a building or another street. A street is an inexpensive structure where you can build other structures next to. You cannot destroy a street with a
-bulldozer, but you can build a street from your own species over it. The SOV costs will become burned during the minting process
-and cannot be refunded. If you drive with a mobile object (like a bulldozer) on a street, the costs will be refunded. So driving
-on a street is saving many fuel. You also will have +1 Point more shield standing on a street.
-<br>
-<br>
-
-<h2>Wall</h2>
-<img src='img/nft_1_7.png' style='width:100px; padding-right:5px'><img src='img/nft_2_7.png' style='width:100px; padding-right:5px'><img src='img/nft_4_7.png' style='width:100px; padding-right:5px'><img src='img/nft_5_7.png' style='width:100px; padding-right:5px'>
-<br>
-Must be built adjacent to a building or street. A wall is a strong element with heavy shields. Please use walls in order to protect
-your important buildings.
-<br>
-<br>
-
-<h2>Collector</h2>
+<h2>Collector
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
+  </span>
+</h2>
 <img src='img/nft_1_8.png' style='width:100px; padding-right:5px'><img src='img/nft_2_8.png' style='width:100px; padding-right:5px'><img src='img/nft_4_8.png' style='width:100px; padding-right:5px'><img src='img/nft_5_8.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a Factory or another Collector. With a Collector facility you can earn SVX-token. On every mobile unit move, attack and repair, the SOV will be used for SVX-mining. Every 24 hours
@@ -1611,16 +1611,61 @@ a collector will be able to claim its share from the pool. The more active the p
 <br>
 <br>
 
-<h2>Tower</h2>
+<h2>Wall
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">300</small>
+  </span>
+</h2>
+<img src='img/nft_1_7.png' style='width:100px; padding-right:5px'><img src='img/nft_2_7.png' style='width:100px; padding-right:5px'><img src='img/nft_4_7.png' style='width:100px; padding-right:5px'><img src='img/nft_5_7.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a building or street. A wall is a strong element with heavy shields. Please use walls in order to protect
+your important buildings.
+<br>
+<br>
+
+
+<h2>Wall II
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">600</small>
+  </span>
+</h2>
+<img src='img/nft_1_13.png' style='width:100px; padding-right:5px'><img src='img/nft_2_13.png' style='width:100px; padding-right:5px'><img src='img/nft_4_13.png' style='width:100px; padding-right:5px'><img src='img/nft_5_13.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a building or street. Wall II is stronger version of the Wall.
+<br>
+<br>
+
+
+<h2>Tower
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">4</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
+  </span>
+</h2>
 <img src='img/nft_1_9.png' style='width:100px; padding-right:5px'><img src='img/nft_2_9.png' style='width:100px; padding-right:5px'><img src='img/nft_4_9.png' style='width:100px; padding-right:5px'><img src='img/nft_5_9.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a building or street. A tower is a building for defense. If an enemy vehicle moves or attacks through the view of a tower (red area on click), it suffers damage.
 As a ranged weapon, if a vehicle is destroyed, the SOV for SVX mining is burned and will not be credited to the owner of the defence-tower.
-This building can be turned on and off by its owner.
+This building can be turned on and off by its owner.  This can be useful if an inter-species alliance is formed.
 <br>
 <br>
 
-<h2>Service Unit</h2>
+<h2>Service Unit
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">30</small>
+  </span>
+</h2>
 <img src='img/nft_1_10.png' style='width:100px; padding-right:5px'><img src='img/nft_2_10.png' style='width:100px; padding-right:5px'><img src='img/nft_4_10.png' style='width:100px; padding-right:5px'><img src='img/nft_5_10.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a Factory.  Can be repaired adjacent to a Factory. A service unit allows you to repair damaged buildings. The cost of a repair is about 50% of the current market price.
@@ -1628,18 +1673,16 @@ Please note, this unit is not able to repair mobile units like tanks or transpor
 <br>
 <br>
 
-
-
-<h2>Tank</h2>
-<img src='img/nft_1_11.png' style='width:100px; padding-right:5px'><img src='img/nft_2_11.png' style='width:100px; padding-right:5px'><img src='img/nft_4_11.png' style='width:100px; padding-right:5px'><img src='img/nft_5_11.png' style='width:100px; padding-right:5px'>
-<br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A tank is a mobile attack unit with an extended range.
-First click on your tank and then on "attack". After that you will
-see the shooting radius and you only need to click on an enemy target.
-<br>
-<br>
-
-<h2>Transporter</h2>
+<h2>Transporter
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-truck-moving fa-stack-2x" style="color:#8a8794"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">4</small>
+  </span>
+</h2>
 <img src='img/nft_1_12.png' style='width:100px; padding-right:5px'><img src='img/nft_2_12.png' style='width:100px; padding-right:5px'><img src='img/nft_4_12.png' style='width:100px; padding-right:5px'><img src='img/nft_5_12.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. With a transporter you can move up to 4 of your own units together as one.
@@ -1649,22 +1692,81 @@ tiles next to the transporter must be free, for both loading and unloading.
 <br>
 <br>
 
+<h2>Bulldozer
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">15</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1</small>
+  </span>
+</h2>
+<img src='img/nft_1_5.png' style='width:100px; padding-right:5px'><img src='img/nft_2_5.png' style='width:100px; padding-right:5px'><img src='img/nft_4_5.png' style='width:100px; padding-right:5px'><img src='img/nft_5_5.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A bulldozer can move and attack opponent species NFTs.
+If a bulldozer is attacked by another bulldozer, it will attack back as long as it is still alive. So keep in mind, if you attack with another bulldozer, it will likely result in mutual destruction.
+<br>
+<br>
+
+
+<h2>Tank
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">120</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">10</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
+  </span>
+</h2>
+<img src='img/nft_1_11.png' style='width:100px; padding-right:5px'><img src='img/nft_2_11.png' style='width:100px; padding-right:5px'><img src='img/nft_4_11.png' style='width:100px; padding-right:5px'><img src='img/nft_5_11.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A tank is a mobile attack unit with an extended range.
+First click on your tank and then on "attack". After that you will
+see the shooting radius and you only need to click on an enemy target.
+<br>
+<br>
+
+
+<h2>Street</h2>
+<img src='img/nft_1_6.png' style='width:100px; padding-right:5px'><img src='img/nft_2_6.png' style='width:100px; padding-right:5px'><img src='img/nft_4_6.png' style='width:100px; padding-right:5px'><img src='img/nft_5_6.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a building or another street. A street is an inexpensive structure that you can build other structures next to. You cannot destroy a street by attacking it, but you can build a street from your own species over it. The SOV costs will become burned during the minting process
+to mine SVX for collectors and cannot be refunded. If you drive with a mobile unit (like a bulldozer) on a street, the costs will be refunded. So driving
+on a street will save fuel (SOV). Units on a street of their species recieve +1 shield.
+<br>
+<br>
+<strong>Streets cannot be destroyed or traded, only built over with an opposing species street.</strong>
+<br>
+<br>
+
 <h2>Terrain</h2>
 <img src='img/homeworld1.png' style='width:100px; padding-right:5px'><img src='img/homeworld2.png' style='width:100px; padding-right:5px'><img src='img/homeworld4.png' style='width:100px; padding-right:5px'><img src='img/homeworld5.png' style='width:100px; padding-right:5px'>
 <br>
 <br>
-Must be built adjacent to a building, street or another garden. A garden is an inexpensive structure just for decoration. 
-You cannot destroy a garden with a bulldozer, but you can build a garden from your own species over it. 
-Instead of SOV a garden is purchased in SVX and will get to the collector-pool.
-Your mobile unit will have +1 point more shield standing on a garden of your homeworld.
-
-
+Must be built adjacent to a building, street or another garden. Terrain is an inexpensive terraformed tile.
+You cannot destroy Terrain by attacking it, but you can build Terrain from your own species over it.
+Terrain is purchased with SVX and the SVX used to purchase Terrain goes to the Collector pool.
+Mobile units on Terrain of their species will receive +1 shield.
+<br>
+<br>
+<strong>Terrain cannot be destroyed or traded, only built over with an opposing species terrain.</strong>
+<br>
+<br>
+<br>
 <br>
 
-
-<br>
 <ul>
-<li>SOV INVADERS runs on EOS mainnet and is uses SOV as its currency.</li>
+<li>SOV INVADERS runs on EOS mainnet and uses SOV as its currency.</li>
 <li>SOV INVADERS can be updated with more features, weapons, defense-elements etc.. Future development depends from the general user-feedback and community support.</li>
 <li>SOV INVADERS frontend only uses public API-nodes. All data is loaded in realtime from the blockchain (EOS mainnet).</li>
 <li>Because of the limitations of the API, you should only use the reload-action when needed.</li>
@@ -1723,7 +1825,7 @@ The war did not end overnight, but gradually, as more and more individuals saw t
 After it all, SOV, the currency that had brought the different species together in the first place, was still the preferred currency for most inter-galactic trade. But after the War it became more than that. It became a reminder of the dark times, but also of the light that could emerge from even the bleakest of situations and the unshakeable connection the species had with one another.
 <br><br><br>
 
-But now in the year 2371, the land left suitable for building SVX Collectors is virtually all on a single desolate moon and SOV has been rising at an unsustainable pace once again.  Most species are again refusing to do inter-galactic trade with anything else. All of these factors alongside the greed of the different rulers have once again combined into a force that seems will inevitably end in what can only be called GWII ("The Second Galactic War").  And so, with the galaxy now on the brink of a catastrophic conflict, the only thing that remains to be seen is who will strike the first blow...
+But now in the year 2379, the land left suitable for building SVX Collectors is virtually all on a single desolate moon and SOV has been rising at an unsustainable pace once again.  Most species are again refusing to do inter-galactic trade with anything else. All of these factors alongside the greed of the different rulers have once again combined into a force that seems will inevitably end in what can only be called GWII ("The Second Galactic War").  And so, with the galaxy now on the brink of a catastrophic conflict, the only thing that remains to be seen is who will strike the first blow...
 
 
 <br><br>
@@ -1751,7 +1853,7 @@ Human Soundtrack (classic edit):<br>
 
 <img src='img/logo_human.png' style='width:100px;margin-top:20px;float:left;margin-left:20px;margin-right:20px;'>
 
-<img src='img/human.png' style='width:200px;margin-top:20px;margin-right:20px;float:left;'>
+<img src='img/human.svg' style='width:200px;margin-top:20px;margin-right:20px;float:left;'>
 
 
 The Human origins are unclear, but Humans are believed to have been created by a highly advanced race of beings known as the Ancients, or what some refer to as 'Gods'. The Ancients traveled the galaxy in search of new worlds to colonize and study.
@@ -1762,10 +1864,11 @@ As part of their terraforming process, the Ancients decided to create a new spec
 <br><br>
 And so, the first humans were born. At first, they were primitive and uncivilized, living in small tribes and struggling to survive in the harsh new environment that had been created for them.  However, they 'soon' dominated the Earth completely and with ease.
 <br><br>
-Over time, as the humans grew stronger and more advanced, they began to wonder about their origins and the purpose of their existence. Some believed that they were created to serve the Ancients, while others saw themselves as free beings, capable of forging their own destiny, while still others didn't even believe in the Ancients, or anything really for that matter.  Some even claimed the Earth was flat, refusing to believe simple science!  The flat earth theory was eventually disproven for good after the Humans started traveling to other worlds in the year 2073.
+Over time, as the humans grew stronger and more advanced, they began to wonder about their origins and the purpose of their existence. Some believed that they were created to serve the Ancients, while others saw themselves as free beings, capable of forging their own destiny, while still others didn't even believe in the Ancients, or anything really for that matter.  Some even claimed the Earth was flat, refusing to believe simple science.  In time, the Humans capable of reproduction had no choice but to leave Earth after water systems were poisoned and damaged most of the population's DNA.  Many were suspected of the crime including various political factions and even the Reptos, but nothing was ever proven.
 <br><br>
-And so, the humans set out to explore the galaxy, seeking answers to the questions that had been burning within them since their creation. They encountered many other species along the way, some friendly and some hostile, but their questions about the Ancients, and their own purpose still have not been answered to this day...
+And so, the humans set out to explore the galaxy, seeking a suitable planet and answers to the questions that had been burning within them since their creation. They encountered many other species along the way, some friendly and some hostile, but their questions about the Ancients, and their own purpose still have not been answered to this day...
 <br><br>
+
 
 
 
@@ -1790,7 +1893,7 @@ Grey Soundtrack (classic edit):<br>
 
 <img src='img/logo_grey.png' style='width:100px;margin-top:20px;float:left;margin-left:20px;margin-right:20px;'>
 
-<img src='img/grey.png' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
+<img src='img/grey.svg' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
 
 
 
@@ -1844,7 +1947,7 @@ Sirian Soundtrack (classic edit):<br>
 
 <img src='img/logo_sirian.png' style='width:100px;margin-top:20px;float:left;margin-left:20px;margin-right:20px;'>
 
-<img src='img/sirian.png' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
+<img src='img/sirian.svg' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
 
 
 
@@ -1889,10 +1992,10 @@ Repto Soundtrack (classic edit):<br>
 
 <img src='img/logo_reptos.png' style='width:100px;margin-top:20px;float:left;margin-left:20px;margin-right:20px;'>
 
-<img src='img/repto.png' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
+<img src='img/repto.svg' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
 
 
-According to their own historical accounts, the Reptos were a primitive species that inhabited a remote and desolate planet on the outskirts of the galaxy called Thracon. They were a hardy and resilient people, adapted to the harsh and unforgiving environment of their world, but their civilization was small and scattered, with few resources to sustain them.
+According to their own historical accounts, the Reptos were a primitive species that inhabited a remote and desolate planet named Thracon on the outskirts of the galaxy. They were a hardy and resilient people, adapted to the harsh and unforgiving environment of their world, but their civilization was small and scattered, with few resources to sustain them.
 <br><br>
 One day, a massive object appeared in the sky, plummeting to the surface with a deafening roar. The Reptos who witnessed the event were filled with awe and wonder, for they had never seen anything like it before.
 <br><br>
@@ -1904,10 +2007,13 @@ As they began to interact with the Reptos, the Thalaxians were impressed by thei
 <br><br>
 Quickly thereafter, the Reptos began to thrive under the guidance of the Thalaxians. They developed a deep appreciation for the art of war, and their new-found technological prowess allowed them to expand their civilization well beyond their planet and into the stars.
 <br><br>
-As they grew in power and influence, the Reptos began to feel a sense of superiority over the other species they encountered, viewing themselves as the rightful rulers of the galaxy. This hubris led to conflicts with other civilizations, and the Reptos became known as a fierce and aggressive race, feared by many but respected for their tenacity, strength, and technology that seems indistinguishable to ancient magic.
+As they grew in power and influence, the Reptos began to feel a sense of superiority over the other species they encountered, viewing themselves as the rightful rulers of the galaxy. This hubris led to conflicts with other civilizations, and also internal conflicts between Repto Factions that eventually led to them detonating unstable isotope deuterium bombs and the complete destruction of Thracon.
 <br><br>
-To this day the Reptos continue to expand their empire and subjugate other civilizations in their quest for Galactic superiority and dominance.  Many believe they have already set their sites on Humans to be their next victims and have begun to interfere in their politics and financial systems.
+The Reptos became known as a fierce and aggressive race, feared by many but respected for their tenacity, strength, and technology that seems indistinguishable to ancient magic.
 <br><br>
+To this day the Reptos continue to expand their empire and subjugate other civilizations in their quest for Galactic superiority and dominance.  Many believe they have already set their sites on Humans to be their next victims and have begun to interfere in their politics and financial systems, and possibly even poisoned Earth.
+<br><br>
+
 
 
 
@@ -1999,7 +2105,7 @@ function canvasfolder_toggle()
 
 canvas_toggle = !canvas_toggle;
 
-if (canvas_toggle) 
+if (canvas_toggle)
    {
    // expand
      document.getElementById("canvasfolder").style.height = "";
@@ -2311,8 +2417,8 @@ NFT-API (atomicassets):
   <input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
   <div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
   <br>
- 
-  <small>Please send EOS/Token-donations to:</small><br> 
+
+  <small>Please send EOS/Token-donations to:</small><br>
   <a href='https://bloks.io/account/invadersfund' target='_blank' style='color:#eeeeee;'>invadersfund</a>
  </div>
 
@@ -2602,7 +2708,7 @@ var tilerace = 0;
 var tiletype = 0;
 var tile = tilearray[thex][they].tile;
 
-tile 
+tile
 tile = tile.replace('tile', '')*1;
  console.log("TILE: " + tile);
 
@@ -2611,14 +2717,14 @@ tile = tile.replace('tile', '')*1;
       if ( tile == 11 ) { tilerace=2; tiletype=1; };
       if ( tile == 13 ) { tilerace=4; tiletype=1; };
       if ( tile == 14 ) { tilerace=5; tiletype=1; };
-        
+
       // grass/homeland
       if ( tile == 20 || tile == 21 || tile == 22  ) {tilerace=1; tiletype=2; }
       if ( tile == 25 || tile == 26 || tile == 27  ) {tilerace=2; tiletype=2; }
       if ( tile == 30 || tile == 31 || tile == 32  ) {tilerace=4; tiletype=2; }
       if ( tile == 35 || tile == 36 || tile == 37  ) {tilerace=5; tiletype=2; }
-       
-       
+
+
 ///
 globalselection['tilerace'] = tilerace;
 
@@ -2697,7 +2803,7 @@ console.log("-they -- ",they);
 var disabled = 0;
 var config = globalselection['config'];
 var configarray = split(config,";");
- 
+
 
 
 var buttontext = "deactivate";
@@ -2706,14 +2812,14 @@ if ( configarray.length > 0)
 if (configarray[0] == 'disabled' &&
     configarray[1] != ""
    )
-   {   
+   {
    disabled = 1;
    }
 }
-  
-  
-  
-  
+
+
+
+
 
 
 
@@ -2758,12 +2864,12 @@ for (var i=0; i<size; i++)
 
     if (FOUND)
        {
- 
+
        var theid3 = 'tileb'+(found_index);
- 
-       if (disabled) 
+
+       if (disabled)
            document.getElementById(theid3).setAttribute('fill', '#555555');  else
-           document.getElementById(theid3).setAttribute('fill', '#ff0000'); 
+           document.getElementById(theid3).setAttribute('fill', '#ff0000');
 
        document.getElementById(theid3).setAttribute('opacity', 0.3);
        } // if (FOUND)
@@ -2961,18 +3067,18 @@ if ( globalselection['assetid'] <= 0)
      {
      thelink = "<a href='https://eos.atomichub.io/explorer/asset/"+globalselection['assetid'] + "' target='_blank' style='color:#9999ff;'>"+globalselection['assetid'] + "</a>" ;
      }
-document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>NFT</div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-image' style='color: #ffb800'></i></div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>User</div> <div style='width:60%;float:left'>"+ render_owner + "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-user' style='color: #8a8794'></i></div> <div style='width:60%;float:left'>"+ render_owner + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Timestamp</div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-clock' style='color: #9696fe'></i></div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("shield").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Shield</div> <div style='width:60%;float:left'>"+ render_shield+ "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("shield").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-shield-heart' style='color: #3175bd'></i></div> <div style='width:60%;float:left'>"+ render_shield+ "</div> </div>     <div style='clear:both'></div>";
 
 attack = globalselection['attack'];
 
 
-document.getElementById("attack").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'>Attack</div> <div style='width:60%;float:left'>"+render_attack + "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("attack").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-gun' style='color: #2a4d33'></i></div> <div style='width:60%;float:left'>"+render_attack + "</div> </div>     <div style='clear:both'></div>";
 
 
 
@@ -3146,14 +3252,14 @@ if (configarray[0] == 'disabled' &&
    {
    //enableinfect = 1;
    document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;color:#ff3333;'>[disabled] &nbsp;<strong>";
-   
+
    buttontext = "activate";
    }
 }
 
  document.getElementById("navbutton_disable").innerHTML = buttontext;
 
-  
+
 
 
 /*
@@ -5647,14 +5753,14 @@ for (var i=0; i<size; i++)
               content += "[street]";
               } else
                  {
-                 
-                 
+
+
                  // Get current prices
-                 
-                 
-                 
-               
-                  
+
+
+
+
+
                    marketid = 1;
        //
        size2 = pricedata.length;
@@ -5672,7 +5778,7 @@ for (var i=0; i<size; i++)
         // pricedata[id]['race']
    var sov2 =  marketdata_item[marketid];
 
-                 
+
             content += "<span >"+sov2+" SOV</span><br>";
 
                  content += "<span class='mintbutton' onclick='"+thelink+"'>Sell NFT</span>";
@@ -6158,7 +6264,7 @@ if (last_action == "moveobject")
    {
    moveobject( last_attack_direction );
    }
- 
+
 } // repeataction
 
 
@@ -6250,7 +6356,7 @@ var theactions = [];
 
 var memo = "homeworld;"+global_account+";"+globalselection['x']+";"+globalselection['y']+"";
 
- 
+
 
 
 
@@ -6287,8 +6393,8 @@ if (1)
    transact( func_success, func_error, theactions );
    }
 
- 
-} // plantgarden 
+
+} // plantgarden
 
 
 function toggletower()
@@ -6324,14 +6430,14 @@ var theactions = [];
                                 actor: global_account,
                                 permission: "active"
                                 }],
-                 data: {                 	
+                 data: {
                        "assetid": globalselection['assetid'],
                        "user": global_account,
                        "type": "disabled",
                        "value": newvalue
                        }
                  };
- 
+
 
 theactions.push(action);
 
@@ -6343,7 +6449,7 @@ if (1)
    {
    transact( func_success, func_error, theactions );
    }
-   
+
 } // toggletower
 
 
@@ -7593,7 +7699,7 @@ eostobuy = Number(value).toFixed(4) + " EOS";
 var theactions = [];
 
 
- 
+
 
     var action = {
                  account: "svxmintofeos",
