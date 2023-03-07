@@ -2534,7 +2534,7 @@ for (var i=0; i<size; i++)
     {
     if (a.childNodes[i].tagName == "polygon")
        {
-       console.log("+++ i- ",  a.childNodes[i].id );
+//       console.log("+++ i- ",  a.childNodes[i].id );
 
 
 
@@ -2708,12 +2708,13 @@ var tilerace = 0;
 var tiletype = 0;
 var tile = tilearray[thex][they].tile;
 
-tile
+
 tile = tile.replace('tile', '')*1;
  console.log("TILE: " + tile);
 
   // street
-      if ( tile == 10 ) { race=1; type=1; };
+//      if ( tile == 10 ) { race=1; type=1; };
+      if ( tile == 10 ) { tilerace=1; tiletype=1; };
       if ( tile == 11 ) { tilerace=2; tiletype=1; };
       if ( tile == 13 ) { tilerace=4; tiletype=1; };
       if ( tile == 14 ) { tilerace=5; tiletype=1; };
@@ -2890,7 +2891,8 @@ if (
    globalselection['atype'] == 5 || // bulldozer
    globalselection['atype'] == 10 ||  // service-unit
    globalselection['atype'] == 11 ||  // tank
-   globalselection['atype'] == 12   // transporter
+   globalselection['atype'] == 12 ||   // transporter
+   globalselection['atype'] == 14      // RED
    )
 {
 let coordinates = [ 0,-1, 1,0, 0,1, -1,0 ];
@@ -3227,10 +3229,13 @@ if ( globalselection['owner'] == global_account &&
 var config = globalselection['config'];
 //var configarray = config.split(";") + "";
 var configarray = split(config,";");
+
+/*
 console.log("ALF:");
 console.log(config);
 console.log("len: "+configarray.length);
 console.log( configarray[0] + " - " + configarray[1] );
+*/
 
 if ( configarray.length > 0)
 {
@@ -3677,8 +3682,8 @@ let mappingarray =
                                         [ 5,15]
 ];
 
-   console.log("mappingarray:");
-   console.log(mappingarray);
+//   console.log("mappingarray:");
+//   console.log(mappingarray);
 
 
 
@@ -3740,8 +3745,8 @@ for (var i2=0; i2<16; i2++)
 } // for ... i
 
 
-       console.log("tilearray:");
-       console.log(tilearray);
+   //    console.log("tilearray:");
+   //    console.log(tilearray);
 
 
 
@@ -4168,7 +4173,7 @@ function callback_render_areas( value )
 
               } // for y...
 
-          console.log("loadobjects_size: ",loadobjects_size);
+          //console.log("loadobjects_size: ",loadobjects_size);
 
           //renderboard(); // pre render
           loadobjects();
@@ -4228,16 +4233,17 @@ for (var i2=0; i2<16; i2++)
        tile2 = tile;
        if (tile2 < 10) tile2 = '0'+tile;
        tilearray[lastx][lasty]['tile']     = "tile"+tile2;
+    //       tilearray[lastx][lasty]['tile']     = "tile10";
        tilearray[lastx][lasty]['asset_id'] =  asset_id;
        tilearray[lastx][lasty]['owner']    = owner;
        tilearray[lastx][lasty]['ts']       = ts;
 
 
-       //console.log(" - x: " , lastx, " y:",lasty, " tile:" , tile, " " ,asset_id);
+    // console.log(" - x: " , lastx, " y:",lasty, " tile2:" , tile2, " " ,asset_id);
 
 
        } // if (found)
-
+        
     } // for j...
 
 
@@ -4394,16 +4400,31 @@ for (var i=0; i<size; i++)
     shield_max   =  tilearray[x][y]['shield_max'];
     config       =  tilearray[x][y]['config'] + "";
 
-
+//console.log(" i:::("+x+","+y+")"+i+" REN tile:["+tile+"]");
     // config
 //    let configarray = config.split(";");
     let configarray = split(config,";");
+
 
     if ( tile != "tile10" &&  tile != "tile11")
        {
        var buffer = "<img src='img/"+tile+".png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
        document.getElementById(thetile).innerHTML = buffer;
-       }
+       } else
+         {
+          if ( tile == "tile10" )
+       {
+       console.log("place s1.png");
+       buffer += "<img src='img/s1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       }  
+
+    if ( tile == "tile11" )
+       {
+       console.log("place s2.png");
+       buffer += "<img src='img/s2.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       }  
+ document.getElementById(thetile).innerHTML = buffer;
+         }
 
 
 
@@ -4415,25 +4436,20 @@ for (var i=0; i<size; i++)
     buffer = "";
     if ( atype == 1 && race == 1)
        {
-       buffer = "<img src='img/lander1.png?s=4442' style='position:absolute;border:none;width:100%;'>";
+       buffer += "<img src='img/lander1.png?s=4442' style='position:absolute;border:none;width:100%;'>";
        }
 
     if ( atype == 2 && race == 1)
-       buffer = "<img src='img/resident_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       buffer += "<img src='img/resident_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
 
     if ( atype == 3 && race == 1)
-       buffer = "<img src='img/agri_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       buffer += "<img src='img/agri_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
 
     if ( atype == 4 && race == 1)
-       buffer = "<img src='img/factory_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+       buffer += "<img src='img/factory_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
 
 
-    if ( tile == "tile10" )
-       buffer = "<img src='img/s1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
-
-    if ( tile == "tile11" )
-       buffer = "<img src='img/s2.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
-
+   
 
     if ( atype == 5 && race == 1)
        {
@@ -4833,8 +4849,8 @@ for (var i=0; i<size; i++)
 
 
 
-    if (asset_id == 2199025130637  )
-       buffer = "<img src='img/monument_1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+    //if (asset_id == 2199025130637  )
+    //   buffer = "<img src='img/monument_1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
 
     checkbox_shield = document.getElementById('checkbox_shield').checked;
     checkbox_owner  = document.getElementById('checkbox_owner').checked;
@@ -5157,10 +5173,11 @@ function callback_readasset( value, params )
 {
 
 //console.log(value);
-
+/*
 console.log("TTT");
 console.log(params);
 console.log(value);
+*/
 
 /*
 if ( value.more == false )
@@ -5844,7 +5861,7 @@ console.log("size: " + size);
 for (var i=0; i<size; i++)
     {
     id = rows.rows[i].id;
-    console.log("id: "+id + " "+rows.rows[i].psov);
+//    console.log("id: "+id + " "+rows.rows[i].psov);
 
     pricedata[id] = new Object();
     pricedata[id]['peos']  = rows.rows[i].peos;
@@ -6727,12 +6744,14 @@ if (mode == 1)
 
    document.getElementById('navbutton_scroll').className = "navbutton_on";
 
-   // bulldozer=5, service-unit=10, tank=11, transporter=12
+   // bulldozer=5, service-unit=10, tank=11, transporter=12, RED=14
    if (
       globalselection['atype'] == 5 || // bulldozer
       globalselection['atype'] == 10 ||
       globalselection['atype'] == 11 ||
-      globalselection['atype'] == 12
+      globalselection['atype'] == 12 ||
+      globalselection['atype'] == 14 
+      
       )
       {
       document.getElementById('navbutton_move').className = "navbutton_off";
