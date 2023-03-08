@@ -626,14 +626,16 @@ terraform
 deactivate
 </div>
 
-
-
-
-<div id='navbutton_infect' onclick='nav_selection(6);' class='navbutton_off' style='visibility:hidden;'>
+<div id='navbutton_fire' onclick='firered();' class='navbutton_off' style='visibility:visible;loat:left;'>
+detonate
+</div>
+<div style='clear:both;'></div>
+<!--
+<div id='navbutton_infect' onclick='nav_selection(6);' class='navbutton_off' style='visibility:visible;f'>
 infect
 </div>
+-->
 
-<div style='clear:both;'></div>
 
 </div> <!-- navbuttonarea -->
 
@@ -1109,6 +1111,7 @@ own_assets = [];
 function callback_readasset_forlist( value, params )
 {
 
+console.log( "coordinatei: " ,params['id'] ," " ,params['asset_id'] );
 
 /*
 if ( value.more == false )
@@ -1293,7 +1296,10 @@ for (var i=0; i<size; i++)
        params['asset_id'] = asset_id;
        console.log(" --- asset_id_ ", asset_id)
        if (asset_id > 0)
-       getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
+          {
+          console.log(" read data for... ",asset_id);
+          getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
+          }
 
 
        } // if
@@ -2897,6 +2903,7 @@ if (
 {
 let coordinates = [ 0,-1, 1,0, 0,1, -1,0 ];
 
+if (globalselection['atype'] == 14)  coordinates = [ 0,-1, 1,0, 0,1, -1,0, 0,0 ];
 
 
 size = coordinates.length * 0.5;
@@ -2933,8 +2940,16 @@ for (var i=0; i<size; i++)
 //       var thetile2 = "tile" + found_index;
        var theid3 = 'tileb'+(found_index);
 
-document.getElementById(theid3).setAttribute('fill', '#00ff00');
-document.getElementById(theid3).setAttribute('opacity', 0.3);
+       if ( globalselection['atype'] == 14 )
+          {
+          document.getElementById(theid3).setAttribute('fill', '#ff00ff');
+          document.getElementById(theid3).setAttribute('opacity', 0.4);
+
+          } else
+            {
+            document.getElementById(theid3).setAttribute('fill', '#00ff00');
+            document.getElementById(theid3).setAttribute('opacity', 0.3);
+            }
        } // if (FOUND)
 
     } // for i...
@@ -3012,8 +3027,13 @@ let mappingarray =
 
 
 console.log(  "---- id: "+ theid +    " x:"+ thex +  " y "+ they + " c:"+coordinatei+ " last A:"+globalselection['assetid'] );
+
+
+if ( globalselection['atype'] != 14 )
+   {
    e.currentTarget.setAttribute('fill', '#ffffff');
    e.currentTarget.setAttribute('opacity', 0.3);
+   }
 
 
 
@@ -3039,6 +3059,7 @@ if (render_attack < 1) render_attack = '';
 if (
    globalselection['atype'] != 5 &&
    globalselection['atype'] != 9 &&
+   globalselection['atype'] != 10 &&
    globalselection['atype'] != 11
    ) render_attack = '-';
 
@@ -3049,6 +3070,14 @@ if (
   // render_attack = '-';
 //   render_shield = '&infin;';
    render_attack = '&infin;';
+   
+   
+//   document.getElementById('navbutton_disable').style.visibility = "hidden";
+   //document.getElementById('navbutton_garden').style.visibility = "hidden";
+   document.getElementById('navbutton_fire').style.visibility = "visible";
+
+
+   
    }
 
 render_nickname = nickname;
@@ -6486,6 +6515,53 @@ if (1)
 
 } // toggletower
 
+function firered()
+{
+ 
+memo = "detonate;"+global_account+";"+globalselection['assetid'];
+
+
+ 
+var quantitysov = globaldata['a_sov'] / 10000;
+quantitysov = Number(quantitysov).toFixed(4) + " SOV";
+
+
+// alfalf
+var theactions = [];
+
+
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysov,
+                       "memo": memo,
+
+
+                       }
+                 };
+
+
+
+theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+
+} // firered
 
 function repairobject( direction )
 {
@@ -6806,7 +6882,7 @@ if (mode == 1)
         document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
         }
 
-   document.getElementById('navbutton_infect').className = "navbutton_off";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
 
 
    document.getElementById('path924').style.visibility = "visible";
@@ -6833,7 +6909,7 @@ if (mode == 2)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";
-   document.getElementById('navbutton_infect').className = "navbutton_off";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
 
 
 
@@ -6864,7 +6940,7 @@ if (mode == 3)
    document.getElementById('navbutton_attack').className = "navbutton_on";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";
-   document.getElementById('navbutton_infect').className = "navbutton_off";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
 
 
    document.getElementById('path924').style.visibility = "hidden";
@@ -6900,7 +6976,7 @@ if (mode == 4)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_on";
    document.getElementById('navbutton_repair').className = "navbutton_off";
-   document.getElementById('navbutton_infect').className = "navbutton_off";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
 
 
    document.getElementById('path924').style.visibility = "hidden";
@@ -6929,7 +7005,7 @@ if (mode == 5)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_on";
-   document.getElementById('navbutton_infect').className = "navbutton_off";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
 
    document.getElementById('path924').style.visibility = "hidden";
    document.getElementById('path929').style.visibility = "hidden";
@@ -6958,7 +7034,7 @@ if (mode == 6)
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";
-   document.getElementById('navbutton_infect').className = "navbutton_on";
+//   document.getElementById('navbutton_infect').className = "navbutton_on";
 
    document.getElementById('path924').style.visibility = "hidden";
    document.getElementById('path929').style.visibility = "hidden";
