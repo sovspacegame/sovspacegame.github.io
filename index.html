@@ -1488,9 +1488,12 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <br>
 
 <!--
-<span onclick='callback_loadmarkets()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</span>
-<div style='clear:both;'></div>
+<div style='text-align:center'>
+<span onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</span>
+</div>
 -->
+<div style='clear:both;'></div>
+
 
 <div id='mintarea' style='margin-left:20px;'>
 ...
@@ -7202,9 +7205,16 @@ for (var i=0; i<size; i++)
 
 
 buffer_humans += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_humans += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+
 buffer_greys += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_greys += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+
 buffer_sirians += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_sirians += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+
 buffer_reptos += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_reptos += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
 
 document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  + "<div style='clear:both'></div><br><h2>Sirian-NFT's</h2>" + buffer_sirians + ""     + "<div style='clear:both'></div><br><h2>Repto-NFT's</h2>" + buffer_reptos + "";
 
