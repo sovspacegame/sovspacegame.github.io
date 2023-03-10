@@ -613,20 +613,20 @@ demolish
 repair
 </div>
 
-<div id='navbutton_repair' onclick='repeataction();' class='navbutton_off_inactive' style='background-color:#77cc77;color:ffffff;'>
+<div id='navbutton_repeat' onclick='repeataction();' class='navbutton_off_inactive' style='background-color:#77cc77;color:ffffff;'>
 repeat &#8634;
 </div>
 <div style='clear:both;'></div>
 
-<div id='navbutton_garden' onclick='plantgarden();' class='navbutton_off'>
+<div id='navbutton_garden' onclick='plantgarden();' class='navbutton_off_inactive'>
 terraform
 </div>
 
-<div id='navbutton_disable' onclick='toggletower();' class='navbutton_off'>
+<div id='navbutton_disable' onclick='toggletower();' class='navbutton_off_inactive'>
 deactivate
 </div>
 
-<div id='navbutton_fire' onclick='firered();' class='navbutton_off' style='visibility:visible;loat:left;'>
+<div id='navbutton_fire' onclick='firered();' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
 detonate
 </div>
 <div style='clear:both;'></div>
@@ -2739,8 +2739,82 @@ tile = tile.replace('tile', '')*1;
 globalselection['tilerace'] = tilerace;
 
 
+// Click on tile
+if ( globalselection['assetid'] == "" )
+   {
+   document.getElementById('navbutton_garden').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_garden').className = "navbutton_off_inactive";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+
+   }
 
 
+// detonation RED. and service-unit 
+if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
+   {
+   document.getElementById('navbutton_fire').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_fire').className = "navbutton_off_inactive";
+   }
+
+
+// Tower
+if ( globalselection['atype'] == 9 )
+   {
+   document.getElementById('navbutton_disable').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_disable').className = "navbutton_off_inactive";
+   }
+
+// Vehicle (move)
+if ( 
+   globalselection['atype'] == 5 // bulldozer
+   || globalselection['atype'] == 10 
+   || globalselection['atype'] == 11
+   || globalselection['atype'] == 12 
+   )
+   {
+   document.getElementById('navbutton_move').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_move').className = "navbutton_off_inactive";
+   }
+   
+// Attack
+if ( 
+   globalselection['atype'] == 5 // Bulldozer
+   || globalselection['atype'] == 11 // tank
+
+   )
+   {
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
+   }
+   
+   
+// repair 
+if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
+   {
+   document.getElementById('navbutton_repair').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
+   }   
+
+// // navbutton_move navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
     // ------
@@ -6528,8 +6602,8 @@ memo = "detonate;"+global_account+";"+globalselection['assetid'];
 var quantitysov = globaldata['a_sov'] / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";
 
+ 
 
-// alfalf
 var theactions = [];
 
 
@@ -6868,10 +6942,20 @@ if (mode == 1)
       )
       {
         document.getElementById('navbutton_demolish').className = "navbutton_off";
+        document.getElementById('navbutton_repeat').className = "navbutton_off";
+        document.getElementById('navbutton_garden').className = "navbutton_off";
+        document.getElementById('navbutton_disable').className = "navbutton_off";
+        document.getElementById('navbutton_fire').className = "navbutton_off";
+        
       } else
         {
         document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
+        document.getElementById('navbutton_repeat').className = "navbutton_off_inactive";
+        document.getElementById('navbutton_garden').className = "navbutton_off_inactive";
+        document.getElementById('navbutton_disable').className = "navbutton_off_inactive";
+        document.getElementById('navbutton_fire').className = "navbutton_off_inactive";
         }
+// // navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
    // bulldozer=5, service-unit=10, tank=11, transporter=12
@@ -6913,7 +6997,13 @@ if (mode == 2)
    document.getElementById('navbutton_demolish').className = "navbutton_off";
    document.getElementById('navbutton_repair').className = "navbutton_off";
 //   document.getElementById('navbutton_infect').className = "navbutton_off";
+   document.getElementById('navbutton_repeat').className = "navbutton_off";
+   document.getElementById('navbutton_garden').className = "navbutton_off";
+   document.getElementById('navbutton_disable').className = "navbutton_off";
+   document.getElementById('navbutton_fire').className = "navbutton_off";
+// alfalf
 
+// navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
    document.getElementById('path924').style.visibility = "hidden";
