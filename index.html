@@ -2743,13 +2743,10 @@ globalselection['tilerace'] = tilerace;
 if ( globalselection['assetid'] == "" )
    {
    document.getElementById('navbutton_garden').className = "navbutton_off";
-   document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
    } // if ( globalselection['assetid'] == "" )
    else
    {
-   document.getElementById('navbutton_garden').className = "navbutton_off_inactive";
-   document.getElementById('navbutton_demolish').className = "navbutton_off";
-
+   document.getElementById('navbutton_garden').className = "navbutton_off_inactive"; 
    }
 
 
@@ -2802,7 +2799,27 @@ if (
    {
    document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
    }
+ 
+// demolish
+if ( 
+   globalselection['atype'] == 1 // lander
+   || globalselection['atype'] == 2 // residence
+   || globalselection['atype'] == 3 // agri
+   || globalselection['atype'] == 4 // factory
+   || globalselection['atype'] == 7 // wall
+   || globalselection['atype'] == 8 // collector
+   || globalselection['atype'] == 9 // tower
+   || globalselection['atype'] == 13 // wall II
    
+
+   )
+   {
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
+   }   
    
 // repair 
 if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
