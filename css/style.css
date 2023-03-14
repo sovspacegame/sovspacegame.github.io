@@ -667,3 +667,102 @@ background:#0099ff;
 {
 background:#33aaff;
 }
+
+
+ 
+
+/* Chatbox */
+
+.chatbox_title
+{
+font-size:30px;
+}
+
+.chatinput 
+{
+width:75%;
+font-size:20px;
+color:#222222;
+}
+
+.chatinputsend
+{
+cursor:pointer;
+padding:5px;
+background:#0099ff;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.chatinputsend:hover
+{
+background:#33aaff;
+}
+
+/*
+
+@media (min-width: 0px) and (max-width: 1023px) 
+{
+chatbox_left width:48%;  chatbox_right width:46%;
+*/
+
+@media (min-width: 0px) and (max-width: 1023px) 
+{
+.chatbox_left
+{
+width:100%; 
+}
+
+.chatbox_right
+{
+width:100%; 
+margin-left:0px;
+}
+
+} /* 1023px */
+ 
+@media (min-width: 1023px)  
+{
+.chatbox_left
+{
+width:48%; 
+}
+
+.chatbox_right
+{
+width:46%; 
+margin-left:20px;
+}
+
+} /* 1023px */ 
+
+.chatbox_content_outer
+{
+height:300px;
+min-height:300px;
+max-height:300px;
+
+overflow-y: scroll; 
+}
+
+
+.chatbox_content
+{
+ 
+}
+
+.chatbox_bubble
+{
+padding:10px;
+background:#002266;
+width:90%;
+
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px; 
+margin-bottom:10px;
+}
+
+/* Chatbox */
+
