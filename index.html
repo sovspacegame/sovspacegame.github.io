@@ -2906,6 +2906,7 @@ tile = tile.replace('tile', '')*1;
 
 ///
 globalselection['tilerace'] = tilerace;
+globalselection['tiletype'] = tiletype;
 
 
 // Click on tile
@@ -3358,7 +3359,7 @@ if (render_ts < 1) render_ts = '-';
 render_shield = globalselection['shield'];
 if (render_shield < 1) render_shield = '-';
 
-if ( globalselection['tilerace'] == globalselection['race'] && globalselection['tilerace'] != 0 ) render_shield += ' (+1)';
+if ( globalselection['tilerace'] == globalselection['race'] && globalselection['tiletype'] == 2 && globalselection['tilerace'] != 0 ) render_shield += ' (+1)';
 console.log(" tilerace:"+globalselection['tilerace'] + " race:"+globalselection['race'] );
 render_attack = globalselection['attack'];
 if (render_attack < 1) render_attack = '';
@@ -8806,8 +8807,11 @@ for (var i=0; i<size; i++)
     {
     user       = value.rows[i]['user'];
     txt        = value.rows[i]['text'];
+    time        = value.rows[i]['time'];
     
-    buffer += "<strong>"+ user + " " + "</strong>";
+    rendertime = timeConverter( time );
+    
+    buffer += "<strong>"+ user + " " + " - "+rendertime+"</strong>";
     buffer += "<div class='chatbox_bubble'>"+txt+"";     
     buffer += "</div>"
      
