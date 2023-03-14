@@ -350,6 +350,8 @@ Play Reptos
 
 
 
+
+
 </div> <!-- end gameboardmain -->
 
 
@@ -1362,9 +1364,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
-
+<!-- automap -->
 <div style='margin-left:20px;'>  <span id='canvasfolder_openclose' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Expand Automap &#9660;<span></div>
-
 
 <div id='canvasfolder' style='height:50px;border:none'>
  <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
@@ -1374,6 +1375,56 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <canvas id='navmaphidden' width='400' height='200' style='visibility:hidden;overflow;hidden;position:absolute;' ></canvas>
 
+
+
+
+
+<!---- chatbox -->
+
+<!--
+<div style='margin-left:20px;'>  <span id='canvasfolder_openclose' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Expand Automap &#9660;<span></div>
+
+<div id='canvasfolder' style='height:50px;border:none'>
+ <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
+ <canvas id='navmap' width='400' height='200' style='width:100%;' ></canvas>
+ </div>
+</div>
+
+-->
+
+<div style='margin-left:20px;'>  <span id='chatfolder_openclose' class='canvasfolder_openclose' onclick='chatfolder_toggle()'>Expand Chat &#9660;<span></div>
+
+<div id='chatfolder' class='imground'  style='height:50px;border:none;overflow:hidden;border:2px solid #666666;margin-left:20px;width:95%;'>
+ <div id='chatbox'   style='overflow:hidden;' >
+  <div id='chatbox_all' class='chatbox_left'  style='float:left;padding:10px;'>
+  
+  <div id='chatbox_all_title' class='chatbox_title' ><strong>Public Chat</strong></div>  
+  <div id='chatbox_all_content_outer' class='chatbox_content_outer' >
+   <div id='chatbox_all_content' class='chatbox_content'  style=''>
+   ...
+   </div>
+  </div>
+
+  <br>
+  <input type='text' id='chatinput_all' class='chatinput'> <span onclick='chatsend(1);' class='chatinputsend'> send &#10148; </span>
+  </div>
+
+  <div id='chatbox_myrace' class='chatbox_right' style='float:left;padding:10px;'>
+
+  <div id='chatbox_myrace_title' class='chatbox_title' >...</div>  
+  <div id='chatbox_myrace_content_outer' class='chatbox_content_outer' >
+   <div id='chatbox_myrace_content' class='chatbox_content'  style=''>
+   ...
+   </div>
+  </div>
+
+  <br>
+  <input type='text' id='chatinput_myrace' class='chatinput'> <span onclick='chatsend(2);' class='chatinputsend'> send &#10148; </span>
+  </div>
+
+ </div>
+</div>
+<!---- END - chatbox -->
 
 
 
@@ -2107,7 +2158,7 @@ myaudio.play();
 
 
 
-canvas_toggle = 0;
+var canvas_toggle = 0;
 
 function canvasfolder_toggle()
 {
@@ -2127,11 +2178,32 @@ if (canvas_toggle)
 
      }
 
-
-
-
-
 } // canvas_toggle
+
+
+
+
+var chat_toggle = 0;
+
+function chatfolder_toggle()
+{
+
+chat_toggle = !chat_toggle;
+
+if (chat_toggle)
+   {
+   // expand
+     document.getElementById("chatfolder").style.height = "";
+     document.getElementById("chatfolder_openclose").innerHTML = "Close Chat &#9650;";
+   } else
+     {
+     // shrink
+     document.getElementById("chatfolder").style.height = "50px";
+     document.getElementById("chatfolder_openclose").innerHTML = "Expand Chat &#9660;";
+
+     }
+
+} // chat_toggle
 
 
 
@@ -4177,6 +4249,8 @@ function func_success( message )
 {
 console.log(message);
 refreshcounter = 4;
+
+chat_update_thread();
 }
 
 function func_error( message )
@@ -8448,6 +8522,226 @@ for (var i=0; i<size; i++)
 
 // --------- CANVAS
 
+
+// BEGINN CHAT -----
+
+var chat_id = 0;
+
+
+
+
+function callback_load_all( value )
+{
+console.log("callback_load_all");
+
+//var max = 10;
+
+console.log( value );
+
+size = value.rows.length;
+
+console.log("size: " + size);
+
+var buffer = "";
+
+ 
+for (var i=0; i<size; i++)
+    {
+    
+  //  if (i >= (size-max) )
+       {
+       user       = value.rows[i]['user'];
+       race       = value.rows[i]['race'];
+       txt        = value.rows[i]['text'];
+       
+       
+    
+      
+           buffer += "<strong>"+ user + " (" + race + ")" + "</strong>";
+    buffer += "<div class='chatbox_bubble'>"+txt+"";     
+    buffer += "</div>"
+
+
+       }
+       
+       /* else
+         {
+         buffer += "xxx <br>";
+         }
+     */
+    } // for i...
+
+document.getElementById("chatbox_all_content").innerHTML = buffer ;
+
+
+ 
+
+document.getElementById("chatbox_all_content_outer").scrollTop = document.getElementById("chatbox_all_content_outer").scrollHeight;
+
+} // callback_load_all
+
+
+
+ 
+function callback_load_myrace( value )
+{
+console.log("callback_load_myrace");
+
+
+
+console.log( value );
+
+size = value.rows.length;
+
+console.log("size: " + size);
+
+
+
+var buffer = "";
+
+if ( userdata['race'] == 1 ) buffer += "<strong>Human Chat</strong><br>";
+if ( userdata['race'] == 2 ) buffer += "<strong>Grey Chat</strong><br>";
+if ( userdata['race'] == 4 ) buffer += "<strong>Sirian Chat</strong><br>";
+if ( userdata['race'] == 5 ) buffer += "<strong>Repto Chat</strong><br>";
+
+document.getElementById("chatbox_myrace_title").innerHTML = buffer ;
+
+
+buffer = "";
+
+for (var i=0; i<size; i++)
+    {
+    user       = value.rows[i]['user'];
+    txt        = value.rows[i]['text'];
+    
+    buffer += "<strong>"+ user + " " + "</strong>";
+    buffer += "<div class='chatbox_bubble'>"+txt+"";     
+    buffer += "</div>"
+     
+    } // for i...
+
+document.getElementById("chatbox_myrace_content").innerHTML = buffer ;
+
+
+
+
+document.getElementById("chatbox_myrace_content_outer").scrollTop = document.getElementById("chatbox_myrace_content_outer").scrollHeight;
+
+} // callback_load_myrace
+
+
+ 
+
+
+function chat_update_thread()
+{
+chat_id++;
+console.log("chat_id: " + chat_id  + " UR:" + userdata['race'] );
+
+getdata(callback_load_all, "invaderschat", "invaderschat", "allmessages", "", "", "", 500 );
+
+
+if (userdata['race'] >= 1)
+   {
+   getdata(callback_load_myrace, "invaderschat", userdata['race'], "racemessages", "", "", "", 500 );
+   }
+
+var time = setTimeout("chat_update_thread()", 10000);
+
+
+
+
+
+} // chat_update_thread()
+
+
+function chatsend( type )
+{ 
+
+chatinput_all    = document.getElementById('chatinput_all').value;
+chatinput_myrace = document.getElementById('chatinput_myrace').value;
+
+document.getElementById('chatinput_all').value = "";
+document.getElementById('chatinput_myrace').value = "";
+
+
+var theactions = [];
+
+
+ 
+
+var memo = global_account+"";
+
+
+
+//var quantityeos = globaldata['a_sov'] / 10000;
+//quantitysov = Number(quantitysov).toFixed(4) + " SOV";
+
+
+
+if (type == 1)
+{
+
+message = chatinput_all;
+
+    var action = {
+                 account: "invaderschat",
+                 name: 'allmsg',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "message": message 
+                       }
+                 };
+
+
+theactions.push(action);
+
+} // if (type == 1)
+
+
+
+
+if (type == 2)
+{
+
+message = chatinput_myrace;
+
+    var action = {
+                 account: "invaderschat",
+                 name: 'racemsg',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "message": message 
+                       }
+                 };
+
+
+theactions.push(action);
+
+} // if (type == 2)
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+} // chatsend()
+
+
+
+// END CHAT -----
+
+
+chat_update_thread();
  </script>
 
 
