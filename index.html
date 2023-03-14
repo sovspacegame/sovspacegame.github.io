@@ -675,15 +675,15 @@ infect
 <div id='attack'>...</div>
 
  <br>
- 
 
- 
+
+
  <!-- automap -->
 <div style=''> <span id='extramenu_openclose' class='canvasfolder_openclose' onclick='extramenufolder_toggle()'>Expand Menu &#9660;<span></div>
 
 
  <div id='extramenufolder' class='imground' style='overflow:hidden;padding:10px;height:2px;border:2px solid #666666;'>
- 
+
  Set Nickname:<br>
  <input type='text' id='newnickname' class='newnickname'></input>
  <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
@@ -707,7 +707,7 @@ Authorize Player: (empty for revoke)<br>
 <div id='authorize' onclick="authorize()"  class='authorize'  >authorize</div>
 
 
- 
+
 
 </div> <!-- extramenufolder -->
 
@@ -1111,7 +1111,7 @@ if (1)
    transact( func_success, func_error, theactions );
    }
 
-    
+
 
 
 } // claim_all_svx
@@ -1130,11 +1130,11 @@ authorizeaccount = document.getElementById('authorizeaccount').value;
 
 /* alfalf
    void setnftoption(
-                       uint64_t assetid, 
+                       uint64_t assetid,
                        name     user,
                        string   type,
                        string   value
-                     ) 
+                     )
 */
 
 /*
@@ -1173,7 +1173,7 @@ if (1)
    {
    transact( func_success, func_error, theactions );
    }
-   
+
 } // authorize()
 
 
@@ -1203,7 +1203,7 @@ atype = decoded_data['atype'];
 coordinatei = params['id'];
 
 var asset_id = params['asset_id'];
- 
+
 
 // ---
 if ( nick != "" )
@@ -1461,8 +1461,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <div id='chatfolder' class='imground'  style='height:50px;border:none;overflow:hidden;border:2px solid #666666;margin-left:20px;width:95%;'>
  <div id='chatbox'   style='overflow:hidden;' >
   <div id='chatbox_all' class='chatbox_left'  style='float:left;padding:10px;'>
-  
-  <div id='chatbox_all_title' class='chatbox_title' ><strong>Public Chat</strong></div>  
+
+  <div id='chatbox_all_title' class='chatbox_title' ><strong>Public Chat</strong></div>
   <div id='chatbox_all_content_outer' class='chatbox_content_outer' >
    <div id='chatbox_all_content' class='chatbox_content'  style=''>
    ...
@@ -1475,7 +1475,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
   <div id='chatbox_myrace' class='chatbox_right' style='float:left;padding:10px;'>
 
-  <div id='chatbox_myrace_title' class='chatbox_title' >...</div>  
+  <div id='chatbox_myrace_title' class='chatbox_title' >...</div>
   <div id='chatbox_myrace_content_outer' class='chatbox_content_outer' >
    <div id='chatbox_myrace_content' class='chatbox_content'  style=''>
    ...
@@ -1789,10 +1789,21 @@ This building can be turned on and off by its owner.  This can be useful if an i
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">30</small>
   </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-burst fa-stack-2x" style="color:#B9D0D5"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#e53d00">60</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
+  </span>
 </h2>
 <img src='img/nft_1_10.png' style='width:100px; padding-right:5px'><img src='img/nft_2_10.png' style='width:100px; padding-right:5px'><img src='img/nft_4_10.png' style='width:100px; padding-right:5px'><img src='img/nft_5_10.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a Factory.  Can be repaired adjacent to a Factory. A service unit allows you to repair damaged buildings. The cost of a repair is about 50% of the current market price.
+Service Units also have a Kamikaze attack in which they are sacrificed for an explosion that does 60 damage to all (4) directly adjacent tiles.  A Kamikaze attack can only be triggered when no same species units and buildings are in range.
+In the event of a Kamikaze attack, the SOV value of the Service Unit will go towards SVX mining for SVX collectors.  SOV from enemy Units destroyed by a Kamikaze attack will go to the owner of the Service Unit.
+To initiate Kamikaze attack, first click on your Service Unit, after that you will see the explosion radius and you only need to click detonate.
 Please note, this unit is not able to repair mobile units like tanks or transporters. Mobile units needs to park adjacent to a Factory to be repaired.
 <br>
 <br>
@@ -1809,10 +1820,10 @@ Please note, this unit is not able to repair mobile units like tanks or transpor
 </h2>
 <img src='img/nft_1_12.png' style='width:100px; padding-right:5px'><img src='img/nft_2_12.png' style='width:100px; padding-right:5px'><img src='img/nft_4_12.png' style='width:100px; padding-right:5px'><img src='img/nft_5_12.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. With a transporter you can move up to 4 of your own units together as one.
+Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. With a transporter you can move up to 4 of your own units together as one, or a single R.E.D..
 Place the units to be transported on the 4 sides of the transporter and click "load".
 To unload click on "unload". Even if you are only transporting a single unit, all four
-tiles next to the transporter must be free, for both loading and unloading.
+tiles next to the transporter must be free, for both loading and unloading. R.E.D.s are always unloaded on the tile directly in front of the Transporter.
 <br>
 <br>
 
@@ -1860,30 +1871,61 @@ see the shooting radius and you only need to click on an enemy target.
 <br>
 <br>
 
+<h2>Remote Explosive Device (R.E.D.)
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">50</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-burst fa-stack-2x" style="color:#B9D0D5"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#e53d00">9999</small>
+  </span>
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
+  </span>
+</h2>
+<img src='img/nft_1_14.png' style='width:100px; padding-right:5px'><img src='img/nft_2_14.png' style='width:100px; padding-right:5px'><img src='img/nft_4_14.png' style='width:100px; padding-right:5px'><img src='img/nft_5_14.png' style='width:100px; padding-right:5px'>
+<br>
+Must be built adjacent to a Factory. Can only be moved by a Transporter. Will take up all 4 spaces in Transporter. Will always be unloaded on tile directly in front of Transporter.
+Can only be exploded by remote detonation when none of your own species buildings or units are in range.  Does 9999 damage to each (4) directly adjacent tiles.
+To use, first click on your R.E.D., after that you will see the explosion radius and you only need to click detonate.
+<br>
+<br>
 
-<h2>Street</h2>
+<h2>Street
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-solid fa-gas-pump fa-stack-2x" style="color:#E82926"></i>
+    <i class="fa fa-stack-1x fa-inverse fa-ban" style="text-align: left; padding-left: 13px; color:#ffff99"></i>
+  </span>
+</h2>
 <img src='img/nft_1_6.png' style='width:100px; padding-right:5px'><img src='img/nft_2_6.png' style='width:100px; padding-right:5px'><img src='img/nft_4_6.png' style='width:100px; padding-right:5px'><img src='img/nft_5_6.png' style='width:100px; padding-right:5px'>
 <br>
 Must be built adjacent to a building or another street. A street is an inexpensive structure that you can build other structures next to. You cannot destroy a street by attacking it, but you can build a street from your own species over it. The SOV costs will become burned during the minting process
 to mine SVX for collectors and cannot be refunded. If you drive with a mobile unit (like a bulldozer) on a street, the costs will be refunded. So driving
-on a street will save fuel (SOV). Units on a street of their species recieve +1 shield.
+on a street will save fuel (SOV).
 <br>
 <br>
 <strong>Streets cannot be destroyed or traded, only built over with an opposing species street.</strong>
 <br>
 <br>
 
-<h2>Terrain</h2>
+<h2>Terrain
+  <span class="fa-stack fa-1x">
+    <i class="fa fa-solid fa-globe fa-stack-2x" style="color:#557198"></i>
+    <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">+1</small>
+  </span>
+</h2>
 <img src='img/homeworld1.png' style='width:100px; padding-right:5px'><img src='img/homeworld2.png' style='width:100px; padding-right:5px'><img src='img/homeworld4.png' style='width:100px; padding-right:5px'><img src='img/homeworld5.png' style='width:100px; padding-right:5px'>
 <br>
 <br>
 Must be built adjacent to a building, street or another garden. Terrain is an inexpensive terraformed tile.
 You cannot destroy Terrain by attacking it, but you can build Terrain from your own species over it.
 Terrain is purchased with SVX and the SVX used to purchase Terrain goes to the Collector pool.
-Mobile units on Terrain of their species will receive +1 shield.
+Mobile units on Terrain of their species will receive a +1 defence bonus, which decreases the damage of all enemy attacks on that unit by 1.
 <br>
 <br>
-<strong>Terrain cannot be destroyed or traded, only built over with an opposing species terrain.</strong>
+<strong>Terrain cannot be destroyed or traded, only built over.</strong>
 <br>
 <br>
 <br>
@@ -2272,7 +2314,7 @@ if (chat_toggle)
 
 
 
- 
+
 
 var extramenu_toggle = 0;
 
@@ -2916,11 +2958,11 @@ if ( globalselection['assetid'] == "" )
    } // if ( globalselection['assetid'] == "" )
    else
    {
-   document.getElementById('navbutton_garden').className = "navbutton_off_inactive"; 
+   document.getElementById('navbutton_garden').className = "navbutton_off_inactive";
    }
 
 
-// detonation RED. and service-unit 
+// detonation RED. and service-unit
 if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
    {
    document.getElementById('navbutton_fire').className = "navbutton_off";
@@ -2942,22 +2984,22 @@ if ( globalselection['atype'] == 9 )
    }
 
 // Vehicle (move)
-if ( 
+if (
    globalselection['atype'] == 5 // bulldozer
-   || globalselection['atype'] == 10 
+   || globalselection['atype'] == 10
    || globalselection['atype'] == 11
-   || globalselection['atype'] == 12 
+   || globalselection['atype'] == 12
    )
    {
-   document.getElementById('navbutton_move').className = "navbutton_off";            
+   document.getElementById('navbutton_move').className = "navbutton_off";
    } // if ( globalselection['assetid'] == "" )
    else
    {
    document.getElementById('navbutton_move').className = "navbutton_off_inactive";
    }
-   
+
 // Attack
-if ( 
+if (
    globalselection['atype'] == 5 // Bulldozer
    || globalselection['atype'] == 11 // tank
 
@@ -2969,9 +3011,9 @@ if (
    {
    document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
    }
- 
+
 // demolish
-if ( 
+if (
    globalselection['atype'] == 1 // lander
    || globalselection['atype'] == 2 // residence
    || globalselection['atype'] == 3 // agri
@@ -2980,7 +3022,7 @@ if (
    || globalselection['atype'] == 8 // collector
    || globalselection['atype'] == 9 // tower
    || globalselection['atype'] == 13 // wall II
-   
+
 
    )
    {
@@ -2989,9 +3031,9 @@ if (
    else
    {
    document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
-   }   
-   
-// repair 
+   }
+
+// repair
 if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
    {
    document.getElementById('navbutton_repair').className = "navbutton_off";
@@ -2999,13 +3041,13 @@ if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
    else
    {
    document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
-   }   
+   }
 
 // // navbutton_move navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
- 
-   
+
+
 // auth-actions
 // type 5=bulldozer 8=collector 9=tower 10=serviceunit 11=tank 12=transporter
 if (
@@ -3015,8 +3057,8 @@ if (
     globalselection['atype'] == 10 ||
     globalselection['atype'] == 11 ||
     globalselection['atype'] == 12
-    
-   )   
+
+   )
 {
 
 
@@ -3025,7 +3067,7 @@ if ( configarray.length > 0)
 
 for (var i=0; i< (configarray.length); i=i+2)
 {
- 
+
 if (configarray[i] == 'authorize' &&
     configarray[i+1] != "" && configarray[i+1] != undefined
    )
@@ -3033,7 +3075,7 @@ if (configarray[i] == 'authorize' &&
    authorizevar = configarray[i+1];
    }
 
-   
+
 } // for
 
 } // if
@@ -3127,14 +3169,14 @@ if (configarray[i] == 'disabled' &&
    {
    disabled = 1;
    }
- 
-   
+
+
 } // for
 
 } // if
 
- 
- 
+
+
 
 
 let coordinates = [ -1,-3, 0,-3, 1,-3,
@@ -3359,7 +3401,7 @@ if (render_ts < 1) render_ts = '-';
 render_shield = globalselection['shield'];
 if (render_shield < 1) render_shield = '-';
 
-if ( globalselection['tilerace'] == globalselection['race'] && globalselection['tiletype'] == 2 && globalselection['tilerace'] != 0 ) render_shield += ' (+1)';
+if ( globalselection['tilerace'] == globalselection['race'] && globalselection['tiletype'] == 2 && globalselection['tilerace'] != 0 ) render_shield += ' (+1 defence)';
 console.log(" tilerace:"+globalselection['tilerace'] + " race:"+globalselection['race'] );
 render_attack = globalselection['attack'];
 if (render_attack < 1) render_attack = '';
@@ -3377,14 +3419,14 @@ if (
   // render_attack = '-';
 //   render_shield = '&infin;';
    render_attack = '&infin;';
-   
-   
+
+
 //   document.getElementById('navbutton_disable').style.visibility = "hidden";
    //document.getElementById('navbutton_garden').style.visibility = "hidden";
    document.getElementById('navbutton_fire').style.visibility = "visible";
 
 
-   
+
    }
 
 render_nickname = nickname;
@@ -3607,14 +3649,14 @@ if (configarray[i] == 'disabled' &&
    buttontext = "activate";
 
    }
- 
-   
+
+
 } // for
 
 } // if
 
 
- 
+
 
  document.getElementById("navbutton_disable").innerHTML = buttontext;
 
@@ -4598,7 +4640,7 @@ for (var i2=0; i2<16; i2++)
 
 
        } // if (found)
-        
+
     } // for j...
 
 
@@ -4771,13 +4813,13 @@ for (var i=0; i<size; i++)
        {
        console.log("place s1.png");
        buffer += "<img src='img/s1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
-       }  
+       }
 
     if ( tile == "tile11" )
        {
        console.log("place s2.png");
        buffer += "<img src='img/s2.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
-       }  
+       }
  document.getElementById(thetile).innerHTML = buffer;
          }
 
@@ -4804,7 +4846,7 @@ for (var i=0; i<size; i++)
        buffer += "<img src='img/factory_a.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
 
 
-   
+
 
     if ( atype == 5 && race == 1)
        {
@@ -6000,7 +6042,7 @@ for (var i=0; i<size; i++)
             if (the_atype == 14 && asset_id == 2199025130637)
                {
                imgbuffer = "<img src='img/nft_monument_1.png' style='width:100px;margin-top:10px;'>";
-               }              
+               }
                else
               */
                   {
@@ -6256,7 +6298,6 @@ for (var i=0; i<size; i++)
        document.getElementById( otherdivs[i].id ).style.border = "1px solid #ffffff";
        }
 
-
 } // selectnft()
 
 function loadinventory()
@@ -6267,55 +6308,74 @@ getdata(callback_pricedata, "sovspacegame", "sovspacegame", "atemplate", "", "",
 
 } // loadinventory()
 
+function mintasset(id) {
 
+    marketStuffs();
 
-function mintasset( id )
-{
+    let s = markets.rows[id - 1].circulation;
+    let b = markets.rows[id - 1].startprice;
+    let e = markets.rows[id - 1].epsilon;
+    let nftType = markets.rows[id - 1].name;
+    let singlePrice = 0;
+    let totalPrice = 0;
+    let sovPriceArray = [];
+    let n = prompt("how many " + nftType + "s would you like to mint? (Enter 0 to cancel)");
+    while (isNaN(n)) {
+        n = prompt("Enter numbers only:");
 
-var theactions = [];
+    };
+    n = parseInt(n);
 
-memo = "mint;"+global_account+";"+id;
+    if (n > 0) {
+    //let p = b * (1 + ((s + n - 1) / e));
+    //let p1 = b * (1 + (s / e));
+    for (let i = 0; i < n; i++) {
+        if (e === 0) {
+            singlePrice = 20;
+        } else {
+            singlePrice = b * (1 + ((s + i) / e));
+        }
+        singlePrice = Number(singlePrice.toFixed(4));
+        totalPrice += singlePrice;
+        sovPriceArray.push(singlePrice.toFixed(4) + " SOV");
+    }
 
+    if (confirm("pay " + totalPrice.toFixed(4) + " SOV to mint " + n + " " + nftType + "s?") == true) {
 
-//psov = pricedata[id]['psov'] / 10000;
-//peos = pricedata[id]['peos'] / 10000;
+        var theactions = [];
 
+        memo = "mint;" + global_account + ";" + id;
 
-pricespan  = "pricespan_"+id;
-pricevalue = document.getElementById( pricespan ).innerHTML * 1;
+        //psov = pricedata[id]['psov'] / 10000;
+        //peos = pricedata[id]['peos'] / 10000;
 
- eostoburn = Number(pricevalue).toFixed(4) + " SOV";
+        for (let i = 0; i < n; i++) {
+            if (i < n) {
+                let sovAmount = sovPriceArray[i];
+                var action = {
+                    account: "sovmintofeos",
+                    name: 'transfer',
+                    authorization: [{
+                        actor: global_account,
+                        permission: "active"
+                    }],
+                    data: {
+                        "from": global_account,
+                        "to": "sovspacegame",
+                        "quantity": sovAmount,
+                        "memo": memo,
+                    }
+                };
 
+                theactions.push(action);
+            }
+        }
+        console.log(theactions);
 
-    var action = {
-                 account: "sovmintofeos",
-                 name: 'transfer',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "from": global_account,
-                       "to": "sovspacegame",
-                       "quantity": eostoburn,
-                       "memo": memo,
-                       }
-                 };
-
-
-    theactions.push(action);
-
-
-
-
-
-if (1)
-   {
-   transact( func_success, func_error, theactions );
-   }
-
-
-
+        if (1) {
+            transact(func_success, func_error, theactions);
+        }
+    }}
 } // mintasset()
 
 
@@ -6326,7 +6386,6 @@ function sellasset( asset_id )
 var theactions = [];
 
 var memo = "sell";
-
 
     var action = {
                  account: "atomicassets",
@@ -6340,26 +6399,15 @@ var memo = "sell";
                        "to": "sovspacegame",
                        "asset_ids": [asset_id],
                        "memo": memo,
-
-
                        }
                  };
 
-
-
-
 theactions.push(action);
-
-
-
 
 if (1)
    {
    transact( func_success, func_error, theactions );
    }
-
-
-
 } // sellasset()
 
 
@@ -6442,7 +6490,7 @@ if (menu == 2)
    document.getElementById('menu5').className = "menubutton";
  //  document.getElementById('menu6').className = "menubutton";
 
-
+   marketStuffs();
    loadinventory();
    loadnftinfos();
    loadmarkets();
@@ -6792,7 +6840,7 @@ var config = globalselection['config'];
 var configarray = split(config,";");
 
 var disabled = 0;
- 
+
 
 
 
@@ -6808,8 +6856,8 @@ if (configarray[i] == 'disabled' &&
    {
    disabled = 1;
    }
- 
-   
+
+
 } // for
 
 } // if
@@ -6854,15 +6902,15 @@ if (1)
 
 function firered()
 {
- 
+
 memo = "detonate;"+global_account+";"+globalselection['assetid'];
 
 
- 
+
 var quantitysov = globaldata['a_sov'] / 10000;
 quantitysov = Number(quantitysov).toFixed(4) + " SOV";
 
- 
+
 
 var theactions = [];
 
@@ -7163,8 +7211,8 @@ if (mode == 1)
       globalselection['atype'] == 10 ||
       globalselection['atype'] == 11 ||
       globalselection['atype'] == 12 ||
-      globalselection['atype'] == 14 
-      
+      globalselection['atype'] == 14
+
       )
       {
       document.getElementById('navbutton_move').className = "navbutton_off";
@@ -7206,7 +7254,7 @@ if (mode == 1)
         document.getElementById('navbutton_garden').className = "navbutton_off";
         document.getElementById('navbutton_disable').className = "navbutton_off";
         document.getElementById('navbutton_fire').className = "navbutton_off";
-        
+
       } else
         {
         document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
@@ -7677,6 +7725,16 @@ for (var i=0; i<size; i++)
     } // for i...
 
 } // callback_loadmarkets
+
+function callback_markets(value) {
+    if (value == undefined) return;
+    if (value.rows.length == 0) return;
+    markets = value;
+} // callback_markets
+
+function marketStuffs() {
+    getdata(callback_markets, "sovspacegame", "sovspacegame", "markets", "", "", "", 100);
+} // marketStuffs
 
 
 function toFixed2(num, fixed) {
@@ -8706,7 +8764,7 @@ for (var i=0; i<size; i++)
                         var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
                         return time;
                     }
-                    
+
 
 var chat_id = 0;
 
@@ -8727,37 +8785,37 @@ console.log("size: " + size);
 
 var buffer = "";
 
- 
+
 for (var i=0; i<size; i++)
     {
-    
+
   //  if (i >= (size-max) )
        {
        user       = value.rows[i]['user'];
        race       = value.rows[i]['race'];
        txt        = value.rows[i]['text'];
        time       = value.rows[i]['time'];
-       
-       
+
+
     var col = "#ffffff";
-    
+
     if (race == "Human") col = "#aaaaaa";
     if (race == "Grey") col = "#bbffbb";
     if (race == "Sirian") col = "#bbbbff";
     if (race == "Repto") col = "#ffbbbb";
-    
+
     rendertime = timeConverter( time );
-      
-     buffer += "<div style='color:"+col+"'>";  
+
+     buffer += "<div style='color:"+col+"'>";
            buffer += "<strong>"+ user + " (" + race + ") - " +  rendertime + "</strong>";
-     buffer += "</div>";           
-    
-    buffer += "<div class='chatbox_bubble'>"+txt+"";     
+     buffer += "</div>";
+
+    buffer += "<div class='chatbox_bubble'>"+txt+"";
     buffer += "</div>"
 
 
        }
-       
+
        /* else
          {
          buffer += "xxx <br>";
@@ -8768,7 +8826,7 @@ for (var i=0; i<size; i++)
 document.getElementById("chatbox_all_content").innerHTML = buffer ;
 
 
- 
+
 
 document.getElementById("chatbox_all_content_outer").scrollTop = document.getElementById("chatbox_all_content_outer").scrollHeight;
 
@@ -8776,7 +8834,7 @@ document.getElementById("chatbox_all_content_outer").scrollTop = document.getEle
 
 
 
- 
+
 function callback_load_myrace( value )
 {
 console.log("callback_load_myrace");
@@ -8808,13 +8866,13 @@ for (var i=0; i<size; i++)
     user       = value.rows[i]['user'];
     txt        = value.rows[i]['text'];
     time        = value.rows[i]['time'];
-    
+
     rendertime = timeConverter( time );
-    
+
     buffer += "<strong>"+ user + " " + " - "+rendertime+"</strong>";
-    buffer += "<div class='chatbox_bubble'>"+txt+"";     
+    buffer += "<div class='chatbox_bubble'>"+txt+"";
     buffer += "</div>"
-     
+
     } // for i...
 
 document.getElementById("chatbox_myrace_content").innerHTML = buffer ;
@@ -8827,7 +8885,7 @@ document.getElementById("chatbox_myrace_content_outer").scrollTop = document.get
 } // callback_load_myrace
 
 
- 
+
 
 
 function chat_update_thread()
@@ -8853,7 +8911,7 @@ var time = setTimeout("chat_update_thread()", 10000);
 
 
 function chatsend( type )
-{ 
+{
 
 chatinput_all    = document.getElementById('chatinput_all').value;
 chatinput_myrace = document.getElementById('chatinput_myrace').value;
@@ -8865,7 +8923,7 @@ document.getElementById('chatinput_myrace').value = "";
 var theactions = [];
 
 
- 
+
 
 var memo = global_account+"";
 
@@ -8890,7 +8948,7 @@ message = chatinput_all;
                                 }],
                  data: {
                        "from": global_account,
-                       "message": message 
+                       "message": message
                        }
                  };
 
@@ -8916,7 +8974,7 @@ message = chatinput_myrace;
                                 }],
                  data: {
                        "from": global_account,
-                       "message": message 
+                       "message": message
                        }
                  };
 
