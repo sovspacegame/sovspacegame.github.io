@@ -1454,6 +1454,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 -->
 
+<br>
+
 <div style='margin-left:20px;'>  <span id='chatfolder_openclose' class='canvasfolder_openclose' onclick='chatfolder_toggle()'>Expand Chat &#9660;<span></div>
 
 <div id='chatfolder' class='imground'  style='height:50px;border:none;overflow:hidden;border:2px solid #666666;margin-left:20px;width:95%;'>
@@ -2230,13 +2232,13 @@ canvas_toggle = !canvas_toggle;
 if (canvas_toggle)
    {
    // expand
-     document.getElementById("extramenu").style.height = "";
-     document.getElementById("extramenu_openclose").innerHTML = "Close aaa &#9650;";
+     document.getElementById("canvasfolder").style.height = "";
+     document.getElementById("canvasfolder_openclose").innerHTML = "Close Automap &#9650;";
    } else
      {
      // shrink
-     document.getElementById("extramenu").style.height = "50px";
-     document.getElementById("extramenu_openclose").innerHTML = "Expand bbb &#9660;";
+     document.getElementById("canvasfolder").style.height = "50px";
+     document.getElementById("canvasfolder_openclose").innerHTML = "Expand Automap &#9660;";
 
      }
 
