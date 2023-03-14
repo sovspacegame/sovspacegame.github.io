@@ -8693,6 +8693,20 @@ for (var i=0; i<size; i++)
 
 // BEGINN CHAT -----
 
+  function timeConverter(UNIX_timestamp) {
+                        var a = new Date(UNIX_timestamp * 1000);
+                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        var year = a.getFullYear();
+                        var month = months[a.getMonth()];
+                        var date = a.getDate();
+                        var hour = a.getHours();
+                        var min = a.getMinutes();
+                        var sec = a.getSeconds();
+                        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+                        return time;
+                    }
+                    
+
 var chat_id = 0;
 
 
@@ -8721,11 +8735,22 @@ for (var i=0; i<size; i++)
        user       = value.rows[i]['user'];
        race       = value.rows[i]['race'];
        txt        = value.rows[i]['text'];
+       time       = value.rows[i]['time'];
        
        
+    var col = "#ffffff";
     
+    if (race == "Human") col = "#aaaaaa";
+    if (race == "Grey") col = "#bbffbb";
+    if (race == "Sirian") col = "#bbbbff";
+    if (race == "Repto") col = "#ffbbbb";
+    
+    rendertime = timeConverter( time );
       
-           buffer += "<strong>"+ user + " (" + race + ")" + "</strong>";
+     buffer += "<div style='color:"+col+"'>";  
+           buffer += "<strong>"+ user + " (" + race + ") - " +  rendertime + "</strong>";
+     buffer += "</div>";           
+    
     buffer += "<div class='chatbox_bubble'>"+txt+"";     
     buffer += "</div>"
 
