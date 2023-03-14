@@ -3001,21 +3001,28 @@ if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
 // // navbutton_move navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
-
+ 
+   
 // auth-actions
+// type 5=bulldozer 8=collector 9=tower 10=serviceunit 11=tank 12=transporter
 if (
-    globalselection['atype'] == 11 // tank    
-   )
+    globalselection['atype'] == 5 ||
+    globalselection['atype'] == 8 ||
+    globalselection['atype'] == 9 ||
+    globalselection['atype'] == 10 ||
+    globalselection['atype'] == 11 ||
+    globalselection['atype'] == 12
+    
+   )   
 {
 
 
 if ( configarray.length > 0)
 {
 
-for (var i=0; i< configarray.length/2; i+=2)
+for (var i=0; i< (configarray.length); i=i+2)
 {
  
-
 if (configarray[i] == 'authorize' &&
     configarray[i+1] != "" && configarray[i+1] != undefined
    )
@@ -3108,7 +3115,7 @@ var buttontext = "deactivate";
 if ( configarray.length > 0)
 {
 
-for (var i=0; i< configarray.length/2; i+=2)
+for (var i=0; i< configarray.length; i+=2)
 {
 
 if (configarray[i] == 'disabled' &&
@@ -3585,7 +3592,7 @@ var buttontext = "deactivate";
 if ( configarray.length > 0)
 {
 
-for (var i=0; i< configarray.length/2; i+=2)
+for (var i=0; i< configarray.length; i+=2)
 {
 
 if (configarray[i] == 'disabled' &&
@@ -6789,7 +6796,7 @@ var disabled = 0;
 if ( configarray.length > 0)
 {
 
-for (var i=0; i< configarray.length/2; i+=2)
+for (var i=0; i< configarray.length; i+=2)
 {
 
 if (configarray[i] == 'disabled' &&
