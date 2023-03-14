@@ -675,6 +675,15 @@ infect
 <div id='attack'>...</div>
 
  <br>
+ 
+
+ 
+ <!-- automap -->
+<div style=''> <span id='extramenu_openclose' class='canvasfolder_openclose' onclick='extramenufolder_toggle()'>Expand Menu &#9660;<span></div>
+
+
+ <div id='extramenufolder' class='imground' style='overflow:hidden;padding:10px;height:2px;border:2px solid #666666;'>
+ 
  Set Nickname:<br>
  <input type='text' id='newnickname' class='newnickname'></input>
  <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
@@ -690,12 +699,20 @@ infect
 <br>
 <!-- claim_svx -->
 <div id='claim_svx_all' onclick="claim_all_svx()"  class='claim' style='height:0px;visibility:hidden' >Claim all</div>
+<br>
+
+<!-- authorize -->
+Authorize Player: (empty for revoke)<br>
+<input type='text' id='authorizeaccount' class='newnickname'>
+<div id='authorize' onclick="authorize()"  class='authorize'  >authorize</div>
+
+
+ 
+
+</div> <!-- extramenufolder -->
 
 
 </div>
-
-
-
 
 </div> <!--  coordiv -->
 
@@ -1094,18 +1111,70 @@ if (1)
    transact( func_success, func_error, theactions );
    }
 
-    /*
-    asset_object['asset_id'] = asset_id;
-asset_object['atype'] = atype;
-    */
-/*
-var own_assets = Array();
-
-own_assets = [];
-*/
+    
 
 
 } // claim_all_svx
+
+
+
+
+
+function authorize()
+{
+
+
+authorizeaccount = document.getElementById('authorizeaccount').value;
+
+//alert("authorizeaccount: " + authorizeaccount);
+
+/* alfalf
+   void setnftoption(
+                       uint64_t assetid, 
+                       name     user,
+                       string   type,
+                       string   value
+                     ) 
+*/
+
+/*
+authorizeaccount
+ authorizeaccount
+
+*/
+
+
+var theactions = [];
+
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'setnftoption',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "assetid": globalselection['assetid'],
+                       "user": global_account,
+                       "type": "authset", // authrevoke
+                       "value": authorizeaccount
+                       }
+                 };
+
+
+theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+   
+} // authorize()
 
 
 
@@ -1134,14 +1203,7 @@ atype = decoded_data['atype'];
 coordinatei = params['id'];
 
 var asset_id = params['asset_id'];
-
-/*
-width = 1000000;
-they2 = parseInt ( coordinatei / width );
-thex2 = coordinatei - (they2*width);
-centerlink = "<span onclick='setcenter2("+thex2+","+they2+")' >CENTER</span>";
- */
-
+ 
 
 // ---
 if ( nick != "" )
@@ -2168,13 +2230,13 @@ canvas_toggle = !canvas_toggle;
 if (canvas_toggle)
    {
    // expand
-     document.getElementById("canvasfolder").style.height = "";
-     document.getElementById("canvasfolder_openclose").innerHTML = "Close Automap &#9650;";
+     document.getElementById("extramenu").style.height = "";
+     document.getElementById("extramenu_openclose").innerHTML = "Close aaa &#9650;";
    } else
      {
      // shrink
-     document.getElementById("canvasfolder").style.height = "50px";
-     document.getElementById("canvasfolder_openclose").innerHTML = "Expand Automap &#9660;";
+     document.getElementById("extramenu").style.height = "50px";
+     document.getElementById("extramenu_openclose").innerHTML = "Expand bbb &#9660;";
 
      }
 
@@ -2204,6 +2266,33 @@ if (chat_toggle)
      }
 
 } // chat_toggle
+
+
+
+
+ 
+
+var extramenu_toggle = 0;
+
+function extramenufolder_toggle()
+{
+
+extramenu_toggle = !extramenu_toggle;
+
+if (extramenu_toggle)
+   {
+   // expand
+     document.getElementById("extramenufolder").style.height = "";
+     document.getElementById("extremenu_openclose").innerHTML = "Close Menu &#9650;";
+   } else
+     {
+     // shrink
+     document.getElementById("extramenufolder").style.height = "2px";
+     document.getElementById("extremenu_openclose").innerHTML = "Expand Menu &#9660;";
+
+     }
+
+} // extramenu_toggle
 
 
 
@@ -2784,6 +2873,12 @@ globalselection['config']  = tilearray[thex][they].config;
 globalselection['coordinate'] = coordinatei;
 globalselection['owner']      = owner;
 
+
+
+var authorizevar  = "";
+var configarray   = split(globalselection['config'],";");
+
+
 // --- Tile
 var tilerace = 0;
 var tiletype = 0;
@@ -2851,7 +2946,7 @@ if (
    || globalselection['atype'] == 12 
    )
    {
-   document.getElementById('navbutton_move').className = "navbutton_off";
+   document.getElementById('navbutton_move').className = "navbutton_off";            
    } // if ( globalselection['assetid'] == "" )
    else
    {
@@ -2906,6 +3001,36 @@ if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
 // // navbutton_move navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
 
+
+// auth-actions
+if (
+    globalselection['atype'] == 11 // tank    
+   )
+{
+
+
+if ( configarray.length > 0)
+{
+
+for (var i=0; i< configarray.length/2; i+=2)
+{
+ 
+
+if (configarray[i] == 'authorize' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
+   )
+   {
+   authorizevar = configarray[i+1];
+   }
+
+   
+} // for
+
+} // if
+
+
+} // if auth(able)
+
     // ------
 if ( globalselection['atype'] == 12 ) // transporter
 {
@@ -2918,7 +3043,6 @@ if ( globalselection['atype'] == 12 ) // transporter
 
   var config = globalselection['config']+"";
 
-  var configarray = split(config,";");
 
   size = configarray.length;
   //buffer += "+++["+config+" s:"+size+"]+++ ";
@@ -2980,20 +3104,27 @@ var configarray = split(config,";");
 
 
 var buttontext = "deactivate";
+
 if ( configarray.length > 0)
 {
-if (configarray[0] == 'disabled' &&
-    configarray[1] != ""
+
+for (var i=0; i< configarray.length/2; i+=2)
+{
+
+if (configarray[i] == 'disabled' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
    )
    {
    disabled = 1;
    }
-}
+ 
+   
+} // for
 
+} // if
 
-
-
-
+ 
+ 
 
 
 let coordinates = [ -1,-3, 0,-3, 1,-3,
@@ -3252,6 +3383,9 @@ if (render_nickname == -1) render_nickname = '';
 render_owner = owner;
 if (render_owner == "") render_owner = '-';
 
+
+if (authorizevar != "") render_owner += " [+"+authorizevar+"]";
+
 // ---
 
 document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;'>" + thename + "&nbsp;<strong>";
@@ -3445,18 +3579,32 @@ if (configarray[0] == 'infected' &&
 
 
 var buttontext = "deactivate";
+
+
+
 if ( configarray.length > 0)
 {
-if (configarray[0] == 'disabled' &&
-    configarray[1] != ""
+
+for (var i=0; i< configarray.length/2; i+=2)
+{
+
+if (configarray[i] == 'disabled' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
    )
    {
-   //enableinfect = 1;
    document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;color:#ff3333;'>[disabled] &nbsp;<strong>";
 
    buttontext = "activate";
+
    }
-}
+ 
+   
+} // for
+
+} // if
+
+
+ 
 
  document.getElementById("navbutton_disable").innerHTML = buttontext;
 
@@ -6634,16 +6782,27 @@ var config = globalselection['config'];
 var configarray = split(config,";");
 
 var disabled = 0;
+ 
+
+
 
 if ( configarray.length > 0)
 {
-if (configarray[0] == 'disabled' &&
-    configarray[1] != ""
+
+for (var i=0; i< configarray.length/2; i+=2)
+{
+
+if (configarray[i] == 'disabled' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
    )
    {
    disabled = 1;
    }
-}
+ 
+   
+} // for
+
+} // if
 
 //alert("Toggle tower - disabled:" + disabled);
 
@@ -7094,7 +7253,7 @@ if (mode == 2)
    document.getElementById('navbutton_disable').className = "navbutton_off";
    document.getElementById('navbutton_fire').className = "navbutton_off";
    */
-// alfalf
+
 
 // navbutton_repeat navbutton_garden navbutton_disable navbutton_fire
 
