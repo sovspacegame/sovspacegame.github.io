@@ -256,6 +256,27 @@ text-align:center;
 background:#44aa44;
 }  
 
+.authorize
+{
+background:#000099;
+/*border:5px solid #ffffff;*/
+color:#ffffff;
+padding:5px;
+margin-top:10px;
+cursor:pointer;
+text-align:center;
+
+ -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+}  
+
+.authorize:hover
+{
+/*color:black;*/
+background:#4444aa;
+}  
+
 
 .donationbutton
 {
