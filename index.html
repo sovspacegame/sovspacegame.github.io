@@ -3051,6 +3051,7 @@ if (globalselection['atype'] == 4 || globalselection['atype'] == 10 )
 // auth-actions
 // type 5=bulldozer 8=collector 9=tower 10=serviceunit 11=tank 12=transporter
 if (
+    globalselection['atype'] == 4 ||
     globalselection['atype'] == 5 ||
     globalselection['atype'] == 8 ||
     globalselection['atype'] == 9 ||
@@ -8767,7 +8768,7 @@ for (var i=0; i<size; i++)
 
 
 var chat_id = 0;
-
+var chat_all_last = "";
 
 
 
@@ -8796,7 +8797,6 @@ for (var i=0; i<size; i++)
        txt        = value.rows[i]['text'];
        time       = value.rows[i]['time'];
 
-
     var col = "#ffffff";
 
     if (race == "Human") col = "#aaaaaa";
@@ -8816,23 +8816,24 @@ for (var i=0; i<size; i++)
 
        }
 
-       /* else
-         {
-         buffer += "xxx <br>";
-         }
-     */
+      
     } // for i...
 
 document.getElementById("chatbox_all_content").innerHTML = buffer ;
 
 
 
-
-document.getElementById("chatbox_all_content_outer").scrollTop = document.getElementById("chatbox_all_content_outer").scrollHeight;
+// Update scrolling
+if (chat_all_last != value.rows[size-1]['time'])
+   {
+   document.getElementById("chatbox_all_content_outer").scrollTop = document.getElementById("chatbox_all_content_outer").scrollHeight;
+   }
+chat_all_last = value.rows[size-1]['time']
 
 } // callback_load_all
 
 
+var chat_myrace_last = "";
 
 
 function callback_load_myrace( value )
@@ -8880,7 +8881,13 @@ document.getElementById("chatbox_myrace_content").innerHTML = buffer ;
 
 
 
-document.getElementById("chatbox_myrace_content_outer").scrollTop = document.getElementById("chatbox_myrace_content_outer").scrollHeight;
+
+// Update scrolling
+if (chat_myrace_last != value.rows[size-1]['time'])
+   {
+   document.getElementById("chatbox_myrace_content_outer").scrollTop = document.getElementById("chatbox_myrace_content_outer").scrollHeight;
+   }
+chat_myrace_last = value.rows[size-1]['time']
 
 } // callback_load_myrace
 
