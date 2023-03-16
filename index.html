@@ -7539,17 +7539,22 @@ for (var i=0; i<size; i++)
           attacker = parsearray[2].split(":")[1];
           nft      = parsearray[4].split(":")[1];
           coor     = parsearray[5].split(":")[1];
-          //buffer += message + " ("+attacker+") ("+nft+")  ("+coor+") <br>";
-          link = "https://eos.atomichub.io/explorer/asset/"+nft;
+  
+  
+          if (attacker != undefined)
+             { 
+             link = "https://eos.atomichub.io/explorer/asset/"+nft;
           
-          width = 1000000;
-          they2 = parseInt ( coor / width );
-          thex2 = coor - (they2*width);
+             width = 1000000;
+             they2 = parseInt ( coor / width );
+             thex2 = coor - (they2*width);
+  
+             link2 = "<span onclick='setcenter2(" +thex2+ "," +they2+ ")' style='cursor:pointer;color:#ffb800;'>[center]</span>";
 
-// alfalf
-          link2 = "<span onclick='setcenter2(" +thex2+ "," +they2+ ")' style='cursor:pointer;color:#ffb800;'>[center]</span>";
+             buffer +=  "Destroyed: by "+attacker+" NFT: <a href='"+link+"' target='_blank' style='color:9999ff'>"+nft+"</a>  x:"+thex2+" y:"+they2+" "+link2+" <br>";
 
-          buffer +=  "Destroyed: by "+attacker+" NFT: <a href='"+link+"' target='_blank' style='color:9999ff'>"+nft+"</a>  x:"+thex2+" y:"+they2+" "+link2+" <br>";
+             } // if (attacker != undefined)
+
           }
        } // if
        
@@ -7578,11 +7583,27 @@ if (mode == 0)
 
 history_info_cnt++;
 console.log("H: " + history_info_cnt);
- 
+ // alfalf
 limit = 1000;
 
 start = "2023-03-16T03:00Z";
 start = "2023-03-13T03:00Z";
+
+var now = new Date().getTime() / 1000;
+now -= 60*60*24 * 1.5;
+
+  var a = new Date(now * 1000);
+                       
+ var year = a.getFullYear();
+  var month = a.getMonth()+1;
+  if (month < 10) month = "0" + month;
+  var day = a.getDate();
+  if (day < 10) day = "0" + day;  
+  
+start = year+ "-" +month+ "-" +day+ "T00:00Z";  
+
+ 
+
 var url = "https://eos.hyperion.eosrio.io/v2/history/get_actions?account=sovspacegame&sort=asc&limit="+limit+"&after="+start+"";
 
 console.log("URL: " + url);
