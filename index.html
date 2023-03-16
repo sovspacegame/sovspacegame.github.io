@@ -1128,7 +1128,7 @@ authorizeaccount = document.getElementById('authorizeaccount').value;
 
 //alert("authorizeaccount: " + authorizeaccount);
 
-/* alfalf
+/* 
    void setnftoption(
                        uint64_t assetid,
                        name     user,
@@ -1404,7 +1404,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
  <label style='cursor:pointer;'>Show Shield & SOV<input id='checkbox_shield' type='checkbox'   onchange='toggle_info()'> </label> &nbsp;&nbsp;&nbsp;
- <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label>
+ <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> &nbsp;&nbsp;&nbsp;
+
 
  <div style='cursor:pointer;float:right;'> <div id='coordinate'></div>  </div>
 
@@ -1525,6 +1526,8 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
+
+
 <div style='text-align:center;'>
 
 
@@ -1546,6 +1549,13 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
+
+<div style='100%'>
+ <div id='checkbox_owner' class='refreshboard'  onclick='history_info(1)' style='float:left;margin-left:20px;margin-right:20px;'>Destruction History (24h) &#8634;</div><div onclick='history_info(0)' class='refreshboard' style='float:left;'>Clear</div>
+ <div style='clear:both;'></div>
+ <div id='historyinfo' class='imground'  style='margin-left:20px;height:20px;overflow:hidden;border:2px solid #666666;width:96.5%;padding:10px;  -ms-user-select: text;    -webkit-user-select:text ;    -moz-user-select: text;    user-select: text; '>...</div>
+</div>  
+  
 
 
 
@@ -5482,7 +5492,7 @@ xhr.onreadystatechange = function () {
 
 xhr.send();
 
-console.log(" readurl2 ");
+//console.log(" readurl2 ");
 
 } // readurl()
 
@@ -7501,6 +7511,97 @@ for (var i=0; i<size; i++)
 
 
 } // toggle_info
+
+
+function history_callback( value )
+{
+console.log("HIST:");
+//console.log(value);
+
+var buffer = "";
+
+size = value.actions.length;
+
+for (var i=0; i<size; i++)
+    {
+    action = value.actions[i].act.name;
+    console.log("A: "+action);
+    
+    if (action == "logmsg")
+       {
+       message = value.actions[i].act.data.message;
+       
+       parsearray = message.split(" ");
+       
+       
+       if ( parsearray[0] == "destroyed" )
+          {
+          attacker = parsearray[2].split(":")[1];
+          nft      = parsearray[4].split(":")[1];
+          coor     = parsearray[5].split(":")[1];
+          //buffer += message + " ("+attacker+") ("+nft+")  ("+coor+") <br>";
+          link = "https://eos.atomichub.io/explorer/asset/"+nft;
+          
+          width = 1000000;
+          they2 = parseInt ( coor / width );
+          thex2 = coor - (they2*width);
+
+// alfalf
+          link2 = "<span onclick='setcenter2(" +thex2+ "," +they2+ ")' style='cursor:pointer;color:#ffb800;'>[center]</span>";
+
+          buffer +=  "Destroyed: by "+attacker+" NFT: <a href='"+link+"' target='_blank' style='color:9999ff'>"+nft+"</a>  x:"+thex2+" y:"+they2+" "+link2+" <br>";
+          }
+       } // if
+       
+    } // for i..
+
+document.getElementById("historyinfo").innerHTML = buffer;
+
+} // history_callback
+
+
+
+
+var history_info_cnt = 0;
+
+async  function history_info( mode )
+{
+
+if (mode == 0)
+   {
+   document.getElementById("historyinfo").innerHTML = "";
+     document.getElementById("historyinfo").style.height = "20px";
+   } else
+     {
+     document.getElementById("historyinfo").style.height = "";
+     }
+
+history_info_cnt++;
+console.log("H: " + history_info_cnt);
+ 
+limit = 1000;
+
+start = "2023-03-16T03:00Z";
+start = "2023-03-13T03:00Z";
+var url = "https://eos.hyperion.eosrio.io/v2/history/get_actions?account=sovspacegame&sort=asc&limit="+limit+"&after="+start+"";
+
+console.log("URL: " + url);
+ 
+var jsonparam = JSON.stringify( {} );
+ 
+
+const options = {
+  headers: {
+     
+  }
+};
+
+fetch(url, options)
+  .then( res => res.json() )
+  .then( data =>   history_callback(data) );
+
+
+} // history_info
 
 
 
