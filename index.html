@@ -739,9 +739,14 @@ Authorize Player: (empty for revoke)<br>
 load
 </div>
 
-<div id='navbutton_repair' onclick='transporter_loadunloadobjects(2);' class='navbutton_off' style='color:#ffffff;width:20%;'>
+<div id='navbutton_unload' onclick='transporter_loadunloadobjects(2);' class='navbutton_off' style='color:#ffffff;width:20%;visibility:hidden;'>
 unload
 </div>
+
+<div id='navbutton_unloadloader' onclick='transporter_loadunloadobjects(3);' class='navbutton_off' style='color:#ffffff;width:20%;visibility:hidden;'>
+unload (lander)
+</div>
+
 <div style='clear:both;'></div>
 <div id='loadedinfo' style='color:#ffffff;margin-left:20px;'>
 ...
@@ -3095,11 +3100,28 @@ if (configarray[i] == 'authorize' &&
 } // if auth(able)
 
     // ------
-if ( globalselection['atype'] == 12 ) // transporter
+if ( globalselection['atype'] == 1 || globalselection['atype'] == 12 ) // lander or transporter
 {
   document.getElementById("loadmenu").style.visibility = "visible";
   document.getElementById("loadmenu").style.height = "";
 
+if ( globalselection['atype'] == 1 )
+   {
+   document.getElementById("navbutton_unloadloader").style.visibility = "visible";
+   } else
+     {
+     document.getElementById("navbutton_unloadloader").style.visibility = "hidden";
+     }
+
+if ( globalselection['atype'] == 12 )
+   {
+   document.getElementById("navbutton_unload").style.visibility = "visible";
+   } else
+     {
+     document.getElementById("navbutton_unload").style.visibility = "hidden";
+     }
+
+ 
 
   var buffer = "";
 
