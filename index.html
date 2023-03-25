@@ -2571,7 +2571,7 @@ Last Updated 01/10/2023
 <br>
 
 
-<div id="footer0" style='border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:20px;'>
+<div id="footer0" style='border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:0px;'>
 
 <br>
 <strong>API-Settings</strong><br>
@@ -2610,10 +2610,12 @@ node for wallet:
 
 
 
-
-<br>
-
+ 
 <!-- footer2 -->
+
+
+
+<!--
 <div>
 
 <div style='float:left;width:30%;border:none;'>
@@ -2628,10 +2630,9 @@ NFT-API (atomicassets):
 </select>
 </div>
 
-
-
-
-</div> <!-- footer2 -->
+</div> 
+-->
+<!-- footer3 -->
 
 
 </div> <!-- footer0 -->
@@ -2666,7 +2667,7 @@ NFT-API (atomicassets):
 
 <br>
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1t</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1u</div>
 
 <br>
 <br>
@@ -2676,7 +2677,7 @@ NFT-API (atomicassets):
 
 <script>
 
-
+/*
 var nft_node = "https://eos.api.atomicassets.io/atomicassets/v1/assets/";
 
 var elm = document.getElementById('select_api_node');
@@ -2693,7 +2694,7 @@ elm.onchange = function()
    alert( "select_nft_node " + this.value );
    } // select_data_node
 
-
+*/
 </script>
 
 
@@ -6021,6 +6022,9 @@ if (1)
 } // placeobject()
 
 
+
+
+
 function callback_getinventory_mainpage( rows )
 {
 console.log("ROWS...(callback)");
@@ -6036,35 +6040,49 @@ for (var i=0; i<size; i++)
           {
           var asset_id = rows.rows[i].asset_id;
 
+          // ---
+          //           
+          collection_name = rows.rows[i].collection_name;          
+          var idata       = rows.rows[i].immutable_serialized_data;
+          var mdata       = rows.rows[i].mutable_serialized_data;                    
+          decoded_data    = mydecoder( idata, mdata );
+     
+        
+          
+          // --- 
 
+/*
           //console.log("--- url: " + url);
           var url = nft_node + asset_id;
           var jsonparam = JSON.stringify( {assetid: asset_id } );
           var mediajson = readurl_simple(url, jsonparam);
-
-
-
           var json_array = JSON.parse(mediajson);
-
-
-// console.log(json_array);
-
+          // console.log(json_array);          
           var collection_name = json_array['data']['collection']['collection_name'] ;
-
+*/
 
          if (  collection_name == "sovspacegame" )
             {
-            var the_id          = json_array['data']['data']['id'];
+            //var the_id          = json_array['data']['data']['id'];
+            /*
             var hash_img        = json_array['data']['data']['img'];
-
-
             var the_race        = json_array['data']['data']['race'];
             var the_atype       = json_array['data']['data']['atype'];
-
-            var title      = json_array['data']['data']['name'] ;
+            var title           = json_array['data']['data']['name'] ;
+            */
+            hash_img            = decoded_data['ipfs'];
+            the_race            = decoded_data['race'];
+            the_atype           = decoded_data['atype'];
+            title               = decoded_data['name'];
+            
             if (title == undefined) title = "Alien Girl";
             // console.log("hash_img: " + hash_img);
             content += "<td>";
+            
+            
+            
+            
+            
             content += "<div id='nft_"+asset_id+"' onclick='selectnft("+asset_id+")' name='mynft' class='nft_cell' style=''>";
 
 
@@ -6115,7 +6133,7 @@ for (var i=0; i<size; i++)
 
                }
 
-        //  --
+            //  --
 
 
             content += "</div>";
@@ -6149,46 +6167,51 @@ for (var i=0; i<size; i++)
           {
           var asset_id = rows.rows[i].asset_id;
 
+ 
+          collection_name = rows.rows[i].collection_name;
+          
+          var idata   = rows.rows[i].immutable_serialized_data;
+          var mdata   = rows.rows[i].mutable_serialized_data;
+          
+          
+          decoded_data = mydecoder( idata, mdata );
 
-
+/*
           var url = nft_node + asset_id;
-//          console.log("--- url: " + url);
+          //          console.log("--- url: " + url);
           var jsonparam = JSON.stringify( {assetid: asset_id } );
           var mediajson = readurl_simple(url, jsonparam);
-
-
-
           var json_array = JSON.parse(mediajson);
-
           // console.log(json_array);
-
           var collection_name = json_array['data']['collection']['collection_name'] ;
-
+*/
 
          if (  collection_name == "sovspacegame" )
             {
+            /*
             var the_id          = json_array['data']['data']['id'];
             var hash_img        = json_array['data']['data']['img'];
             var hash_video      = json_array['data']['data']['video'];
-
             var title      = json_array['data']['data']['name'] ;
+            */
+            
+            hash_img            = decoded_data['ipfs'];
+            the_race            = decoded_data['race'];
+            the_atype           = decoded_data['atype'];
+            title               = decoded_data['name'];
+            
+            
             if (title == undefined) title = "Alien Girl";
             console.log("hash_img: " + hash_img);
             content += "<td>";
             content += "<div class='nft_cell' style=''>";
 
 
-            var the_race        = json_array['data']['data']['race'];
-            var the_atype       = json_array['data']['data']['atype'];
+            // var the_race        = json_array['data']['data']['race'];
+            //  var the_atype       = json_array['data']['data']['atype'];
             var imgbuffer       = "";
 
-            /*
-            if (the_atype == 14 && asset_id == 2199025130637)
-               {
-               imgbuffer = "<img src='img/nft_monument_1.png' style='width:100px;margin-top:10px;'>";
-               }
-               else
-               */
+        
                   {
                   imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
                   }
@@ -7605,7 +7628,7 @@ if (mode == 0)
 
 history_info_cnt++;
 console.log("H: " + history_info_cnt);
- // alfalf
+ 
 limit = 1000;
 
 start = "2023-03-16T03:00Z";
