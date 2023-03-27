@@ -1412,7 +1412,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> &nbsp;&nbsp;&nbsp;
 
 
- <div style='cursor:pointer;float:right;'> <div id='coordinate'></div>  </div>
+ <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> <span onclick='initarea2()'>[#]</span> </div>
 
 </div>
 
@@ -2667,7 +2667,7 @@ NFT-API (atomicassets):
 
 <br>
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1u</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1w</div>
 
 <br>
 <br>
@@ -8110,10 +8110,63 @@ getdata(callback_loadadminnftinfos, "sovspacegame", "sovspacegame", "atemplate",
 
 
 
+function initarea2()
+{
+thex2 = globalselection['x'];
+they2 = globalselection['y'];
+
+
+
+
+
+var theactions = [];
+
+param = "initarea;"+thex+";"+they+";"+tile;
+
+
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'initarea',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account,
+                       "x": thex2,
+                       "y": they2
+                       
+
+                       }
+                 };
+
+
+    theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+
+
+/*
+globalselection['x'] = thex2;
+globalselection['y'] = they2;
+*/
+} // initarea2
+
+
+
 
 // --
 // Admin
-
+//
 function initarea()
 {
 
