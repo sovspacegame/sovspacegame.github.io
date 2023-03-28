@@ -628,9 +628,15 @@ terraform
 deactivate
 </div>
 
-<div id='navbutton_fire' onclick='firered();' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
+<div id='navbutton_fire' onclick='initarea2();' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
 detonate
 </div>
+
+<div id='navbutton_flatten' onclick='nav_selection(6);' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
+flatten
+</div>
+
+
 <div style='clear:both;'></div>
 <!--
 <div id='navbutton_infect' onclick='nav_selection(6);' class='navbutton_off' style='visibility:visible;f'>
@@ -850,7 +856,7 @@ if (nav_mode == 5)
    }
 if (nav_mode == 6)
    {
-   infectobject(2);
+   flattenobject(2);
    }
 
 
@@ -891,7 +897,7 @@ if (nav_mode == 5)
    }
 if (nav_mode == 6)
    {
-   infectobject(3);
+   flattenobject(3);
    }
 
 refreshboard();
@@ -929,7 +935,7 @@ if (nav_mode == 5)
    }
 if (nav_mode == 6)
    {
-   infectobject(4);
+   flattenobject(4);
    }
 
 refreshboard();
@@ -968,7 +974,7 @@ if (nav_mode == 5)
    }
 if (nav_mode == 6)
    {
-   infectobject(1);
+   flattenobject(1);
    }
 
 refreshboard();
@@ -1187,7 +1193,7 @@ if (1)
 function callback_readasset_forlist( value, params )
 {
 
-console.log( "coordinatei: " ,params['id'] ," " ,params['asset_id'] );
+//console.log( "coordinatei: " ,params['id'] ," " ,params['asset_id'] );
 
 /*
 if ( value.more == false )
@@ -1412,7 +1418,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> &nbsp;&nbsp;&nbsp;
 
 
- <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> <span onclick='initarea2()'>[#]</span> </div>
+ <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> <span onclick='initarea2()' id=''>[#]</span> </div>
 
 </div>
 
@@ -2988,6 +2994,28 @@ if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
    document.getElementById('navbutton_fire').className = "navbutton_off_inactive";
    }
 
+
+console.log(globalselection);
+if ( globalselection['atype'] == 5 )
+   {
+   document.getElementById('navbutton_flatten').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_flatten').className = "navbutton_off_inactive";
+   }
+/*
+// detonation RED. and service-unit
+if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
+   {
+   document.getElementById('navbutton_fire').className = "navbutton_off";
+   } // if ( globalselection['assetid'] == "" )
+   else
+   {
+   document.getElementById('navbutton_fire').className = "navbutton_off_inactive";
+   }
+
+*/
 
 // Tower
 if ( globalselection['atype'] == 9 )
@@ -7247,6 +7275,69 @@ if (1)
 
 
 
+// alfalf
+function flattenobject( direction )
+{
+
+
+
+var theactions = [];
+
+var dir = "";
+if (direction == 1) dir = "n";
+if (direction == 2) dir = "e";
+if (direction == 3) dir = "s";
+if (direction == 4) dir = "w";
+
+ 
+ 
+ 
+/*
+initarea( 
+        			 name 		user, 
+                     uint64_t 	assetid, 
+                     string   	direction // n,e,s,w  
+                   ) 
+*/
+
+// memo = "infect;"+global_account+";"+globalselection['assetid']+";"+dir;
+ 
+//console.log("global_account: "+ global_account);
+
+    var action = {
+                 account: "sovspacegame",
+                 name: "initarea",
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "user": global_account+"",
+                       "assetid": globalselection['assetid'],
+                       "direction": dir
+                       }
+                 };
+/*
+console.log("ACTION:");
+
+console.log(action);
+*/
+theactions.push(action);
+
+
+
+
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+
+} // flattenobject()
+
+
+
 
 nav_mode = 1;
 
@@ -7486,7 +7577,7 @@ if (mode == 5)
 
 if (mode == 6)
    {
-   document.getElementById('navsvg_text').innerHTML = "infect";
+   document.getElementById('navsvg_text').innerHTML = "flatten";
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_move').className = "navbutton_off";
@@ -8107,59 +8198,6 @@ getdata(callback_loadadminnftinfos, "sovspacegame", "sovspacegame", "atemplate",
 
 } // loadnftinfos
 
-
-
-
-function initarea2()
-{
-thex2 = globalselection['x'];
-they2 = globalselection['y'];
-
-
-
-
-
-var theactions = [];
-
-param = "initarea;"+thex+";"+they+";"+tile;
-
-
-
-    var action = {
-                 account: "sovspacegame",
-                 name: 'initarea',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "user": global_account,
-                       "x": thex2,
-                       "y": they2
-                       
-
-                       }
-                 };
-
-
-    theactions.push(action);
-
-
-
-
-
-if (1)
-   {
-   transact( func_success, func_error, theactions );
-   }
-
-
-
-/*
-globalselection['x'] = thex2;
-globalselection['y'] = they2;
-*/
-} // initarea2
 
 
 
