@@ -633,7 +633,7 @@ detonate
 </div>
 
 <div id='navbutton_flatten' onclick='nav_selection(6);' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
-Level Ground
+bulldoze rock
 </div>
 
 
@@ -7290,8 +7290,18 @@ if (direction == 3) dir = "s";
 if (direction == 4) dir = "w";
 
  
+//   n = prompt("Enter numbers only:"); 
  
- 
+if (confirm(' this action costs about 404 bytes of ram unrefundable, confirm?')) 
+{
+  // Save it!
+  
+}  // confirm
+else
+ {
+ return;
+ }
+
 /*
 initarea( 
         			 name 		user, 
@@ -7577,7 +7587,7 @@ if (mode == 5)
 
 if (mode == 6)
    {
-   document.getElementById('navsvg_text').innerHTML = "Level Ground";
+   document.getElementById('navsvg_text').innerHTML = "bulldoze";
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_move').className = "navbutton_off";
