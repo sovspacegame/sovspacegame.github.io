@@ -2952,7 +2952,7 @@ var tile = tilearray[thex][they].tile;
 
 
 tile = tile.replace('tile', '')*1;
- console.log("TILE: " + tile);
+ console.log("TILE: " + tile + " ["+tilearray[thex][they].tile+"]");
 
   // street
 //      if ( tile == 10 ) { race=1; type=1; };
@@ -3501,6 +3501,24 @@ if (render_owner == "") render_owner = '-';
 if (authorizevar != "") render_owner += " [+"+authorizevar+"]";
 
 // ---
+
+
+
+ // alfalf tile00 
+//if ( globalselection['assetid'] == "" ) // empty tile
+tile2 = tilearray[thex][they].tile;
+  if ( tile2.substring(0, 6) == "tile00" )
+  
+//if ( globalselection['atype'] == "" ) // empty tile
+//if ( tile == undefined ) // empty tile
+{
+console.log("PRINT IT ");
+thename  = "rugged area";
+} else console.log("A IS : " + globalselection['atype'] );
+
+
+
+
 
 document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;'>" + thename + "&nbsp;<strong>";
 
