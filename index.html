@@ -1442,7 +1442,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <div style='margin-left:20px;'>  <span id='canvasfolder_openclose' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Expand Automap &#9660;<span></div>
 
 <div id='canvasfolder' style='height:50px;border:none'>
- <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:60%;overflow:hidden;'>
+ <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:80%;overflow:hidden;'>
  <canvas id='navmap' width='400' height='400' style='width:100%;' ></canvas>
  </div>
 </div>
@@ -8785,7 +8785,8 @@ var mousey2=0;
 var mousebutton = 0;
 
 var globalmapoffsetx = 100;
-var globalmapoffsety = 45;
+//var globalmapoffsety = 45;
+var globalmapoffsety = 100;
 
 
 // Get X, Y coords, and displays Mouse coordinates
