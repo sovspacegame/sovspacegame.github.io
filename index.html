@@ -4253,16 +4253,26 @@ getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "
 
 // ---
 
+/*
+call with x,y, and maxtiles (currently 3): 
 
+ var pseudorand =  getpseudovoidtile( x2,y2, 3 );
+    var thetile = "tile00";
+    if (pseudorand == 1) thetile = "tile00b";
+    if (pseudorand == 2) thetile = "tile00c";
+//    if (pseudorand == 3) thetile = "tile00d";
+    
+// please note: if you increase the number of maxtiles, the assignment of the tiles
+                of the empty tiles will be change         
+*/
 
-
-function getpseudovoidtile( x, y)
+function getpseudovoidtile( x, y, maxtiles)
 {
 
 seed = x + ( y*width );
 var ret = mulberry32( seed );
 
-var maxtiles = 3;
+ 
 ret2 = Math.floor(maxtiles*ret);
 
 return(ret2); 
@@ -4276,7 +4286,6 @@ function mulberry32(a) {
       return ((t ^ t >>> 14) >>> 0) / 4294967296;
  
 }
-
 
 // ---
 
@@ -4334,14 +4343,7 @@ div.style.background = "";
 div.style.color = "#ffffff";
 
 
-
-/*
-ret2 = getpseudovoidtile( x,y);
-
-
-document.getElementById('debug').innerHTML = ret2;
-
-*/
+ 
 
 
 //div.innerHTML = "<img src='img/tile00.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
@@ -4798,7 +4800,7 @@ for (y=0; y<16; y++)
     tilearray[x][y]['tileid'] = coordinatei;
     
     
-    var pseudorand =  getpseudovoidtile( x2,y2 );
+    var pseudorand =  getpseudovoidtile( x2,y2, 3 );
     var thetile = "tile00";
     if (pseudorand == 1) thetile = "tile00b";
     if (pseudorand == 2) thetile = "tile00c";
@@ -8785,7 +8787,6 @@ var mousey2=0;
 var mousebutton = 0;
 
 var globalmapoffsetx = 100;
-//var globalmapoffsety = 45;
 var globalmapoffsety = 100;
 
 
