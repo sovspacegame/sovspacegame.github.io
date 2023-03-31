@@ -772,8 +772,16 @@ unload (lander)
 
 
 
+<!-- classic mode -->
+<script>
 
 
+classicmode = _getCookie("myclassicmode");
+//alert(classicmode);  
+  
+
+     
+</script>
 
 
 
@@ -2242,17 +2250,40 @@ var myaudio = document.getElementById("audiotag");
 console.log("RACE " + race)
 var src = "";
 
-if (race == 1) src = "audio/ambienthumans.mp3";
-if (race == 2) src = "audio/ambientgreys.mp3";
-if (race == 4) src = "audio/ambientsirians.mp3";
-if (race == 5) src = "audio/ambientreptos.mp3";
-/*
-if (race == 1) src = "audio/humanloop1.0.mp3";
-if (race == 2) src = "audio/greysoundloop1.1.mp3";
-if (race == 4) src = "audio/sirians2mp3.mp3";
-if (race == 5) src = "audio/reptars1mp3.mp3";
 
-*/
+
+if (race == 1) 
+   {
+   if ( classicmode != "" )     
+      src = "audio/humanloop1.0.mp3"; else
+      src = "audio/ambienthumans.mp3";         
+
+   }
+
+if (race == 2) 
+   {
+   if ( classicmode != "" )
+      src = "audio/greysoundloop1.1.mp3"; else
+      src = "audio/ambientgreys.mp3";       
+   }
+
+if (race == 4) 
+   {
+   if ( classicmode != "" )
+      src = "audio/sirians2mp3.mp3"; else
+      src = "audio/ambientsirians.mp3";       
+   }
+
+if (race == 5) 
+   {
+   if ( classicmode != "")
+      src = "audio/reptars1mp3.mp3"; else
+      src = "audio/ambientreptos.mp3";       
+   }
+   
+   
+ 
+  
 myaudio.volume = 20/100;
 myaudio.currentTime = 0;
 myaudio.src = src;
@@ -2673,7 +2704,44 @@ NFT-API (atomicassets):
 
 <br>
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1w</div>
+
+<!-- classic mode -->
+<div style='float:left;margin-left:20px;color:#aaaaaa;'>
+classic-mode:<input type='checkbox' id='classicmode' value='1'  > <small style='color:#444444;'>Early music and frontend settings</small>
+
+<script>
+
+
+var elm = document.getElementById('classicmode');
+elm.onchange = function()
+   {
+   classicmode = document.getElementById('classicmode').checked ;
+   //alert("change:" + classicmode ); 
+    _setCookie("myclassicmode",classicmode,30);
+   
+   
+   } // select_api_node
+
+
+if ( classicmode != false ) 
+   {
+   //alert("set checked"); 
+   elm.checked = "checked";
+   } else
+     {
+     //alert("set unchecked"); 
+     elm.checked = "";
+     }  
+   
+
+     
+</script>
+
+
+</div>
+
+
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1x</div>
 
 <br>
 <br>
