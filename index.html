@@ -4817,13 +4817,44 @@ for (y=0; y<16; y++)
     coordinatei = (y2*width) + x2;
     tilearray[x][y]['tileid'] = coordinatei;
     
-    
+    /*
     var pseudorand =  getpseudovoidtile( x2,y2, 3 );
     var thetile = "tile00";
     if (pseudorand == 1) thetile = "tile00b";
     if (pseudorand == 2) thetile = "tile00c";
-//    if (pseudorand == 3) thetile = "tile00d";
+    */
+  
+    /*
     
+    var thetile = "tile00";    
+    if (distance <= 60) 
+       {
+       thetile = "tile00e";  
+       } else
+         {
+         var pseudorand =  getpseudovoidtile( x2,y2, 3 );
+         thetile = "tile00";
+         if (pseudorand == 1) thetile = "tile00b";
+         if (pseudorand == 2) thetile = "tile00c";
+         }
+     */     
+          
+    var distance = Math.sqrt(Math.pow(x2 - 500000,2)+Math.pow(y2-500000,2) );
+              
+ if (distance <= 60) 
+    {              
+    var pseudorand =  getpseudovoidtile( x2,y2, 3 );
+    thetile = "tile00";
+    if (pseudorand == 1) thetile = "tile00b";
+    if (pseudorand == 2) thetile = "tile00c";
+    } else
+      {
+      var pseudorand =  getpseudovoidtile( x2,y2, 3 );
+      thetile = "tile00x";
+      if (pseudorand == 1) thetile = "tile00bx";
+      if (pseudorand == 2) thetile = "tile00cx";
+      }
+
     
     tilearray[x][y]['tile'] = thetile;
     tilearray[x][y]['asset_id'] = "";
