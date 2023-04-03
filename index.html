@@ -620,8 +620,9 @@ repeat &#8634;
 </div>
 <div style='clear:both;'></div>
 
+<!-- former terraform -->
 <div id='navbutton_garden' onclick='plantgarden();' class='navbutton_off_inactive'>
-terraform
+seed 
 </div>
 
 <div id='navbutton_disable' onclick='toggletower();' class='navbutton_off_inactive'>
@@ -632,8 +633,9 @@ deactivate
 detonate
 </div>
 
+<!-- former bulldoze -->
 <div id='navbutton_flatten' onclick='nav_selection(6);' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
-bulldoze
+terraform
 </div>
 
 
@@ -3185,6 +3187,9 @@ if (
 {
 
 
+
+
+
 if ( configarray.length > 0)
 {
 
@@ -3582,7 +3587,7 @@ if (authorizevar != "") render_owner += " [+"+authorizevar+"]";
 
 
 
- // alfalf tile00 
+  
 //if ( globalselection['assetid'] == "" ) // empty tile
 tile2 = tilearray[thex][they].tile;
   if ( tile2.substring(0, 6) == "tile00" )
@@ -4317,6 +4322,7 @@ globaldata['version']    =  rows.rows[0].version;
 globaldata['m_sov']      =  rows.rows[0].m_sov;
 globaldata['a_sov']      =  rows.rows[0].a_sov;
 globaldata['svx_self']   =  rows.rows[0].svx_self;
+globaldata['config']     =  rows.rows[0].config;
 
 
 
@@ -7462,7 +7468,7 @@ if (1)
 function flattenobject( direction )
 {
 
-
+// alfalf
 
 var theactions = [];
 
@@ -7473,48 +7479,66 @@ if (direction == 3) dir = "s";
 if (direction == 4) dir = "w";
 
  
-//   n = prompt("Enter numbers only:"); 
- 
-if (confirm(' this action costs about 404 bytes of ram unrefundable, confirm?')) 
+
+svxprice = 0;
+
+var configarray   = split(globaldata['config'],";");
+
+if ( configarray.length > 0)
 {
-  // Save it!
-  
-}  // confirm
-else
- {
- return;
- }
 
-/*
-initarea( 
-        			 name 		user, 
-                     uint64_t 	assetid, 
-                     string   	direction // n,e,s,w  
-                   ) 
-*/
+for (var i=0; i< (configarray.length); i=i+2)
+{
 
-// memo = "infect;"+global_account+";"+globalselection['assetid']+";"+dir;
+if (configarray[i] == 'bullsvx' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
+   )
+   {
+   svxprice = configarray[i+1];
+   }
+
+
+} // for
+
+} // if
  
-//console.log("global_account: "+ global_account);
+//alert("svxprice: " + svxprice);
+
+
+
+var theactions = [];
+
+
+var memo = "bulldoze;"+global_account+";"+globalselection['assetid']+";"+dir+"";
+
+// ame","quantity":"50.0000 SVX","memo":"bulldoze;sovtrader111;2199025451974;e"}' -p sovtrader111
+
+ 
+
+
+
+var quantitysvx = svxprice / 10000;
+quantitysvx = Number(quantitysvx).toFixed(4) + " SVX";
+
+
+
 
     var action = {
-                 account: "sovspacegame",
-                 name: "initarea",
+                 account: "svxmintofeos",
+                 name: 'transfer',
                  authorization: [{
                                 actor: global_account,
                                 permission: "active"
                                 }],
                  data: {
-                       "user": global_account+"",
-                       "assetid": globalselection['assetid'],
-                       "direction": dir
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": quantitysvx,
+                       "memo": memo,
                        }
                  };
-/*
-console.log("ACTION:");
 
-console.log(action);
-*/
+
 theactions.push(action);
 
 
@@ -7526,6 +7550,42 @@ if (1)
    transact( func_success, func_error, theactions );
    }
 
+
+
+//   n = prompt("Enter numbers only:"); 
+ /*
+if (confirm(' this action costs about 404 bytes of ram unrefundable, confirm?')) 
+{
+  // Save it!
+  
+}  // confirm
+else
+ {
+ return;
+ }
+ */
+ 
+ /*
+ globalselection['assetid']
+ */
+
+/*
+initarea( 
+        			 name 		user, 
+                     uint64_t 	assetid, 
+                     string   	direction // n,e,s,w  
+                   ) 
+*/
+
+
+//console.log("global_account: "+ global_account);
+
+
+/*
+cleos -u https://mainnet.eosamsterdam.net push action svxmintofeos transfer '{"from":"sovtrader111","to":"sovspacegame","quantity":"50.0000 SVX","memo":"bulldoze;sovtrader111;2199025451974;e"}' -p sovtrader111
+
+*/
+ 
 
 } // flattenobject()
 
