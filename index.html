@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="icon" href="img/icon.png" />
 <link rel="stylesheet" href="css/style.css?ttd=44we34" />
 
@@ -131,12 +132,25 @@
 
 
 <div class='menuarea'>
-<div id='menu1' class='menubutton_selected' onclick='setmenu(1)' style='margin-left:20px;'>Surface</div>
-<div id='menu2' class='menubutton' onclick='setmenu(2)'>Mint</div>
+
+<div style='float:left;'>
+<div id='menu1' class='menubutton_selected' onclick='setmenu(1)' style='margin-left:20px;'><span data-lang="en">Surface</span><span data-lang="cn">表面</span>  </div>
+<div id='menu2' class='menubutton' onclick='setmenu(2)'><span data-lang="en">Mint</span><span data-lang="cn">铸造</span></div>
 <div id='menu3' class='menubutton' onclick='setmenu(3)'>Rules</div>
 <div id='menu4' class='menubutton' onclick='setmenu(4)'>Lore</div>
 <div id='menu5' class='menubutton' onclick='setmenu(5)' style='visibility:hidden'>Admin</div>
+</div>
+
+<div style='float:right;margin-right:20px;'>
+<select id="language-selector" style='font-size:20px;'>
+  <option value="en">English</option>
+  <option value="cn">中文</option>
+</select>
+</div>
+
+
 <div style='clear:both;'></div>
+
 
 </div> <!-- menuarea -->
 
@@ -2740,6 +2754,8 @@ NFT-API (atomicassets):
 <!-- classic mode -->
 <div style='float:left;margin-left:20px;color:#aaaaaa;'>
 classic-mode:<input type='checkbox' id='classicmode' value='1'  > <small style='color:#444444;'>Early music and frontend settings</small>
+
+
 
 <script>
 
@@ -7474,9 +7490,6 @@ if (1)
  
 function flattenobject( direction )
 {
-
-// alfalf
-
 var theactions = [];
 
 var dir = "";
@@ -9529,6 +9542,42 @@ if (1)
 
 chat_update_thread();
  </script>
+
+
+
+
+<script>
+// Define a function to change the language of the page
+function changeLanguage(lang) {
+  // Get all elements with a "data-lang" attribute
+  var elements = document.querySelectorAll("[data-lang]");
+  // Loop through each element and set its text to the corresponding language
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    var text = element.getAttribute("data-lang");
+    if (text === lang) {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  }
+}
+
+// Listen for changes to the language selector
+var selector = document.getElementById("language-selector");
+selector.addEventListener("change", function(event) {
+  var lang = event.target.value;
+  changeLanguage(lang);
+});
+
+// Set the initial language based on the user's browser settings
+var lang = navigator.language.substring(0, 2);
+//alert("Lang: " + lang);
+if (lang != 'en' && lang != 'cn') lang = 'en';
+changeLanguage(lang);
+
+</script>
+
 
 
 </body>
