@@ -16,6 +16,8 @@ var chainID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
 //var chainID = "2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840"; // Jungle3
 
 
+
+
 // --
 // Node-selection
 //var   thenode      = "eos.greymass.com"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
@@ -81,6 +83,44 @@ const network = ScatterJS.Network.fromJson({
                             protocol: 'https'
                             });
                         
+
+
+
+
+// --- HARDWIRED KEY (UNSECURE!!!) ONLY USE IF YOU EXACTLY KNOWING WHAT YOU DO!!!
+
+if (1)
+{
+
+var currentwallet                = "HARDWIRED";
+
+// --- ENTER HIER ---
+var hardwired_account            = "sovtrader111";
+var hardwired_account_permission = "active";
+var hardwired_key                = "5HxU8utQytLNsZHtmZPgDUxS4y63yDQU6xQMwPHZW3YXDMBWGZp";
+// --- --- ---
+
+/*
+// --- ENTER HIER ---
+var hardwired_account            = "[youraccountanme]";
+var hardwired_account_permission = "active";
+var hardwired_key                = "[yourprivatekey]";
+// --- --- ---
+*/
+alert("HARD-WIRED MODE");
+
+global_account            = hardwired_account;
+global_account_permission = hardwired_account_permission;
+
+external_login_action();  
+_setCookie("myeosaccount",scatter_account,30);                          
+                                                                        
+func_setaccountname(global_account);     
+                         
+} // if (0)
+// --- END HARDWIRED ---
+
+
 
 
 //
@@ -279,6 +319,52 @@ if (currentwallet == "SCATTER")
             
     
    } // SCATTER
+   
+   
+  
+if (currentwallet == "HARDWIRED")
+   {             
+   const defaultPrivateKey = hardwired_key;
+   const mysignatureProvider = new eosjs_jssig.JsSignatureProvider([defaultPrivateKey]);
+
+   console.log("HARDWIRED aaa " + thenode);
+ 
+   const rpc = new eosjs_jsonrpc.JsonRpc('https://eos.api.eosnation.io');
+   const api = new eosjs_api.Api({ rpc: rpc, signatureProvider: mysignatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
+            
+   console.log("HARDWIRED ccc"); 
+            
+              
+  (async () => {
+    try {
+      const result = await api.transact({
+        actions: myactions
+         
+      }, {
+        blocksBehind: 3,
+        expireSeconds: 30,
+      });
+      func_transfer_success(result.processed.id);          
+    } catch (err) {
+                console.log('-------');
+                 console.log('\nCaught exception: ' + err);
+                  console.log('A');
+                  console.log(JSON.stringify(err.json, null, 2));
+                  console.log('B');
+            console.log('error: ');
+            console.log( err.json.processed.except.stack[0].data.s);
+            message = err.json.processed.except.stack[0].data.s;
+     func_transfer_error( message );
+                              
+                              
+ 
+    }
+  })();
+            
+            
+    
+   } // HARDWIRED
+   
    
  
 } // transact
