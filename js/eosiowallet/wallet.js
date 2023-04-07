@@ -95,18 +95,10 @@ if (1)
 var currentwallet                = "HARDWIRED";
 
 // --- ENTER HIER ---
-var hardwired_account            = "sovtrader111";
-var hardwired_account_permission = "active";
-var hardwired_key                = "5HxU8utQytLNsZHtmZPgDUxS4y63yDQU6xQMwPHZW3YXDMBWGZp";
-// --- --- ---
-
-/*
-// --- ENTER HIER ---
 var hardwired_account            = "[youraccountanme]";
 var hardwired_account_permission = "active";
 var hardwired_key                = "[yourprivatekey]";
 // --- --- ---
-*/
 alert("HARD-WIRED MODE");
 
 global_account            = hardwired_account;
