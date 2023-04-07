@@ -89,7 +89,7 @@ const network = ScatterJS.Network.fromJson({
 
 // --- HARDWIRED KEY (UNSECURE!!!) ONLY USE IF YOU EXACTLY KNOWING WHAT YOU DO!!!
 
-if (1)
+if (0)
 {
 
 var currentwallet                = "HARDWIRED";
