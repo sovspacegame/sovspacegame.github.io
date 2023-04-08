@@ -6822,7 +6822,15 @@ for (var i=0; i<size; i++)
 
             content += "<span >"+sov2+" SOV</span><br>";
 
+            if ( globallang == "en" )               
                  content += "<span class='mintbutton' onclick='"+thelink+"'>Sell NFT</span>";
+            if ( globallang == "cn" )               
+                 content += "<span class='mintbutton' onclick='"+thelink+"'>卖 NFT</span>";
+
+// alfalf
+
+
+                
                  }
            } else
               {
@@ -8401,7 +8409,17 @@ for (var i=0; i<size; i++)
        buffer_humans += "<div style='height:40px'>"+the_name + "</div>";
        buffer_humans += imgbuffer + "<br>";
        buffer_humans += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
-       buffer_humans += "<span class='mintbutton' onclick='"+mintlink+"'>Mint NFT</span>";
+       
+       // alfalf
+       buffer_humans += "<span class='mintbutton' onclick='"+mintlink+"'>";
+       if ( globallang == "en" )               
+                 buffer_humans += "Mint NFT";
+       if ( globallang == "cn" )               
+                 buffer_humans += "买 NFT";
+
+       buffer_humans += "</span>";
+       
+
 
        buffer_humans += "</div>";
 
@@ -8416,8 +8434,13 @@ for (var i=0; i<size; i++)
        buffer_greys += imgbuffer + "<br>";
        buffer_greys += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
 
-       buffer_greys += "<span class='mintbutton' onclick='"+mintlink+"'>Mint NFT</span>";
+      buffer_greys += "<span class='mintbutton' onclick='"+mintlink+"'>";
+       if ( globallang == "en" )               
+                 buffer_greys += "Mint NFT";
+       if ( globallang == "cn" )               
+                 buffer_greys += "买 NFT";
 
+       buffer_greys += "</span>";
        buffer_greys += "</div>";
        }
 
@@ -8430,7 +8453,13 @@ for (var i=0; i<size; i++)
        buffer_sirians += imgbuffer + "<br>";
        buffer_sirians += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
 
-       buffer_sirians += "<span class='mintbutton' onclick='"+mintlink+"'>Mint NFT</span>";
+      buffer_sirians += "<span class='mintbutton' onclick='"+mintlink+"'>";
+       if ( globallang == "en" )               
+                 buffer_sirians += "Mint NFT";
+       if ( globallang == "cn" )               
+                 buffer_sirians += "买 NFT";
+
+       buffer_sirians += "</span>";
 
        buffer_sirians += "</div>";
        }
@@ -8444,8 +8473,14 @@ for (var i=0; i<size; i++)
        buffer_reptos += imgbuffer + "<br>";
        buffer_reptos += "<span id='"+pricespan+"'>..." + "</span> SOV<br>";
 
-       buffer_reptos += "<span class='mintbutton' onclick='"+mintlink+"'>Mint NFT</span>";
+      buffer_reptos += "<span class='mintbutton' onclick='"+mintlink+"'>";
+       if ( globallang == "en" )               
+                 buffer_reptos += "Mint NFT";
+       if ( globallang == "cn" )               
+                 buffer_reptos += "买 NFT";
 
+       buffer_reptos += "</span>";
+       
        buffer_reptos += "</div>";
        }
 
@@ -8455,17 +8490,22 @@ for (var i=0; i<size; i++)
     } // for i...
 
 
+            
+   var buttontext = "Update Prices";
+   if ( globallang == "cn" )               
+                 buttontext = "更新价格";
+
 buffer_humans += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
-buffer_humans += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+buffer_humans += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 buffer_greys += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
-buffer_greys += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+buffer_greys += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 buffer_sirians += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
-buffer_sirians += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+buffer_sirians += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 buffer_reptos += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
-buffer_reptos += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>Update Prices &#8634;</div>";
+buffer_reptos += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  + "<div style='clear:both'></div><br><h2>Sirian-NFT's</h2>" + buffer_sirians + ""     + "<div style='clear:both'></div><br><h2>Repto-NFT's</h2>" + buffer_reptos + "";
 
@@ -9866,8 +9906,12 @@ chat_update_thread();
 
 
 <script>
+
+var globallang = "en";
+
 // Define a function to change the language of the page
 function changeLanguage(lang) {
+  globallang = lang;
   // Get all elements with a "data-lang" attribute
   var elements = document.querySelectorAll("[data-lang]");
   // Loop through each element and set its text to the corresponding language
