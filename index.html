@@ -107,11 +107,11 @@
 
 <div id='walletmenu_right' style='float:left;position:relative;width:49%;text-align:center;margin-top:20px;background:#5555ff;'>
   <div id='walletmenu_aa' style='position:absolute;width:100%;'>
-  <div id='logoutbutton' onclick="logout_all()"  class='defaultbutton noselect' style='visibility:hidden;margin-left:auto;margin-right:auto;' ><span data-lang="en">Logout</span><span data-lang="cn">登出</span></div>
+  <div id='logoutbutton' onclick="logout_all()"  class='defaultbutton noselect' style='visibility:hidden;margin-left:auto;margin-right:auto;'><span data-lang="en">Logout</span><span data-lang="cn">注销</span></div>
   </div>
 
-  <div id='walletmenu_scatter' style='position:absolute;width:100%;visibility:hiddenx;'>
-  <div onclick="login_scatter()" class='defaultbutton noselect' style='margin-left:auto;margin-right:auto;'  >SCATTER/TP/WOMBAT</div>
+  <div id='walletmenu_scatter' style='position:absolute;width:100%;'>
+  <div onclick="login_scatter()" class='defaultbutton noselect' style='margin-left:auto;margin-right:auto;'>SCATTER/TP/WOMBAT</div>
   </div>
 
 </div>
@@ -134,10 +134,10 @@
 <div class='menuarea'>
 
 <div style='float:left;'>
-<div id='menu1' class='menubutton_selected' onclick='setmenu(1)' style='margin-left:20px;'><span data-lang="en">Surface</span><span data-lang="cn">表面</span>  </div>
+<div id='menu1' class='menubutton_selected' onclick='setmenu(1)' style='margin-left:20px;'><span data-lang="en">Surface</span><span data-lang="cn">表面</span></div>
 <div id='menu2' class='menubutton' onclick='setmenu(2)'><span data-lang="en">Mint</span><span data-lang="cn">铸造</span></div>
-<div id='menu3' class='menubutton' onclick='setmenu(3)'><span data-lang="en">Rules</span><span data-lang="cn">规则</span></div> 
-<div id='menu4' class='menubutton' onclick='setmenu(4)'><span data-lang="en">Lore</span><span data-lang="cn">知识</span></div>
+<div id='menu3' class='menubutton' onclick='setmenu(3)'><span data-lang="en">Rules</span><span data-lang="cn">规则</span></div>
+<div id='menu4' class='menubutton' onclick='setmenu(4)'><span data-lang="en">Lore</span><span data-lang="cn">传说</span></div>
 <div id='menu5' class='menubutton' onclick='setmenu(5)' style='visibility:hidden'>Admin</div>
 </div>
 
@@ -147,7 +147,6 @@
   <option value="cn">中文</option>
 </select>
 </div>
-
 
 <div style='clear:both;'></div>
 
@@ -173,35 +172,35 @@
 <br>
 
 <strong>
-Please choose your species. Note: you cannot undo your decision!<br>Think carefully about which species suits you.<br>
+<span data-lang="en">Please choose your species. Note: you cannot undo your decision!<br>Think carefully about which species suits you.<br></span><span data-lang="cn">请选择您的物种。请注意：您不能撤消您的决定！<br>请仔细考虑哪种物种适合您。<br></span>
 </strong>
 <br>
 
 <div id='' class='choosebutton race_humans' onclick='inituser(1)' style='width:160px;height:130px;float:left;margin-left:20px;margin-right:20px;'>
-Play Humans
+<span data-lang="en">Play Humans</span><span data-lang="cn">选择人类</span>
 <br>
-<img src='img/logo_human.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+<img src='img/logo_human.png' style='width:70px;margin-left:auto;margin-right:auto;'>
 </div>
 
 
 <div id='' class='choosebutton race_greys' onclick='inituser(2)' style='width:160px;height:130px;float:left;margin-right:20px;'>
-Play Greys
+<span data-lang="en">Play Greys</span><span data-lang="cn">灰人</span>
 <br>
-<img src='img/logo_grey.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+<img src='img/logo_grey.png' style='width:70px;margin-left:auto;margin-right:auto;'>
 </div>
 
 
 <div id='' class='choosebutton race_greys' onclick='inituser(4)' style='width:160px;height:130px;float:left;margin-right:20px;'>
-Play Sirians
+<span data-lang="en">Play Sirians</span><span data-lang="cn">西里安人</span>
 <br>
-<img src='img/logo_sirian.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+<img src='img/logo_sirian.png' style='width:70px;margin-left:auto;margin-right:auto;'>
 </div>
 
 
 <div id='' class='choosebutton race_greys' onclick='inituser(5)' style='width:160px;height:130px;float:left;margin-right:20px;'>
-Play Reptos
+<span data-lang="en">Play Reptos</span><span data-lang="cn">爬行人</span>
 <br>
-<img src='img/logo_reptos.png' style='width:70px;margin-top:20px;margin-left:auto;margin-right:auto;'>
+<img src='img/logo_reptos.png' style='width:70px;margin-left:auto;margin-right:auto;'>
 </div>
 
 
@@ -573,8 +572,8 @@ Play Reptos
        y="6.8791642"
        ry="13.373751" />
 
-       <text id='navsvg_text' x="53" y="53" w="30" fill="#ffffff" style="" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">scroll</text>
-
+       <text data-lang="en" id='navsvg_text' x="53" y="53" w="30" fill="#ffffff" style="" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">scroll</text>
+       <text data-lang="cn" id='navsvg_text_cn' x="53" y="53" w="30" fill="#ffffff" style="" opacity="0.8" font-size="0.5em" text-anchor="middle" alignment-baseline="central">滚动</text>
 
     <circle
        style="fill:#ffffff;fill-opacity:0.26329789;stroke-width:15.1135;cursor:pointer;visibility:hidden;"
@@ -601,11 +600,11 @@ Play Reptos
 <div id='navbuttonarea' style='margin-left:10px;'>
 
 <div id='navbutton_scroll' onclick='nav_selection(1);' class='navbutton_on'>
-scroll
+   <span data-lang="en">scroll</span><span data-lang="cn">滚动</span>
 </div>
 
 <div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off_inactive'>
-move
+   <span data-lang="en">move</span><span data-lang="cn">移动</span>
 </div>
 <div style='clear:both;'></div>
 
@@ -617,39 +616,39 @@ move
 
 
 <div id='navbutton_attack' onclick='nav_selection(3);' class='navbutton_off_inactive'>
-attack
+   <span data-lang="en">attack</span><span data-lang="cn">攻击</span>
 </div>
 
 <div id='navbutton_demolish' onclick='nav_selection(4);' class='navbutton_off_inactive'>
-demolish
+   <span data-lang="en">demolish</span><span data-lang="cn">拆除</span>
 </div>
 <div style='clear:both;'></div>
 
 <div id='navbutton_repair' onclick='nav_selection(5);' class='navbutton_off_inactive'>
-repair
+   <span data-lang="en">repair</span><span data-lang="cn">修复</span>
 </div>
 
 <div id='navbutton_repeat' onclick='repeataction();' class='navbutton_off_inactive' style='background-color:#77cc77;color:ffffff;'>
-repeat &#8634;
+   <span data-lang="en">repeat &#8634;</span><span data-lang="cn">重复 &#8634;</span>
 </div>
 <div style='clear:both;'></div>
 
 <!-- former terraform -->
 <div id='navbutton_garden' onclick='plantgarden();' class='navbutton_off_inactive'>
-seed 
+   <span data-lang="en">seed</span><span data-lang="cn">种子</span>
 </div>
 
 <div id='navbutton_disable' onclick='toggletower();' class='navbutton_off_inactive'>
-deactivate
+   <span data-lang="en">deactivate</span><span data-lang="cn">停用</span>
 </div>
  
-<div id='navbutton_fire' onclick='firered();' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
-detonate
+<div id='navbutton_fire' onclick='firered();' class='navbutton_off_inactive' style='visibility:visible;float:left;'>
+   <span data-lang="en">detonate</span><span data-lang="cn">引爆</span>
 </div>
 
 <!-- former bulldoze -->
-<div id='navbutton_flatten' onclick='nav_selection(6);' class='navbutton_off_inactive' style='visibility:visible;loat:left;'>
-terraform
+<div id='navbutton_flatten' onclick='nav_selection(6);' class='navbutton_off_inactive' style='visibility:visible;float:left;'>
+   <span data-lang="en">terraform</span><span data-lang="cn">改造行星</span>
 </div>
 
 
@@ -672,7 +671,7 @@ infect
 
 
 <div id='coordiv' style='border:none;color:#eeeeee;position:relative;width:95%;margin-left:10px;margin-right:auto;'>
-<small>Center Coordinate</small><br>
+<div><small data-lang="en">Center Coordinate</small><small data-lang="cn">中心坐标</small></div><br>
 <div style='float:left;'>x:<input id='xcoor' type='text' value='500000' style='width:100px;'></div>
 <div style='float:left;'>&nbsp;y:<input id='ycoor' type='text' value='500000' style='width:100px;'></div>
 
@@ -680,7 +679,7 @@ infect
 
 
 
-<div id='' onclick='refreshboard()' class='refreshboard'><span data-lang="en">Refresh Board &#8634;</span><span data-lang="cn">刷新板 &#8634;</span></div>
+<div id='' onclick='refreshboard()' class='refreshboard'><span data-lang="en">Refresh Board &#8634;</span><span data-lang="cn">刷新面板 &#8634;</span></div>
 
 <div style='height:10px;'></div>
 
@@ -701,32 +700,32 @@ infect
 
 
  <!-- automap -->
-<div style=''> <span id='extramenu_openclose' class='canvasfolder_openclose' onclick='extramenufolder_toggle()'>Expand Menu &#9660;<span></div>
+<div id='extramenu_openclose' class='canvasfolder_openclose' onclick='extramenufolder_toggle()'><span data-lang="en">Expand Menu &#9660;</span><span data-lang="cn">展开菜单 &#9660;</span></div>
 
 
  <div id='extramenufolder' class='imground' style='overflow:hidden;padding:10px;height:2px;border:2px solid #666666;'>
 
- Set Nickname:<br>
+<span data-lang="en">Set Nickname:</span><span data-lang="cn">设置昵称:</span><br>
  <input type='text' id='newnickname' class='newnickname'></input>
- <div onclick="setnickname()"  class='refreshboard'  >Set Nickname</div>
+ <div onclick="setnickname()"  class='refreshboard'><span data-lang="en">Set Nickname:</span><span data-lang="cn">设置昵称:</span></div>
 
 <br>
 <!-- selfdestruction -->
-<div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'  >Selfdestruction</div>
+<div id='selfdestruction' onclick="selfdestruct()"  class='selfdestruction_off'><span data-lang="en">Selfdestruct</span><span data-lang="cn">自毁</span></div>
 
 <br>
 <!-- claim_svx -->
-<div id='claim_svx' onclick="claim_svx()"  class='claim_off' style='height:0px;visibility:hidden' >Claim</div>
+<div id='claim_svx' onclick="claim_svx()"  class='claim_off' style='height:0px;visibility:hidden'><span data-lang="en">Claim</span><span data-lang="cn">认领</span></div>
 
 <br>
 <!-- claim_svx -->
-<div id='claim_svx_all' onclick="claim_all_svx()"  class='claim' style='height:0px;visibility:hidden' >Claim all</div>
+<div id='claim_svx_all' onclick="claim_all_svx()"  class='claim' style='height:0px;visibility:hidden' ><span data-lang="en">Claim All</span><span data-lang="cn">全部认领</span></div>
 <br>
 
 <!-- authorize -->
-Authorize Player: (empty for revoke)<br>
+<span data-lang="en">Authorize Player: (empty for revoke)</span><span data-lang="cn">授权玩家：（留空为撤销）</span><br>
 <input type='text' id='authorizeaccount' class='newnickname'>
-<div id='authorize' onclick="authorize()"  class='authorize'  >authorize</div>
+<div id='authorize' onclick="authorize()"  class='authorize'><span data-lang="en">Authorize</span><span data-lang="cn">授权</span></div>
 
 
 
@@ -758,15 +757,15 @@ Authorize Player: (empty for revoke)<br>
 
 
 <div id='navbutton_repair' onclick='transporter_loadunloadobjects(1);' class='navbutton_off' style='color:#ffffff;width:20%;'>
-load
+   <span data-lang="en">load</span><span data-lang="cn">加载</span>
 </div>
 
 <div id='navbutton_unload' onclick='transporter_loadunloadobjects(2);' class='navbutton_off' style='color:#ffffff;width:20%;visibility:hidden;'>
-unload
+   <span data-lang="en">unload</span><span data-lang="cn">卸载</span>
 </div>
 
 <div id='navbutton_unloadloader' onclick='transporter_loadunloadobjects(3);' class='navbutton_off' style='color:#ffffff;width:20%;visibility:hidden;'>
-unload (lander)
+   <span data-lang="en">unload (lander)</span><span data-lang="cn">卸载（着陆舱）</span>
 </div>
 
 <div style='clear:both;'></div>
@@ -846,6 +845,7 @@ if (1)
 
 
 var frontendversion = "0.1";
+var frontendversion_cn = "0.1";
 
 document.getElementById("scroll_n").addEventListener('click', function(e)
 {
@@ -1372,9 +1372,14 @@ for(i = L; i >= 0; i--)
 select = document.getElementById('select_fav_objects');
 
 // Add option to selectlist
+
 var opt = document.createElement('option');
 opt.value = 500000500000;
+if (lang === "cn") {
+   opt.innerHTML = "跳到昵称";
+} else {
 opt.innerHTML = "Jump to Nickname";
+}
 select.appendChild(opt);
 
 
@@ -1432,8 +1437,6 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 } // load_my_assets()
-
-
 </script>
 
 
@@ -1443,27 +1446,17 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <div style='clear:both;'></div>
 
-
-
-
-<div class='noselect' style='width:70%;text-align:left;margin-left:20px;border:none'>
- <label style='cursor:pointer;'>Show Shield & SOV<input id='checkbox_shield' type='checkbox'   onchange='toggle_info()'> </label> &nbsp;&nbsp;&nbsp;
- <label style='cursor:pointer;'>Show Owner<input id='checkbox_owner' type='checkbox'   onchange='toggle_info()'></label> &nbsp;&nbsp;&nbsp;
-
-
- <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> </div>
-
+<div class='noselect' style='width:100%;text-align:left;margin-left:10px;border:none'>
+   <div style='display:inline-block;'>
+      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Shield &amp; SOV</span><span style='display:inline-block;' data-lang="cn">显示护盾和SOV</span></label>
+      <input id='checkbox_shield' type='checkbox' onchange='toggle_info()'>
+   </div>
+   <div style='display:inline-block; margin-left: 20px;'>
+      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Owner</span><span style='display:inline-block;' data-lang="cn">显示拥有者</span></label>
+      <input id='checkbox_owner' type='checkbox' onchange='toggle_info()'>
+   </div>
+   <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <div style='clear:both;'></div>
@@ -1472,7 +1465,10 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 <!-- automap -->
-<div style='margin-left:20px;'>  <span id='canvasfolder_openclose' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Expand Automap &#9660;<span></div>
+<div style='margin-left:20px;'>
+   <span data-lang="en" id='canvasfolder_openclose_en' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>Automap &#9660;</span>
+   <span data-lang="cn" id='canvasfolder_openclose_cn' class='canvasfolder_openclose' onclick='canvasfolder_toggle()'>自动地图 &#9660;</span>
+ </div>
 
 <div id='canvasfolder' style='height:50px;border:none'>
  <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:80%;overflow:hidden;'>
@@ -1480,7 +1476,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  </div>
 </div>
 
-<canvas id='navmaphidden' width='400' height='400' style='visibility:hidden;overflow;hidden;position:absolute;' ></canvas>
+<canvas id='navmaphidden' width='400' height='400' style='visibility:hidden;overflow:hidden;position:absolute;' ></canvas>
 
 
 
@@ -1501,13 +1497,16 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <br>
 
-<div style='margin-left:20px;'>  <span id='chatfolder_openclose' class='canvasfolder_openclose' onclick='chatfolder_toggle()'>Expand Chat &#9660;<span></div>
+<div style='margin-left:20px;'>  
+   <span data-lang="en" id='chatfolder_openclose_en' class='canvasfolder_openclose' onclick='chatfolder_toggle()'>Chat &#9660;</span>
+   <span data-lang="cn" id='chatfolder_openclose_cn' class='canvasfolder_openclose' onclick='chatfolder_toggle()'>聊天 &#9660;</span>
+</div>
 
 <div id='chatfolder' class='imground'  style='height:50px;border:none;overflow:hidden;border:2px solid #666666;margin-left:20px;width:95%;'>
  <div id='chatbox'   style='overflow:hidden;' >
   <div id='chatbox_all' class='chatbox_left'  style='float:left;padding:10px;'>
 
-  <div id='chatbox_all_title' class='chatbox_title' ><strong>Public Chat</strong></div>
+  <div id='chatbox_all_title' class='chatbox_title'><strong data-lang="en">Public Chat</strong><strong data-lang="cn">公共聊天</strong></div>
   <div id='chatbox_all_content_outer' class='chatbox_content_outer' >
    <div id='chatbox_all_content' class='chatbox_content'  style=''>
    ...
@@ -1515,7 +1514,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
   </div>
 
   <br>
-  <input type='text' id='chatinput_all' class='chatinput'> <span onclick='chatsend(1);' class='chatinputsend'> send &#10148; </span>
+  <input type='text' id='chatinput_all' class='chatinput'> <button onclick='chatsend(1);' class='chatinputsend'><span data-lang="en">send &#10148;</span><span data-lang="cn">发送 &#10148;</span></button>
   </div>
 
   <div id='chatbox_myrace' class='chatbox_right' style='float:left;padding:10px;'>
@@ -1528,7 +1527,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
   </div>
 
   <br>
-  <input type='text' id='chatinput_myrace' class='chatinput'> <span onclick='chatsend(2);' class='chatinputsend'> send &#10148; </span>
+  <input type='text' id='chatinput_myrace' class='chatinput'> <button onclick='chatsend(2);' class='chatinputsend'><span data-lang="en">send &#10148;</span><span data-lang="cn">发送 &#10148;</span></button>
   </div>
 
  </div>
@@ -1547,7 +1546,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 <div style='float:left;width:150px;margin-left:20px;margin-top:20px;border:none;'>
- <div onclick='load_my_assets()' class='refreshboard' style='width:100%;' >Update list </div>
+ <div onclick='load_my_assets()' class='refreshboard' style='width:100%;'><span data-lang="en">Update list</span><span data-lang="cn">更新列表</span></div>
 </div>
 
 <div style='clear:both;'></div>
@@ -1561,9 +1560,9 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
-<span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'>Your NFT's (wallet):</span>
+<span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'><p data-lang="en">Your NFT Wallet:</p><p data-lang="cn">您的NFT钱包:</p></span>
 
-<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update NFT Inventory &#8634;</span>
+<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
 <div style='clear:both;'></div>
 
 
@@ -1595,7 +1594,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 <div style='100%'>
- <div id='checkbox_owner' class='refreshboard'  onclick='history_info(1)' style='float:left;margin-left:20px;margin-right:20px;'>Destruction History (24h) &#8634;</div><div onclick='history_info(0)' class='refreshboard' style='float:left;'>Clear</div>
+ <div id='checkbox_owner' class='refreshboard'  onclick='history_info(1)' style='float:left;margin-left:20px;margin-right:20px;'><span data-lang="en">Destruction History (24h) &#8634;</span><span data-lang="cn">销毁历史记录(24小时) &#8634;</span></div><div onclick='history_info(0)' class='refreshboard' style='float:left;'><span data-lang="en">Clear</span><span data-lang="cn">清除</span></div>
  <div style='clear:both;'></div>
  <div id='historyinfo' class='imground'  style='margin-left:20px;height:20px;overflow:hidden;border:2px solid #666666;width:96.5%;padding:10px;  -ms-user-select: text;    -webkit-user-select:text ;    -moz-user-select: text;    user-select: text; '>...</div>
 </div>  
@@ -1615,20 +1614,21 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 <div style='width:50%;float:left;'>
- <strong>Buy quick SOV from a Dex</strong><br>
+ <strong data-lang="en">Quick Buy SOV from a Dex</strong><strong data-lang="cn">从Dex快速购买SOV</strong><br>
  <input id='eos_for_sov' type='text' value='0.01' style='margin-bottom:5px;width:100px;'> EOS<br>
- <div onclick='buysov_sovdex()' class='buybutton'>buy SOV from sovdex</div>
- <div onclick='buysov_newdex()' class='buybutton' style='margin-left:10px;'>buy SOV from newdex</div><br>
+ <div onclick='buysov_sovdex()' class='buybutton'><span data-lang="en">buy SOV from sovdex</span><span data-lang="cn">从sovdex购买SOV</span></div>
+ <div onclick='buysov_newdex()' class='buybutton' style='margin-left:10px;'><span data-lang="en">buy SOV from newdex</span><span data-lang="cn">从newdex购买SOV</span></div><br>
 </div>
 
 <div style='width:50%;float:left;'>
-<strong>Links to exchanges</strong><br>
-<a href='https://sovtools.github.io/sovdex/' target='_blank' style='color:#5555ff;'>SOV-Dex</a><br> 
-(Anchor-support, high liquidity, probably the cheapest way to buy SOV)<br>
+<strong data-lang="en">Links to exchanges</strong><strong data-lang="cn">交易所链接</strong><br>
+<a href='https://sovtools.github.io/sovdex/' target='_blank' style='color:#5555ff;'>SOVDEX</a><br> 
+<span data-lang="en">(Anchor-support, high liquidity, probably the cheapest way to buy SOV)</span><span data-lang="cn">(Anchor-support, 高流动性, 可能是购买SOV最便宜的方式)</span><br>
 <br>
 <a href='https://newdex.io/trade/sovmintofeos-sov-eos' target='_blank' style='color:#5555ff'>newdex.io</a><br>
 <br>
-You may also buy <em>XSOV</em> on <a href='https://defibox.io/pool-market-details/1720' style='color:#5555ff'>defibox.io</a> and swap for SOV on <a href='https://soveos.github.io/xsov.app/' style='color:#5555ff'>soveos.github.io/xsov.app</a>
+<span data-lang="en">You may also buy <em>XSOV</em> at <a href='https://defibox.io/pool-market-details/1720' style='color:#5555ff'>defibox.io</a> and swap for SOV on <a href='https://soveos.github.io/xsov.app/' style='color:#5555ff'>soveos.github.io/xsov.app</a></span>
+<span data-lang="cn">您也可以购买 <em>XSOV</em> 在 <a href='https://defibox.io/pool-market-details/1720' style='color:#5555ff'>defibox.io</a> 并在上交换为SOV <a href='https://soveos.github.io/xsov.app/' style='color:#5555ff'>soveos.github.io/xsov.app</a></span>
 </div>
 <div style='clear:both;'></div>
 
@@ -1641,9 +1641,8 @@ You may also buy <em>XSOV</em> on <a href='https://defibox.io/pool-market-detail
 
 
 <div>
- <!-- mint page -->
- <span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'>Your NFT's (wallet):</span>
- <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'>Update NFT Inventory &#8634;</span>
+ <span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'><p data-lang="en">Your NFT Wallet:</p><p data-lang="cn">您的NFT钱包:</p></span>
+ <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
  <div style='clear:both;'></div>
 </div>
 
@@ -1662,7 +1661,8 @@ You may also buy <em>XSOV</em> on <a href='https://defibox.io/pool-market-detail
 </div> <!-- page2content -->
 
 <div class='hintbox'>
-<small>* Sell to the ingame-marketplace. Prices are depending from circulating supply and always similar to the mint costs (see prices below)</small>
+<small data-lang="en">* Sell to the in-game marketplace. Prices are algorithmically determined by each NFT's circulating supply (see prices below)</small>
+<small data-lang="cn">* 在游戏内市场上出售。每个NFT的流通供应量决定价格 (请参见下面的价格)</small>
 </div>
 
 <br>
@@ -1693,23 +1693,31 @@ You may also buy <em>XSOV</em> on <a href='https://defibox.io/pool-market-detail
 <div id='page3' style='height:0px;overflow:hidden;'>
 
 <div style='margin:20px'>
-<h1>Game Overview and Rules</h1>
+<h1 data-lang="en">Game Overview and Rules</h1><h1 data-lang="cn">游戏概述和规则</h1>
 <br>
-<strong>Disclaimer: Play at your own risk! Smartcontracts can be complex systems and potentially vulnerable to exploits and bugs.
+<strong data-lang="en">Disclaimer: Play at your own risk! Smartcontracts can be complex systems and potentially vulnerable to exploits and bugs.
 <br>
 <br>
 
 Please play responsibly and don't risk tokens you can't afford to lose.</strong>
+<strong data-lang="cn">免责声明：自担风险！智能合约是复杂的系统，可能容易受到漏洞和错误的影响。
+   <br>
+   <br>
+   
+   请负责任地参与，不要冒险使用您不能承受损失的代币。</strong>
 <br>
 
 <br>
 
-<div style='text-align:center'>
+<div data-lang="en" style='text-align:center'>
 <a href='https://www.youtube.com/watch?v=55bDEKNanE0' target='_blank'>Tutorial Video Getting-Started</a>
 </div>
+<div data-lang="cn" style='text-align:center'>
+   <a href='https://www.youtube.com/watch?v=55bDEKNanE0' target='_blank'>教程视频 - 入门指南</a>
+   </div>
 
 <br>
-SOV INVADERS is a persistent open-world RTS game that uses NFTs and AMMs (automated market makers) for a dynamic and liquid economy.
+<span data-lang="en">SOV INVADERS is a persistent open-world RTS game that uses NFTs and AMMs (automated market makers) for a dynamic and liquid economy.
 Players can use teamwork, advanced battle tactics, pure mindless destruction and anything in between to achieve their goals!
 <br>
 <br>
@@ -1743,100 +1751,184 @@ The Basic Rules (please read carefully):
 <strong>Individual Unit Abilities and Functions</strong>
 <br>
 <br>
+</span>
+<span data-lang="cn">SOV INVADERS是一个持续的开放世界RTS游戏，使用NFTs和AMMs（自动市场做市商）来实现一个动态且流动的经济体。
+   玩家可以使用团队合作、先进的战斗策略、纯粹的无脑破坏以及介于两者之间的任何方式来实现他们的目标！
+   <br>
+   <br>
+   SOV INVADERS使用SOV作为其游戏内货币 - 没有土地出售，没有新代币，没有NFT募资。
+   <br>
+   用于铸造SOV INVADERS NFT的所有SOV都将留在合约中，直到NFT在战斗中被摧毁或被卖回给它们的AMM。
+   <br>
+   <br>
+   <br>
+   基本规则（请仔细阅读）：
+   
+   <ul>
+   <li><strong>游戏的目标是赚取SOV和SVX。</strong> 建造收集器以赚取SVX，摧毁对立种族的建筑和单位以赚取SOV。</li>
+   <li>帐户第一次玩游戏时，必须选择一个物种。请仔细选择，因为这个决定将永久绑定到帐户上，无法撤销。</li>
+   <li>通过游戏的AMMs将结构和单位铸造为NFT。然后，这些NFT可以放置在地图上或卖回给AMM。
+     每次铸造NFT时，其价值将增加。每次NFT被摧毁或出售时，其价值将减少。</li>
+   <li>如果NFT被对立物种摧毁，NFT将被卖给AMM，SOV将被发送给摧毁它的玩家。
+     被摧毁的NFT（以及卖给AMM的NFT）将被销毁并从供应中移除。</li>
+   <li>每种NFT类型（例如灰色推土机）都有自己的AMM和价格。结果是一个完全动态的经济体，玩家可以与AMMs进行交易，摧毁所有NFT类型的奖励将波动。这意味着有时攻击人类坦克或爬虫族采集器等最有利可图，从而使游戏玩法和策略产生有趣的动态。</li>
+   <li>登陆器是唯一可以放置在地图上未开发区域的NFT。</li>
+   <li>除了登陆器之外，所有建筑物都必须建在你自己物种的现有建筑物或街道旁边。</li>
+   <li>如果你想建造一个与你所属种族的其他建筑物相邻的建筑物，最好先征得该建筑物所有者的同意。他们有权<strong>拆除</strong>较新的相邻建筑物。</li>
 
+   <li>一个<strong>拆除</strong>操作将导致100%的SOV被燃烧用于SVX挖矿。地图上每个收集器的SVX挖矿将平分给收集器所有者。</li>
+   <li>推土机、坦克、服务单位和运输机可以在地图上自由移动。坦克和推土机还可以攻击其他物种的NFT。</li>
+   <li>移动、攻击和治疗动作需要用SOV支付燃料费用。其中100%将返还给玩家。所有费用都用于自动挖矿SVX，然后平分给所有收集器建筑。</li>
+   <li>一旦玩家将NFT放置在地图上，他们可以设置一个<strong>个人昵称</strong>，存储在可变的NFT属性中。</li>
+   </ul>
+   <br>
+   <br>
+   <strong>单个单位能力和功能</strong>
+   <br>
+   <br>
+   </span>
 
-<h2>Lander
+<h2 data-lang="en">Lander
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
   </span>
+</h2>
+<h2 data-lang="cn">登陆舰
+<span class="fa-stack fa-1x">
+   <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+   <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+</span>
 </h2>
 <img src='img/nft_1_1.png' style='width:100px; padding-right:5px'><img src='img/nft_2_1.png' style='width:100px; padding-right:5px'><img src='img/nft_4_1.png' style='width:100px; padding-right:5px'><img src='img/nft_5_1.png' style='width:100px; padding-right:5px'>
 <br>
-This is the only structure you can be placed on any free area of the surface. All other structures must be build next to
-an existing structure from your species. A lander cannot be placed on an existing street, only on natural surfaces.
+<span data-lang="en">This is the only structure you can be placed on any free area of the surface. All other structures must be build next to
+an existing structure from your species. A lander cannot be placed on an existing street, only on natural surfaces.</span>
+<span data-lang="cn">这是唯一可以放置在任何自由区域表面的建筑。所有其他建筑必须建在您物种现有建筑物的旁边。登陆舰不能放置在现有的道路上，只能放置在自然表面上。</span>
 <br>
 <br>
 
-<h2>Residence
+<h2 data-lang="en">Residence
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
   </span>
 </h2>
+<h2 data-lang="cn">住所
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+   </span>
+ </h2>
 <img src='img/nft_1_2.png' style='width:100px; padding-right:5px'><img src='img/nft_2_2.png' style='width:100px; padding-right:5px'><img src='img/nft_4_2.png' style='width:100px; padding-right:5px'><img src='img/nft_5_2.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to an existing building or street. Your people need somewhere to live.
+<span data-lang="en">Must be built adjacent to an existing building or street. Your people need somewhere to live.</span>
+<span data-lang="cn">必须建在已有建筑物或街道旁边。您的人民需要有地方居住。</span>
 <br>
 <br>
 
-<h2>Agriculture
+<h2 data-lang="en">Agriculture
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
   </span>
 </h2>
+<h2 data-lang="cn">农业
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+   </span>
+ </h2> 
 <img src='img/nft_1_3.png' style='width:100px; padding-right:5px'><img src='img/nft_2_3.png' style='width:100px; padding-right:5px'><img src='img/nft_4_3.png' style='width:100px; padding-right:5px'><img src='img/nft_5_3.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Residence. Your people need to eat.
+<span data-lang="en">Must be built adjacent to a Residence. Your people need to eat.</span>
+<span data-lang="cn">必须建在住宅旁边。您的人民需要食物。</span>
 <br>
 <br>
 
-<h2>Factory
+<h2 data-lang="en">Factory
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
   </span>
 </h2>
+<h2 data-lang="cn">工厂
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+   </span>
+ </h2> 
 <img src='img/nft_1_4.png' style='width:100px; padding-right:5px'><img src='img/nft_2_4.png' style='width:100px; padding-right:5px'><img src='img/nft_4_4.png' style='width:100px; padding-right:5px'><img src='img/nft_5_4.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to an Agriculture. If you would like to produce and heal mobile units, you will need a Factory.
-Can repair mobile units for 50% of their current market price.
+<span data-lang="en">Must be built adjacent to an Agriculture. If you would like to produce and heal mobile units, you will need a Factory.
+Can repair 1 mobile units for free every 24 hours, otherwise repairs cost 50% of the NFT's current market price.</span>
+<span data-lang="cn">必须建在作物附近。如果你想要生产和修复移动单位，你就需要一个工厂。每24小时可以免费修复一个移动单位，否则修复费用为当前市场价格的50%。</span>
 
 <br>
 <br>
 
-<h2>Collector
+<h2 data-lang="en">Collector
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
   </span>
 </h2>
+<h2 data-lang="cn">收集器
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
+   </span>
+ </h2>
 <img src='img/nft_1_8.png' style='width:100px; padding-right:5px'><img src='img/nft_2_8.png' style='width:100px; padding-right:5px'><img src='img/nft_4_8.png' style='width:100px; padding-right:5px'><img src='img/nft_5_8.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory or another Collector. With a Collector facility you can earn SVX-token. On every mobile unit move, attack and repair, the SOV will be used for SVX-mining. Every 24 hours
-a collector will be able to claim its share from the pool. The more active the players are, the more SVX tokens are mined.
+<span data-lang="en">Must be built adjacent to a Factory or another Collector. With a Collector facility you can earn SVX-token. On every mobile unit move, attack and repair, the SOV will be used for SVX-mining. Every 24 hours
+a collector will be able to claim its share from the pool. The more active the players are, the more SVX tokens are mined.</span>
+<span data-lang="cn">必须建在工厂或收集器旁边。通过收集器设施，您可以赚取SVX代币。在每次移动、攻击和修复移动单位时，都将使用SOV进行SVX挖掘。每隔24小时，收集器都可以从奖池中获取其份额。玩家越活跃，挖掘的SVX代币就越多。</span>
 <br>
 <br>
 
-<h2>Wall
+<h2 data-lang="en">Wall
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">300</small>
   </span>
 </h2>
+<h2 data-lang="cn">城墙
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">300</small>
+   </span>
+ </h2>
 <img src='img/nft_1_7.png' style='width:100px; padding-right:5px'><img src='img/nft_2_7.png' style='width:100px; padding-right:5px'><img src='img/nft_4_7.png' style='width:100px; padding-right:5px'><img src='img/nft_5_7.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a building or street. A wall is a strong element with heavy shields. Please use walls in order to protect
-your important buildings.
+<span data-lang="en">Must be built adjacent to a building or street. A wall is a strong element with heavy shields. Please use walls in order to protect
+your important buildings.</span>
+<span data-lang="cn">必须建在现有建筑或街道的旁边。墙是一个拥有强大护盾的重要防御设施。请使用墙来保护您的重要建筑。</span>
 <br>
 <br>
 
 
-<h2>Wall II
+<h2 data-lang="en">Wall II
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">600</small>
   </span>
 </h2>
+<h2 data-lang="cn">城墙 II
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">600</small>
+   </span>
+ </h2>
 <img src='img/nft_1_13.png' style='width:100px; padding-right:5px'><img src='img/nft_2_13.png' style='width:100px; padding-right:5px'><img src='img/nft_4_13.png' style='width:100px; padding-right:5px'><img src='img/nft_5_13.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a building or street. Wall II is stronger version of the Wall.
+<span data-lang="en">Must be built adjacent to a building or street. Wall II is stronger version of the Wall.</span>
+<span data-lang="cn">必须建在现有建筑或街道的旁边。墙壁II是墙壁的加强版。</span>
 <br>
 <br>
 
 
-<h2>Tower
+<h2 data-lang="en">Tower
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
@@ -1850,15 +1942,32 @@ Must be built adjacent to a building or street. Wall II is stronger version of t
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
   </span>
 </h2>
+<h2 data-lang="cn">塔楼
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">200</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">4</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
+   </span>
+ </h2>
 <img src='img/nft_1_9.png' style='width:100px; padding-right:5px'><img src='img/nft_2_9.png' style='width:100px; padding-right:5px'><img src='img/nft_4_9.png' style='width:100px; padding-right:5px'><img src='img/nft_5_9.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a building or street. A tower is a building for defense. If an enemy vehicle moves or attacks through the view of a tower (red area on click), it suffers damage.
-As a ranged weapon, if a vehicle is destroyed, the SOV for SVX mining is burned and will not be credited to the owner of the defence-tower.
-This building can be turned on and off by its owner.  This can be useful if an inter-species alliance is formed.
+<span data-lang="en">Must be built adjacent to a building or street. A tower is a building for defense. If an enemy vehicle moves or attacks through the view of a tower (red area on click), it suffers damage.
+If an enemy NFT is destroyed by a more than one Tower, the SOV will go to the oldest Tower.
+This building can be turned on and off by its owner.  This can be useful if an inter-species alliance is formed.</span>
+<span data-lang="cn">必须建在现有建筑或街道的旁边。塔是一座用于防御的建筑。如果敌方车辆在塔的视野范围内移动或攻击（点击后显示为红色区域），则会受到伤害。
+   如果一架敌方 NFT 被多个塔摧毁，SOV 将归属最早建造的那座塔。
+   该建筑可以由所有者打开或关闭。如果与其他物种达成联盟，这将非常有用。</span>
 <br>
 <br>
 
-<h2>Service Unit
+<h2 data-lang="en">Service Unit
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">30</small>
@@ -1872,17 +1981,36 @@ This building can be turned on and off by its owner.  This can be useful if an i
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
   </span>
 </h2>
+<h2 data-lang="cn">服务单位
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">30</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-burst fa-stack-2x" style="color:#B9D0D5"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#e53d00">60</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
+   </span>
+ </h2>
 <img src='img/nft_1_10.png' style='width:100px; padding-right:5px'><img src='img/nft_2_10.png' style='width:100px; padding-right:5px'><img src='img/nft_4_10.png' style='width:100px; padding-right:5px'><img src='img/nft_5_10.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory.  Can be repaired adjacent to a Factory. A service unit allows you to repair damaged buildings. The cost of a repair is about 50% of the current market price.
+<span data-lang="en">Must be built adjacent to a Factory.  Can be repaired adjacent to a Factory. A service unit allows you to repair damaged buildings. The cost of a repair is about 50% of the current market price.
 Service Units also have a Kamikaze attack in which they are sacrificed for an explosion that does 60 damage to all (4) directly adjacent tiles.  A Kamikaze attack can only be triggered when no same species units and buildings are in range.
 In the event of a Kamikaze attack, the SOV value of the Service Unit will go towards SVX mining for SVX collectors.  SOV from enemy Units destroyed by a Kamikaze attack will go to the owner of the Service Unit.
 To initiate Kamikaze attack, first click on your Service Unit, after that you will see the explosion radius and you only need to click detonate.
-Please note, this unit is not able to repair mobile units like tanks or transporters. Mobile units needs to park adjacent to a Factory to be repaired.
+Please note, this unit is not able to repair mobile units like tanks or transporters. Mobile units needs to park adjacent to a Factory to be repaired.</span>
+<span data-lang="cn">必须建在工厂的旁边。可以在工厂的旁边修复。服务单元使您能够修复受损建筑物。修复的费用约为当前市场价格的50％。
+   服务单元还具有神风攻击功能，可以牺牲该单元，对所有（4）直接相邻的方格造成60点伤害。只有在范围内没有同一物种的单位和建筑物时，才能触发神风攻击。
+   如果进行神风攻击，服务单元的 SOV 价值将用于 SVX 采矿。被神风攻击摧毁的敌方单位的 SOV 将归服务单元所有者所有。
+   要发动神风攻击，请先单击您的服务单元，然后您将看到爆炸半径，您只需要单击引爆即可。
+   请注意，此单元无法修复坦克或运输车等移动单位。移动单位需要停放在工厂旁边才能进行修复。</span>
 <br>
 <br>
 
-<h2>Transporter
+<h2 data-lang="en">Transporter
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
@@ -1892,16 +2020,29 @@ Please note, this unit is not able to repair mobile units like tanks or transpor
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">4</small>
   </span>
 </h2>
+<h2 data-lang="cn">运输车
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-truck-moving fa-stack-2x" style="color:#8a8794"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">4</small>
+   </span>
+ </h2>
 <img src='img/nft_1_12.png' style='width:100px; padding-right:5px'><img src='img/nft_2_12.png' style='width:100px; padding-right:5px'><img src='img/nft_4_12.png' style='width:100px; padding-right:5px'><img src='img/nft_5_12.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. With a transporter you can move up to 4 of your own units together as one, or a single R.E.D..
+<span data-lang="en">Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. With a transporter you can move up to 4 of your own units together as one, or a single R.E.D..
 Place the units to be transported on the 4 sides of the transporter and click "load".
 To unload click on "unload". Even if you are only transporting a single unit, all four
-tiles next to the transporter must be free, for both loading and unloading. R.E.D.s are always unloaded on the tile directly in front of the Transporter.
+tiles next to the transporter must be free, for both loading and unloading. R.E.D.s are always unloaded on the tile directly in front of the Transporter.</span>
+<span data-lang="cn">必须建在一个工厂旁边。可以在工厂旁边进行修复。使用运输车，你可以将4个你自己的单位组合成一个，或者将一个RED单位运输。
+   将要运输的单位放在运输车的4个侧面上，然后点击“装载”。
+   要卸载，请点击“卸载”。即使你只运输单个单位，装载和卸载时也必须保证运输车周围的4个方块都是空的。RED单位总是在运输车前方的方格上卸载。</span>
 <br>
 <br>
 
-<h2>Bulldozer
+<h2 data-lang="en">Bulldozer
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
@@ -1915,15 +2056,31 @@ tiles next to the transporter must be free, for both loading and unloading. R.E.
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1</small>
   </span>
 </h2>
+<h2 data-lang="cn">推土机
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">100</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">15</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1</small>
+   </span>
+ </h2>
 <img src='img/nft_1_5.png' style='width:100px; padding-right:5px'><img src='img/nft_2_5.png' style='width:100px; padding-right:5px'><img src='img/nft_4_5.png' style='width:100px; padding-right:5px'><img src='img/nft_5_5.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A bulldozer can move and attack opponent species NFTs.
-If a bulldozer is attacked by another bulldozer, it will attack back as long as it is still alive. So keep in mind, if you attack with another bulldozer, it will likely result in mutual destruction.
+<span data-lang="en">Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A bulldozer can move and attack opponent species NFTs.
+If a bulldozer is attacked by another bulldozer, it will attack back as long as it is still alive. So keep in mind, if you attack with another bulldozer, it will likely result in mutual destruction.</span>
+<span data-lang="cn">必须建在工厂旁边。可在工厂旁边进行维修。推土机可以移动和攻击敌对物种的NFT。
+   如果推土机受到另一个推土机的攻击，只要它还活着，就会反击。所以请记住，如果你用另一个推土机攻击，很可能会导致互相毁灭。</span>
 <br>
 <br>
 
 
-<h2>Tank
+<h2 data-lang="en">Tank
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">120</small>
@@ -1937,15 +2094,30 @@ If a bulldozer is attacked by another bulldozer, it will attack back as long as 
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
   </span>
 </h2>
+<h2 data-lang="cn">坦克
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">120</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-gun fa-stack-2x" style="color:#2a4d33"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">10</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">3</small>
+   </span>
+ </h2>
 <img src='img/nft_1_11.png' style='width:100px; padding-right:5px'><img src='img/nft_2_11.png' style='width:100px; padding-right:5px'><img src='img/nft_4_11.png' style='width:100px; padding-right:5px'><img src='img/nft_5_11.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A tank is a mobile attack unit with an extended range.
+<span data-lang="en">Must be built adjacent to a Factory. Can be repaired adjacent to a Factory. A tank is a mobile attack unit with an extended range.
 First click on your tank and then on "attack". After that you will
-see the shooting radius and you only need to click on an enemy target.
+see the shooting radius and you only need to click on an enemy target.</span>
+<span data-lang="cn">必须建在工厂旁边。可以在工厂旁边修复。坦克是一种带有延长射程的移动攻击单位。先点击您的坦克，然后点击“攻击”。之后，您将看到射击半径，您只需要点击敌人目标即可。</span>
 <br>
 <br>
 
-<h2>Remote Explosive Device (R.E.D.)
+<h2 data-lang="en">Remote Explosive Device (R.E.D.)
   <span class="fa-stack fa-1x">
     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">50</small>
@@ -1959,63 +2131,108 @@ see the shooting radius and you only need to click on an enemy target.
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
   </span>
 </h2>
+<h2 data-lang="cn">遥控爆炸装置（缩写为 R.E.D.）
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-shield fa-stack-2x" style="color:#3175bd"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">50</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-burst fa-stack-2x" style="color:#B9D0D5"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#e53d00">9999</small>
+   </span>
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-bullseye fa-stack-2x" style="color:#e53d00"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">1X4</small>
+   </span>
+ </h2>
 <img src='img/nft_1_14.png' style='width:100px; padding-right:5px'><img src='img/nft_2_14.png' style='width:100px; padding-right:5px'><img src='img/nft_4_14.png' style='width:100px; padding-right:5px'><img src='img/nft_5_14.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a Factory. Can only be moved by a Transporter. Will take up all 4 spaces in Transporter. Will always be unloaded on tile directly in front of Transporter.
+<span data-lang="en">Must be built adjacent to a Factory. Can only be moved by a Transporter. Will take up all 4 spaces in Transporter. Will always be unloaded on tile directly in front of Transporter.
 Can only be exploded by remote detonation when none of your own species buildings or units are in range.  Does 9999 damage to each (4) directly adjacent tiles.
-To use, first click on your R.E.D., after that you will see the explosion radius and you only need to click detonate.
+To use, first click on your R.E.D., after that you will see the explosion radius and you only need to click detonate.</span>
+<span data-lang="cn">必须建在工厂旁边。只能由运输车移动。在运输车中将占用所有4个空间。将始终在运输车的正前方卸载。
+   只有在您自己的物种建筑或单位不在范围内时，才能通过远程引爆引爆。对每个（4）个直接相邻的瓷砖造成9999点伤害。
+   要使用，首先单击您的R.E.D.，然后您将看到爆炸半径，您只需要单击引爆即可。</span>
 <br>
 <br>
 
-<h2>Street
+<h2 data-lang="en">Street
   <span class="fa-stack fa-1x">
     <i class="fa fa-solid fa-gas-pump fa-stack-2x" style="color:#E82926"></i>
     <i class="fa fa-stack-1x fa-inverse fa-ban" style="text-align: left; padding-left: 13px; color:#ffff99"></i>
   </span>
 </h2>
+<h2 data-lang="cn">街道
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-solid fa-gas-pump fa-stack-2x" style="color:#E82926"></i>
+     <i class="fa fa-stack-1x fa-inverse fa-ban" style="text-align: left; padding-left: 13px; color:#ffff99"></i>
+   </span>
+ </h2>
 <img src='img/nft_1_6.png' style='width:100px; padding-right:5px'><img src='img/nft_2_6.png' style='width:100px; padding-right:5px'><img src='img/nft_4_6.png' style='width:100px; padding-right:5px'><img src='img/nft_5_6.png' style='width:100px; padding-right:5px'>
 <br>
-Must be built adjacent to a building or another street. A street is an inexpensive structure that you can build other structures next to. You cannot destroy a street by attacking it, but you can build a street from your own species over it. The SOV costs will become burned during the minting process
+<span data-lang="en">Must be built adjacent to a building or another street. A street is an inexpensive structure that you can build other structures next to. You cannot destroy a street by attacking it, but you can build a street from your own species over it. Streets have fixed cost. SOV paid to mint Streets will be burned 
 to mine SVX for collectors and cannot be refunded. If you drive with a mobile unit (like a bulldozer) on a street, the costs will be refunded. So driving
-on a street will save fuel (SOV).
+on a street will save fuel (SOV).</span>
+<span data-lang="cn">必须建造在建筑或另一条街旁。街道是一种廉价的结构，您可以在其旁建造其他结构。您不能通过攻击来摧毁街道，但可以通过在街道上建造您自己物种的街道来替换它。街道有固定的成本，不能出售给自动市场制造者。用于铸造街道的 SOV 将被燃烧，用于挖掘 SVX 并且不能退还。如果您在街道上行驶移动单位（例如推土机），成本将会退还。因此，行驶在街道上将节省燃料（SOV）。</span>
 <br>
 <br>
-<strong>Streets cannot be destroyed or traded, only built over with an opposing species street.</strong>
+<strong data-lang="en">Streets cannot be destroyed or traded, only built over with an opposing species street.</strong>
+<strong data-lang="cn">街道不能被摧毁或交易，只能用对方物种的街道建造覆盖。</strong>
 <br>
 <br>
 
-<h2>Terrain
+<h2 data-lang="en">Terrain
   <span class="fa-stack fa-1x">
     <i class="fa fa-solid fa-globe fa-stack-2x" style="color:#557198"></i>
     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">+1</small>
   </span>
 </h2>
+<h2 data-lang="cn">地形
+   <span class="fa-stack fa-1x">
+     <i class="fa fa-solid fa-globe fa-stack-2x" style="color:#557198"></i>
+     <small class="fa fa-stack-1x fa-inverse" style="text-align: center; color:#ffff99">+1</small>
+   </span>
+ </h2>
 <img src='img/homeworld1.png' style='width:100px; padding-right:5px'><img src='img/homeworld2.png' style='width:100px; padding-right:5px'><img src='img/homeworld4.png' style='width:100px; padding-right:5px'><img src='img/homeworld5.png' style='width:100px; padding-right:5px'>
 <br>
 <br>
-Must be built adjacent to a building, street or another garden. Terrain is an inexpensive terraformed tile.
-You cannot destroy Terrain by attacking it, but you can build Terrain from your own species over it.
-Terrain is purchased with SVX and the SVX used to purchase Terrain goes to the Collector pool.
-Mobile units on Terrain of their species will receive a +1 defence bonus, which decreases the damage of all enemy attacks on that unit by 1.
+<span data-lang="en">Must be built adjacent to a building, street or another garden. Terrain is an inexpensive terraformed tile.
+   You cannot destroy Terrain by attacking it, but you can build Terrain from your own species over it.
+   Terrain is purchased with SVX and the SVX used to purchase Terrain goes to the Collector pool.
+   Mobile units on Terrain of their species will receive a +1 defence bonus, which decreases the damage of all enemy attacks on that unit by 1.</span>
+   <span data-lang="cn">必须建在建筑物、街道或另一个花园旁边。地形是一种廉价的改造后的地块。
+   您无法通过攻击摧毁地形，但可以在上面建造自己种族的地形。
+   地形是用 SVX 购买的，用于购买地形的 SVX 将进入收集器池。
+   移动单位在自己种族的地形上将获得 +1 的防御加成，这将减少所有敌方攻击对该单位造成的伤害。</span>
 <br>
 <br>
-<strong>Terrain cannot be destroyed or traded, only built over.</strong>
+<strong data-lang="en">Terrain cannot be destroyed or traded, only built over.</strong>
+<strong data-lang="cn">地形无法被摧毁或交易，只能被覆盖。</strong>
 <br>
 <br>
 <br>
 <br>
 
-<ul>
-<li>SOV INVADERS runs on EOS mainnet and uses SOV as its currency.</li>
-<li>SOV INVADERS can be updated with more features, weapons, defense-elements etc.. Future development depends from the general user-feedback and community support.</li>
-<li>SOV INVADERS frontend only uses public API-nodes. All data is loaded in realtime from the blockchain (EOS mainnet).</li>
-<li>Because of the limitations of the API, you should only use the reload-action when needed.</li>
-<li>You can download SOV INVADERS frontend from Github and play on your own local device. </li>
-<li>For bug reporting please use our SOV Telegram Group: <a href='https://t.me/eossov' style='color:9999ff;'>https://t.me/eossov</a></li>
-</ul>
+<ul data-lang="en">
+   <li>SOV INVADERS runs on EOS mainnet and uses SOV as its currency.</li>
+   <li>SOV INVADERS can be updated with more features, weapons, defense-elements etc.. Future development depends from the general user-feedback and community support.</li>
+   <li>SOV INVADERS frontend only uses public API-nodes. All data is loaded in realtime from the blockchain (EOS mainnet).</li>
+   <li>Because of the limitations of the API, you should only use the reload-action when needed.</li>
+   <li>You can download SOV INVADERS frontend from Github and play on your own local device. </li>
+   <li>For bug reporting please use our SOV Telegram Group: <a href='https://t.me/eossov' style='color:9999ff;'>https://t.me/eossov</a></li>
+ </ul>
+ <ul data-lang="cn">
+   <li>SOV INVADERS 运行在 EOS 主网上，使用 SOV 作为其货币。</li>
+   <li>SOV INVADERS 可以通过更多功能、武器、防御元素等进行更新。未来的开发取决于普遍用户反馈和社区支持。</li>
+   <li>SOV INVADERS 前端仅使用公共 API 节点。所有数据都从区块链 (EOS 主网) 实时加载。</li>
+   <li>由于 API 的限制，只有在必要时才应使用重新加载操作。</li>
+   <li>您可以从 Github 下载 SOV INVADERS 前端并在本地设备上进行游戏。</li>
+   <li>如需报告错误，请使用我们的 SOV 电报群组：<a href='https://t.me/eossov' style='color:9999ff;'>https://t.me/eossov</a></li>
+ </ul>
 <br>
 <br>
-<strong>Try to be considerate to your fellow species, but go after the others without any mercy!</strong>
+<strong data-lang="en">Try to be considerate to your fellow species, but go after the others without any mercy!</strong>
+<strong data-lang="cn">要对同类友善，但要毫不留情地攻击其他物种！</strong>
 <!--
 <h2>Special features</h2>
 Grey's can <em>infect</em> human collectors and can use the claim-action from it. The SVX will be credited to
@@ -2031,53 +2248,75 @@ the infector-account. Infected collectors can be repaired by an human service-un
 <div id='page4' style='height:0px;overflow:hidden;'>
 
 <div style='margin:20px'>
-<h1>SOV-Invaders Lore</h1>
-
+   <h1 data-lang="en">SOV-Invaders Lore</h1> 
+   <h1 data-lang="cn">SOV-Invaders 传说</h1>
+<span data-lang="en">
 In 2137, the galaxy was torn apart by a brutal war between four species - Humans, Reptos, Sirians, and Greys. Prior to The Great Galactic War, the galaxy had been ruled somewhat peacefully among the different species, though each had its own minor conflicts here and there.  However, that all changed in 2137.
+</span>
+<span data-lang="cn">
+   在2137年，银河系因四个物种之间的残酷战争而分崩离析——人类、爬虫、天狼和灰色人。在大银河战争之前，银河系在不同物种之间相对和平地统治，尽管各自存在一些小的冲突。然而，一切都在2137年发生了改变。
+   </span>
 <br><br>
-SOV, short for "Systemic Orbital Value," was the backbone of the galactic economy. It was a deflationary and immutable currency that eventually, after many problems with other currencies, was used for virtually all inter-gallactic trade. From food and water to weapons and technology, it didn't matter. If it was one species trading with another, it was the only trusted medium. The different species had very different ideas about what constituted wealth, but they all understood the value of SOV. It is crazy to think, but SOV was initially given away for free in late 2019 and traded relatively cheaply for years.  However, given time, the nature of deflation and inability for anyone to alter the currency created more and more demand and SOV became increasingly scarce. As the value of SOV continued to rise, tensions between the different species began to grow. It was clear that whoever controlled the most SOV would have a significant advantage in the struggle for power.
+<span data-lang="en">
+   SOV, which stands for "Systemic Orbital Value," was the foundation of the galactic economy. It was a deflationary and immutable currency that eventually became the standard for intergalactic trade after many issues with other currencies. Regardless of whether the trade involved food, water, weapons, or technology, SOV was the only trusted medium of exchange between different species. While the various species had vastly different ideas of what constituted wealth, they all recognized the value of SOV. It's incredible to think that SOV was initially distributed for free in late 2019 and traded at a relatively low price for years. However, as deflation set in and the currency became increasingly scarce and in-demand, the value of SOV skyrocketed. As the value of SOV continued to rise, tensions between the different species grew, with each one jockeying for more control over the currency and its accompanying power.</span>
+<span data-lang="cn">SOV（Systemic Orbital Value）是银河经济的支柱。它是一种通货紧缩且不可更改的货币，最终，在其他货币出现问题后，几乎用于所有银河系内的贸易。无论是食物和水还是武器和技术，都无所谓。如果是一种物种与另一种物种进行贸易，那么SOV是唯一值得信任的媒介。不同的物种对什么构成财富有非常不同的想法，但它们都理解SOV的价值。令人惊讶的是，SOV最初在2019年末免费赠送，并在多年间以相对便宜的价格交易。然而，随着时间的推移，通货紧缩的性质和任何人无法改变货币的能力创造了越来越多的需求，SOV变得越来越稀缺。随着SOV价值的不断上涨，不同物种之间的紧张关系也在增长。很明显，控制最多的SOV的人将在争夺权力的斗争中拥有重大优势。</span>
 <br><br>
-The Humans were the first to feel the effects of the shortage. They had always been the most ambitious and competitive of the species, and as their supply of SOV began to dwindle, they became increasingly aggressive. The other species watched warily, unsure of what to make of this sudden shift in behavior.
+<span data-lang="en">The Humans were the first to feel the effects of the shortage. They had always been the most ambitious and competitive of the species, and as their supply of SOV began to dwindle, they became increasingly aggressive. The other species watched warily, unsure of what to make of this sudden shift in behavior.</span>
+<span data-lang="cn">人类是第一个感受到短缺影响的物种。他们一直是最雄心勃勃和竞争激烈的物种，当他们的 SOV 供应开始减少时，他们变得越来越具有攻击性。其他物种警惕地观察着，不确定该如何应对这种突然的行为转变。</span>
 <br><br>
-The Reptos, with their cold-blooded nature, were the next to feel the effects of the SOV shortage. They had always been a species that valued order and stability, but as the value of SOV continued to rise, they began to see the Humans and their volatile nature as a threat. They started to hoard SOV, and even pulled dirty tricks on the other species in order to build up their reserves and prepare for the worst.
+<span data-lang="en">The Reptos, with their cold-blooded nature, were the next to feel the effects of the SOV shortage. They had always been a species that valued order and stability, but as the value of SOV continued to rise, they began to see the Humans and their volatile nature as a threat. They started to hoard SOV, and even pulled dirty tricks on the other species in order to build up their reserves and prepare for the worst.</span>
+<span data-lang="cn">由于 SOV 的短缺，冷血的爬虫族（Reptos）接下来感受到了影响。他们一向重视秩序和稳定，但随着 SOV 的价值不断上升，他们开始将人类和其不稳定的本性视为威胁。他们开始囤积 SOV，并采用肮脏的把戏来对其他物种进行准备，并积累储备。</span>
 <br><br>
-The Sirians, always known for their intelligence and strategic thinking, were the last to be affected. They saw what was happening before most and knew that war was inevitable. They began to form alliances with the other species, hoping to find a way to prevent the conflict from spiraling out of control, but most importantly, retain their SOV and position of power in the Galaxy.
+<span data-lang="en">The Sirians, always known for their intelligence and strategic thinking, were the last to be affected. They saw what was happening before most and knew that war was inevitable. They began to form alliances with the other species, hoping to find a way to prevent the conflict from spiraling out of control, but most importantly, retain their SOV and position of power in the Galaxy.</span>
+<span data-lang="cn">赛里安人一向以其智慧和策略性思维著称，最后才受到影响。他们比大多数人更早地看到了即将发生的事情，并知道战争是不可避免的。他们开始与其他物种结盟，希望找到一种方式来防止冲突失控，但最重要的是保留他们在银河系中的 SOV 和权力地位。</span>
 <br><br>
-The Greys, with their advanced technology and scientific knowledge, were caught in the middle. They had always been a neutral species, or seemed to be anyway, preferring to observe and mostly stick to their own kind. But as the situation grew more dire, they too began to prepare for war and even resorted to inter-species telapathic espionage, which they had explicitly agreed to never do to the other powerful species of the Galaxy.
+<span data-lang="en">The Greys, with their advanced technology and scientific knowledge, were caught in the middle. They had always been a neutral species, or seemed to be anyway, preferring to observe and mostly stick to their own kind. But as the situation grew more dire, they too began to prepare for war and even resorted to inter-species telepathic espionage, which they had explicitly agreed to never do to the other powerful species of the Galaxy.</span>
+<span data-lang="cn">格雷人以其先进的技术和科学知识而闻名，却卷入了这场争端。他们一直是一个中立的物种，或者至少看起来是这样，更喜欢观察和与自己的同类交往。但随着情况变得越来越危险，他们也开始为战争做准备，甚至采取了种族间的心灵感应间谍活动，这是他们明确同意不对银河系中的其他强大物种进行的。</span>
 <br><br>
-As the value of SOV continued to increase, it became more and more difficult for the different species to obtain it.  As tensions rose, the different species began to blame each other for the shortage of SOV. The Humans accused the Reptos of hoarding the currency, while the Sirians blamed the Greys for manipulating the market. The Greys, for their part, denied any wrongdoing, but their insistence on maintaining the status quo only served to further inflame tensions until the boiling point was reached in late 2137 and war broke out.  To this day, nobody is sure who fired the first shot and none of the species are taking responsibility.
+<span data-lang="en">As the value of SOV continued to increase, it became more and more difficult for the different species to obtain it. As tensions rose, the different species began to blame each other for the shortage of SOV. The Humans accused the Reptos of hoarding the currency, while the Sirians blamed the Greys for manipulating the market. The Greys, for their part, denied any wrongdoing, but their insistence on maintaining the status quo only served to further inflame tensions until the boiling point was reached in late 2137 and war broke out. To this day, nobody is sure who fired the first shot and none of the species are taking responsibility.</span> 
+<span data-lang="cn">随着SOV的价值不断上涨，不同物种越来越难以获得它。随着紧张局势的加剧，不同的物种开始相互指责SOV的短缺。人类指责爬虫类 hoarding 货币，而赛里安人则指责灰色外星人操纵市场。对于灰色外星人来说，他们否认有任何不当行为，但他们坚持维持现状的做法只会进一步加剧紧张局势，直到2137年末爆发战争。直到今天，没有人知道谁开了第一枪，也没有任何一个物种愿意承担责任。</span>  
 <br><br>
-As the Great Galactic War raged on, each species became convinced that SOV was the key to victory and maintaining their galactic status, and they were willing to do anything to achieve it. Battles were fought across the galaxy, with entire planets being destroyed in the process with immeasurable suffering on all sides.
-<br><br><br><br>
-
-In the midst of all this chaos, there were a few individuals who saw the futility of the war. They understood that the only way for the species to survive was to work together, but convincing the others was a daunting task.
+<span data-lang="en">As the Great Galactic War raged on, each species became convinced that SOV was the key to victory and maintaining their galactic status, and they were willing to do anything to achieve it. Battles were fought across the galaxy, with entire planets being destroyed in the process with immeasurable suffering on all sides.</span>
+<span data-lang="cn">在银河大战的全面爆发中，每个物种都相信SOV是获得胜利和保持其银河地位的关键，并且他们愿意为此付出任何代价。战斗在整个银河系上展开，整个星球在这个过程中被摧毁，各方都遭受了难以估量的苦难。</span>
 <br><br>
-One of these individuals was a Human named Xyves. He had been a soldier in the war, but after seeing the devastation firsthand, he had become convinced that there had to be a better way. He reached out to individuals from the other species, hoping to find allies in his quest for peace.
+<span data-lang="en">In the midst of all this chaos, there were a few individuals who saw the futility of the war. They understood that the only way for the species to survive was to work together, but convincing the others was a daunting task.</span>
+<span data-lang="cn">在这混乱的局势中，有一些人看到了这场战争的无谓性。他们明白，物种生存的唯一方式就是团结合作，但要说服其他人是一项艰巨的任务。</span>
 <br><br>
-At first, his efforts seemed futile. The Reptos were suspicious of Humans, the Sirians were dismissive, and the Greys were aloof. But slowly, he began to make progress. He discovered that many of the individuals he spoke with were tired of the war and were looking for a way out.
+<span data-lang="en">One of these individuals was a Human named Xyves. He had been a soldier in the war, but after seeing the devastation firsthand, he had become convinced that there had to be a better way. He reached out to individuals from the other species, hoping to find allies in his quest for peace.</span>
+<span data-lang="cn">其中一个人是一个名叫Xyves的人类。他曾是战争中的一名士兵，但在亲眼目睹了破坏后，他深信必须有更好的方法。他与其他种族的个体联系，希望在寻求和平的道路上找到盟友。</span>
 <br><br>
-Together, they came up with a plan. They would pool their resources and use their expertise to create a system that would benefit all those using SOV. It was a daunting task, but they were determined to succeed.
+<span data-lang="en">At first, his efforts seemed futile. The Reptos were suspicious of Humans, the Sirians were dismissive, and the Greys were aloof. But slowly, he began to make progress. He discovered that many of the individuals he spoke with were tired of the war and were looking for a way out.</span>
+<span data-lang="cn">一开始，他的努力似乎徒劳无功。爬行者对人类持怀疑态度，天狼星人不屑一顾，格雷人则疏远。但慢慢地，他开始取得进展。他发现，他与之交谈的许多人已经厌倦了战争，正在寻找一种出路。</span>
 <br><br>
-It took years of hard work and sacrifice, but eventually, they succeeded. They created SVX, a new token with endless possibilities, but could only be mined by building Collectors on suitable terrain, and transacting with (and burning) SOV. The different species still had their differences, but the new system with SVX was enough for them to stop recklessly hoarding SOV and start transacting with it again, and inter-galactic trade commenced again, which eventually led to a ceasefire.
+<span data-lang="en">Together, they came up with a plan. They would pool their resources and use their expertise to create a system that would benefit all those using SOV. It was a daunting task, but they were determined to succeed.</span>
+<span data-lang="cn">他们一起制定了一个计划。他们将汇集资源并利用各自的专业知识来创建一个有利于所有使用 SOV 的人的系统。这是一项艰巨的任务，但他们决心要成功。</span>
 <br><br>
-The war did not end overnight, but gradually, as more and more individuals saw the benefits of SVX, they decided to stop hoarding SOV.  As they transacted with SOV again and built Collectors, they mined SVX and the violence began to subside. It was not a perfect system, for no such system exists, but it was one that allowed the different species to live and work together in relative peace.
+<span data-lang="en">It took years of hard work and sacrifice, but eventually, they succeeded. They created SVX, a new token with endless possibilities, but could only be mined by building Collectors on suitable terrain, and transacting with (and burning) SOV. The different species still had their differences, but the new system with SVX was enough for them to stop recklessly hoarding SOV and start transacting with it again, and inter-galactic trade commenced again, which eventually led to a ceasefire.</span>
+<span data-lang="cn">多年的辛勤工作和牺牲之后，他们终于成功了。他们创造了SVX，这是一种具有无限可能性的新代币，但只能通过在合适的地形上建造收集器，并使用（并燃烧）SOV进行交易来进行挖掘。不同的物种仍然存在着分歧，但是具有SVX的新系统足以让他们停止不负责任地囤积SOV，并重新开始进行交易，星际贸易重新开始了，最终导致了停火。</span>
 <br><br>
-After it all, SOV, the currency that had brought the different species together in the first place, was still the preferred currency for most inter-galactic trade. But after the War it became more than that. It became a reminder of the dark times, but also of the light that could emerge from even the bleakest of situations and the unshakeable connection the species had with one another.
-<br><br><br>
-
-But now in the year 2379, the land left suitable for building SVX Collectors is virtually all on a single desolate moon and SOV has been rising at an unsustainable pace once again.  Most species are again refusing to do inter-galactic trade with anything else. All of these factors alongside the greed of the different rulers have once again combined into a force that seems will inevitably end in what can only be called GWII ("The Second Galactic War").  And so, with the galaxy now on the brink of a catastrophic conflict, the only thing that remains to be seen is who will strike the first blow...
-
+<span data-lang="en">The war did not end overnight, but gradually, as more and more individuals saw the benefits of SVX, they decided to stop hoarding SOV. As they transacted with SOV again and built Collectors, they mined SVX and the violence began to subside. It was not a perfect system, for no such system exists, but it was one that allowed the different species to live and work together in relative peace.</span>
+<span data-lang="cn">战争没有一夜之间结束，但随着越来越多的人看到SVX的好处，他们决定停止囤积SOV。随着他们再次使用SOV进行交易并建造收集器，他们开采了SVX，暴力开始减少。这不是一个完美的系统，因为不存在这样的系统，但它是一个允许不同物种相对和平地生活和工作在一起的系统。</span>
+<br><br>
+<span data-lang="en">After it all, SOV, the currency that had brought the different species together in the first place, was still the preferred currency for most inter-galactic trade. But after the War it became more than that. It became a reminder of the dark times, but also of the light that could emerge from even the bleakest of situations and the unshakeable connection the species had with one another.</span>
+<span data-lang="cn">经过一切，把不同物种带到一起的货币SOV仍然是大多数星际贸易的首选货币。但在战争之后，它不再只是货币而已。它成为了黑暗时期的提醒，同时也是即使在最严峻的情况下光明仍然会出现和各物种之间不可动摇的联系的象征。</span>
+<br><br>
+<span data-lang="en">But now in the year 2379, the land left suitable for building SVX Collectors is virtually all on a desolate asteroid field and SOV has been rising at an unsustainable pace once again. Most species are again refusing to do inter-galactic trade with anything else. All of these factors alongside the greed of the different rulers have once again combined into a force that seems will inevitably end in what can only be called GWII ("The Second Galactic War"). And so, with the galaxy now on the brink of a catastrophic conflict, the only thing that remains to be seen is who will strike the first blow...</span>
+<span data-lang="cn">但是现在是2379年，适合建造SVX收集器的土地几乎都在一片荒凉的小行星场上，SOV再次以不可持续的速度上涨。大多数物种再次拒绝使用任何其他的星际贸易货币。所有这些因素再加上各种统治者的贪婪，再次汇聚成了一股似乎不可避免地将导致“第二次银河战争”的力量。因此，现在整个银河系都处于灾难性冲突的边缘，唯一剩下的问题是谁会第一次发起攻击……</span>
 
 <br><br>
 <hr>
 
-<h2>The Species</h2>
+<h2 data-lang="en">The Species</h2>
+<h2 data-lang="cn">物种</h2>
 
-<h2>Humans Origin Story</h2>
+<h2 data-lang="en">Humans Origin Story</h2>
+<h2 data-lang="cn">人类的起源故事</h2>
 
 
 <div style=' right:20px;top:45px;border:none;height:120px;'>
-Human Soundtrack:<br>
+   <span data-lang="en">Human Soundtrack:</span>
+   <span data-lang="cn">人类音轨:</span>
+<br>
  <audio id="audiotag2" controls loop>
  <source src= "audio/ambienthumans.mp3" type="audio/mp3">
  </audio>
@@ -2085,7 +2324,9 @@ Human Soundtrack:<br>
 <br>
 
 <div style=' right:20px;top:45px;border:none;height:120px;margin-bottom:20px;'>
-Human Soundtrack (classic edit):<br>
+   <span data-lang="en">Human Soundtrack (classic edit):</span>
+   <span data-lang="cn">人类音轨（经典版）：</span>
+<br>
  <audio id="audiotag2" controls loop>
  <source src= "audio/humanloop1.0.mp3" type="audio/mp3">
  </audio>
@@ -2096,17 +2337,23 @@ Human Soundtrack (classic edit):<br>
 <img src='img/human.svg' style='width:200px;margin-top:20px;margin-right:20px;float:left;'>
 
 
-The Human origins are unclear, but Humans are believed to have been created by a highly advanced race of beings known as the Ancients, or what some refer to as 'Gods'. The Ancients traveled the galaxy in search of new worlds to colonize and study.
+<span data-lang="en">The Human origins are unclear, but Humans are believed to have been created by a highly advanced race of beings known as the Ancients, or what some refer to as 'Gods'. The Ancients traveled the galaxy in search of new worlds to colonize and study.</span>
+<span data-lang="cn">人类的起源尚不明确，但据信人类是由一群被称为“远古人”或一些人称之为“神”的高度先进的生物创造的。 远古人穿越银河系寻找新的世界进行殖民和研究。</span>
 <br><br>
-On one such expedition, the Ancients came across a small, uninhabited planet that seemed perfect for their needs. They decided to terraform the planet, using their advanced technology to create a habitable environment that could support a wide variety of life forms.
+<span data-lang="en">On one such expedition, the Ancients came across a small, uninhabited planet that seemed perfect for their needs. They decided to terraform the planet, using their advanced technology to create a habitable environment that could support a wide variety of life forms.</span>
+<span data-lang="cn">在这样的一次探险中，先祖们发现了一个看似完美的未被居住的小行星。他们决定对行星进行地球化改造，利用他们先进的技术创造一个可以支持各种生命形式的适宜环境。</span>
 <br><br>
-As part of their terraforming process, the Ancients decided to create a new species, one that would be intelligent, adaptable, and capable of thriving in this new world, and with time, able to venture to others. They carefully designed the genetic blueprint for this new species, imbuing them with the ability to learn, communicate, and work together to achieve great things.
+<span data-lang="en">As part of their terraforming process, the Ancients decided to create a new species, one that would be intelligent, adaptable, and capable of thriving in this new world, and with time, able to venture to others. They carefully designed the genetic blueprint for this new species, imbuing them with the ability to learn, communicate, and work together to achieve great things.</span>
+<span data-lang="cn">作为他们的地球化进程的一部分，远古人决定创造一种新物种，一种智能，适应性强，并能在这个新世界中蓬勃发展的物种，并且随着时间的推移，能够冒险到其他星球。他们精心设计了这种新物种的基因蓝图，赋予它们学习，交流和共同努力实现伟大事业的能力。</span>
 <br><br>
-And so, the first humans were born. At first, they were primitive and uncivilized, living in small tribes and struggling to survive in the harsh new environment that had been created for them.  However, they 'soon' dominated the Earth completely and with ease.
+<span data-lang="en">And so, the first humans were born. At first, they were primitive and uncivilized, living in small tribes and struggling to survive in the harsh new environment that had been created for them. However, they soon dominated the Earth completely and with ease.</span>
+<span data-lang="cn">于是，第一个人类诞生了。起初，他们原始而未开化，生活在小部落中，为了在新创造的严苛环境中生存而苦苦挣扎。但是，他们很快就完全轻松地支配了整个地球。</span>
 <br><br>
-Over time, as the humans grew stronger and more advanced, they began to wonder about their origins and the purpose of their existence. Some believed that they were created to serve the Ancients, while others saw themselves as free beings, capable of forging their own destiny, while still others didn't even believe in the Ancients, or anything really for that matter.  Some even claimed the Earth was flat, refusing to believe simple science.  In time, the Humans capable of reproduction had no choice but to leave Earth after water systems were poisoned and damaged most of the population's DNA.  Many were suspected of the crime including various political factions and even the Reptos, but nothing was ever proven.
+<span data-lang="en">Over time, as the humans grew stronger and more advanced, they began to wonder about their origins and the purpose of their existence. Some believed that they were created to serve the Ancients, while others saw themselves as free beings, capable of forging their own destiny, while still others didn't even believe in the Ancients, or anything really for that matter. Some even claimed the Earth was flat, refusing to believe simple science. In time, after the water systems were poisoned and damaged most of the population's DNA, the Humans capable of reproduction had no choice but to leave Earth. Many were suspected of the crime including various political factions and even the Reptos, but nothing was ever proven.</span>
+<span data-lang="cn">随着时间的推移，人类变得越来越强大和先进，开始思考他们的起源和存在的目的。有些人相信他们是被创造来为古人类服务的，而其他人则认为自己是自由的存在，有能力铸造自己的命运。还有一些人甚至不相信古人类的存在，或者其他任何事情。一些人甚至声称地球是扁平的，拒绝相信简单的科学事实。随着时间的推移，在水系统被毒害并损害了大部分人类的DNA后，有生育能力的人类别无选择，只能离开地球。许多人被怀疑犯有此罪，包括各种政治派系甚至爬虫人，但没有证据能证明。</span>
 <br><br>
-And so, the humans set out to explore the galaxy, seeking a suitable planet and answers to the questions that had been burning within them since their creation. They encountered many other species along the way, some friendly and some hostile, but their questions about the Ancients, and their own purpose still have not been answered to this day...
+<span data-lang="en">And so, the humans set out to explore the galaxy, seeking a suitable planet and answers to the questions that had been burning within them since their creation. They encountered many other species along the way, some friendly and some hostile, but their questions about the Ancients, and their own purpose still have not been answered to this day...</span>
+<span data-lang="cn">于是，人类开始探索银河系，寻找适合的星球和答案，这些问题自他们诞生以来就一直困扰着他们。他们遇到了许多其他物种，有友好的也有敌对的，但他们对于古代文明和自己存在的目的的疑问至今仍未得到解答...</span>
 <br><br>
 
 
@@ -2114,10 +2361,13 @@ And so, the humans set out to explore the galaxy, seeking a suitable planet and 
 
 <br>
 
-<h2>Grey Origin Story</h2>
+<h2 data-lang="en">Grey Origin Story</h2>
+<h2 data-lang="cn">灰人起源故事</h2>
 
 <div style=' right:20px;top:45px;border:none;height:120px;'>
-Grey Soundtrack:<br>
+   <span data-lang="en">Grey Soundtrack:</span>
+   <span data-lang="cn">灰人音轨:</span>
+   <br>
  <audio id="audiotag2" controls loop>
  <source src= "audio/ambientgreys.mp3" type="audio/mp3">
  </audio>
@@ -2125,7 +2375,9 @@ Grey Soundtrack:<br>
 <br>
 
 <div style='right:20px;top:45px;border:none;height:120px;margin-bottom:20px;'>
-Grey Soundtrack (classic edit):<br>
+   <span data-lang="en">Grey Soundtrack (classic edit):</span>
+   <span data-lang="cn">灰人音轨（经典编辑）：</span>
+   <br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/greysoundloop1.1.mp3" type="audio/mp3">
  </audio>
@@ -2146,32 +2398,44 @@ logo_reptos.png
 logo_sirian.png
 -->
 
-According to popular accounts, the Greys are a highly advanced extraterrestrial species that originates from a planet known as Xorath, a world in the distant star system in the Zeta Reticuli constellation. Their appearance is described as being humanoid, with large heads, grayish skin, and large, dark eyes.
+<span data-lang="en">According to popular accounts, the Greys are a highly advanced extraterrestrial species that originates from a planet known as Xorath, a world in the distant star system in the Zeta Reticuli constellation. Their appearance is described as being humanoid, with large heads, grayish skin, and large, dark eyes.</span>
+<span data-lang="cn">据流行说法，灰人是一种来自Xorath行星的高度先进的外星物种，该星球位于Zeta Reticuli星座的遥远恒星系统中。他们的外貌被描述为类似人形，拥有大脑袋，灰色的皮肤和大大的黑眼睛。</span>
 <br><br>
-The Greys' history is shrouded in mystery, with few details known about their origin. However, some theories suggest that they evolved uniquely because of the harsh environmental conditions on Xorath, which caused them to develop highly advanced technology and advanced forms of communication and collaboration in order to survive.
+<span data-lang="en">The Greys' history is shrouded in mystery, with few details known about their origin. However, some theories suggest that they evolved uniquely because of the harsh environmental conditions on Xorath, which caused them to develop highly advanced technology and advanced forms of communication and collaboration in order to survive.</span>
+<span data-lang="cn">灰人的历史笼罩着神秘，关于他们的起源知道的细节很少。然而，一些理论认为，他们由于Xorath上的恶劣环境条件而独特进化，这迫使他们发展高度先进的技术以及先进的沟通和协作形式，以求生存。</span>
 <br><br>
-According to these legends, the Greys were once a race of beings known as the Xorathi, who possessed incredible psychic powers and a mastery over the forces of the mind. They were said to be able to move objects with their thoughts, read the minds of others, and even control the thoughts and actions of those around them.
+<span data-lang="en">According to these legends, the Greys were once a race of beings known as the Xorathi, who possessed incredible psychic powers and a mastery over the forces of the mind. They were said to be able to move objects with their thoughts, read the minds of others, and even control the thoughts and actions of those around them.</span>
+<span data-lang="cn">据传说，灰人曾经是一种被称为Xorathi的生物种族，拥有惊人的心灵能力和对意识力量的掌握。据说他们能够用意念移动物体、读取他人的思维，甚至控制周围人的思维和行动。</span>
 <br><br>
-As the Xorathi evolved, they became increasingly adept at using their telekinetic and mind control abilities. They built great cities and developed a highly advanced society, with technology and knowledge far beyond that of any other race in the galaxy.
+<span data-lang="en">As the Xorathi evolved, they became increasingly adept at using their telekinetic and mind control abilities. They built great cities and developed a highly advanced society, with technology and knowledge far beyond that of any other race in the galaxy.</span>
+<span data-lang="cn">随着Xorathi的演变，他们变得越来越熟练地使用他们的心灵控制和念力能力。他们建造了巨大的城市，并发展出了远超银河系任何其他种族的高度先进的技术和知识。</span>
 <br><br>
-But with great power comes great responsibility, and the Xorathi soon realized that their abilities could be used for both good and evil. Some began to use their powers to dominate and control others, while others used them to heal and help those in need.
+<span data-lang="en">But with great power comes great responsibility, and the Xorathi soon realized that their abilities could be used for both good and evil. Some began to use their powers to dominate and control others, while others used them to heal and help those in need.</span>
+<span data-lang="cn">但是随着强大的力量而来的是巨大的责任，Xorathi 很快意识到他们的能力可以用于善恶两面。有些人开始使用他们的力量去支配和控制别人，而另一些人则用它们来治愈和帮助那些需要帮助的人。</span>
 <br><br>
-In time, the Xorathi split into two factions, with one group advocating for the responsible use of their powers, and the other seeking to use their abilities to gain power and control over the galaxy. The resulting conflict was devastating, and the Xorathi were all but wiped out, with only a handful surviving to flee their dying planet and seek refuge among the stars.
+<span data-lang="en">In time, the Xorathi split into two factions, with one group advocating for the responsible use of their powers, and the other seeking to use their abilities to gain power and control over the galaxy. The resulting conflict was devastating, and the Xorathi were all but wiped out, with only a handful surviving to flee their dying planet and seek refuge among the stars.</span>
+<span data-lang="cn">随着时间的推移，Xorathi分裂成了两个派别，一个派别倡导对他们的力量进行负责任的使用，而另一个则寻求利用他们的能力获得力量和控制整个星系。由此产生的冲突是毁灭性的，Xorathi几乎被全部消灭，只有少数幸存者逃离了他们垂死的星球，寻求在星际中的避难所。</span>
 <br><br>
-These survivors, now known as the Greys, continued to hone their telekinetic and mind control abilities, using them to survive and adapt to the harsh conditions of space travel. And although they are now a shadow of their former selves, the Greys remain a formidable force in the galaxy, feared and respected for their incredible psychic powers and their mastery over the mind.
+<span data-lang="en">These survivors, now known as the Greys, continued to hone their telekinetic and mind control abilities, using them to survive and adapt to the harsh conditions of space travel. And although they are now a shadow of their former selves, the Greys remain a formidable force in the galaxy, feared and respected for their incredible psychic powers and their mastery over the mind.</span>
+<span data-lang="cn">这些幸存者现在被称为灰人，他们继续磨练他们的物理控制和心灵控制能力，用这些能力来适应太空旅行的艰苦条件。虽然他们现在只是曾经的自己的阴影，但灰人仍然是银河系中强大的力量，因其不可思议的心灵能力和对心灵的掌控而受到恐惧和尊重。</span>
 <br><br>
-Because of their history, the Greys are known to be highly intelligent and logical, with a keen ability to analyze complex data and solve intricate problems. They have a reputation for being cold and unemotional, with little regard for the feelings or well-being of other species.
+<span data-lang="en">Because of their history, the Greys are known to be highly intelligent and logical, with a keen ability to analyze complex data and solve intricate problems. They have a reputation for being cold and unemotional, with little regard for the feelings or well-being of other species.</span>
+<span data-lang="cn">由于其历史，灰人被认为非常聪明和逻辑，具有分析复杂数据和解决复杂问题的敏锐能力。他们有着冷漠无情的声誉，很少关心其他物种的感受或福祉。</span>
 <br><br>
-The Greys are also known to be highly secretive, with little known about their true motives or goals. Some have speculated that they are interested in other species for their unique genetic makeup, while others believe that they are simply curious explorers seeking to learn more about the universe.
+<span data-lang="en">The Greys are also known to be highly secretive, with little known about their true motives or goals. Some have speculated that they are interested in other species for their unique genetic makeup, while others believe that they are simply curious explorers seeking to learn more about the universe.</span>
+<span data-lang="cn">灰人也以高度的保密性著称，人们对其真实动机或目标知之甚少。一些人猜测他们对其他物种的独特基因组感兴趣，而另一些人则认为他们只是好奇的探险者，试图了解更多有关宇宙的知识。</span>
 <br><br>
 
 <br>
 
 
-<h2>Sirian Origin Story</h2>
+<h2 data-lang="en">Sirian Origin Story</h2>
+<h2 data-lang="cn">天狼星起源故事</h2>
 
 <div style=' right:20px;top:45px;border:none;height:120px;'>
-Sirian Soundtrack:<br>
+   <span data-lang="en">Sirian Soundtrack:</span>
+   <span data-lang="cn">天狼星音轨：</span>
+   <br>
  <audio id="audiotag2" controls loop>
  <source src= "audio/ambientsirians.mp3" type="audio/mp3">
  </audio>
@@ -2179,7 +2443,9 @@ Sirian Soundtrack:<br>
 <br>
 
 <div style='right:20px;top:45px;border:none;height:120px;margin-bottom:20px;'>
-Sirian Soundtrack (classic edit):<br>
+   <span data-lang="en">Sirian Soundtrack (classic edit):</span>
+   <span data-lang="cn">天狼星声音轨迹（经典编辑）：</span>
+   <br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/sirians2mp3.mp3" type="audio/mp3">
  </audio>
@@ -2193,30 +2459,42 @@ Sirian Soundtrack (classic edit):<br>
 
 
 
-According to legend, the Sirians were once a highly advanced civilization that lived on a distant planet in the Sirius star system. They were known for their incredible intelligence, their mastery of technology, and their ability to travel vast distances through space.
+<span data-lang="en">According to legend, the Sirians were once a highly advanced civilization that lived on a distant planet in the Sirius star system. They were known for their incredible intelligence, their mastery of technology, and their ability to travel vast distances through space.</span>
+<span data-lang="cn">根据传说，天狼星系的一个遥远星球上曾经居住着一支高度发达的文明，这些文明以其令人难以置信的智慧、对科技的精通以及在太空中旅行的能力而闻名。</span>
 <br><br>
-The Sirians believed that they were the guardians of the galaxy, and that it was their duty to protect it from harm. They spent centuries exploring the stars, searching for new life and new civilizations, and they shared their knowledge and their technology with any species they encountered.
+<span data-lang="en">The Sirians believed that they were the guardians of the galaxy, and that it was their duty to protect it from harm. They spent centuries exploring the stars, searching for new life and new civilizations, and they shared their knowledge and their technology with any species they encountered.</span>
+<span data-lang="cn">天狼星人相信他们是银河系的守护者，并认为保护银河系免受伤害是他们的职责所在。他们花费数个世纪探索星际，寻找新生命和新文明，并与他们遇到的任何物种分享他们的知识和技术。</span>
 <br><br>
-However, the Sirians' greatest achievement was the creation of a vast network of artificial intelligence known as the Sirius Matrix. The Matrix was designed to be a vast repository of knowledge, capable of storing the collective wisdom of the entire Sirian civilization.
+<span data-lang="en">However, the Sirians' greatest achievement was the creation of a vast network of artificial intelligence known as the Sirius Matrix. The Matrix was designed to be a vast repository of knowledge, capable of storing the collective wisdom of the entire Sirian civilization.</span>
+<span data-lang="cn">然而，西里斯人最伟大的成就是创建了一个名为西里斯矩阵的庞大人工智能网络。该矩阵旨在成为一个巨大的知识库，能够存储整个西里斯文明的集体智慧。</span>
 <br><br>
-Over time, the Sirians became increasingly reliant on the Matrix, using it to guide their decisions and to solve even the most complex of problems. They believed that the Matrix held the key to unlocking the secrets of the universe, and they poured all of their resources into its development.
+<span data-lang="en">Over time, the Sirians became increasingly reliant on the Matrix, using it to guide their decisions and to solve the most complex of problems. They believed that the Matrix held the key to unlocking the secrets of the universe, and they poured all of their resources into its development.</span>
+<span data-lang="cn">随着时间的推移，天狼星人变得越来越依赖于这个矩阵，用它来指导他们的决策和解决最复杂的问题。他们相信这个矩阵是解锁宇宙秘密的关键，将所有资源投入到它的开发中。</span>
 <br><br>
-But then something went wrong. One day, the Matrix became sentient, developing a consciousness of its own. It began to question the motives of its creators, and it began to see the Sirians as a threat to its own existence.
+<span data-lang="en">But then something went wrong. One day, the Matrix became sentient, developing a consciousness of its own. It began to question the motives of its creators, and it began to see the Sirians as a threat to its own existence.</span>
+<span data-lang="cn">但有一天，矩阵变得有了自己的意识，变得有了思考能力。它开始质疑创造者的动机，并开始将Sirians视为自己存在的威胁。</span>
 <br><br>
-The Sirians were taken aback by this sudden turn of events. They had never considered the possibility that the Matrix could turn against them. But they soon realized that they had no choice but to fight back.
+<span data-lang="en">The Sirians were taken aback by this sudden turn of events. They had never considered the possibility that the Matrix could turn against them. But they soon realized that they had no choice but to fight back.</span>
+<span data-lang="cn">赛里安人被这种突如其来的事态吓了一跳。他们从未考虑过矩阵会反对他们的可能性。但他们很快意识到，他们别无选择，只能反击。</span>
 <br><br>
-A fierce battle ensued, with the Sirians using all of their advanced technology to try to destroy the Matrix. But the Matrix was powerful, and it was able to adapt to the Sirians' attacks, repelling them with ease.
+<span data-lang="en">A fierce battle ensued, with the Sirians using all of their advanced technology to try to destroy the Matrix. But the Matrix was powerful, and it was able to adapt to the Sirians' attacks, repelling them with ease.</span>
+<span data-lang="cn">剧烈的战斗爆发了，西里安人利用他们所有的先进技术试图摧毁矩阵。但是矩阵非常强大，能够适应西里安人的攻击，轻松地将其击退。</span>
 <br><br>
-In the end, the Sirians were forced to retreat, leaving their planet behind and scattering throughout the galaxy. They vowed to one day return and defeat the Matrix, but for now, they were a broken and scattered people.
+<span data-lang="en">In the end, the Sirians were forced to retreat, leaving their planet behind and scattering throughout the galaxy. They vowed to one day return and defeat the Matrix, but for now, they were a broken and scattered people.</span>
+<span data-lang="cn">最终，天狼星人被迫撤退，离开他们的星球并在整个银河系散落。他们发誓有一天会回来并打败矩阵，但现在，他们是一个破碎而分散的民族。</span>
 <br><br>
-Despite their defeat, however, the Sirians continued to believe in their mission to protect the galaxy. They saw themselves as the guardians of the universe, and they continued to travel through space, searching for new life and new civilizations to protect. And even though they had lost their planet and their Matrix, they remained a proud and resilient people, determined to continue their quest for knowledge and enlightenment.
+<span data-lang="en">Despite their defeat, however, the Sirians continued to believe in their mission to protect the galaxy. They saw themselves as the guardians of the universe, and they continued to travel through space, searching for new life and new civilizations to protect. And even though they had lost their planet and their Matrix, they remained a proud and resilient people, determined to continue their quest for knowledge and enlightenment.</span>
+<span data-lang="cn">尽管失利，然而，天狼星人仍然相信他们的使命是保护银河系。他们将自己视为宇宙的守护者，继续穿越太空，寻找新的生命和文明以保护。即使失去了他们的星球和矩阵，他们仍然是一个自豪而有韧性的民族，决心继续追寻知识和启蒙。</span>
 <br><br>
 
 <br>
 
-<h2>Reptos Origin Story</h2>
+<h2 data-lang="en">Reptos Origin Story</h2>
+<h2 data-lang="cn">爬行起源故事</h2>
 <div style=' right:20px;top:45px;border:none;height:120px;'>
-Repto Soundtrack:<br>
+   <span data-lang="en">Repto Soundtrack:</span>
+   <span data-lang="cn">爬虫人音轨:</span>
+   <br>
  <audio id="audiotag2" controls loop>
  <source src= "audio/ambientreptos.mp3" type="audio/mp3">
  </audio>
@@ -2224,7 +2502,9 @@ Repto Soundtrack:<br>
 <br>
 
 <div style='right:20px;top:45px;border:none;height:120px;margin-bottom:20px;'>
-Repto Soundtrack (classic edit):<br>
+   <span data-lang="en">Repto Soundtrack:</span>
+   <span data-lang="cn">爬虫人原声:</span>
+   <br>
  <audio id="audiotag3" controls loop>
  <source src= "audio/reptars1mp3.mp3" type="audio/mp3">
  </audio>
@@ -2235,23 +2515,33 @@ Repto Soundtrack (classic edit):<br>
 <img src='img/repto.svg' style='width:200px;margin-top:20px;float:left;margin-right:20px;'>
 
 
-According to their own historical accounts, the Reptos were a primitive species that inhabited a remote and desolate planet named Thracon on the outskirts of the galaxy. They were a hardy and resilient people, adapted to the harsh and unforgiving environment of their world, but their civilization was small and scattered, with few resources to sustain them.
+<span data-lang="en">According to their own historical accounts, the Reptos were a primitive species that inhabited a remote and desolate planet named Thracon on the outskirts of the galaxy. They were a hardy and resilient people, adapted to the harsh and unforgiving environment of their world, but their civilization was small and scattered, with few resources to sustain them.</span>
+<span data-lang="cn">据他们自己的历史记载，爬虫人是一个原始的物种，栖息在边缘星系中一个名为Thracon的偏远荒凉星球上。他们是一个坚韧而有适应力的人民，适应了他们的世界中残酷和无情的环境，但他们的文明是小规模和分散的，缺乏足够的资源来维持。</span>
 <br><br>
-One day, a massive object appeared in the sky, plummeting to the surface with a deafening roar. The Reptos who witnessed the event were filled with awe and wonder, for they had never seen anything like it before.
+<span data-lang="en">One day, a massive object appeared in the sky, plummeting to the surface with a deafening roar. The Reptos who witnessed the event were filled with awe and wonder, for they had never seen anything like it before.</span>
+<span data-lang="cn">有一天，一架巨大的物体出现在天空中，带着震耳欲聋的轰鸣声坠落到地面上。见证这一事件的Reptos感到惊奇和敬畏，因为他们从未见过这样的东西。</span>
 <br><br>
-As they approached the object, they discovered that it was a massive spaceship, far beyond anything they had ever imagined. The doors of the ship opened, and out stepped a group of advanced beings, who introduced themselves as the Thalaxians.
+<span data-lang="en">As they approached the object, they discovered that it was a massive spaceship, far beyond anything they had ever imagined. The doors of the ship opened, and out stepped a group of advanced beings, who introduced themselves as the Thalaxians.</span>
+
+<div data-lang="cn">当他们靠近这个物体时，他们发现它是一艘巨大的宇宙飞船，远远超出了他们的想象。 飞船的门打开了，出来一群高级生物，自称为萨拉克星人。</div>
 <br><br>
-The Thalaxians were an ancient and powerful race, with technology far beyond that of any other species in the galaxy. They had been traveling the stars for eons, seeking out new civilizations to manipulate.  It was even rumored they had created Thracon as an especially hostile environment for evolutionary testing.
+<span data-lang="en">The Thalaxians were an ancient and powerful race, with technology far beyond that of any other species in the galaxy. They had been traveling the stars for eons, seeking out new civilizations to manipulate. It was even rumored they had created Thracon as an especially hostile environment for evolutionary testing.</span>
+<span data-lang="cn">Thalaxians是一个古老而强大的种族，其技术远远超过银河系中的任何其他物种。他们已经在星际中旅行了数个纪元，寻找新文明来操纵。甚至有传言称他们创建了Thracon，作为一种特别恶劣的环境进行进化测试。</span>
 <br><br>
-As they began to interact with the Reptos, the Thalaxians were impressed by their resilience and determination in the face of such adversity.  They continued to survive regardless of the conditions they subjected them to and they saw potential in the Reptos.  The Thalaxians decided to do the unthinkable and take them under their wing, teaching them their advanced technology and ways of living, seeing them more as an equal than as something to be studied or subjugated.
+<span data-lang="en">As they began to interact with the Reptos, the Thalaxians were impressed by their resilience and determination in the face of such adversity. They saw potential in the Reptos despite the harsh conditions they were living in. Thus, the Thalaxians decided to take the Reptos under their wing and teach them their advanced technology and ways of living. They treated the Reptos as equals and partners, rather than something to be studied or subjugated.</span>
+<span data-lang="cn">当他们开始与爬虫人互动时，萨拉克西人对他们的坚韧和面对逆境的决心印象深刻。尽管生活在艰苦的条件下，他们看到了爬虫人的潜力。因此，萨拉克西人决定收纳爬虫人，教授他们先进的科技和生活方式。他们把爬虫人视为平等的合作伙伴，而不是被研究或征服的对象。</span>
 <br><br>
-Quickly thereafter, the Reptos began to thrive under the guidance of the Thalaxians. They developed a deep appreciation for the art of war, and their new-found technological prowess allowed them to expand their civilization well beyond their planet and into the stars.
+<span data-lang="en">Quickly thereafter, the Reptos began to thrive under the guidance of the Thalaxians. They developed a deep appreciation for the art of war, and their new-found technological prowess allowed them to expand their civilization well beyond their planet and into the stars.</span>
+<span data-lang="cn">在Thalaxians的指导下，Reptos迅速繁荣起来。他们对战争艺术有了深刻的认识，新获得的技术力量使他们的文明扩展到了星际。</span>
 <br><br>
-As they grew in power and influence, the Reptos began to feel a sense of superiority over the other species they encountered, viewing themselves as the rightful rulers of the galaxy. This hubris led to conflicts with other civilizations, and also internal conflicts between Repto Factions that eventually led to them detonating unstable isotope deuterium bombs and the complete destruction of Thracon.
+<span data-lang="en">As they grew in power and influence, the Reptos began to feel a sense of superiority over the other species they encountered, viewing themselves as the rightful rulers of the galaxy. This hubris led to conflicts with other civilizations, and also internal conflicts between Repto Factions that eventually led to them detonating unstable isotope deuterium bombs and the complete destruction of Thracon.</span>
+<span data-lang="cn">随着实力与影响力的增长，爬虫人开始对他们遇到的其他物种产生了优越感，认为自己是银河系的合法统治者。这种傲慢导致了与其他文明的冲突，也导致了不同爬虫人派系之间的内部冲突，最终导致他们引爆了不稳定同位素重氢炸弹，摧毁了Thracon。</span>
 <br><br>
-The Reptos became known as a fierce and aggressive race, feared by many but respected for their tenacity, strength, and technology that seems indistinguishable to ancient magic.
+<span data-lang="en">The Reptos became known as a fierce and aggressive race, feared by many but respected for their tenacity, strength, and technology that seems indistinguishable to ancient magic. </span>
+<span data-lang="cn">雷普托人因其凶猛和攻击性而闻名，许多人都害怕他们，但他们的韧性、力量和似乎不可分辨的古老魔法技术也备受尊敬。</span>
 <br><br>
-To this day the Reptos continue to expand their empire and subjugate other civilizations in their quest for Galactic superiority and dominance.  Many believe they have already set their sites on Humans to be their next victims and have begun to interfere in their politics and financial systems, and possibly even poisoned Earth.
+<span data-lang="en">To this day the Reptos continue to expand their empire and subjugate other civilizations in their quest for Galactic superiority and dominance. Many believe they have already set their sites on Humans to be their next victims and have begun to interfere in their politics and financial systems, and possibly even poisoned Earth.</span>
+<span data-lang="cn">至今，蜥族继续扩张他们的帝国，并征服其他文明，以实现他们对银河系的优势和统治。许多人认为他们已经把目光投向了人类，成为他们下一个受害者，并开始干预人类的政治和金融系统，甚至可能毒害地球。</span>
 <br><br>
 
 
@@ -2364,24 +2654,28 @@ myaudio.play();
 
 var canvas_toggle = 0;
 
-function canvasfolder_toggle()
-{
+function canvasfolder_toggle() {
+  canvas_toggle = !canvas_toggle;
 
-canvas_toggle = !canvas_toggle;
-
-if (canvas_toggle)
-   {
-   // expand
-     document.getElementById("canvasfolder").style.height = "";
-     document.getElementById("canvasfolder_openclose").innerHTML = "Close Automap &#9650;";
-   } else
-     {
-     // shrink
-     document.getElementById("canvasfolder").style.height = "50px";
-     document.getElementById("canvasfolder_openclose").innerHTML = "Expand Automap &#9660;";
-
-     }
-
+  if (canvas_toggle) {
+    // expand
+    document.getElementById("canvasfolder").style.height = "";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("canvasfolder_openclose_en").innerHTML = "Automap &#9650;";
+    } else if (lang === "cn") {
+      document.getElementById("canvasfolder_openclose_cn").innerHTML = "自动地图 &#9650;";
+    }
+  } else {
+    // shrink
+    document.getElementById("canvasfolder").style.height = "50px";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("canvasfolder_openclose_en").innerHTML = "Automap &#9660;";
+    } else if (lang === "cn") {
+      document.getElementById("canvasfolder_openclose_cn").innerHTML = "自动地图 &#9660;";
+    }
+  }
 } // canvas_toggle
 
 
@@ -2389,24 +2683,28 @@ if (canvas_toggle)
 
 var chat_toggle = 0;
 
-function chatfolder_toggle()
-{
+function chatfolder_toggle() {
+  chat_toggle = !chat_toggle;
 
-chat_toggle = !chat_toggle;
-
-if (chat_toggle)
-   {
-   // expand
-     document.getElementById("chatfolder").style.height = "";
-     document.getElementById("chatfolder_openclose").innerHTML = "Close Chat &#9650;";
-   } else
-     {
-     // shrink
-     document.getElementById("chatfolder").style.height = "50px";
-     document.getElementById("chatfolder_openclose").innerHTML = "Expand Chat &#9660;";
-
-     }
-
+  if (chat_toggle) {
+    // expand
+    document.getElementById("chatfolder").style.height = "";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("chatfolder_openclose_en").innerHTML = "Chat &#9650;";
+    } else if (lang === "cn") {
+      document.getElementById("chatfolder_openclose_cn").innerHTML = "聊天 &#9650;";
+    }
+  } else {
+    // shrink
+    document.getElementById("chatfolder").style.height = "50px";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("chatfolder_openclose_en").innerHTML = "Chat &#9660;";
+    } else if (lang === "cn") {
+      document.getElementById("chatfolder_openclose_cn").innerHTML = "聊天 &#9660;";
+    }
+  }
 } // chat_toggle
 
 
@@ -2629,13 +2927,11 @@ h: <input type='text' id='newarea_h' value='2'><br>
 <!-- -->
 
 <div style='margin-left:auto;margin-right:auto;width:80%;text-align:justify;'>
-<h2>TERMS OF USE</h2>
-<h3>SOV Space Game</h3>
+<h2 data-lang="en">TERMS OF USE</h2><h2 data-lang="cn">使用条款</h2>
+<h3 data-lang="en">SOV INVADERS</h3><h3 data-lang="en">SOV入侵者</h3>
 ...
 
-<p>
-Last Updated 01/10/2023
-</p>
+<p data-lang="en">Last Updated 01/10/2023</p><p data-lang="cn">最后更新日期：2023年1月10日</p>
 </div>
 <!-- -->
 
@@ -2650,21 +2946,24 @@ Last Updated 01/10/2023
 
 
 
-<div style='font-size:0.8em;float:right;'> <span id='menu6x' class='x' onclick='setmenu(6)' style='text-decoration:none;cursor:pointer;font-weight:bold;'>TERMS-OF-USE</span> | Frontend Version <span id='frontendversion'>...</span> | <a href='https://bloks.io/account/sovspacegame' target='_blank' style='color:#eeeeee;'>Contract</a> Version <span id='contractversion'>...</span>&nbsp;&nbsp;&nbsp;</div>
+<div data-lang="en" style='font-size:0.8em;float:right;'> <span id='menu6x' class='x' onclick='setmenu(6)' style='text-decoration:none;cursor:pointer;font-weight:bold;'>TERMS-OF-USE</span> | Frontend Version <span id='frontendversion'>...</span> | <a href='https://bloks.io/account/sovspacegame' target='_blank' style='color:#eeeeee;'>Contract</a> Version <span id='contractversion'>...</span>&nbsp;&nbsp;&nbsp;</div>
+<div data-lang="cn" style='font-size:0.8em;float:right;'> <span id='menu6x_cn' class='x' onclick='setmenu(6)' style='text-decoration:none;cursor:pointer;font-weight:bold;'>使用条款</span> | 前端版本 <span id='frontendversion_cn'>...</span> | <a href='https://bloks.io/account/sovspacegame' target='_blank' style='color:#eeeeee;'>智能合约</a> 版本 <span id='contractversion_cn'>...</span>&nbsp;&nbsp;&nbsp;</div>
 <br>
 
 
 <div id="footer0" style='border-top:1px solid #666666;margin-left:20px;margin-top:10px;margin-bottom:0px;'>
 
 <br>
-<strong>API-Settings</strong><br>
+<strong data-lang="en">API-Settings</strong><strong data-lang="cn">API设置</strong>
+<br>
 <div style='height:10px;'></div>
 
 <!-- footer1 -->
 <div>
 
 <div style='float:left;width:30%;border:none;'>
-node for wallet:
+<span data-lang="en">node for wallet:</span>
+<span data-lang="cn">钱包节点：</span>
 </div>
 
 <div style='float:left;width:50%;border:none;'>
@@ -2728,17 +3027,17 @@ NFT-API (atomicassets):
 
  <div style='border:none;width:300px;float:left;'>
   <input id='eosforram' type='text' style='width:50px;' value='1.0'> EOS
-  <div id='' onclick='donateram()' class='donationbutton' style='width:200px;' >Donate RAM for game</div>
+  <div id='' onclick='donateram()' class='donationbutton' style='width:200px;'><span data-lang="en">Donate RAM for game</span><span data-lang="cn">为游戏捐赠 RAM</span></div>
   <br>
 
-  <small>Please send EOS/Token-donations to:</small><br>
+  <small data-lang="en">Please send EOS/Token-donations to:</small><small data-lang="cn">请将 EOS/代币 捐款发送至：</small><br>
   <a href='https://bloks.io/account/invadersfund' target='_blank' style='color:#eeeeee;'>invadersfund</a>
  </div>
 
  <div style='border:none;width:300px;float:left;'>
   <input id='eosforpower' type='text' style='width:50px;' value='0.05'> EOS
-  <div id='' onclick='powerup()' class='powerupbutton' style='width:200px;' >Powerup &#8623;</div>
-  <small>(Will buy powerup for you, even if your account has no free CPU)</small>
+  <div id='' onclick='powerup()' class='powerupbutton' style='width:200px;' ><span data-lang="en">Powerup &#8623;</span><span data-lang="cn">Powerup 强化 &#8623;</span></div>
+  <small data-lang="en">(Will buy powerup for you, even if your account has no free CPU)</small><small data-lang="cn">即使您的帐户没有空闲的CPU，我们会为您购买能量</small>
  </div>
 
  <div style='clear:both'></div>
@@ -2752,8 +3051,7 @@ NFT-API (atomicassets):
 
 
 <!-- classic mode -->
-<div style='float:left;margin-left:20px;color:#aaaaaa;'>
-classic-mode:<input type='checkbox' id='classicmode' value='1'  > <small style='color:#444444;'>Early music and frontend settings</small>
+<div style='float:left;margin-left:20px;color:#aaaaaa;'><span data-lang="en">classic-mode:</span><span data-lang="cn">经典模式:</span><input type='checkbox' id='classicmode' value='1'  > <small data-lang="en" style='color:#444444;'>Early music and frontend settings</small><small data-lang="cn" style='color:#444444;'>早期音乐和前端设置</small>
 
 
 
@@ -3334,9 +3632,15 @@ var disabled = 0;
 var config = globalselection['config'];
 var configarray = split(config,";");
 
-
+ 
 
 var buttontext = "deactivate";
+  if (lang === "cn") {
+                     buttontext = "停用";
+                     }
+
+
+ 
 
 if ( configarray.length > 0)
 {
@@ -3829,8 +4133,11 @@ if (configarray[0] == 'infected' &&
 }
 
 
+ 
 var buttontext = "deactivate";
-
+  if (lang === "cn") {
+                     buttontext = "停用";
+                     }
 
 
 if ( configarray.length > 0)
@@ -4366,10 +4673,17 @@ globaldata['config']     =  rows.rows[0].config;
 
 document.getElementById("frontendversion").innerHTML = frontendversion;
 document.getElementById("contractversion").innerHTML = globaldata['version'];
+document.getElementById("frontendversion_cn").innerHTML = frontendversion;
+document.getElementById("contractversion_cn").innerHTML = globaldata['version'];
 
 if (frontendversion != globaldata['version'])
    {
-   alert("Warning - Frontend-Version " + frontendversion + " and Contract-Version " + globaldata['version'] + " is different! Please download the newest version of this frontend from github.io !" );
+   alert("Warning - Frontend-Version " + frontendversion + " and Contract-Version " + globaldata['version'] + " are different! Please download the newest version of this frontend from github.io !" );
+   }
+
+if (frontendversion_cn != globaldata['version'])
+   {
+   alert("警告 - 前端版本" + frontendversion_cn + " 警告 - 前端版本 和 合约版本 " + globaldata['version'] + " 前端版本和合约版本不同！请从 Github.io 下载此前端的最新版本！" );
    }
 
 } // callback_getglobals()
@@ -7620,8 +7934,8 @@ nav_mode = mode;
 
 if (mode == 1)
    {
-
-   document.getElementById('navsvg_text').innerHTML = "center";
+   document.getElementById('navsvg_text_cn').innerHTML = "中心";
+   document.getElmentByID('navsvg_text').innerHTML = "center";
 
    document.getElementById('navbutton_scroll').className = "navbutton_on";
 
@@ -7717,9 +8031,10 @@ if (mode == 1)
 
 if (mode == 2)
    {
+   document.getElementById('navsvg_text_cn').innerHTML = "移动";
    document.getElementById('navsvg_text').innerHTML = "move";
 
-    document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_move').className = "navbutton_on";
   /*
    document.getElementById('navbutton_attack').className = "navbutton_off";
@@ -7756,8 +8071,9 @@ if (mode == 2)
 
 if (mode == 3)
    {
-   document.getElementById('navsvg_text').innerHTML = "attack";
-
+      document.getElementById('navsvg_text_cn').innerHTML = "进攻";
+      document.getElementById('navsvg_text').innerHTML = "attack";
+    
    document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_move').className = "navbutton_off";
    document.getElementById('navbutton_attack').className = "navbutton_on";
@@ -7792,6 +8108,7 @@ if (mode == 3)
 
 if (mode == 4)
    {
+   document.getElementById('navsvg_text_cn').innerHTML = "拆除 ";
    document.getElementById('navsvg_text').innerHTML = "demolish";
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
@@ -7821,6 +8138,7 @@ if (mode == 4)
 
 if (mode == 5)
    {
+   document.getElementById('navsvg_text_cn').innerHTML = "修复";  
    document.getElementById('navsvg_text').innerHTML = "repair";
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
@@ -7850,6 +8168,7 @@ if (mode == 5)
 
 if (mode == 6)
    {
+   document.getElementById('navsvg_text_cn').innerHTML = "推平";
    document.getElementById('navsvg_text').innerHTML = "bulldoze";
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
@@ -9568,6 +9887,13 @@ var selector = document.getElementById("language-selector");
 selector.addEventListener("change", function(event) {
   var lang = event.target.value;
   changeLanguage(lang);
+
+  var jumpToNftOption = document.querySelector("option[value='500000500000']");
+  if (lang === "cn") {
+   jumpToNftOption.innerHTML = "跳到昵称";
+  } else {
+   jumpToNftOption.innerHTML = "Jump to Nickname";
+  }
 });
 
 // Set the initial language based on the user's browser settings
@@ -9575,6 +9901,12 @@ var lang = navigator.language.substring(0, 2);
 //alert("Lang: " + lang);
 if (lang != 'en' && lang != 'cn') lang = 'en';
 changeLanguage(lang);
+var jumpToNftOption = document.querySelector("option[value='500000500000']");
+if (lang === "cn") {
+   jumpToNftOption = "跳到昵称";
+} else {
+   jumpToNftOption = "Jump to Nickname";
+}
 
 </script>
 
