@@ -8492,10 +8492,14 @@ for (var i=0; i<size; i++)
 
             
    var buttontext = "Update Prices";
+   var textpleasewait = "Please wait a few seconds after a mint for price update!";
    if ( globallang == "cn" )               
+      {
                  buttontext = "更新价格";
+                 textpleasewait = "价格更新后，请等待几秒钟";
+      } 
 
-buffer_humans += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_humans += "<div style='clear:both'></div><small>("+textpleasewait+")</small>";
 buffer_humans += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 buffer_greys += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
