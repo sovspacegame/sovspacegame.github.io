@@ -8502,13 +8502,13 @@ for (var i=0; i<size; i++)
 buffer_humans += "<div style='clear:both'></div><small>("+textpleasewait+")</small>";
 buffer_humans += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
-buffer_greys += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_greys += "<div style='clear:both'></div><small>("+textpleasewait+")</small>";
 buffer_greys += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
-buffer_sirians += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_sirians += "<div style='clear:both'></div><small>("+textpleasewait+")</small>";
 buffer_sirians += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
-buffer_reptos += "<div style='clear:both'></div><small>(Please wait a few seconds after a mint for price update!)</small>";
+buffer_reptos += "<div style='clear:both'></div><small>("+textpleasewait+")</small>";
 buffer_reptos += "<br><div onclick='callback_loadmarkets()' class='refreshboard' style='margin-left:auto;margin-right:auto;width:250px;margin-top:20px;margin-bottom:2px;cursor:pointer;'>"+buttontext+" &#8634;</div>";
 
 document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buffer_humans + "<br><div style='clear:both'></div><br><h2>Grey-NFT's</h2>" + buffer_greys + ""  + "<div style='clear:both'></div><br><h2>Sirian-NFT's</h2>" + buffer_sirians + ""     + "<div style='clear:both'></div><br><h2>Repto-NFT's</h2>" + buffer_reptos + "";
