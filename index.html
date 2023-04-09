@@ -1470,12 +1470,12 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <div class='noselect' style='width:100%;text-align:left;margin-left:10px;border:none'>
    <div style='display:inline-block;'>
-      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Shield &amp; SOV</span><span style='display:inline-block;' data-lang="cn">显示护盾和SOV</span></label>
-      <input id='checkbox_shield' type='checkbox' onchange='toggle_info()'>
+      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Shield &amp; SOV</span><span style='display:inline-block;' data-lang="cn">显示护盾和SOV</span>
+      <input id='checkbox_shield' type='checkbox' onchange='toggle_info()'></label>
    </div>
    <div style='display:inline-block; margin-left: 20px;'>
-      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Owner</span><span style='display:inline-block;' data-lang="cn">显示拥有者</span></label>
-      <input id='checkbox_owner' type='checkbox' onchange='toggle_info()'>
+      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Owner</span><span style='display:inline-block;' data-lang="cn">显示拥有者</span>
+      <input id='checkbox_owner' type='checkbox' onchange='toggle_info()'></label>
    </div>
    <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> </div>
 </div>
@@ -3960,7 +3960,7 @@ thename  = "rugged area";
 
 document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;'>" + thename + "&nbsp;<strong>";
 
-document.getElementById("coordinate").innerHTML = "<small>"+ (thex2) + " | "+(they2) + "</small>";
+document.getElementById("coordinate").innerHTML = "<small style='margin-right:50px;'>"+ (thex2) + " | "+(they2) + "</small>";
 
 if ( globalselection['assetid'] <= 0)
    {
