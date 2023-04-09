@@ -674,6 +674,7 @@ color:#ff0000;
 
 .canvasfolder_openclose
 {
+text-align: center;
 cursor:pointer;
 border:1px solid #ffffff;
 -webkit-border-radius: 2px;
@@ -681,6 +682,7 @@ border:1px solid #ffffff;
 border-radius: 2px;
 padding:2px;
 background:#0099ff;
+width: 120px;
 }
 
 
@@ -710,15 +712,16 @@ color:#222222;
 {
 cursor:pointer;
 padding:5px;
-background:#0099ff;
+background:#00a2ff;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
+color: white;
 }
 
 .chatinputsend:hover
 {
-background:#33aaff;
+background:#334bff;
 }
 
 /*
