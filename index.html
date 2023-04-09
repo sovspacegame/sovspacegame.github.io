@@ -4102,7 +4102,12 @@ if ( canclaim == 2)
      document.getElementById("claim_svx").className = "claim_off";
      document.getElementById("claim_svx").style.height = "0px";
      document.getElementById("claim_svx").style.visibility = "hidden";
-      document.getElementById("claim_svx").innerHTML = "Claim";
+     
+      
+     var lang = document.getElementById("language-selector").value;
+      if (lang === "en") document.getElementById("claim_svx").innerHTML = "Claim SVX";
+      if (lang === "cn") document.getElementById("claim_svx").innerHTML = "宣称";
+           
 
      document.getElementById("claim_svx_all").style.height = "0px";
      document.getElementById("claim_svx_all").style.visibility = "hidden";
@@ -4360,7 +4365,11 @@ global_tslastclaim = tslastclaim;
     document.getElementById("claim_svx").className =  "claim_off";
     } else
       {
-      document.getElementById("claim_svx").innerHTML =  "Claim";
+      
+      var lang = document.getElementById("language-selector").value;
+      if (lang === "en") document.getElementById("claim_svx").innerHTML = "Claim SVX";
+      if (lang === "cn") document.getElementById("claim_svx").innerHTML = "宣称";
+                       
       document.getElementById("claim_svx").className =  "claim";
       }
 
@@ -9360,7 +9369,12 @@ var interval = (24*60*60);
     document.getElementById("claim_svx").className =  "claim_off";
     } else
       {
-      document.getElementById("claim_svx").innerHTML =  "Claim";
+      
+      var lang = document.getElementById("language-selector").value;
+      if (lang === "en") document.getElementById("claim_svx").innerHTML =  "Claim SVX";
+      if (lang === "cn") document.getElementById("claim_svx").innerHTML =  "宣称";
+      
+//      document.getElementById("claim_svx").innerHTML =  "Claim";
       document.getElementById("claim_svx").className =  "claim";
       }
 
