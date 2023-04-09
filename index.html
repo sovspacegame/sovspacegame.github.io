@@ -4087,7 +4087,7 @@ if ( canclaim == 2)
      document.getElementById("claim_svx").className = "claim_off";
      document.getElementById("claim_svx").style.height = "0px";
      document.getElementById("claim_svx").style.visibility = "hidden";
-      document.getElementById("claim_svx").innerHTML = "Claim";
+     document.getElementById("claim_svx").innerHTML = "<span data-lang='en'>Claim All</span><span data-lang='cn'>全部认领</span>";
 
      document.getElementById("claim_svx_all").style.height = "0px";
      document.getElementById("claim_svx_all").style.visibility = "hidden";
@@ -4348,7 +4348,7 @@ global_tslastclaim = tslastclaim;
     document.getElementById("claim_svx").className =  "claim_off";
     } else
       {
-      document.getElementById("claim_svx").innerHTML =  "Claim";
+      document.getElementById("claim_svx").innerHTML =  "<span data-lang='en'>Claim All</span><span data-lang='cn'>全部认领</span>";
       document.getElementById("claim_svx").className =  "claim";
       }
 
