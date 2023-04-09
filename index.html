@@ -7943,7 +7943,7 @@ nav_mode = mode;
 if (mode == 1)
    {
    document.getElementById('navsvg_text_cn').innerHTML = "中心";
-   document.getElmentByID('navsvg_text').innerHTML = "center";
+   document.getElementById('navsvg_text').innerHTML = "center";
 
    document.getElementById('navbutton_scroll').className = "navbutton_on";
 
@@ -8044,6 +8044,10 @@ if (mode == 2)
 
    document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_move').className = "navbutton_on";
+   document.getElementById('navbutton_attack').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_off";
+   document.getElementById('navbutton_repair').className = "navbutton_off";
+   
   /*
    document.getElementById('navbutton_attack').className = "navbutton_off";
    document.getElementById('navbutton_demolish').className = "navbutton_off";
