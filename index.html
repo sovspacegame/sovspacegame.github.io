@@ -1059,6 +1059,7 @@ document.getElementById("xcoor").value = xcoor;
 document.getElementById("ycoor").value = ycoor;
 
 refreshboard();
+nav_selection(1);
 //alert("globalselection['x'] " + globalselection['x'] + " " + globalselection['y']);
 } // setcenter()
 
@@ -1071,7 +1072,7 @@ document.getElementById("xcoor").value = xcoor;
 document.getElementById("ycoor").value = ycoor;
 
 refreshboard();
-
+nav_selection(1);
 //window.location.hash='gameboardtag';
 
 //alert("globalselection['x'] " + globalselection['x'] + " " + globalselection['y']);
@@ -3109,7 +3110,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1y</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v1z</div>
 
 <br>
 <br>
@@ -3494,7 +3495,7 @@ if (( globalselection['owner'] == global_account || globalselection['owner'] == 
    }
 
 // demolish
-if ((globalselection['owner'] != global_account && globalselection['owner'] != globalselection['auth']) &&
+if ((globalselection['owner'] == global_account && globalselection['owner'] != globalselection['auth']) &&
    (globalselection['atype'] == 1 // lander
    || globalselection['atype'] == 2 // residence
    || globalselection['atype'] == 3 // agri
@@ -8182,20 +8183,11 @@ if (mode == 3)
 
    }
 
+
 if (mode == 4)
    {
-   if (globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
-   {
-   document.getElementById('navbutton_scroll').className = "navbutton_off";
-   document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
-   document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
-   document.getElementById('navbutton_move').className = "navbutton_off_inactive";
-   document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
-   document.getElementById('navbutton_flatten').className = "navbutton_off_inactive";
-//   document.getElementById('navbutton_infect').className = "navbutton_off";
-
-   } else if (( globalselection['owner'] != global_account && globalselection['owner'] != globalselection['auth'] )
-   && (globalselection['atype'] == "" || // non nft occupied tile
+   if ((globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
+   && (
       globalselection['atype'] == 1 || // lander
       globalselection['atype'] == 2 || // residence
       globalselection['atype'] == 3 || // agri
@@ -8203,32 +8195,56 @@ if (mode == 4)
       globalselection['atype'] == 7 || // wall
       globalselection['atype'] == 8 || // collector
       globalselection['atype'] == 9 || //tower
-      globalselection['atype'] == 13  // wall ii
-      )) {
+      globalselection['atype'] == 13 || // wall ii
+      globalselection['atype'] == 14  // RED
+      ))
+   {
+   document.getElementById('navbutton_scroll').className = "navbutton_off";
+   document.getElementById('navbutton_demolish').className = "navbutton_on";
+   document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
+   document.getElementById('navbutton_move').className = "navbutton_off_inactive";
+   document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
+   document.getElementById('navbutton_flatten').className = "navbutton_off_inactive";
+//   document.getElementById('navbutton_infect').className = "navbutton_off";
+
+   document.getElementById('path924').style.visibility = "hidden";
+   document.getElementById('path929').style.visibility = "hidden";
+   document.getElementById('path931').style.visibility = "visible";
+   document.getElementById('path933').style.visibility = "visible";
+
+   document.getElementById('circ1').style.visibility = "hidden";
+   document.getElementById('circ3').style.visibility = "hidden";
+   document.getElementById('circ5').style.visibility = "hidden";
+   document.getElementById('circ7').style.visibility = "hidden";
+   document.getElementById('circ2').style.cssText = "visibility: visible; fill: #009900;";
+   document.getElementById('circ4').style.cssText = "visibility: visible; fill: #009900;";
+   document.getElementById('circ6').style.cssText = "visibility: visible; fill: #009900;";
+   document.getElementById('circ8').style.cssText = "visibility: visible; fill: #009900;";
+
+   } else {
 
          document.getElementById('navbutton_scroll').className = "navbutton_off";
-         document.getElementById('navbutton_demolish').className = "navbutton_on";
+         document.getElementById('navbutton_demolish').className = "navbutton_off_inactive";
          document.getElementById('navbutton_attack').className = "navbutton_off_inactive";
          document.getElementById('navbutton_move').className = "navbutton_off_inactive";
          document.getElementById('navbutton_repair').className = "navbutton_off_inactive";
          document.getElementById('navbutton_flatten').className = "navbutton_off_inactive";
 
+         document.getElementById('path924').style.visibility = "hidden";
+         document.getElementById('path929').style.visibility = "hidden";
+         document.getElementById('path931').style.visibility = "hidden";
+         document.getElementById('path933').style.visibility = "hidden";
+
+         document.getElementById('circ1').style.cssText = "visibility: hidden;";
+         document.getElementById('circ2').style.cssText = "visibility: hidden;";
+         document.getElementById('circ3').style.cssText = "visibility: hidden;";
+         document.getElementById('circ4').style.cssText = "visibility: hidden;";
+         document.getElementById('circ5').style.cssText = "visibility: hidden;";
+         document.getElementById('circ6').style.cssText = "visibility: hidden;";
+         document.getElementById('circ7').style.cssText = "visibility: hidden;";
+         document.getElementById('circ8').style.cssText = "visibility: hidden;";
+
       }
-
-
-   document.getElementById('path924').style.visibility = "hidden";
-   document.getElementById('path929').style.visibility = "hidden";
-   document.getElementById('path931').style.visibility = "hidden";
-   document.getElementById('path933').style.visibility = "hidden";
-
-   document.getElementById('circ1').style.cssText = "visibility: hidden;";
-   document.getElementById('circ2').style.cssText = "visibility: hidden;";
-   document.getElementById('circ3').style.cssText = "visibility: hidden;";
-   document.getElementById('circ4').style.cssText = "visibility: hidden;";
-   document.getElementById('circ5').style.cssText = "visibility: hidden;";
-   document.getElementById('circ6').style.cssText = "visibility: hidden;";
-   document.getElementById('circ7').style.cssText = "visibility: hidden;";
-   document.getElementById('circ8').style.cssText = "visibility: hidden;";
 
    // movesteps_div
    /*
@@ -8237,6 +8253,7 @@ if (mode == 4)
    */
 
    }
+
 
 if (mode == 5)
    {
