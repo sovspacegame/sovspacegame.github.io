@@ -297,14 +297,17 @@ if (currentwallet == "SCATTER")
       func_transfer_success(result.processed.id);          
     } catch (e) {
                  refreshcounter = 4; // update-hack from index.html
-     console.log("Scatter tx Error:");
-     console.log(e);
-//       err = JSON.parse(e);
-                        
-         //   func_transfer_error( JSON.stringify(e.json, null, 2) );
-//      pre.textContent = '\nCaught exception: ' + e;
-//      if (e instanceof eosjs_jsonrpc.RpcError)
-  //      pre.textContent += '\n\n' + JSON.stringify(e.json, null, 2);
+   
+                 console.log('-------');
+                 console.log('\nCaught exception: ' + err);
+                  console.log('A');
+                  console.log(JSON.stringify(err.json, null, 2));
+                  console.log('B');
+            console.log('error: ');
+            console.log( err.json.processed.except.stack[0].data.s);
+            message = err.json.processed.except.stack[0].data.s;
+            func_transfer_error( message );
+   
     }
   })();
             
