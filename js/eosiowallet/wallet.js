@@ -295,7 +295,7 @@ if (currentwallet == "SCATTER")
         expireSeconds: 30,
       });
       func_transfer_success(result.processed.id);          
-    } catch (e) {
+    } catch (err) {
                  refreshcounter = 4; // update-hack from index.html
    
                  console.log('-------');
