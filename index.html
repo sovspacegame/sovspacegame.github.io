@@ -4670,6 +4670,7 @@ for (var i2=0; i2<16; i2++)
     tilearray[i][i2]['shield_max']  = -1;
     tilearray[i][i2]['sov']         = -1;
     tilearray[i][i2]['svx_balance'] = -1;
+    tilearray[i][i2]['disabled']    = 0;
 
 
 
@@ -5235,7 +5236,7 @@ for (var i2=0; i2<16; i2++)
     } // for j...
 
 
-
+// alfalf tilearray[i][i2]['disabled']
 
 } // callback_render_areas
 
@@ -5419,6 +5420,10 @@ for (var i=0; i<size; i++)
     // config
 //    let configarray = config.split(";");
     let configarray = split(config,";");
+    
+    
+    // disabled tower
+// alfalf    configarray
 
 
     if ( tile != "tile10" &&  tile != "tile11")
@@ -5501,7 +5506,29 @@ for (var i=0; i<size; i++)
        }
 
     if ( atype == 9 && race == 1)
-       buffer = "<img src='img/tower_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       {
+       
+       var disabled = 0;
+       if ( configarray.length > 0)
+          {
+
+          for (var i3=0; i3< configarray.length; i3+=2)
+              {
+              if (configarray[i3] == 'disabled' &&
+                 configarray[i3+1] != "" && configarray[i3+1] != undefined
+                 )
+                 {
+                 disabled = 1;
+                 }
+              } // for
+       } // if
+
+
+       if (disabled == 0)
+          buffer = "<img src='img/tower_a.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       if (disabled == 1)
+          buffer = "<img src='img/tower_a_inactive.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
+       }
 
    if ( atype == 10 && race == 1)
        {
