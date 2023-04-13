@@ -3425,6 +3425,30 @@ globalselection['tilerace'] = tilerace;
 globalselection['tiletype'] = tiletype;
 
 
+ 
+
+if ( configarray.length > 0)
+{
+
+for (var i=0; i< (configarray.length); i=i+2)
+{
+
+if (configarray[i] == 'authorize' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
+   )
+   {
+   authorizevar = configarray[i+1];   
+   }
+
+
+} // for
+
+} // if
+globalselection['auth'] = authorizevar;
+
+
+
+
 // Click on tile
 if ( globalselection['assetid'] == "" )
    {
@@ -3448,7 +3472,9 @@ if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
 
 
 console.log(globalselection);
-if ( globalselection['atype'] == 5 && globalselection['owner'] == (global_account || globalselection['owner'] == globalselection['auth']))
+
+//alert(globalselection['owner'] + " " + globalselection['auth']);
+if ( globalselection['atype'] == 5 && (globalselection['owner'] == global_account || globalselection['auth'] == global_account )   )
    {
    document.getElementById('navbutton_flatten').className = "navbutton_off";
    } // if ( globalselection['assetid'] == "" )
@@ -3470,7 +3496,7 @@ if (globalselection['atype'] == 14 || globalselection['atype'] == 10 )
 */
 
 // Tower
-if ( globalselection['atype'] == 9 && ( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'] ) )
+if ( globalselection['atype'] == 9 && ( globalselection['owner'] == global_account || globalselection['auth'] == global_account ) )
    {
    document.getElementById('navbutton_disable').className = "navbutton_off";
    } // if ( globalselection['assetid'] == "" )
@@ -3480,7 +3506,8 @@ if ( globalselection['atype'] == 9 && ( globalselection['owner'] == global_accou
    }
 
 // Vehicle (move)
-if (( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
+if (
+   ( globalselection['owner'] == global_account || globalselection['auth'] == global_account )
    &&
    (globalselection['atype'] == 5 // bulldozer
    || globalselection['atype'] == 10
@@ -3496,7 +3523,7 @@ if (( globalselection['owner'] == global_account || globalselection['owner'] == 
    }
 
 // Attack
-if (( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'] )
+if (( globalselection['owner'] == global_account || globalselection['auth'] == global_account )
    && (globalselection['atype'] == 5 // Bulldozer
    || globalselection['atype'] == 11 // tank
    ))
@@ -3509,7 +3536,7 @@ if (( globalselection['owner'] == global_account || globalselection['owner'] == 
    }
 
 // demolish
-if ((globalselection['owner'] == global_account && globalselection['owner'] != globalselection['auth']) &&
+if ((globalselection['owner'] == global_account && globalselection['auth'] == global_account  ) &&
    (globalselection['atype'] == 1 // lander
    || globalselection['atype'] == 2 // residence
    || globalselection['atype'] == 3 // agri
@@ -3528,7 +3555,7 @@ if ((globalselection['owner'] == global_account && globalselection['owner'] != g
    }
 
 // repair
-if (( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
+if (( globalselection['owner'] == global_account || globalselection['auth'] == global_account )
 && (globalselection['atype'] == 4 || globalselection['atype'] == 10 ))
    {
    document.getElementById('navbutton_repair').className = "navbutton_off";
@@ -5427,8 +5454,7 @@ for (var i=0; i<size; i++)
     let configarray = split(config,";");
     
     
-    // disabled tower
-// alfalf    configarray
+ 
 
 
     if ( tile != "tile10" &&  tile != "tile11")
@@ -5459,6 +5485,14 @@ for (var i=0; i<size; i++)
 
     // ---
     buffer = "";
+  /*  
+    if (i == 30)
+{
+// buffer += "<img src='img/tank_e_004.png?s=442' style='position:absolute;border:none;width:100%;'>" ;
+ buffer += "<img src='img/out.gif?s=442' style='position:absolute;border:none;width:100%;'>" ;
+}
+*/
+
     if ( atype == 1 && race == 1)
        {
        buffer += "<img src='img/lander1.png?s=4442' style='position:absolute;border:none;width:100%;'>";
@@ -8131,7 +8165,7 @@ if (mode == 1)
 if (mode == 2)
       
    {  
-   if (( globalselection['owner'] != global_account && globalselection['owner'] != globalselection['auth'] ) 
+   if (( globalselection['owner'] != global_account && global_account != globalselection['auth'] ) 
       ||
       (globalselection['atype'] == "" || // non nft occupied tile
       globalselection['atype'] == 1 || // lander
@@ -8211,7 +8245,7 @@ if (mode == 2)
    }
 
 if (mode == 3)
-   { if (( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'] )
+   { if (( globalselection['owner'] == global_account || global_account == globalselection['auth'] )
    && (globalselection['atype'] == 5 // Bulldozer
    || globalselection['atype'] == 11 // tank
    ))
@@ -8271,7 +8305,7 @@ if (mode == 3)
 
 
 
-   if (globalselection['atype'] == 11 &&  ( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'] ))
+   if (globalselection['atype'] == 11 &&  ( globalselection['owner'] == global_account || global_account == globalselection['auth'] ))
       {
          document.getElementById('navbutton_scroll').className = "navbutton_off";
          document.getElementById('navbutton_attack').className = "navbutton_on";
@@ -8302,7 +8336,7 @@ if (mode == 3)
 
 if (mode == 4)
    {
-   if ((globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
+   if ((globalselection['owner'] == global_account || global_account == globalselection['auth'])
    && (
       globalselection['atype'] == 1 || // lander
       globalselection['atype'] == 2 || // residence
@@ -8373,7 +8407,7 @@ if (mode == 4)
 
 if (mode == 5)
    {
-   if (( globalselection['owner'] == global_account || globalselection['owner'] == globalselection['auth'])
+   if (( globalselection['owner'] == global_account || global_account == globalselection['auth'])
    && (globalselection['atype'] == 4 || globalselection['atype'] == 10 ))
    {
    document.getElementById('navbutton_scroll').className = "navbutton_off";
@@ -8432,7 +8466,7 @@ if (mode == 5)
 
 if (mode == 6)
    {if 
-      ( globalselection['atype'] == 5 && globalselection['owner'] == (global_account || globalselection['owner'] == globalselection['auth']))
+      ( globalselection['atype'] == 5 && (globalselection['owner'] == global_account || global_account == globalselection['auth']))
 {
    document.getElementById('navbutton_scroll').className = "navbutton_off";
    document.getElementById('navbutton_flatten').className = "navbutton_on";
