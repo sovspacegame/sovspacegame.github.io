@@ -1,10 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="icon" href="img/icon.png" /> -->
 <link rel="icon" href="img/invadersfavicon.ico" />
-
-
 
 <link rel="stylesheet" href="css/style.css?ttd=44we34" />
 
@@ -3140,11 +3137,13 @@ if ( classicmode != false )
 
 /*
 var nft_node = "https://eos.api.atomicassets.io/atomicassets/v1/assets/";
-
+*/
 var elm = document.getElementById('select_api_node');
 elm.onchange = function()
    {
+
    thenode = this.value;
+ //     alert(thenode);
     _setCookie("mylastnode",thenode,30);
    } // select_api_node
 
@@ -3155,7 +3154,7 @@ elm.onchange = function()
    alert( "select_nft_node " + this.value );
    } // select_data_node
 
-*/
+
 </script>
 
 
