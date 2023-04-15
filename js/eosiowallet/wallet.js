@@ -22,7 +22,7 @@ var chainID = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906"
 // Node-selection
 //var   thenode      = "eos.greymass.com"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
 var   thenode      = "eos.api.eosnation.io"; // Default RPC-node. Testnet:  "jungle3.greymass.com"
-
+//   thenode      = "eos.greymass.com";
 //var   thenode      = "eos.api.eosnation.io"; // 
 
 //var   thenode      = "jungle3.greymass.com"; // 
@@ -297,16 +297,24 @@ if (currentwallet == "SCATTER")
       func_transfer_success(result.processed.id);          
     } catch (err) {
                  refreshcounter = 4; // update-hack from index.html
-   
-                 console.log('-------');
+                   console.log('------- error:');
+   console.log( err );
+               
                  console.log('\nCaught exception: ' + err);
                   console.log('A');
                   console.log(JSON.stringify(err.json, null, 2));
                   console.log('B');
-            console.log('error: ');
+            console.log('error(2): ');
+            if ( err.json.processed.except.stack[0].data.s != undefined )
+               {
             console.log( err.json.processed.except.stack[0].data.s);
             message = err.json.processed.except.stack[0].data.s;
             func_transfer_error( message );
+
+               } else
+                 {
+                 func_transfer_error( err );
+                 }
    
     }
   })();
@@ -347,9 +355,20 @@ if (currentwallet == "HARDWIRED")
                   console.log(JSON.stringify(err.json, null, 2));
                   console.log('B');
             console.log('error: ');
+            
+            
+             if ( err.json.processed.except.stack[0].data.s != undefined )
+               {
             console.log( err.json.processed.except.stack[0].data.s);
             message = err.json.processed.except.stack[0].data.s;
-     func_transfer_error( message );
+            func_transfer_error( message );
+
+               } else
+                 {
+                 func_transfer_error( err );
+                 }
+                 
+          
                               
                               
  
