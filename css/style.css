@@ -464,7 +464,7 @@ border-right:2px solid #aaaaff;
 border-bottom:2px solid #aaaaff;
 
 float:left;
-width:35%;
+width:33%;
 height:20px;
 padding:10px;
 margin:5px;
@@ -497,7 +497,7 @@ border-right:2px solid #333399;
 border-bottom:2px solid #333399;
 
 float:left;
-width:35%;
+width:33%;
 height:20px;
 padding:10px;
 margin:5px;
@@ -534,7 +534,7 @@ border-right:2px solid #555555;
 border-bottom:2px solid #555555;
 
 float:left;
-width:35%;
+width:33%;
 height:20px;
 padding:10px;
 margin:5px;
@@ -581,6 +581,21 @@ background: url("../img/pixel.png");
 { 
 width:92%;
 color:#ffffff;
+}
+
+.inventorycontent
+{
+
+margin-left:20px;
+margin-right:auto;   
+width:95%;
+
+border:2px solid #666666;
+
+
+  -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .div_inventory
@@ -697,7 +712,20 @@ width: 120px;
 background:#33aaff;
 }
 
+.adminbutton
+{
+border:1px solid #aaaaaa;
+cursor:pointer;
+float:left;
+margin-right:10px;
+padding:5px;
+background:#000000;
+}
 
+.adminbutton:hover
+{
+background:#333333;
+}
  
 
 /* Chatbox */
