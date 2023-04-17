@@ -60,6 +60,16 @@
  </audio>
 </div>
 
+<!-- alfalf -->
+<div style='position:absolute;right:180px;top:110px;color:#eeee7b;border:none;cursor:pointer;' onclick='powerup()'>
+<div id='div_cpu'>....</div>
+</div>
+
+<div style='position:absolute;right:180px;top:130px;color:#007bff;border:none;'>
+<div id='div_net'>....</div>
+</div>
+
+
 
 <div style='position:absolute;right:30px;top:110px;color:#007bff;border:none;'>
 <div id='balance_eos'>....</div>
@@ -5276,7 +5286,7 @@ for (var i2=0; i2<16; i2++)
     } // for j...
 
 
-// alfalf tilearray[i][i2]['disabled']
+//  tilearray[i][i2]['disabled']
 
 } // callback_render_areas
 
@@ -9351,8 +9361,78 @@ document.getElementById('balance_eos').innerHTML = buffer;
 function getbalance_eos()
 {
 //alert("test getdata");
-getdata(callback_render_balance_eos, "eosio.token", global_account, "accounts", "", "", "", 1 );
-}
+
+getaccount(global_account).then(function(value) {
+             
+               var cpu_available = value.cpu_limit.available;
+
+                                var cpu_max = value.cpu_limit.max;
+
+                                var cpu_used = value.cpu_limit.used;
+
+                                var net_max = value.net_limit.max;
+
+                                var net_used = value.net_limit.used;
+
+                                var balance = value.core_liquid_balance;
+console.log("BBBB:" + balance);
+                                var balance1 = value.core_liquid_balance;
+
+                                var balance2 = value.core_liquid_balance;
+
+                                var cpu_proz = (cpu_used / cpu_max) * 100;
+                                cpu_proz = Number(cpu_proz).toFixed(1);
+
+                                var net_proz = (net_used / net_max) * 100;
+                                net_proz = Number(net_proz).toFixed(1);
+                                
+                             //   alfalf
+                                document.getElementById('balance_eos').innerHTML = balance;
+
+
+  if (document.getElementById('div_cpu')) {
+                                    cpu_proz = Number(cpu_proz).toFixed(0) * 1;
+                                    document.getElementById('div_cpu').innerHTML =  ""+ cpu_proz + "% CPU ⚡";
+                                  //  set_circle_element("mycpu", cpu_proz);
+                                }
+                                
+  if (document.getElementById('div_net')) {
+                                    net_proz = Number(net_proz).toFixed(0) * 1;
+                                    document.getElementById('div_net').innerHTML = ""+ net_proz + "% NET&nbsp;&nbsp;&nbsp;&nbsp;";
+                                  //  set_circle_element("mycpu", cpu_proz);
+                                }                                
+/*
+                                if (document.getElementById('balance')) {
+                                    document.getElementById('balance').innerHTML = "" + balance;
+                                }
+
+                                if (document.getElementById('balance1')) {
+                                    document.getElementById('balance1').innerHTML = "" + balance;
+                                }
+
+                                if (document.getElementById('balance2')) {
+                                    document.getElementById('balance2').innerHTML = "" + balance;
+                                }
+
+                                if (document.getElementById('mycpu')) {
+                                    cpu_proz = Number(cpu_proz).toFixed(0) * 1;
+                                    document.getElementById('div_cpu').innerHTML =  cpu_proz + "%";
+                                  //  set_circle_element("mycpu", cpu_proz);
+                                }
+
+                                if (document.getElementById('mynet')) {
+                                    net_proz = Number(net_proz).toFixed(0) * 1;
+
+                                    // document.getElementById('div_net').innerHTML =  net_proz + "%";
+                                    set_circle_element("mynet", net_proz);
+                                }
+*/
+
+             }  );
+
+
+//getdata(callback_render_balance_eos, "eosio.token", global_account, "accounts", "", "", "", 1 );
+} // getbalance_eos
 
 
 
