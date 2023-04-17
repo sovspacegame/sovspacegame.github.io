@@ -60,7 +60,6 @@
  </audio>
 </div>
 
-<!-- alfalf -->
 <div style='position:absolute;right:180px;top:110px;color:#eeee7b;border:none;cursor:pointer;' onclick='powerup()'>
 <div id='div_cpu'>....</div>
 </div>
@@ -175,6 +174,8 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
    <div onclick='dospecial(1)' class='adminbutton' style='margin-left:10px;'>CLEAN TILE</div>
 
   <div onclick='dospecial(2)' class='adminbutton'>REMOVE TILE</div>
+
+   <div onclick='dospecial(3)' class='adminbutton' style='margin-left:10px;'>ADD TILE</div>
   
 
   </div>
@@ -1505,23 +1506,61 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 <div id='mydebug'>...</div>
 -->
 
+<br>
+
+
 <div style='clear:both;'></div>
 
-<div class='noselect' style='width:100%;text-align:left;margin-left:10px;border:none'>
-   <div style='display:inline-block;'>
-      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Shield &amp; SOV</span><span style='display:inline-block;' data-lang="cn">显示护盾和SOV</span>
-      <input id='checkbox_shield' type='checkbox' onchange='toggle_info()'></label>
+<div class='noselect' style='width:100%;text-align:left;margin-left:10px;margin-bottom:10px;border:none'>
+   <div style='display:inline-block;width:220px;'>
+      <label style='cursor:pointer;'>  <input id='checkbox_shield' type='checkbox' onchange='toggle_info()' style='float:left;'> <span style='' data-lang="en">Show Shield &amp; SOV</span><span style='' data-lang="cn">显示护盾和SOV</span> </label>
    </div>
-   <div style='display:inline-block; margin-left: 20px;'>
-      <label style='cursor:pointer;'><span style='display:inline-block;' data-lang="en">Show Owner</span><span style='display:inline-block;' data-lang="cn">显示拥有者</span>
-      <input id='checkbox_owner' type='checkbox' onchange='toggle_info()'></label>
+   
+   <div style='display:inline-block; margin-left: 20px;width:220px;'>
+      <label style='cursor:pointer;'>  <input id='checkbox_owner' type='checkbox' onchange='toggle_info()' style='float:left;'> <span style='' data-lang="en">Show Owner</span><span style='' data-lang="cn">显示拥有者</span> </label>     
    </div>
+   
    <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> </div>
 </div>
 
 
 <div style='clear:both;'></div>
+
+
+
+ 
+
+<!-- inventory -->
+<div style='margin-left:20px;'>
+   <span data-lang="en" id='inventory_openclose_en' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>Your NFT Wallet &#9660;</span>
+   <span data-lang="cn" id='inventory_openclose_cn' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>您的NFT钱包 &#9660;</span>
+ </div>
+ 
+ 
+<div id='inventorycontent' class='inventorycontent' style='height:50px;overflow:hidden;'>
+ 
+
+ 
+
+<div style='text-align:center;'>
+
+
+ <div id='div_inventory' class='div_inventory' style='height:280px;border:none; '>
+
+  <div id='div_inventory_inner' class='div_inventory_inner' style=''>
+  </div> <!-- div_inventory_inner -->
+ </div> <!-- div_inventory -->
+</div> <!-- center -->
+
+</div> <!-- inventorycontent -->
+<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
+<div style='clear:both;'></div>
+
+
 <br>
+<div style='clear:both;'></div>
+
+
 
 
 
@@ -1532,7 +1571,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
  </div>
 
 <div id='canvasfolder' style='height:50px;border:none'>
- <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:80%;overflow:hidden;'>
+ <div id='canvasmain' class='imground' style='margin-left:20px;border:2px solid #666666;cursor:crosshair;width:95%;height:98%;overflow:hidden;'>
  <canvas id='navmap' width='400' height='400' style='width:100%;' ></canvas>
  </div>
 </div>
@@ -1614,40 +1653,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 
 
-
-
-
-<div id='inventorycontent' style=''>
-
-
-
-<span onclick='' class='' style='text-align:center;float:left;padding:5px;margin-top:10px;margin-left:20px;width:230px;margin-left:auto;'><p data-lang="en">Your NFT Wallet:</p><p data-lang="cn">您的NFT钱包:</p></span>
-
-<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:20px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
-<div style='clear:both;'></div>
-
-
-
-
-
-
-
-<div style='text-align:center;'>
-
-
- <div id='div_inventory' class='div_inventory' style='height:280px;'>
-
-  <div id='div_inventory_inner' class='div_inventory_inner' style=''>
-  </div> <!-- div_inventory_inner -->
- </div> <!-- div_inventory -->
-</div> <!-- center -->
-
-</div> <!-- inventorycontent -->
-
-
-<br>
-<div style='clear:both;'></div>
-<br>
+ 
 <br>
 
 
@@ -2710,6 +2716,39 @@ myaudio.load(src);
 myaudio.play();
 
 }
+
+
+
+
+
+ 
+   
+var inventory_toggle_val = 0;
+
+function inventory_toggle() {
+  inventory_toggle_val = !inventory_toggle_val;
+
+  if (inventory_toggle_val) {
+    // expand
+    document.getElementById("inventorycontent").style.height = "";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("inventory_openclose_en").innerHTML = "Your NFT Wallet &#9650;";
+    } else if (lang === "cn") {
+      document.getElementById("inventory_openclose_cn").innerHTML = "您的NFT钱包 &#9650;";
+    }
+  } else {
+    // shrink
+    document.getElementById("inventorycontent").style.height = "50px";
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("inventory_openclose_en").innerHTML = "Your NFT Wallet &#9660;";
+    } else if (lang === "cn") {
+      document.getElementById("inventory_openclose_cn").innerHTML = "您的NFT钱包 &#9660;";
+    }
+  }
+} // inventory_toggle
+
 
 
 
@@ -8650,11 +8689,26 @@ for (var i=0; i<size; i++)
              width = 1000000;
              they2 = parseInt ( coor / width );
              thex2 = coor - (they2*width);
-  
-             link2 = "<span onclick='setcenter2(" +thex2+ "," +they2+ ")' style='cursor:pointer;color:#ffb800;'>[center]</span>";
+             
+             
+             if ( !isNaN(they2) && !isNaN(thex2) )
+             {
+               link2 = "<span onclick='setcenter2(" +thex2+ "," +they2+ ")' style='cursor:pointer;color:#ffb800;'>[center]</span>";
 
              buffer +=  "Destroyed: by "+attacker+" NFT: <a href='"+link+"' target='_blank' style='color:9999ff'>"+nft+"</a>  x:"+thex2+" y:"+they2+" "+link2+" <br>";
 
+
+             } else
+               {
+                 link2 = "<span   style='cursor:pointer;color:#ffb800;'></span>";
+
+             buffer +=  "Destroyed: by "+attacker+" NFT: <a href='"+link+"' target='_blank' style='color:9999ff'>"+nft+"</a>  <br>";
+
+               }
+             
+           
+  
+           
              } // if (attacker != undefined)
 
           }
@@ -9417,7 +9471,7 @@ console.log("BBBB:" + balance);
                                 var net_proz = (net_used / net_max) * 100;
                                 net_proz = Number(net_proz).toFixed(1);
                                 
-                             //   alfalf
+                             
                                 document.getElementById('balance_eos').innerHTML = balance;
 
 
@@ -10068,9 +10122,64 @@ xcoor = globalselection['x'] ;
 ycoor = globalselection['y'] ;
 
  
+ 
 
 var theactions = [];
 
+
+
+
+
+
+if (mode == 1)
+{
+
+
+rand = getrandom( 1, 4);
+var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": memo 
+                       }
+                 };
+
+
+
+
+  theactions.push(action);    
+    
+    
+rand = getrandom( 1, 4);
+var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": memo 
+                       }
+                 };
+
+
+
+
+    theactions.push(action);
+} // if mode == 1
+
+
+if (mode == 2)
+{
  
 var memo = "killarea;"+xcoor+";"+ycoor;
 
@@ -10090,8 +10199,14 @@ var memo = "killarea;"+xcoor+";"+ycoor;
 
 
     theactions.push(action);
+    
 
-if (mode == 1)
+} // if mode == 2
+
+
+
+
+if (mode == 3)
 {
 
 rand = getrandom( 1, 4);
@@ -10113,7 +10228,9 @@ var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
 
 
     theactions.push(action);
-} // if mode == 1
+} // if mode == 3
+
+
 
 if (1)
    {
