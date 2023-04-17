@@ -166,13 +166,21 @@
 </div> <!-- menuarea -->
 
 <div style='margin-left:20px'>
-
 Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' style='color:#aaaaff;text-decoration:none' target='_blank'>https://sovinvaders.fun/</a>
-
 </div>
 
+  <div id='adminmenu2' class='' onclick='' style='visibility:hidden;height:0px;overflow:hidden;margin-left:20px;width:98%;border:1px dashed #aaaaaa'>
+  <br>  
 
+   <div onclick='dospecial(1)' class='adminbutton' style='margin-left:10px;'>CLEAN TILE</div>
 
+  <div onclick='dospecial(2)' class='adminbutton'>REMOVE TILE</div>
+  
+
+  </div>
+
+    <div style='clear:both;'></div> 
+    
 <div id='page1' style='overflow:hidden;'>
 
 
@@ -3140,7 +3148,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2d</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2e</div>
 
 <br>
 <br>
@@ -5045,8 +5053,21 @@ document.getElementById('logoutbutton').style.visibility = "visible";
 document.getElementById('logoutbutton').style.height = "";
 
 if (name == 'sovspacegame')
-   document.getElementById('menu5').style.visibility = "visible"; else
+   {
+   document.getElementById('menu5').style.visibility = "visible"; 
+   document.getElementById('adminmenu2').style.visibility = "visible"; 
+   document.getElementById('adminmenu2').style.height = "70px"; 
+   
+   document.getElementById('chooserace').style.height = "0px";
+   document.getElementById('chooserace').style.visibility = "hidden";
+   
+   }
+   else
+   {
    document.getElementById('menu5').style.visibility = "hidden";
+   document.getElementById('adminmenu2').style.visibility = "hidden"; 
+   document.getElementById('adminmenu2').style.height = "0px"; 
+   }
 
 }
 
@@ -5166,8 +5187,18 @@ if (userdata['race'] == 5)
 
      {
      console.log("no RACE!!!!!");
-     document.getElementById('chooserace').style.height = "240px";
-     document.getElementById('chooserace').style.visibility = "visible";
+     
+     
+     if (global_account != 'sovspacegame')
+        {
+        document.getElementById('chooserace').style.height = "240px";
+        document.getElementById('chooserace').style.visibility = "visible";
+        } else
+          {
+          document.getElementById('chooserace').style.height = "0px";
+          document.getElementById('chooserace').style.visibility = "hidden";
+          }
+     
 
      }
 
@@ -10024,6 +10055,83 @@ for (var i=0; i<size; i++)
 
 // --------- CANVAS
 
+
+
+
+// 
+// Admin-Actions
+//
+function dospecial( mode )
+{
+
+xcoor = globalselection['x'] ;
+ycoor = globalselection['y'] ;
+
+ 
+
+var theactions = [];
+
+ 
+var memo = "killarea;"+xcoor+";"+ycoor;
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": memo 
+                       }
+                 };
+
+
+
+
+    theactions.push(action);
+
+if (mode == 1)
+{
+
+rand = getrandom( 1, 4);
+var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
+
+    var action = {
+                 account: "sovspacegame",
+                 name: 'admin',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "param": memo 
+                       }
+                 };
+
+
+
+
+    theactions.push(action);
+} // if mode == 1
+
+if (1)
+   {
+   transact( func_success, func_error, theactions );
+   }
+
+
+
+} // dospecial()
+
+
+function getrandom( min, max)
+{
+max++;
+
+var random = Math.floor(Math.random() * (+max - +min)) + +min; 
+return(random);
+}
 
 // BEGINN CHAT -----
 
