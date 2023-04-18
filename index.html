@@ -165,7 +165,7 @@
 </div> <!-- menuarea -->
 
 <div style='margin-left:20px;width:100%;'>
-<span data-lang="en" style='float:left;'>Advanced World-Viewer and tactical view:</span><span data-lang="cn" style='float:left;'>高级世界查看器和战术视图：</span> <a href='https://sovinvaders.fun/' style='color:#aaaaff;text-decoration:none;float:left;' target='_blank'>&raquo; https://sovinvaders.fun &laquo;</a>
+<span data-lang="en" style='float:left;'>Advanced World-Viewer and tactical view:</span><span data-lang="cn" style='float:left;'>高级世界查看器和战术视图：</span> <a href='https://sovinvaders.fun/' style='color:#aaaaff;text-decoration:none;float:left;' target='_blank'> &raquo; https://sovinvaders.fun &laquo;</a>
 </div>
 
 
@@ -174,10 +174,12 @@
 
    <div onclick='dospecial(1)' class='adminbutton' style='margin-left:10px;'>CLEAN TILE</div>
 
-  <div onclick='dospecial(2)' class='adminbutton'>REMOVE TILE</div>
+  <div onclick='dospecial(2)' class='adminbutton' style='margin-left:10px;'>REMOVE TILE</div>
 
    <div onclick='dospecial(3)' class='adminbutton' style='margin-left:10px;'>ADD TILE</div>
   
+    <div onclick='dospecial(4)' class='adminbutton' style='margin-left:10px;'>SELL ASSET AND REFUND</div>
+   
 
   </div>
 
@@ -263,7 +265,7 @@
    <span data-lang="cn" id='inventory_openclose_cn' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>您的NFT钱包 &#9660;</span>
  </div>
  
-<div style='float:left;margin-left:0px;'>
+<div style='float:left;margin-left:10px;'>
 <small><span data-lang="en">(Select an area on map the map first and place your NFT)</span><span data-lang="cn">(首先在地图上选择一个区域并放置你的 NFT)</span></small>
 </div> 
  
@@ -10182,7 +10184,9 @@ if (mode == 1)
 
 
 rand = getrandom( 1, 4);
-var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
+
+var memo = "killarea;"+xcoor+";"+ycoor;
+
 
     var action = {
                  account: "sovspacegame",
@@ -10275,6 +10279,42 @@ var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
 
     theactions.push(action);
 } // if mode == 3
+
+
+
+/*
+   void cleanarea (
+                     uint64_t coordinatei,  // coordinatei 
+                     name     user     //                                           
+                     ) 
+*/
+
+
+if (mode == 4)
+{
+ // alfalf
+coordinatei = globalselection['coordinate'];
+
+ 
+    var action = {
+                 account: "sovspacegame",
+                 name: 'cleanarea',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "coordinatei": coordinatei, 
+                       "user": global_account, 
+                       }
+                 };
+
+
+
+
+    theactions.push(action);
+} // if mode == 4
+
 
 
 
