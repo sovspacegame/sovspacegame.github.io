@@ -427,8 +427,8 @@ background:#44aa44;
 background:#1111ff;
 /*border:5px solid #ffffff;*/
 color:#ffffff;
-padding:5px;
-margin-top:10px;
+padding:2px;
+margin-top:5px;
 cursor:pointer;
 text-align:center;
 
@@ -561,7 +561,43 @@ font-size:1.5em;
 }
 
 
+.nft_cell_small
+{
+border:1px solid #666666;
+color:#ffffff;
+-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px;
+    
+text-align:center;    
+width:150px;
+height:170px;
+float:left;
+background: url("../img/pixel.png"); 
+ margin:0px;
+ margin-left:3px;
+ margin-right:3px;
+}  
+
 .nft_cell
+{
+border:1px solid #666666;
+color:#ffffff;
+-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:10px;
+    
+text-align:center;    
+width:150px;
+float:left;
+background: url("../img/pixel.png"); 
+ margin:10px;
+}  
+
+
+.nft_cell2
 {
 border:1px solid #666666;
 color:#ffffff;
@@ -588,7 +624,7 @@ color:#ffffff;
 
 margin-left:20px;
 margin-right:auto;   
-width:95%;
+width:100%;
 
 border:2px solid #666666;
 
@@ -602,7 +638,7 @@ border:2px solid #666666;
 {
     margin-left:auto;
       margin-right:auto;   
-width:95%;
+width:100%;
 height:250px;
 border:2px solid #666666;
 
