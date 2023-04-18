@@ -164,9 +164,10 @@
 
 </div> <!-- menuarea -->
 
-<div style='margin-left:20px'>
-Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' style='color:#aaaaff;text-decoration:none' target='_blank'>https://sovinvaders.fun/</a>
+<div style='margin-left:20px;width:100%;'>
+<span data-lang="en" style='float:left;'>Advanced World-Viewer and tactical view:</span><span data-lang="cn" style='float:left;'>高级世界查看器和战术视图：</span> <a href='https://sovinvaders.fun/' style='color:#aaaaff;text-decoration:none;float:left;' target='_blank'>&raquo; https://sovinvaders.fun &laquo;</a>
 </div>
+
 
   <div id='adminmenu2' class='' onclick='' style='visibility:hidden;height:0px;overflow:hidden;margin-left:20px;width:98%;border:1px dashed #aaaaaa'>
   <br>  
@@ -247,23 +248,23 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
 
 <div id='mainpanel'>
 
-<div id='mainpanelleft' style='min-height:400px;width:70%;float:left;'>
+<div id='mainpanelleft' style='margin-left:20px;min-height:400px;width:70%;float:left;background:none;;'>
 
 
 <!-- nft menu -->
 
- <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:0px;width:230px;margin-left:auto;margin-bottom:0px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
+ <span onclick='loadinventory()' class='refreshboard' style='float:right;width:230px;margin-left:auto;margin-bottom:0px;cursor:pointer;margin-right:0px;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
 <div style='clear:both;'></div>
 
 
 <!-- inventory -->
-<div style='margin-left:20px;float:left;'>
+<div style='margin-left:0px;float:left;'>
    <span data-lang="en" id='inventory_openclose_en' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>Your NFT Wallet &#9660;</span>
    <span data-lang="cn" id='inventory_openclose_cn' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>您的NFT钱包 &#9660;</span>
  </div>
  
-<div style='float:left;margin-left:20px;'>
-<small>(Select an area on map the map first and place your NFT)</small>
+<div style='float:left;margin-left:0px;'>
+<small><span data-lang="en">(Select an area on map the map first and place your NFT)</span><span data-lang="cn">(首先在地图上选择一个区域并放置你的 NFT)</span></small>
 </div> 
  
 <div id='inventorycontent' class='inventorycontent' style='overflow:hidden;margin-bottom:5px;'>
@@ -290,7 +291,7 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
 
 <!-- end - nft menu -->
 
-<div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:20px;width:100%; height:20px;   border:2px solid #666666;float:left;'>
+<div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:0px;width:100%; height:20px;   border:2px solid #666666;float:left;'>
 
 
 
@@ -451,7 +452,7 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
 
 
 
-<div id='mainpanelright' style='height:400px;width:27%;float:left;margin-left:0px; margin-top:230px;'>
+<div id='mainpanelright' style='height:400px;width:27%;float:left;margin-left:0px; margin-top:140px;background:none;'>
 
 
 
@@ -797,7 +798,7 @@ infect
 
 
 
-<div id='' onclick='refreshboard()' class='refreshboard'><span data-lang="en">Refresh Board &#8634;</span><span data-lang="cn">刷新面板 &#8634;</span></div>
+<div id='' onclick='refreshboard()' class='refreshboard' style='width:90%;'><span data-lang="en">Refresh Board &#8634;</span><span data-lang="cn">刷新面板 &#8634;</span></div>
 
 <div style='height:10px;'></div>
 
@@ -821,7 +822,7 @@ infect
 <div id='extramenu_openclose' class='canvasfolder_openclose' onclick='extramenufolder_toggle()'><span data-lang="en">Expand Menu &#9660;</span><span data-lang="cn">展开菜单 &#9660;</span></div>
 
 
- <div id='extramenufolder' class='imground' style='overflow:hidden;padding:10px;height:2px;border:2px solid #666666;'>
+ <div id='extramenufolder' class='imground' style='overflow:hidden;padding:10px;height:2px;background-color:#111111;border:2px solid #666666;'>
 
 <span data-lang="en">Set Nickname:</span><span data-lang="cn">设置昵称:</span><br>
  <input type='text' id='newnickname' class='newnickname'></input>
@@ -1764,7 +1765,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
 <div style='text-align:center;'>
 
- <div id='div_inventory2' class='div_inventory' style='height:250px;'>
+ <div id='div_inventory2' class='div_inventory' style='height:250px;width:95%;'>
   <div id='div_inventory_inner2' class='div_inventory_inner' style=''>
   </div> <!-- div_inventory_inner -->
  </div> <!-- div_inventory -->
@@ -1822,7 +1823,7 @@ Please play responsibly and don't risk tokens you can't afford to lose.</strong>
 <br>
 
 <div data-lang="en" style='text-align:center'>
-<a href='https://www.youtube.com/watch?v=55bDEKNanE0' target='_blank'>Tutorial Video Getting-Started</a>
+<a href='https://www.youtube.com/watch?v=55bDEKNanE0' target='_blank' style='color:#5555ff;text-decoration:none;'>&raquo; Tutorial Video Getting-Started &laquo;</a>
 </div>
 <div data-lang="cn" style='text-align:center'>
    <a href='https://www.youtube.com/watch?v=55bDEKNanE0' target='_blank'>教程视频 - 入门指南</a>
@@ -9954,7 +9955,7 @@ nvmapelement = document.getElementById("navmaphidden");
 var canvas = nvmapelement.getContext('2d');
 width = nvmapelement.width;
 height = nvmapelement.height;
-canvas.fillStyle = '#111111';
+canvas.fillStyle = '#000044';
 canvas.fillRect(0, 0, width, height);
 
 var nvmapelementvisible = document.getElementById("navmap").getContext('2d');
