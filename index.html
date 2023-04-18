@@ -39,6 +39,9 @@
     <script src="js/sovspacegame.js?dsd=423"></script>
     <script src="js/eosjs-account-name_2.2.1.js"></script>
 
+
+    <script src="js/invadersscript/invadersscript.js?dsd=232"></script>
+
  <!-- END WALLET-INCLUDE-->
 
 <script src="https://kit.fontawesome.com/22c7420d77.js" crossorigin="anonymous"></script>
@@ -47,6 +50,9 @@
 
 </head>
 <body class='bodyclass myimage' onload='loadaudio();'>
+<script>
+var config_invadersscript = false;
+</script>
 
 <div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
 
@@ -870,7 +876,42 @@ infect
 
 
 
+<!-- scriptmenu -->
+<div   id='scriptmenu' class='loadmenu imground' style='height:0px;visibility:hidden;overflow:hidden;border:2px solid #cccccc;width:95%;padding:5px;'>
+INVADERSSCRIPT<br>
+<br>
 
+<div id='scriptactions'>
+....
+</div>
+<br>
+
+<textarea id='scriptfile' style='width:95%;margin-left:auto;margin-right:auto;height:200px;'>
+
+ 
+</textarea>
+
+<div id='' class='navbutton_on' onclick='runscript()'>PARSE & RUN</div>
+
+</div> <!-- end - scriptmenu -->
+
+
+<script>
+ 
+
+if (config_invadersscript == true)
+   {
+   document.getElementById("scriptmenu").style.visibility = "visible";
+   document.getElementById("scriptmenu").style.height     = "350px";
+   
+   } // if (config_invadersscript == true)
+   else
+   {
+   
+   }
+   
+  
+</script>
 
 
 
@@ -2970,6 +3011,7 @@ var memo = global_account+"";
 
 
 
+
     var action = {
                  account: "eosio.token",
                  name: 'transfer',
@@ -3235,7 +3277,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2g</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2h</div>
 
 <br>
 <br>
@@ -4290,7 +4332,6 @@ var config = globalselection['config'];
 var configarray = split(config,";");
 
 /*
-console.log("ALF:");
 console.log(config);
 console.log("len: "+configarray.length);
 console.log( configarray[0] + " - " + configarray[1] );
@@ -10292,7 +10333,7 @@ var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
 
 if (mode == 4)
 {
- // alfalf
+
 coordinatei = globalselection['coordinate'];
 
  
