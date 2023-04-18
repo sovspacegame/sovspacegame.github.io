@@ -243,7 +243,57 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
 <!--
 <div id='gameboardtag' ></div>
 -->
-<div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:20px;width:70%; height:20px;   border:2px solid #666666;float:left;'>
+
+
+<div id='mainpanel'>
+
+<div id='mainpanelleft' style='min-height:400px;width:70%;float:left;'>
+
+
+<!-- nft menu -->
+
+ <span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:0px;width:230px;margin-left:auto;margin-bottom:0px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
+<div style='clear:both;'></div>
+
+
+<!-- inventory -->
+<div style='margin-left:20px;float:left;'>
+   <span data-lang="en" id='inventory_openclose_en' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>Your NFT Wallet &#9660;</span>
+   <span data-lang="cn" id='inventory_openclose_cn' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>您的NFT钱包 &#9660;</span>
+ </div>
+ 
+<div style='float:left;margin-left:20px;'>
+<small>(Select an area on map the map first and place your NFT)</small>
+</div> 
+ 
+<div id='inventorycontent' class='inventorycontent' style='overflow:hidden;margin-bottom:5px;'>
+ 
+
+
+
+<div style='text-align:center;'>
+
+
+ <div id='div_inventory' class='div_inventory' style='height:190px;border:none; '>
+
+  <div id='div_inventory_inner' class='div_inventory_inner' style=''>
+  </div> <!-- div_inventory_inner -->
+ </div> <!-- div_inventory -->
+</div> <!-- center -->
+
+</div> <!-- inventorycontent -->
+
+
+ 
+<div style='clear:both;'></div>
+
+
+<!-- end - nft menu -->
+
+<div id='gameboardmain'  class='gameboardmain' style='position:relative;margin-left:20px;width:100%; height:20px;   border:2px solid #666666;float:left;'>
+
+
+
 
 <div id='gameboard' style='position:absolute; ;width:100%;height:300px;background:#404040;overflow:hidden;'>
 
@@ -393,7 +443,19 @@ Advanced World-Viewer and tactical view: <a href='https://sovinvaders.fun/' styl
 </div> <!-- end gameboardmain -->
 
 
-<div id='board_navigation' style='color:#ffffff;width:27%;float:left;'>
+<br>
+<span id='coordinate' style='float:right;'></span>
+
+ 
+</div> <!-- mainpanelleft -->
+
+
+
+<div id='mainpanelright' style='height:400px;width:27%;float:left;margin-left:0px; margin-top:230px;'>
+
+
+
+<div id='board_navigation' style='color:#ffffff;width:100%;float:left;margin-left:10px;'>
 
 <div id='navigation_svg' style='border:none;width:80%;margin-left:auto;margin-right:auto;'>
 <svg
@@ -651,7 +713,9 @@ d="M 23.808594 73.021484 C 21.441455 73.021484 19.073591 73.928362 17.259766 75.
 <div style='height:10px;'></div>
 
 
-<div id='navbuttonarea' style='margin-left:10px;'>
+
+
+<div id='navbuttonarea' style='margin-left:30px;'>
 
 <div id='navbutton_scroll' onclick='nav_selection(1);' class='navbutton_on'>
    <span data-lang="en">scroll</span><span data-lang="cn">滚动</span>
@@ -660,9 +724,7 @@ d="M 23.808594 73.021484 C 21.441455 73.021484 19.073591 73.928362 17.259766 75.
 <div id='navbutton_move' onclick='nav_selection(2);' class='navbutton_off_inactive'>
    <span data-lang="en">move</span><span data-lang="cn">移动</span>
 </div>
-<div style='clear:both;'>
-
-</div>
+<div style='clear:both;'></div>
 
 <!--
 <div id='movesteps_div' style='height:0px;visiblity:hidden;overflow:hidden;'>
@@ -726,7 +788,7 @@ infect
 
 
 
-<div id='coordiv' style='border:none;color:#eeeeee;position:relative;width:95%;margin-left:10px;margin-right:auto;'>
+<div id='coordiv' style='border:none;color:#eeeeee;position:relative;width:95%;margin-left:30px;margin-right:auto;'>
 <div><small data-lang="en">Center Coordinate</small><small data-lang="cn">中心坐标</small></div><br>
 <div style='float:left;'>x:<input id='xcoor' type='text' value='500000' style='width:100px;'></div>
 <div style='float:left;'>&nbsp;y:<input id='ycoor' type='text' value='500000' style='width:100px;'></div>
@@ -795,6 +857,18 @@ infect
 
 
 </div> <!-- board_navigation -->
+
+
+</div> <!-- mainpanelright -->
+
+
+</div> <!-- mainpanel -->
+
+
+
+
+
+
 
 
 
@@ -1520,7 +1594,7 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
       <label style='cursor:pointer;'>  <input id='checkbox_owner' type='checkbox' onchange='toggle_info()' style='float:left;'> <span style='' data-lang="en">Show Owner</span><span style='' data-lang="cn">显示拥有者</span> </label>     
    </div>
    
-   <div style='cursor:pointer;float:right;'> <span id='coordinate'></span> </div>
+  
 </div>
 
 
@@ -1530,35 +1604,6 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
 
  
 
-<!-- inventory -->
-<div style='margin-left:20px;'>
-   <span data-lang="en" id='inventory_openclose_en' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>Your NFT Wallet &#9660;</span>
-   <span data-lang="cn" id='inventory_openclose_cn' class='canvasfolder_openclose' onclick='inventory_toggle()' style='width:200px;'>您的NFT钱包 &#9660;</span>
- </div>
- 
- 
-<div id='inventorycontent' class='inventorycontent' style='height:50px;overflow:hidden;'>
- 
-
- 
-
-<div style='text-align:center;'>
-
-
- <div id='div_inventory' class='div_inventory' style='height:280px;border:none; '>
-
-  <div id='div_inventory_inner' class='div_inventory_inner' style=''>
-  </div> <!-- div_inventory_inner -->
- </div> <!-- div_inventory -->
-</div> <!-- center -->
-
-</div> <!-- inventorycontent -->
-<span onclick='loadinventory()' class='refreshboard' style='float:right;margin-right:40px;width:230px;margin-left:auto;margin-bottom:2px;cursor:pointer;'><p style="margin-top:2px; margin-bottom:2px;" data-lang="en">Update NFT Inventory &#8634;</p><p style="margin-top:2px; margin-bottom:2px;" data-lang="cn">更新NFT库存 &#8634;</p></span>
-<div style='clear:both;'></div>
-
-
-<br>
-<div style='clear:both;'></div>
 
 
 
@@ -2723,7 +2768,7 @@ myaudio.play();
 
  
    
-var inventory_toggle_val = 0;
+var inventory_toggle_val = 1;
 
 function inventory_toggle() {
   inventory_toggle_val = !inventory_toggle_val;
@@ -4067,7 +4112,7 @@ thename  = "non-terraformed area";
 
 document.getElementById("thename").innerHTML = "<strong style='font-size:1.0em;'>" + thename + "&nbsp;<strong>";
 
-document.getElementById("coordinate").innerHTML = "<small style='margin-right:50px;'>"+ (thex2) + " | "+(they2) + "</small>";
+document.getElementById("coordinate").innerHTML = "<small style='margin-right:0px;'>"+ (thex2) + " | "+(they2) + "</small>";
 
 if ( globalselection['assetid'] <= 0)
    {
@@ -6896,7 +6941,7 @@ for (var i=0; i<size; i++)
             
             
             
-            content += "<div id='nft_"+asset_id+"' onclick='selectnft("+asset_id+")' name='mynft' class='nft_cell' style=''>";
+            content += "<div id='nft_"+asset_id+"' onclick='selectnft("+asset_id+")' name='mynft' class='nft_cell_small' style=''>";
 
 
 
@@ -6910,7 +6955,7 @@ for (var i=0; i<size; i++)
                else
               */
                   {
-                  imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:10px;'>";
+                  imgbuffer = "<img src='img/nft_"+the_race+"_"+the_atype+".png' style='width:100px;margin-top:5px;'>";
                   }
 
 
@@ -6934,7 +6979,7 @@ for (var i=0; i<size; i++)
 
            content += "<strong>"+ title + "</strong><br>";
            content += "<small>"+ asset_link + "</small><br>";
-           content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place this NFT<br>on selected<br>area</div><br>";
+           content += "<div onclick='placeobject("+asset_id+")' class='placenft' style=''>Place</div><br>";
 
            } else
               {
@@ -7018,7 +7063,7 @@ for (var i=0; i<size; i++)
             if (title == undefined) title = "Alien Girl";
             console.log("hash_img: " + hash_img);
             content += "<td>";
-            content += "<div class='nft_cell' style=''>";
+            content += "<div class='nft_cell2' style=''>";
 
 
             // var the_race        = json_array['data']['data']['race'];
