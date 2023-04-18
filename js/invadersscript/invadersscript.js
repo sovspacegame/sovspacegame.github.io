@@ -154,7 +154,38 @@ var memo = global_account+"";
 
 
     theactions.push(action);
-    } // if (action == 'disabletower')
+    } // if (action == 'move')
+    
+    
+    // attack;sovtrader333;2199025559889;2199025559363
+    //<cmd> <action>attack</action> <assetid>2199025559889</assetid> <target>2199025559363</target>  </cmd>
+    
+    if (action == 'attack')
+    {
+    target = cmd[i2].getElementsByTagName("target")[0].childNodes[0].nodeValue; 
+    sovamount = Number(3).toFixed(4) + " SOV";
+
+    
+    var memo = "attack;"+global_account+";"+assetid+";"+target;
+    var action = {
+                 account: "sovmintofeos",
+                 name: 'transfer',
+                 authorization: [{
+                                actor: global_account,
+                                permission: "active"
+                                }],
+                 data: {
+                       "from": global_account,
+                       "to": "sovspacegame",
+                       "quantity": sovamount,
+                       "memo": memo
+                       }
+                 };
+
+ 
+
+    theactions.push(action);
+    } // if (action == 'attack')
     
     
         
@@ -339,3 +370,48 @@ if (1)
 
 } // parsescript
 
+
+/*
+example scripts 
+
+<script>
+<bundle>
+<name>All Towers off</name>
+
+<cmd> <action>disabletower</action> <assetid>2199025558235</assetid> </cmd>
+<cmd> <action>disabletower</action> <assetid>2199025558288</assetid> </cmd>
+<cmd> <action>disabletower</action> <assetid>2199025558510</assetid> </cmd>
+
+ 
+</bundle>
+</script>
+
+---
+
+
+--- Enable all
+
+<script>
+<bundle>
+<name>All Towers off</name>
+
+<cmd> <action>enabletower</action> <assetid>2199025558235</assetid> </cmd>
+<cmd> <action>enabletower</action> <assetid>2199025558288</assetid> </cmd>
+<cmd> <action>enabletower</action> <assetid>2199025558510</assetid> </cmd>
+
+</bundle>
+</script>
+
+--- Attack
+
+
+<script>
+<bundle>
+<name>Attack</name>
+
+<cmd> <action>attack</action> <assetid>2199025559889</assetid> <target>2199025559942</target>  </cmd>
+<cmd> <action>attack</action> <assetid>2199025559941</assetid> <target>2199025559942</target>  </cmd>
+ 
+</bundle>
+</script>
+*/
