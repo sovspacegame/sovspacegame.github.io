@@ -51,7 +51,8 @@
 </head>
 <body class='bodyclass myimage' onload='loadaudio();'>
 <script>
-var config_invadersscript = false;
+var config_invadersscript = true;
+var config_noise = false;
 </script>
 
 <div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
@@ -3290,7 +3291,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2h</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2i</div>
 
 <br>
 <br>
@@ -4516,6 +4517,9 @@ function split( sentence, separator )
 {
 var ret = new Array();
 
+console.log("s:["+sentence+"] ");
+
+if (sentence == "" || sentence == undefined) return (ret);
 l = sentence.length;
 
 var word = "";
