@@ -51,7 +51,7 @@
 </head>
 <body class='bodyclass myimage' onload='loadaudio();'>
 <script>
-var config_invadersscript = true;
+var config_invadersscript = false;
 var config_noise = false;
 </script>
 
@@ -878,25 +878,19 @@ infect
 
 
 <!-- scriptmenu -->
-<div   id='scriptmenu' class='loadmenu imground' style='height:0px;visibility:hidden;overflow:hidden;border:2px solid #cccccc;width:95%;padding:5px;'>
-INVADERSSCRIPT<br>
-<br>
-
-<div id='scriptactions'>
+<div   id='scriptmenu'  style='height:0px;visibility:hidden;overflow:hidden;border:none;width:100%;'>
 
 
-<script>
-<bundle>
-<name>All Towers off</name>
+<div style='margin-left:20px;'>
+   <span data-lang="en" id='canvasfolder_openclose_en' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
+   <span data-lang="cn" id='canvasfolder_openclose_cn' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
+ </div>
 
-<cmd> <action>disabletower</action> <assetid>2199025558235</assetid> </cmd>
-<cmd> <action>disabletower</action> <assetid>2199025558288</assetid> </cmd>
-<cmd> <action>disabletower</action> <assetid>2199025558510</assetid> </cmd>
 
+<div id='scriptmenuinner' class='loadmenu imground'  style='border:2px solid #cccccc;width:95%;padding:5px;margin:5px;overflow:hidden;'>
  
-</bundle>
-</script>
-
+<div id='scriptactions'>
+...
 </div>
 <br>
 
@@ -907,6 +901,8 @@ INVADERSSCRIPT<br>
 
 <div id='' class='navbutton_on' onclick='runscript()'>PARSE & RUN</div>
 
+<br>
+</div> <!-- scriptmenuinner -->
 </div> <!-- end - scriptmenu -->
 
 
@@ -916,7 +912,7 @@ INVADERSSCRIPT<br>
 if (config_invadersscript == true)
    {
    document.getElementById("scriptmenu").style.visibility = "visible";
-   document.getElementById("scriptmenu").style.height     = "350px";
+   document.getElementById("scriptmenu").style.height     = "420px";
    
    } // if (config_invadersscript == true)
    else
@@ -2880,6 +2876,37 @@ function canvasfolder_toggle() {
     }
   }
 } // canvas_toggle
+
+
+var invadersscript_toggle_flag = 1;
+
+function invadersscript_toggle() {
+  invadersscript_toggle_flag = !invadersscript_toggle_flag;
+
+  if (invadersscript_toggle_flag) {
+    // expand
+    document.getElementById("scriptmenuinner").style.height = "400px";
+    document.getElementById("scriptmenu").style.height = "420px";
+
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("canvasfolder_openclose_en").innerHTML = "INVADERSSCRIPT &#9650;";
+    } else if (lang === "cn") {
+      document.getElementById("canvasfolder_openclose_cn").innerHTML = "INVADERSSCRIPT &#9650;";
+    }
+  } else {
+    // shrink
+    document.getElementById("scriptmenuinner").style.height = "50px";
+    document.getElementById("scriptmenu").style.height = "100px";
+  
+    var lang = document.getElementById("language-selector").value;
+    if (lang === "en") {
+      document.getElementById("canvasfolder_openclose_en").innerHTML = "INVADERSSCRIPT &#9660;";
+    } else if (lang === "cn") {
+      document.getElementById("canvasfolder_openclose_cn").innerHTML = "INVADERSSCRIPT &#9660;";
+    }
+  }
+} // invadersscript_toggle
 
 
 
