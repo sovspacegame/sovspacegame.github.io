@@ -3330,7 +3330,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2j</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2k</div>
 
 <br>
 <br>
@@ -10580,7 +10580,11 @@ chat_myrace_last = value.rows[size-1]['time']
 function chat_update_thread()
 {
 chat_id++;
-console.log("chat_id: " + chat_id  + " UR:" + userdata['race'] );
+console.log("chat_id: " + chat_id  + " UR:" + userdata['race'] + " chat_toggle:" + chat_toggle );
+
+
+if (chat_toggle == 1)
+{
 
 getdata(callback_load_all, "invaderschat", "invaderschat", "allmessages", "", "", "", 500 );
 
@@ -10589,6 +10593,8 @@ if (userdata['race'] >= 1)
    {
    getdata(callback_load_myrace, "invaderschat", userdata['race'], "racemessages", "", "", "", 500 );
    }
+
+} 
 
 var time = setTimeout("chat_update_thread()", 10000);
 
