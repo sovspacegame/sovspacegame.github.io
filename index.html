@@ -3369,11 +3369,22 @@ if ( classicmode != false )
 /*
 var nft_node = "https://eos.api.atomicassets.io/atomicassets/v1/assets/";
 */
+var autonode = 0;
+
 var elm = document.getElementById('select_api_node');
 elm.onchange = function()
    {
 
-   thenode = this.value;
+   if ( this.value == "auto" ) 
+      {
+      autonode = 1;
+      }
+      else
+      {
+      autonode = 0;
+      thenode = this.value;   
+      }
+   
  //     alert(thenode);
     _setCookie("mylastnode",thenode,30);
    } // select_api_node
@@ -9906,11 +9917,20 @@ function update_thread()
 {
 var time = setTimeout("update_thread()", 1000);
 
-
-if ( (updatecnt % 10) == 0 )
+// roaming
+if (autonode == 1)
+   {   
+   if ( (updatecnt % 10) == 0 )
+      {
+      changeautonode();
+      }      
+   }
+if (document.getElementById('roamingnode'))
 {
-changeautonode();
-}
+document.getElementById('roamingnode').innerHTML = thenode;
+}   
+   
+   
 
 if ( (updatecnt % 20) == 0 )
    {
