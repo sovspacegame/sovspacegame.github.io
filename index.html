@@ -33,6 +33,7 @@
     <script src='js/assets/scatterjs-core.min.js'></script>
     <script src='js/assets/scatterjs-plugin-eosjs2.min.js'></script>
 
+    <script src="js/roaming/roaming.js"></script> 
     <script src="js/eosiowallet/wallet.js?dsd=75324"></script>
 
     <script src="js/admin.js?dsd=422553"></script>
@@ -40,6 +41,7 @@
     <script src="js/eosjs-account-name_2.2.1.js"></script>
 
 
+  
     <script src="js/invadersscript/invadersscript.js?dsd=232"></script>
 
  <!-- END WALLET-INCLUDE-->
@@ -3199,8 +3201,9 @@ h: <input type='text' id='newarea_h' value='2'><br>
 
 <div style='float:left;width:50%;border:none;'>
 <select id="select_api_node"   >
+  <option value="auto">auto (default)</option>
   <option value="eos.api.eosnation.io">eos.api.eosnation.io</option>
-  <option value="eos.greymass.com">eos.greymass.com (default)</option>
+  <option value="eos.greymass.com">eos.greymass.com</option>
   <option value="mainnet.eosamsterdam.net">mainnet.eosamsterdam.net</option>
   <option value="api.eosrio.io">api.eosrio.io</option>
   <option value="mainnet.genereos.io">mainnet.genereos.io</option>
@@ -3216,6 +3219,21 @@ h: <input type='text' id='newarea_h' value='2'><br>
   
 </select>
 </div>
+
+
+<hr>
+
+<div style='clear:both'></div>
+<div onclick='roamingdoit()' class='buybutton' >Reload Node-Roaming</div>
+
+ <!--
+ <div onclick='changeautonode()' >changeautonode</div>
+ -->
+<div style='clear:both'></div>
+
+<span id='roamingnode'>...</span>
+ 
+<hr>
 
 
 
@@ -3291,6 +3309,9 @@ NFT-API (atomicassets):
 <div style='float:left;margin-left:40px;margin-top:100px;margin-bottom:50px;color:#aaaaaa;width:300px;'><span data-lang="en">classic-mode:</span><span data-lang="cn">经典模式:</span><input type='checkbox' id='classicmode' value='1'  > <small data-lang="en" style='color:#444444;'>Early music and frontend settings</small><small data-lang="cn" style='color:#444444;'>早期音乐和前端设置</small>
 
 <br>
+
+<!-- DEBUG -->
+<!-- END-DEBUG -->
 <br>
 
 </div>
@@ -3299,6 +3320,11 @@ NFT-API (atomicassets):
 
 
 <script>
+
+// --- roaming
+
+roamingdoit();
+// ---
 
 
 var elm = document.getElementById('classicmode');
@@ -3330,7 +3356,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2k</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2l</div>
 
 <br>
 <br>
@@ -3602,6 +3628,7 @@ globalselection['owner']      = owner;
 
 
 var authorizevar  = "";
+var lastrepair    = "";
 var configarray   = split(globalselection['config'],";");
 
 
@@ -3648,11 +3675,19 @@ if (configarray[i] == 'authorize' &&
    authorizevar = configarray[i+1];   
    }
 
+if (lastrepair[i] == 'lastrepair' &&
+    configarray[i+1] != "" && configarray[i+1] != undefined
+   )
+   {
+   lastrepair = configarray[i+1];   
+   }
+
 
 } // for
 
 } // if
-globalselection['auth'] = authorizevar;
+globalselection['auth']       = authorizevar;
+globalselection['lastrepair'] = lastrepair;
 
 
 
@@ -9870,6 +9905,12 @@ var updatecnt = -3;
 function update_thread()
 {
 var time = setTimeout("update_thread()", 1000);
+
+
+if ( (updatecnt % 10) == 0 )
+{
+changeautonode();
+}
 
 if ( (updatecnt % 20) == 0 )
    {
