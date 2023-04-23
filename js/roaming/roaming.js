@@ -149,10 +149,7 @@ console.log("change node to "+ mynode);
 
 
 thenode = mynode;
-if (document.getElementById('roamingnode'))
-{
-document.getElementById('roamingnode').innerHTML = thenode;
-}
+
  
 
 } // if ( topEndpoints.length > 0)
