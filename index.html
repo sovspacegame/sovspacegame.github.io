@@ -3195,7 +3195,7 @@ h: <input type='text' id='newarea_h' value='2'><br>
 <div>
 
 <div style='float:left;width:30%;border:none;'>
-<span data-lang="en">node for wallet:</span>
+<span data-lang="en">Node for Wallet:</span>
 <span data-lang="cn">钱包节点：</span>
 </div>
 
@@ -3221,8 +3221,8 @@ h: <input type='text' id='newarea_h' value='2'><br>
   <option value="api.eossweden.org">api.eossweden.org</option>
   <option value="publicapi-mainnet.eosauthority.com">publicapi-mainnet.eosauthority.com</option>
   <option value="api.eosarabia.net">api.eosarabia.net</option>
-
  
+
 
   
 </select>
@@ -3230,7 +3230,7 @@ h: <input type='text' id='newarea_h' value='2'><br>
 
 
 <div style='clear:both'></div>
-<hr>
+
 
 
 <div onclick='roamingdoit()' class='buybutton' >Reload Node-Roaming</div>
@@ -3242,7 +3242,7 @@ h: <input type='text' id='newarea_h' value='2'><br>
 
 <span id='roamingnode'>...</span>
  
-<hr>
+
 
 
 
@@ -3365,7 +3365,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2m</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2n</div>
 
 <br>
 <br>
@@ -10649,12 +10649,14 @@ chat_myrace_last = value.rows[size-1]['time']
 
 function chat_update_thread()
 {
-chat_id++;
-console.log("chat_id: " + chat_id  + " UR:" + userdata['race'] + " chat_toggle:" + chat_toggle );
 
 
 if (chat_toggle == 1)
 {
+
+chat_id++;
+console.log("chat_id: " + chat_id  + " UR:" + userdata['race'] + " chat_toggle:" + chat_toggle );
+
 
 getdata(callback_load_all, "invaderschat", "invaderschat", "allmessages", "", "", "", 500 );
 
