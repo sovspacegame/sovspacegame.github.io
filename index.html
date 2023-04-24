@@ -3365,7 +3365,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2n</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2o</div>
 
 <br>
 <br>
@@ -5629,6 +5629,9 @@ for (y=0; y<16; y++)
     if (pseudorand == 2) thetile = "tile00c";
     
     
+    
+    
+    
     tilearray[x][y]['tile'] = thetile;
     tilearray[x][y]['asset_id'] = "";
 
@@ -5742,6 +5745,36 @@ for (var i=0; i<size; i++)
     let configarray = split(config,";");
     
     
+ 
+
+    // bones 
+    if (tile == "tile12")
+       {
+        var pseudorand =  getpseudovoidtile( x,y, 6 );
+       tile = "tile12a";
+       if (pseudorand == 1) tile = "tile12b";
+       if (pseudorand == 2) tile = "tile12c";
+       if (pseudorand == 3) tile = "tile12d";
+       if (pseudorand == 4) tile = "tile12e";
+       if (pseudorand == 5) tile = "tile12f";
+       if (pseudorand == 6) tile = "tile12g";
+       }
+
+ /*
+ 
+        var pseudorand =  getpseudovoidtile( x2,y2, 3 );
+      thetile = "tile00x";
+      if (pseudorand == 1) thetile = "tile00bx";
+      if (pseudorand == 2) thetile = "tile00cx";
+      }
+
+
+    if (thetile == "tile12")
+       {
+       thetile = "tile12a";
+       }
+    
+ */
  
 
 
