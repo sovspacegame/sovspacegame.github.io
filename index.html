@@ -2999,7 +2999,7 @@ eosforram = Number(eosforram).toFixed(4) + " EOS";
     theactions.push(action);
 
 
-
+/*
     var message = "RAM donation from " + global_account + " - " + eosforram;
     var action = {
                  account: "sovspacegame",
@@ -3014,8 +3014,8 @@ eosforram = Number(eosforram).toFixed(4) + " EOS";
                  };
 
 
-    theactions.push(action);
-
+   theactions.push(action);
+*/
 
 
 
@@ -3294,7 +3294,7 @@ NFT-API (atomicassets):
   <div id='' onclick='donateram()' class='donationbutton' style='width:200px;'><span data-lang="en">Donate RAM for game</span><span data-lang="cn">为游戏捐赠 RAM</span></div>
   <br>
 
-  <small data-lang="en">Please send EOS/Token-donations to:</small><small data-lang="cn">请将 EOS/代币 捐款发送至：</small><br>
+  <small data-lang="en">Please send EOS/Token-donations for developers to: 👽🖖</small><small data-lang="cn">请将 EOS/代币 捐款发送至：</small><br>
   <a href='https://bloks.io/account/invadersfund' target='_blank' style='color:#eeeeee;'>invadersfund</a>
  </div>
 
@@ -3365,7 +3365,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2o</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2p</div>
 
 <br>
 <br>
@@ -3695,7 +3695,7 @@ if (configarray[i] == 'authorize' &&
    authorizevar = configarray[i+1];   
    }
 
-if (lastrepair[i] == 'lastrepair' &&
+if (configarray[i] == 'lastrepair' &&
     configarray[i+1] != "" && configarray[i+1] != undefined
    )
    {
@@ -3709,8 +3709,7 @@ if (lastrepair[i] == 'lastrepair' &&
 globalselection['auth']       = authorizevar;
 globalselection['lastrepair'] = lastrepair;
 
-
-
+ 
 
 // Click on tile
 if ( globalselection['assetid'] == "" )
@@ -4241,6 +4240,52 @@ render_owner = owner;
 if (render_owner == "") render_owner = '-';
 
 
+
+// ---
+var render_repaircountdown = "";
+var now = new Date().getTime() / 1000;
+
+ 
+
+ var now = new Date().getTime() / 1000;
+
+ var seconds = now -  globalselection['lastrepair'];
+ var interval = (24*60*60);
+
+var towait_sec = interval - seconds;
+ 
+
+// Find the distance between now and the count down date
+      var hours = towait_sec / 3600;
+    hours = Math.floor(hours);
+    if (hours < 10) hours = "0" + hours;
+     var minute =   (towait_sec % 3600) / 60;
+    minute = Math.floor(minute);
+    if (minute < 10) minute = "0" + minute;
+
+      var second = towait_sec % 60;
+    second = Math.floor(second);
+    if (second < 10) second = "0" + second;
+
+ if (towait_sec > 0)
+    {
+    render_repaircountdown =  " ("+hours+ ":" + minute + ":" + second+")";
+
+    } else
+      {
+      render_repaircountdown = "";
+      if ( globalselection['atype'] == 4) render_repaircountdown = " (free repair)";
+                       
+
+      }
+
+// ---
+
+// alfalf
+//render_owner += ' +++' + ;
+ 
+
+
 if (authorizevar != "") render_owner += " [+"+authorizevar+"]";
 
 // ---
@@ -4276,7 +4321,7 @@ if ( globalselection['assetid'] <= 0)
      }
 document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-image' style='color: #ffb800'></i></div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-user' style='color: #8a8794'></i></div> <div style='width:60%;float:left'>"+ render_owner + "</div> </div>     <div style='clear:both'></div>";
+document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-user' style='color: #8a8794'></i></div> <div style='width:60%;float:left'>"+ render_owner + "<span id='factorylastclaim'>"+render_repaircountdown+"</span></div> </div>     <div style='clear:both'></div>";
 
 document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-clock' style='color: #9696fe'></i></div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>";
 
@@ -4635,7 +4680,8 @@ return(ret);
 } // split2
 
 
-var global_tslastclaim = 0;
+var global_tslastclaim  = 0;
+
 
 function callback_getclaimdata( value )
 {
@@ -9950,6 +9996,57 @@ var interval = (24*60*60);
 //      document.getElementById("claim_svx").innerHTML =  "Claim";
       document.getElementById("claim_svx").className =  "claim";
       }
+      
+      
+      
+// --- Lastrepair for factory
+
+// --- alfalf
+var render_repaircountdown = "";
+var now = new Date().getTime() / 1000;
+
+ 
+
+ var now = new Date().getTime() / 1000;
+
+ var seconds = now -  globalselection['lastrepair'];
+ var interval = (24*60*60);
+
+var towait_sec = interval - seconds;
+ 
+
+// Find the distance between now and the count down date
+      var hours = towait_sec / 3600;
+    hours = Math.floor(hours);
+    if (hours < 10) hours = "0" + hours;
+     var minute =   (towait_sec % 3600) / 60;
+    minute = Math.floor(minute);
+    if (minute < 10) minute = "0" + minute;
+
+      var second = towait_sec % 60;
+    second = Math.floor(second);
+    if (second < 10) second = "0" + second;
+
+ if (towait_sec > 0)
+    {
+    render_repaircountdown =  " ("+hours+ ":" + minute + ":" + second+")";
+
+    } else
+      {
+      //render_repaircountdown = "";
+      if ( globalselection['atype'] ==  4) render_repaircountdown = " (free repair)";
+                       
+
+      }
+
+if (document.getElementById("factorylastclaim"))
+   {
+   document.getElementById("factorylastclaim").innerHTML = render_repaircountdown;
+   }
+
+
+// ---
+      
 
 } // update_claimdata
 
