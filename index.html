@@ -1424,7 +1424,7 @@ var mdata = value.rows[0].mutable_serialized_data;
 
 decoded_data = mydecoder( idata, mdata );
 
-nick = decoded_data['nick'];
+nick =  decoded_data['nick'];
 atype = decoded_data['atype'];
 
 coordinatei = params['id'];
@@ -1446,7 +1446,7 @@ select.appendChild(opt);
 
 // ---
 
-
+// alfalf
 
 // add own_collectors
 
@@ -3365,7 +3365,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2p</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2q</div>
 
 <br>
 <br>
@@ -5776,7 +5776,7 @@ for (var i=0; i<size; i++)
     atype        =  tilearray[x][y]['atype'];
     race         =  tilearray[x][y]['race'];
     ori          =  tilearray[x][y]['ori'];
-    nick         =  tilearray[x][y]['nick'];
+    nick         =  tilearray[x][y]['nick'] + ""  ;
     sov          =  tilearray[x][y]['sov'];
     svx_balance  =  tilearray[x][y]['svx_balance']+" SVX2";
     sov  = sov  / 10000;
@@ -5830,9 +5830,11 @@ for (var i=0; i<size; i++)
        document.getElementById(thetile).innerHTML = buffer;
        } else
          {
+         var buffer = "";
           if ( tile == "tile10" )
        {
        console.log("place s1.png");
+
        buffer += "<img src='img/s1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
        }
 
@@ -5841,7 +5843,7 @@ for (var i=0; i<size; i++)
        console.log("place s2.png");
        buffer += "<img src='img/s2.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
        }
- document.getElementById(thetile).innerHTML = buffer;
+       document.getElementById(thetile).innerHTML = buffer;
          }
 
 
@@ -6411,7 +6413,7 @@ for (var i=0; i<size; i++)
 
   var theobject2 = "thetext" + i;
 
-   buffer = "";
+  var  buffer = "";
     // Text
     if (
        atype == 1 ||
@@ -6451,9 +6453,9 @@ for (var i=0; i<size; i++)
        value_owner = 'hidden';
        if (checkbox_owner) value_owner = 'visible';
 
-
-       buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;text-align:center;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;'>" +nick+  " </div>" ;
-
+//buffer += "<small>§("+i+"/"+atype+")["+theobject2+"]</small>";
+       buffer += "<div class='tileinfo_nick noselect' style='color:"+color+";position:absolute;text-align:center;left:0%;width:100%;font-weight:bold;font-size:0.8em;top:70%;z-index:300;border:none;float:left; '>" +nick+  "</div>" ;
+        
 
 
        marketid = 1;
@@ -6492,14 +6494,14 @@ for (var i=0; i<size; i++)
 
        buffer += "<div id='"+divid_owner+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:86%;z-index:300;visibility:"+value_owner+";'>" +owner+  " </div>" ;
 
+ 
        } // if object
-
-
 
 
 
     document.getElementById(theobject2).innerHTML = buffer;
 
+   
 
 
     } // for i...
