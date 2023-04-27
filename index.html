@@ -1446,7 +1446,7 @@ select.appendChild(opt);
 
 // ---
 
-// alfalf
+
 
 // add own_collectors
 
@@ -3366,7 +3366,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2q</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2r</div>
 
 <br>
 <br>
@@ -4282,7 +4282,7 @@ var towait_sec = interval - seconds;
 
 // ---
 
-// alfalf
+
 //render_owner += ' +++' + ;
  
 
@@ -4322,7 +4322,7 @@ if ( globalselection['assetid'] <= 0)
      }
 document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-image' style='color: #ffb800'></i></div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-user' style='color: #8a8794'></i></div> <div style='width:60%;float:left'>"+ render_owner + "<span id='factorylastclaim'>"+render_repaircountdown+"</span></div> </div>     <div style='clear:both'></div>";
+document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-solid fa-user' style='color: #8a8794'></i></div> <div style='width:60%;float:left'>"+ render_owner + "<span id='factorylastclaim'>"+render_repaircountdown+"</span><span id='collectorpoints'></span></div> </div>     <div style='clear:both'></div>";
 
 document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-clock' style='color: #9696fe'></i></div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>";
 
@@ -4535,6 +4535,7 @@ if (configarray[i] == 'disabled' &&
 
 
 
+getcollectorpoints();
 
 /*
 // infection has been disabled - sa.11.feb.2023
@@ -5077,6 +5078,90 @@ getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "
 
 
 
+
+
+// ---
+// Collectorpoint-handling
+//
+
+function callback_getcollectorpoints( rows )
+{
+
+console.log("ROWS ------  callback_getcollectorpoints ...(callback)");
+console.log(rows);
+
+if ( document.getElementById("collectorpoints") )
+   {
+var now = new Date().getTime() / 1000;
+now = parseInt(now);
+
+   username = rows.rows[0].user;
+   
+   cpoints = 0;
+           // 2 - residence          
+           cpoints += ( rows.rows[0].items[2]   *  1);    
+           // 3 - agri
+           cpoints += ( rows.rows[0].items[3]   *  1);          
+           // 5 - bulldozer
+           cpoints += ( rows.rows[0].items[5]   * -2);          
+           // 8 - collectors
+           cpoints += ( rows.rows[0].items[8]   *  4);
+           // 10 - SU
+           cpoints += ( rows.rows[0].items[10]  * -2);           
+           // 11 - tanks 
+           cpoints += ( rows.rows[0].items[11]  * -4);
+           // 14 - R.E.D.
+           cpoints += ( rows.rows[0].items[14]  * -10);
+           
+
+   document.getElementById("collectorpoints").innerHTML = " <small>("+ cpoints+" cp)</small>" ;
+   }
+ 
+/*
+globaldata['version']    =  rows.rows[0].version;
+globaldata['m_sov']      =  rows.rows[0].m_sov;
+globaldata['a_sov']      =  rows.rows[0].a_sov;
+globaldata['svx_self']   =  rows.rows[0].svx_self;
+globaldata['config']     =  rows.rows[0].config;
+
+
+
+
+
+document.getElementById("frontendversion").innerHTML = frontendversion;
+document.getElementById("contractversion").innerHTML = globaldata['version'];
+document.getElementById("frontendversion_cn").innerHTML = frontendversion;
+document.getElementById("contractversion_cn").innerHTML = globaldata['version'];
+
+if (frontendversion != globaldata['version'])
+   {
+   alert("Warning - Frontend-Version " + frontendversion + " and Contract-Version " + globaldata['version'] + " are different! Please download the newest version of this frontend from github.io !" );
+   }
+
+if (frontendversion_cn != globaldata['version'])
+   {
+   alert("警告 - 前端版本" + frontendversion_cn + " 警告 - 前端版本 和 合约版本 " + globaldata['version'] + " 前端版本和合约版本不同！请从 Github.io 下载此前端的最新版本！" );
+   }
+*/
+} // callback_getcollectorpoints()
+
+
+// alfalf
+function getcollectorpoints()
+{
+//console.log(" ALFALF ");
+   document.getElementById("collectorpoints").innerHTML = "";
+   
+   // global_account
+   if (globalselection['owner'] != "")
+      {
+      getdata(callback_getcollectorpoints, "sovspacegame", "sovspacegame", "useritems", globalselection['owner'], "", "", 1 );
+      }
+
+           //getdata(callback_userdata, "sovspacegame",  "sovspacegame", "user", global_account, "", "", 1 );
+
+   
+} // function getcollectorpoints()
 
 
 // ---
@@ -10004,7 +10089,7 @@ var interval = (24*60*60);
       
 // --- Lastrepair for factory
 
-// --- alfalf
+
 var render_repaircountdown = "";
 var now = new Date().getTime() / 1000;
 
