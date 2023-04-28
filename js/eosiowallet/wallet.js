@@ -89,6 +89,8 @@ const network = ScatterJS.Network.fromJson({
 
 // --- HARDWIRED KEY (UNSECURE!!!) ONLY USE IF YOU EXACTLY KNOWING WHAT YOU DO!!!
 
+
+
 if (0)
 {
 
@@ -110,6 +112,7 @@ _setCookie("myeosaccount",scatter_account,30);
 func_setaccountname(global_account);     
                          
 } // if (0)
+
 // --- END HARDWIRED ---
 
 
