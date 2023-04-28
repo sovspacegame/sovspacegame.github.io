@@ -3523,7 +3523,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2r</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2s</div>
 <br>
 <br>
 
@@ -4426,12 +4426,12 @@ var towait_sec = interval - seconds;
 
  if (towait_sec > 0)
     {
-    render_repaircountdown =  " ("+hours+ ":" + minute + ":" + second+")";
+    render_repaircountdown =  "<div style='margin-left:30%;'>(free repair: "+hours+ ":" + minute + ":" + second+")</div>";
 
     } else
       {
       render_repaircountdown = "";
-      if ( globalselection['atype'] == 4) render_repaircountdown = " (free repair)";
+      if ( globalselection['atype'] == 4) render_repaircountdown = "<div style='margin-left:30%;'>(free repair)</div>";
                        
 
       }
@@ -4479,7 +4479,7 @@ if ( globalselection['assetid'] <= 0)
      }
 document.getElementById("curassetid").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-image' style='color: #ffb800'></i></div> <div style='width:60%;float:left'>"+ thelink + "</div> </div>     <div style='clear:both'></div>";
 
-document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><span id='militarypoints'></span></div> <div style='width:60%;float:left'>"+ render_owner + "<span id='factorylastclaim'>"+render_repaircountdown+"</span></div> </div> <div style='clear:both'></div>";
+document.getElementById("owner").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><span id='militarypoints'></span></div> <div style='width:60%;float:left'>"+ render_owner + "</div> </div> <div style='clear:both'><span id='factorylastclaim'>"+render_repaircountdown+"</span></div>";
 
 document.getElementById("asset_ts").innerHTML = "<div style='width:100%'><div style='width:30%;float:left'><i class='fa-regular fa-clock' style='color: #9696fe'></i></div> <div style='width:60%;float:left'>"+ render_ts + "</div> </div>     <div style='clear:both'></div>";
 
@@ -10268,12 +10268,12 @@ var towait_sec = interval - seconds;
 
  if (towait_sec > 0)
     {
-    render_repaircountdown =  " ("+hours+ ":" + minute + ":" + second+")";
-
+//    render_repaircountdown =  " ("+hours+ ":" + minute + ":" + second+")";
+    render_repaircountdown = "<div style='margin-left:30%;'>(free repair: "+hours+ ":" + minute + ":" + second+")</div>";
     } else
       {
       //render_repaircountdown = "";
-      if ( globalselection['atype'] ==  4) render_repaircountdown = " (free repair)";
+      if ( globalselection['atype'] ==  4) render_repaircountdown = "<div style='margin-left:30%;'>(free repair)</div>";
                        
 
       }
