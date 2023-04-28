@@ -884,8 +884,8 @@ infect
 
 
 <div style='margin-left:20px;'>
-   <span data-lang="en" id='canvasfolder_openclose_en' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
-   <span data-lang="cn" id='canvasfolder_openclose_cn' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
+   <span data-lang="en" id='invadersscript_openclose_en' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
+   <span data-lang="cn" id='invadersscript_openclose_cn' class='canvasfolder_openclose' onclick='invadersscript_toggle()' style='width:200px;'>INVADERSSCRIPT &#9650;</span>
  </div>
 
 
@@ -901,7 +901,7 @@ infect
  
 </textarea>
 
-<div id='' class='navbutton_on' onclick='runscript()'>PARSE & RUN</div>
+<div id='' class='navbutton_on' onclick='parsescript()'>PARSE</div>
 
 <br>
 </div> <!-- scriptmenuinner -->
@@ -3051,9 +3051,9 @@ function invadersscript_toggle() {
 
     var lang = document.getElementById("language-selector").value;
     if (lang === "en") {
-      document.getElementById("canvasfolder_openclose_en").innerHTML = "INVADERSSCRIPT &#9650;";
+      document.getElementById("invadersscript_openclose_en").innerHTML = "INVADERSSCRIPT &#9650;";
     } else if (lang === "cn") {
-      document.getElementById("canvasfolder_openclose_cn").innerHTML = "INVADERSSCRIPT &#9650;";
+      document.getElementById("invadersscript_openclose_cn").innerHTML = "INVADERSSCRIPT &#9650;";
     }
   } else {
     // shrink
@@ -3062,9 +3062,9 @@ function invadersscript_toggle() {
   
     var lang = document.getElementById("language-selector").value;
     if (lang === "en") {
-      document.getElementById("canvasfolder_openclose_en").innerHTML = "INVADERSSCRIPT &#9660;";
+      document.getElementById("invadersscript_openclose_en").innerHTML = "INVADERSSCRIPT &#9660;";
     } else if (lang === "cn") {
-      document.getElementById("canvasfolder_openclose_cn").innerHTML = "INVADERSSCRIPT &#9660;";
+      document.getElementById("invadersscript_openclose_cn").innerHTML = "INVADERSSCRIPT &#9660;";
     }
   }
 } // invadersscript_toggle
@@ -3523,7 +3523,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2s</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2t</div>
 <br>
 <br>
 
