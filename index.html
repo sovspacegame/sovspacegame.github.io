@@ -3523,7 +3523,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2t</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2u</div>
 <br>
 <br>
 
@@ -4564,6 +4564,7 @@ if ( globalselection['owner'] == global_account &&
      globalselection['atype'] == 8
    ) canclaim = 1;
 
+
 var config = globalselection['config']+"";
 //var configarray = config.split(";");
 var configarray = split(config,";");
@@ -4573,14 +4574,26 @@ if (configarray[0] == 'infected' &&
 
 
 
+if ( global_account == globalselection['auth'] ) 
+   {
+   canclaim = 1;
+   }
+
+
+// alfalf
+
 if ( canclaim == 1)
    {
    document.getElementById("claim_svx").className = "claim";
    document.getElementById("claim_svx").style.height = "";
    document.getElementById("claim_svx").style.visibility = "visible";
 
-   document.getElementById("claim_svx_all").style.height = "";
-   document.getElementById("claim_svx_all").style.visibility = "visible";
+
+   if ( global_account != globalselection['auth'] ) 
+      {
+      document.getElementById("claim_svx_all").style.height = "";
+      document.getElementById("claim_svx_all").style.visibility = "visible";
+      }
 
      // document.getElementById("claim_svx").innerHTML = "ABC " + globalselection['assetid'];
 
@@ -4617,8 +4630,11 @@ if ( canclaim == 2)
       if (lang === "cn") document.getElementById("claim_svx").innerHTML = "宣称";
            
 
-     document.getElementById("claim_svx_all").style.height = "0px";
-     document.getElementById("claim_svx_all").style.visibility = "hidden";
+     
+     
+        document.getElementById("claim_svx_all").style.height = "0px";
+        document.getElementById("claim_svx_all").style.visibility = "hidden";
+        
 
      }
 
@@ -5301,10 +5317,10 @@ if (frontendversion_cn != globaldata['version'])
 } // callback_getcollectorpoints()
 
 
-// alfalf
+
 function getmilitarypoints()
 {
-//console.log(" ALFALF ");
+
    document.getElementById("militarypoints").innerHTML = "";
 
    // global_account
