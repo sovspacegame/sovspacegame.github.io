@@ -3519,7 +3519,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2u</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2w</div>
 <br>
 <br>
 
@@ -7280,6 +7280,8 @@ function setnickname()
 
 
 newnickname = document.getElementById('newnickname').value;
+
+if ( newnickname.toLowerCase() == "open" ) newnickname = newnickname.toLowerCase() ;
 
 
 console.log("last_assetid:::::: ",globalselection['assetid']);
