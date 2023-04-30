@@ -2492,14 +2492,12 @@ getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_
    <span data-lang="en">Streets must be built directly adjacent to a same-species building or street. A street is an inexpensive structure that you can build to save fuel, to build other structures next to, and to protect an area from Landers. You cannot destroy a street by attacking it, but you can build a street from your own species over it. 
    <br><br>
    Streets have fixed cost. SOV paid to mint Streets will be burned to mine SVX and added to the Collector pool. If you drive with a mobile unit on a street of your species, the costs will be refunded. 
-   <br><br>
-   Players can build Residences, Streets, Walls, Wall IIs, Terrain, and Towers directly adjacent to Streets. 
+   <br><br> 
    </span>
    <span data-lang="cn">街道必须直接建在同种族建筑或街道旁边。街道是一种廉价的结构，您可以建造它来节省燃料，与其他结构相邻建造，并保护一个区域免受登陆器侵扰。您无法通过攻击来摧毁街道，但您可以在其上建造您自己种族的街道。
    <br><br>
    街道的费用是固定的。用于铸造街道的 SOV 将被烧毁以挖矿 SVX 并添加到收集器池中。如果您驾驶同种族的移动单位在街道上行驶，费用将被退还。
    <br><br>
-   玩家可以在街道旁边直接建造住宅、街道、墙、墙 II、地形和塔。
    </span>
    <br>
    <br>
@@ -3523,7 +3521,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2u</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2v</div>
 <br>
 <br>
 
@@ -7285,6 +7283,7 @@ function setnickname()
 
 newnickname = document.getElementById('newnickname').value;
 
+if ( newnickname.toLowerCase() == "open" ) newnickname = newnickname.toLowerCase() ;
 
 console.log("last_assetid:::::: ",globalselection['assetid']);
 
