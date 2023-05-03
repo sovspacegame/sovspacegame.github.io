@@ -55,6 +55,8 @@
 <script>
 var config_invadersscript = false;
 var config_noise = false;
+var config_contract = "sovspacegame";
+//var config_contract = "testinvaders";
 </script>
 
 <div id='logo1' class='logo1x' style='text-align:center;height:180px;background:url(img/space.jpg);background-size:cover;color:#ffffff;'>
@@ -999,7 +1001,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'loadunload',
                  authorization: [{
                                 actor: global_account,
@@ -1262,7 +1264,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'claim',
                  authorization: [{
                                 actor: global_account,
@@ -1310,7 +1312,7 @@ for (var i=0; i<size; i++)
 asset_id = own_collectors[i]['asset_id'];
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'claim',
                  authorization: [{
                                 actor: global_account,
@@ -1375,7 +1377,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'setnftoption',
                  authorization: [{
                                 actor: global_account,
@@ -1459,32 +1461,7 @@ asset_object['atype'] = atype;
 own_collectors.push( asset_object );
 }
 
-/*
-
-
-
--
-
-
-xcoor = globalselection['x'] ;
-ycoor = globalselection['y'] ;
-
-document.getElementById("xcoor").value = xcoor;
-document.getElementById("ycoor").value = ycoor;
-
-refreshboard();
-*
-
-//console.log(value);
-
-/*
-       params = Object();
-       params['id'] = id;
-       params['asset_id'] = asset_id;
-
-       getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
-
-*/
+ 
 return;
 
 //var data = value.rows[0].immutable_serialized_data;
@@ -1603,7 +1580,7 @@ for (var i=0; i<size; i++)
        if (asset_id > 0)
           {
           console.log(" read data for... ",asset_id);
-          getdata2(callback_readasset_forlist, params, "atomicassets", "sovspacegame", "assets", asset_id, "", "", 1 );
+          getdata2(callback_readasset_forlist, params, "atomicassets", config_contract, "assets", asset_id, "", "", 1 );
           }
 
 
@@ -1625,7 +1602,7 @@ function load_my_assets()
 {
 own_collectors = [];
 
-getdata(callback_load_my_assets, "sovspacegame", "sovspacegame", "area", global_account, 2, "name", 500 );
+getdata(callback_load_my_assets, config_contract, config_contract, "area", global_account, 2, "name", 500 );
 
 
 } // load_my_assets()
@@ -3154,32 +3131,14 @@ eosforram = Number(eosforram).toFixed(4) + " EOS";
                  data: {
                        "payer": global_account,
                        "quant": eosforram,
-                       "receiver": "sovspacegame"
+                       "receiver": config_contract
                        }
                  };
 
 
     theactions.push(action);
 
-
-/*
-    var message = "RAM donation from " + global_account + " - " + eosforram;
-    var action = {
-                 account: "sovspacegame",
-                 name: 'logmsg',
-                 authorization: [{
-                                actor: global_account,
-                                permission: "active"
-                                }],
-                 data: {
-                       "message": message
-                       }
-                 };
-
-
-   theactions.push(action);
-*/
-
+ 
 
 
 if (1)
@@ -3527,7 +3486,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2w</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2x</div>
 <br>
 <br>
 
@@ -4602,7 +4561,7 @@ if ( canclaim == 1)
      // document.getElementById("claim_svx").innerHTML = "ABC " + globalselection['assetid'];
 
 
-      getdata(callback_getclaimdata, "sovspacegame", "sovspacegame", "collectors", globalselection['assetid'], 2, "i64", 1 );
+      getdata(callback_getclaimdata, config_contract, config_contract, "collectors", globalselection['assetid'], 2, "i64", 1 );
       /*
       //var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":2 , "key_type": "i64",  "json":true } );
 var params = JSON.stringify(  {"code":_code,"scope":_scope,"table":_table, "lower_bound":_lower, "index_position":_index , "key_type": _key_type, "limit": _limit,  "json":true } );
@@ -4619,7 +4578,7 @@ if ( canclaim == 2)
 
 
 
-      getdata(callback_getclaimdata, "sovspacegame", "sovspacegame", "collectors", globalselection['assetid'], 2, "i64", 1 );
+      getdata(callback_getclaimdata, config_contract, config_contract, "collectors", globalselection['assetid'], 2, "i64", 1 );
 
 
    } else
@@ -5247,7 +5206,7 @@ var globaldata = new Array();
 function loadglobals()
 {
 
-getdata(callback_getglobals, "sovspacegame", "sovspacegame", "global", "", "", "", 1 );
+getdata(callback_getglobals, config_contract, config_contract, "global", "", "", "", 1 );
 
 
 } // loadglobals
@@ -5330,11 +5289,10 @@ function getinvaderpoints()
    // global_account
    if (globalselection['owner'] != "")
       {
-      getdata(callback_getinvaderpoints, "sovspacegame", "sovspacegame", "useritems", globalselection['owner'], "", "", 1 );
+      getdata(callback_getinvaderpoints, config_contract, config_contract, "useritems", globalselection['owner'], "", "", 1 );
       }
 
-           //getdata(callback_userdata, "sovspacegame",  "sovspacegame", "user", global_account, "", "", 1 );
-
+           
 
 } // function getcollectorpoints()
 
@@ -5595,7 +5553,7 @@ document.getElementById('walletmenu_scatter').style.height = "0px";
 document.getElementById('logoutbutton').style.visibility = "visible";
 document.getElementById('logoutbutton').style.height = "";
 
-if (name == 'sovspacegame')
+if (name == config_contract)
    {
    document.getElementById('menu5').style.visibility = "visible"; 
    document.getElementById('adminmenu2').style.visibility = "visible"; 
@@ -5732,7 +5690,7 @@ if (userdata['race'] == 5)
      console.log("no RACE!!!!!");
      
      
-     if (global_account != 'sovspacegame')
+     if (global_account != config_contract)
         {
         document.getElementById('chooserace').style.height = "240px";
         document.getElementById('chooserace').style.visibility = "visible";
@@ -5753,7 +5711,7 @@ if (userdata['race'] == 5)
 function getuserinfo()
 {
 
-getdata(callback_userdata, "sovspacegame",  "sovspacegame", "user", global_account, "", "", 1 );
+getdata(callback_userdata, config_contract,  config_contract, "user", global_account, "", "", 1 );
 
 } // getuserinfo()
 
@@ -5967,7 +5925,7 @@ for (var i=0; i<size; i++)
 
     //console.log("i:(",i,") x: ",x," y:", y," cnt:",cnt, " " , tileid );
 
-    getdata(callback_render_areas, "sovspacegame",  "sovspacegame", "area", tileid, "", "", cnt );
+    getdata(callback_render_areas, config_contract,  config_contract, "area", tileid, "", "", cnt );
     } // for i...
 
 
@@ -5996,7 +5954,8 @@ for (y=0; y<16; y++)
        params['x'] = x;
        params['y'] = y;
 
-       getdata2(callback_readasset, params, "atomicassets", "sovspacegame", "assets",  tilearray[x][y]['asset_id'], "", "", 1 );
+       getdata2(callback_readasset, params, "atomicassets", config_contract, "assets",  tilearray[x][y]['asset_id'], "", "", 1 );
+//       getdata2(callback_readasset, params, "atomicassets", "sovspacegame", "assets",  tilearray[x][y]['asset_id'], "", "", 1 );
 
 
        cnt++;
@@ -7251,7 +7210,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'inituser',
                  authorization: [{
                                 actor: global_account,
@@ -7301,7 +7260,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'setnickname',
                  authorization: [{
                                 actor: global_account,
@@ -7355,7 +7314,7 @@ var memo = "place;"+global_account+";"+globalselection['x']+";"+globalselection[
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "asset_ids": [asset_id],
                        "memo": memo,
 
@@ -7715,7 +7674,7 @@ function loadinventory()
 {
 
 console.log("Load inventory...");
-getdata(callback_pricedata, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 1000 );
+getdata(callback_pricedata, config_contract, config_contract, "atemplate", "", "", "", 1000 );
 
 } // loadinventory()
 
@@ -7772,7 +7731,7 @@ function mintasset(id) {
                     }],
                     data: {
                         "from": global_account,
-                        "to": "sovspacegame",
+                        "to": config_contract,
                         "quantity": sovAmount,
                         "memo": memo,
                     }
@@ -7807,7 +7766,7 @@ var memo = "sell";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "asset_ids": [asset_id],
                        "memo": memo,
                        }
@@ -8020,7 +7979,7 @@ quantitysov = Number(quantitysov).toFixed(4) + " SOV";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysov,
                        "memo": memo,
 
@@ -8068,7 +8027,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'demolish',
                  authorization: [{
                                 actor: global_account,
@@ -8172,7 +8131,7 @@ console.log(quantitysov);
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysov,
                        "memo": memo,
 
@@ -8223,7 +8182,7 @@ quantitysvx = Number(quantitysvx).toFixed(4) + " SVX";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysvx,
                        "memo": memo,
                        }
@@ -8283,7 +8242,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'setnftoption',
                  authorization: [{
                                 actor: global_account,
@@ -8335,7 +8294,7 @@ var theactions = [];
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysov,
                        "memo": memo,
 
@@ -8520,7 +8479,7 @@ quantitysov = Number(quantitysov).toFixed(4) + " SOV";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysov,
                        "memo": memo,
 
@@ -8577,7 +8536,7 @@ quantitysov = Number(quantitysov).toFixed(4) + " SOV";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysov,
                        "memo": memo,
 
@@ -8667,7 +8626,7 @@ quantitysvx = Number(quantitysvx).toFixed(4) + " SVX";
                                 }],
                  data: {
                        "from": global_account,
-                       "to": "sovspacegame",
+                       "to": config_contract,
                        "quantity": quantitysvx,
                        "memo": memo,
                        }
@@ -8716,10 +8675,7 @@ initarea(
 //console.log("global_account: "+ global_account);
 
 
-/*
-cleos -u https://mainnet.eosamsterdam.net push action svxmintofeos transfer '{"from":"sovtrader111","to":"sovspacegame","quantity":"50.0000 SVX","memo":"bulldoze;sovtrader111;2199025451974;e"}' -p sovtrader111
-
-*/
+ 
  
 
 } // flattenobject()
@@ -9301,7 +9257,7 @@ start = year+ "-" +month+ "-" +day+ "T00:00Z";
 
  
 
-var url = "https://eos.hyperion.eosrio.io/v2/history/get_actions?account=sovspacegame&sort=asc&limit="+limit+"&after="+start+"";
+var url = "https://eos.hyperion.eosrio.io/v2/history/get_actions?account="+config_contract+"&sort=asc&limit="+limit+"&after="+start+"";
 
 console.log("URL: " + url);
  
@@ -9446,7 +9402,7 @@ document.getElementById("mintarea").innerHTML = "<br><h2>Human-NFT's</h2>" + buf
 function loadnftinfos()
 {
 
-getdata(callback_loadnftinfos, "sovspacegame", "sovspacegame", "atemplate", "", "", "", 212 );
+getdata(callback_loadnftinfos, config_contract, config_contract, "atemplate", "", "", "", 212 );
 
 } // loadnftinfos
 
@@ -9789,7 +9745,7 @@ param = "initarea;"+thex+";"+they+";"+tile;
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -9842,7 +9798,7 @@ param = "delarea;"+thex+";"+they;
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -9878,7 +9834,7 @@ console.log("SELFDESTRUCT");
 console.log(global_account);
 console.log(globalselection['owner'] );
 
-if ( global_account != "sovspacegame" )
+if ( global_account != config_contract )
    {
    if ( globalselection['owner'] != global_account ) return;
    } // if
@@ -9894,7 +9850,7 @@ var theactions = [];
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'selfdestruct',
                  authorization: [{
                                 actor: global_account,
@@ -9942,7 +9898,7 @@ param = "editasset;"+id+";0;"+psov;
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -10375,7 +10331,7 @@ loadglobals();
 initgameboard();
 
 
-init_wallets( "sovspacegame",setaccountname, logoutall );
+init_wallets( config_contract,setaccountname, logoutall );
 
 update_thread();
 board_update();
@@ -10747,7 +10703,7 @@ var memo = "killarea;"+xcoor+";"+ycoor;
 
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -10768,7 +10724,7 @@ rand = getrandom( 1, 4);
 var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -10792,7 +10748,7 @@ if (mode == 2)
 var memo = "killarea;"+xcoor+";"+ycoor;
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -10821,7 +10777,7 @@ rand = getrandom( 1, 4);
 var memo = "initarea;"+xcoor+";"+ycoor+";"+rand;
 
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'admin',
                  authorization: [{
                                 actor: global_account,
@@ -10855,7 +10811,7 @@ coordinatei = globalselection['coordinate'];
 
  
     var action = {
-                 account: "sovspacegame",
+                 account: config_contract,
                  name: 'cleanarea',
                  authorization: [{
                                 actor: global_account,
