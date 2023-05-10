@@ -1609,8 +1609,8 @@ getdata(callback_load_my_assets, config_contract, config_contract, "area", globa
 </script>
 
 
-<!--
-<div id='mydebug'>...</div>
+ <!-- alfalf 
+<div id='mydebug' onclick='getsovdexprice()'>...</div>
 -->
 
 <br>
@@ -1622,6 +1622,7 @@ getdata(callback_load_my_assets, config_contract, config_contract, "area", globa
    <div style='display:inline-block;width:220px;'>
       <label style='cursor:pointer;'>  <input id='checkbox_shield' type='checkbox' onchange='toggle_info()' style='float:left;'> <span style='' data-lang="en">Show Shield &amp; SOV</span><span style='' data-lang="cn">显示护盾和SOV</span> </label>
    </div>
+
    
    <div style='display:inline-block; margin-left: 20px;width:220px;'>
       <label style='cursor:pointer;'>  <input id='checkbox_owner' type='checkbox' onchange='toggle_info()' style='float:left;'> <span style='' data-lang="en">Show Owner</span><span style='' data-lang="cn">显示拥有者</span> </label>     
@@ -3482,7 +3483,7 @@ if ( classicmode != false )
 </div>
 
 
-<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2x</div>
+<div id='appversion' style='font-size:0.8em;float:right;color:#333333;margin-right:20px;'>v2y</div>
 <br>
 <br>
 
@@ -4539,7 +4540,7 @@ if ( global_account == globalselection['auth'] )
    }
 
 
-// alfalf
+
 
 if ( canclaim == 1)
    {
@@ -5209,7 +5210,36 @@ getdata(callback_getglobals, config_contract, config_contract, "global", "", "",
 
 
 
+var sovdex_price = 0;
+function callback_getsovdexprice( rows )
+{
 
+console.log("SOVDEX");
+console.log(rows);
+
+//sovdexprice = 42;
+
+
+sovdex_price = rows.rows[0].price;   
+
+ 
+
+
+//document.getElementById("mydebug").innerHTML = sovdex_price + " | " ;
+
+} // callback_getsovdexprice
+
+
+async function getsovdexprice()
+{
+
+
+getdata(callback_getsovdexprice, "sovdexrelays", "EOS", "pair", "", "", "", 1 );
+
+
+
+} // getsovdexprice
+ 
 
 
 // ---
@@ -6590,8 +6620,8 @@ for (var i=0; i<size; i++)
     //if (asset_id == 2199025130637  )
     //   buffer = "<img src='img/monument_1.png?s=4442' style='position:absolute;border:none;width:100%;'>" ;
 
-    checkbox_shield = document.getElementById('checkbox_shield').checked;
-    checkbox_owner  = document.getElementById('checkbox_owner').checked;
+    checkbox_shield     = document.getElementById('checkbox_shield').checked;
+    checkbox_owner      = document.getElementById('checkbox_owner').checked;
 
 /*
 var size = mappingarray.length;
@@ -6690,7 +6720,22 @@ for (var i=0; i<size; i++)
        //var sov2 =  marketdata[marketid];
        var sov2 =  marketdata_item[marketid];
 //       shieldinfo = shield + "/" + shield_max + " (" +sov+ " SOV)x";
-       shieldinfo = shield + "/" + shield_max + " (" +sov2+ " SOV)";
+       
+      // shieldinfo = shield + "/" + shield_max + " (" +sov2+ " SOV)x";
+       
+       //--- alfalf
+       eosprice = sov2 * sovdex_price;
+       eosprice = Number( eosprice.toFixed(2) );
+
+ //console.log("checkbox_shield_eos::::---" + checkbox_shield_eos);
+     //  if (checkbox_shield_eos )
+          {
+         
+              shieldinfo = shield + "/" + shield_max + "<br>(" +sov2+ " SOV | ~"+eosprice+" EOS)";
+              }
+ 
+       //---
+       
        buffer += "<div id='"+divid_shieldinfo+"' class='tileinfo_nick noselect' style='color:"+color+";position:absolute;left:0%;width:100%;font-weight:bold;font-size:12px;top:80%;z-index:300;visibility:"+value_shield+";'>" +shieldinfo+  " </div>" ;
 
        // bar
@@ -9108,12 +9153,13 @@ document.getElementById('path933').style.visibility = "hidden";
 
 function toggle_info()
 {
-checkbox_shield = document.getElementById('checkbox_shield').checked;
-checkbox_owner  = document.getElementById('checkbox_owner').checked;
+checkbox_shield     = document.getElementById('checkbox_shield').checked;
+//checkbox_shield_eos = document.getElementById('checkbox_shield_eos').checked;
+checkbox_owner      = document.getElementById('checkbox_owner').checked;
 
 var size = mappingarray.length;
 
-
+//console.log("checkbox_shield_eos: "+checkbox_shield_eos);
 
 value_shield = 'hidden';
 if (checkbox_shield) value_shield = 'visible';
@@ -10298,6 +10344,12 @@ if ( (updatecnt % 21) == 0 )
    loadmarkets();
    }
 
+if ( (updatecnt % 30) == 0 )
+   {
+   //getsovdexprice();
+   }
+
+
 
 if ( (updatecnt % 60*5) == 0 )
    {
@@ -10324,6 +10376,7 @@ updatecnt++;
 
 
 loadglobals();
+getsovdexprice();
 initgameboard();
 
 
