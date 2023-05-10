@@ -15,9 +15,9 @@ const endpoints = [
     "https://api.eosargentina.io/v1/chain/get_table_rows",
     "https://eospush.tokenpocket.pro/v1/chain/get_table_rows",
     "https://api.eossweden.org/v1/chain/get_table_rows",
-    "https://eos.edenia.cloud/v1/chain/get_table_rows",
+    /**eos.edenia.cloud/v1/chain/get_table_rows",**/
     "https://eos.api.boid.animus.is/v1/chain/get_table_rows",
-    "https://eos.caleos.io/v1/chain/get_table_rows",
+    /**eos.caleos.io/v1/chain/get_table_rows,**/
     "https://api.eosarabia.net/v1/chain/get_table_rows",
     "https://api.eoseoul.io/v1/chain/get_table_rows",
     "https://api.eosn.io/v1/chain/get_table_rows",
@@ -42,9 +42,9 @@ const endpoints = [
     "https://eos.pink.gg/v1/chain/get_table_rows",
     "https://eosbp.atticlab.net/v1/chain/get_table_rows",
     "https://eosmainnet.more.top/v1/chain/get_table_rows",
-    "https://fn001.eossv.org/v1/chain/get_table_rows",
+    /**fn001.eossv.org/v1/chain/get_table_rows",**/
     "https://keycommunity.club/api/v1/chain/get_table_rows",
-    "https://mainnet.genereos.io/v1/chain/get_table_rows",
+    /**mainnet.genereos.io/v1/chain/get_table_rows",**/
     "https://node1.zbeos.com/v1/chain/get_table_rows",
     "https://node2.zbeos.com/v1/chain/get_table_rows",
     "https://seed01.eosusa.news/v1/chain/get_table_rows"                 
